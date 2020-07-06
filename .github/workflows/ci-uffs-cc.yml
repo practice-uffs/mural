@@ -1,19 +1,41 @@
 name: ci.uffs.cc
 on:
   push:
-    branches:    
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
       - master
       - dev
 env:
   BUILD_HOST: ci.uffs.cc
-  BUILD_WEB_DIRECTORY: /home/ccuffsci/ci.uffs.cc/template
-  BUILD_WEB_URL: https://ci.uffs.cc/template
+  BUILD_WEB_DIRECTORY: /home/ccuffsci/ci.uffs.cc/practice-web-feedback
+  BUILD_WEB_URL: https://ci.uffs.cc/practice-web-feedback
 jobs:
-  build-deploy-audit:
-    name: Build, deploy and audit
+  build-deploy:
+    name: Build and test Laravel app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Setup ENV Laravel Configuration for CI
+      run: |
+        cd src
+        php -r "file_exists('.env') || copy('.env.ci', '.env');"
+        echo 'DB_DATABASE=${{ github.workspace }}/database/database.sqlite' >> .env
+    - name: Install Dependencies (PHP vendors)
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Create DB and schemas
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+        php artisan migrate
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: vendor/bin/phpunit
+
+    # Deploy to ci.uffs.cc
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
@@ -22,39 +44,31 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.BUILD_HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
         script: |
           mkdir -p ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
-          mkdir -p ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/_report
-    - name: Deploy site via SSH
+    - name: Clean vendor files
+      run: rm -rf vendor
+    - name: Deploy app via SSH
       uses: garygrossgarten/github-action-scp@release
       with:
         local: ${{ github.workspace }}/
         remote: ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/
         host: ${{ env.BUILD_HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-    - name: Audit site performance
-      uses: jakejarvis/lighthouse-action@master
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
+    - name: Restore vendor folder on build server
+      uses: appleboy/ssh-action@master
       with:
-        url: ${{ env.BUILD_WEB_URL }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
-    - name: Upload audit results as an artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
-    - name: Copy audit report to deploy server via SSH
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        local: ${{ github.workspace }}/report
-        remote: ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/_report/
         host: ${{ env.BUILD_HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}  
+        username: ${{ secrets.CI_USERNAME }}
+        password: ${{ secrets.CI_PASSWORD }}
+        script: |
+          cd ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          echo 'DB_DATABASE=${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/database/database.sqlite' >> .env
     - name: Summary
       run: |
         echo "Summary:"
         echo " Live URL: ${{ env.BUILD_WEB_URL }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}"
-        echo " Audit report URL: ${{ env.BUILD_WEB_URL }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}/_report"

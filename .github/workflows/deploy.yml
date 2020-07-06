@@ -1,0 +1,25 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+env:
+  PROD_HOST: mural.practice.uffs.cc
+  PROD_WEB_DIRECTORY: /home/ccuffspractice/mural.practice.uffs.cc
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare deploy server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.PROD_HOST }}
+        username: ${{ secrets.PROD_USERNAME }}
+        password: ${{ secrets.PROD_PASSWORD }}
+        script: |
+          cd ${{ env.PROD_WEB_DIRECTORY }}
+          git pull
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          php artisan migrate
