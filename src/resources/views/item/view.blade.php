@@ -66,18 +66,6 @@ validação do protótipo desenvolvido.</p>
                 </div>
 
                 <div class="row">
-                    <div class="col-4">
-                        <p class="text-muted">Autoria</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="text-muted">Orientação</p>
-                    </div>
-                    <div class="col-4">
-                        <p class="text-muted">Examinadores</p>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col-4 text-left">
                         <div class="container-fluid">
                             <div class="row align-items-center">

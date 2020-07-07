@@ -28,10 +28,8 @@ Route::post('/login', 'Auth\LoginController@auth');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Content
-Route::get('/', 'ContentController@index')->name('content.home');
-
-// User
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ContentController@index')->name('content.index');
+Route::get('/home', 'ContentController@index')->name('content.home');
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');

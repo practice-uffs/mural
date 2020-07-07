@@ -23,7 +23,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('project.update', $project->id) }}">
+                <form method="post" action="{{ route('item.update', $item->id) }}">
                     @method('PATCH') 
                     @csrf
 
@@ -31,25 +31,25 @@
                         <div class="col-6">
                             <div class="form-group">    
                                 <label for="title" class="text-muted">Título/tema</label>
-                                <input type="text" class="form-control" name="title" value="{{ $project->title }}" />
+                                <input type="text" class="form-control" name="title" value="{{ $item->title }}" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">    
                                 <label for="type" class="text-muted">Tipo</label>
-                                <input type="text" class="form-control" name="type" value="{{ $project->type }}" />
+                                <input type="text" class="form-control" name="type" value="{{ $item->type }}" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">    
                                 <label for="period" class="text-muted">Período</label>
-                                <input type="text" class="form-control" name="period" value="{{ $project->period }}" />
+                                <input type="text" class="form-control" name="period" value="{{ $item->period }}" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">    
                                 <label for="status" class="text-muted">Situação</label>
-                                <input type="text" class="form-control" name="status" value="{{ $project->status }}" />
+                                <input type="text" class="form-control" name="status" value="{{ $item->status }}" />
                             </div>
                         </div>
                     </div>
@@ -57,91 +57,13 @@
                     <div class="row section">
                         <div class="col-12">
                             <div class="form-group">    
-                                <label for="abstract" class="text-muted">Resumo</label>
-                                <textarea class="form-control" id="abstract" name="abstract" rows="3">{{ $project->abstract }}</textarea>
+                                <label for="abstract" class="text-muted">Descrição</label>
+                                <textarea class="form-control" id="abstract" name="abstract" rows="3">{{ $item->description }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
-            
-
-                    <div class="row">
-                        <div class="col-4">
-                            <p class="text-muted">Autoria</p>
-                        </div>
-                        <div class="col-4">
-                            <p class="text-muted">Orientação</p>
-                        </div>
-                        <div class="col-4">
-                            <p class="text-muted">Examinadores</p>
-                        </div>
-                    </div>
                 </form>
-
-                <div class="row">
-                    <div class="col-4 text-left">
-                        <div class="container-fluid">
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <img class="user-avatar rounded-circle" src="https://colorlib.com/polygon/sufee/images/admin.jpg" alt="User Avatar">
-                                </div>
-                                <div class="col-10">
-                                    <p>Fernando Bevilacqua <br/><small class="text-muted">fernando.bevilacqua</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Advisors -->
-                    <div class="col-4 text-left">
-                        <div class="container-fluid">                        
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <img alt="image" class="user-avatar rounded-circle" src="https://colorlib.com/polygon/sufee/images/admin.jpg">
-                                </div>
-                                <div class="col-10">
-                                    <p>
-                                        Fernando Bevilacqua <br/>
-                                        <small class="text-muted">fernando.bevilacqua</small><br />
-                                        <span class="badge badge-danger">Não confirmado</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Examiners -->
-                    <div class="col-4 text-left">
-                        <div class="container-fluid" id="examiners"> 
-                            @foreach ($examining as $participation)
-                                <div class="row align-items-center" id="participation{{ $participation->id }}">
-                                    <div class="col-2">
-                                        <img alt="image" class="user-avatar rounded-circle" src="https://colorlib.com/polygon/sufee/images/admin.jpg">
-                                    </div>
-                                    <div class="col-9">
-                                        <p>
-                                            {{ $participation->user->name }} <br/>
-                                            <small class="text-muted">{{ $participation->user->username }}</small><br />
-                                            <span class="badge badge-danger">Não confirmado</span>
-                                        </p>
-                                    </div>
-                                    <div class="col-1">
-                                        <a href="javascript:void(0);" data-onclick="delete:participation:{{ $participation->id }}">R</a>
-                                    </div>
-                                </div> 
-                            @endforeach
-
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="examiner" name="examiner" value="" placeholder="Digite nome do examinador"/>
-                                    </div>
-                                    <div id="examiner-suggestions"></div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

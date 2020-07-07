@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Item;
+use App\Location;
+use App\Category;
 use Carbon\Carbon;
 
 class ItemController extends Controller
@@ -25,35 +27,29 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $project = Item::create([
-            'title' => '',
-            'abstract' => '',
-            'period' => 0,
-            'type' => Item::TYPE_PLAN,
-            'status' => Item::STATUS_WAITING_SUPERVISION,
-        ]);
-
-        /*
-        $participation = Participation::create([
+        $item = Item::create([
             'user_id' => Auth::user()->id,
-            'project_id' => $project->id,
-            'role' => Participation::AUTHOR,
-            'confirmed' => true,
-            'confirmed_on' => Carbon::now()
-        ]);*/
+            'location_id' => 1,
+            'category_id' => 1,
+            'status' => Item::STATUS_ACTIVE,
+            'type' => Item::TYPE_IDEA,
+            'title' => '',
+            'description' => '',
+            'hidden' => false
+        ]);
 
-        return $this->edit($project);
+        return $this->edit($item);
     }
 
     /**
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show(Item $project)
+    public function show(Item $item)
     {
-        return view('project.view', [
+        return view('item.view', [
             'user' => Auth::user(),
-            'project' => $project
+            'item' => $item
         ]);
     }
 
@@ -61,12 +57,11 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit(Item $project)
+    public function edit(Item $item)
     {
-        return view('project.edit', [
+        return view('item.edit', [
             'user' => Auth::user(),
-            'project' => $project,
-            'examining' => $this->findParticitionsByRole($project, Participation::EXAMINER)
+            'item' => $item
         ]);
     }
 
@@ -79,13 +74,14 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'period' => 'required',
+            'status' => 'required',
             'type' => 'required',
-            'status' => 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'hidden' => 'required'
         ]);
 
-        $project = new Item([
+        $item = new Item([
             'title' => $request->get('title'),
             'abstract' => $request->get('abstract', ''),
             'period' => $request->get('period'),
@@ -93,7 +89,7 @@ class ItemController extends Controller
             'status' => $request->get('status')
         ]);
 
-        $project->save();
+        $item->save();
         return redirect('/home')->with('success', 'Item saved!');
     }
 
@@ -107,20 +103,22 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
-            'period' => 'required',
+            'status' => 'required',
             'type' => 'required',
-            'status' => 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'hidden' => 'required'
         ]);
 
-        $project = Item::find($id);
-        $project->title =  $request->get('title');
-        $project->abstract =  $request->get('abstract', '');
-        $project->period =  $request->get('period');
-        $project->type =  $request->get('type');
-        $project->status =  $request->get('status');
-
-        $project->save();
+        $item = Item::find($id);
+        $item->status = $request->get('status');
+        $item->type = $request->get('type');
+        $item->title = $request->get('title');
+        $item->description = $request->get('description', '');
+        $item->hidden = $request->get('hidden');
+        $item->updated_at = Carbon::now();
+        
+        $item->save();
 
         return redirect('/home')->with('success', 'Item updated!');
     }
@@ -133,8 +131,8 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $project = Item::find($id);
-        $project->delete();
+        $item = Item::find($id);
+        $item->delete();
 
         return redirect('/home')->with('success', 'Item deleted!');
     }
