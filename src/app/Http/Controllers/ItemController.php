@@ -74,19 +74,24 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'status' => 'required',
-            'type' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'hidden' => 'required'
         ]);
 
+        // TODO: checar location e category
+
         $item = new Item([
+            'user_id' => Auth::user()->id,
+            'location_id' => $request->get('location_id'),
+            'category_id' => $request->get('category_id'),
+            'status' => Item::STATUS_ACTIVE,
+            'type' => Item::TYPE_IDEA,
             'title' => $request->get('title'),
-            'abstract' => $request->get('abstract', ''),
-            'period' => $request->get('period'),
-            'type' => $request->get('type'),
-            'status' => $request->get('status')
+            'description' => $request->get('description'),
+            'hidden' => $request->get('hidden', false),
         ]);
 
         $item->save();
@@ -103,18 +108,23 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
-            'type' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'hidden' => 'required'
         ]);
 
+        // TODO: checar location e category
+
         $item = Item::find($id);
-        $item->status = $request->get('status');
-        $item->type = $request->get('type');
+        $item->user_id = Auth::user()->id;
+        $item->location_id = $request->get('location_id');
+        $item->category_id = $request->get('category_id');
+        $item->status = Item::STATUS_ACTIVE;
+        $item->type = Item::TYPE_IDEA;
         $item->title = $request->get('title');
-        $item->description = $request->get('description', '');
+        $item->description = $request->get('description');
         $item->hidden = $request->get('hidden');
         $item->updated_at = Carbon::now();
         

@@ -34,22 +34,22 @@
                                 <input type="text" class="form-control" name="title" value="{{ $item->title }}" />
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-6">
                             <div class="form-group">    
-                                <label for="type" class="text-muted">Tipo</label>
-                                <input type="text" class="form-control" name="type" value="{{ $item->type }}" />
+                                <label for="location_id" class="text-muted">Local</label>
+                                <input type="text" class="form-control" name="location_id" value="{{ $item->location_id }}" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">    
-                                <label for="period" class="text-muted">Período</label>
-                                <input type="text" class="form-control" name="period" value="{{ $item->period }}" />
+                                <label for="category_id" class="text-muted">Categoria</label>
+                                <input type="text" class="form-control" name="category_id" value="{{ $item->category_id }}" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">    
-                                <label for="status" class="text-muted">Situação</label>
-                                <input type="text" class="form-control" name="status" value="{{ $item->status }}" />
+                                <label for="hidden" class="text-muted">Visível para todos?</label>
+                                <input type="text" class="form-control" name="hidden" value="{{ $item->hidden }}" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="col-12">
                             <div class="form-group">    
                                 <label for="abstract" class="text-muted">Descrição</label>
-                                <textarea class="form-control" id="abstract" name="abstract" rows="3">{{ $item->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3">{{ $item->description }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
