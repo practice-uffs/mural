@@ -14,33 +14,25 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-// Project
-Route::get('/project/create', 'ProjectController@create')->name('project.create');
-Route::post('/project', 'ProjectController@store')->name('project.store');
-Route::get('/project/{project}/edit', 'ProjectController@edit')->name('project.edit');
-Route::get('/project/{project}', 'ProjectController@show')->name('project.show');
-Route::patch('/project/{project}', 'ProjectController@update')->name('project.update');
-Route::delete('/project/{project}', 'ProjectController@remove')->name('project.remove');
-
-// Participation
-Route::post('/participation/add', 'ParticipationController@add')->name('participation.add');
-Route::patch('/participation/{participation}', 'ParticipationController@update')->name('participation.update');
-Route::delete('/participation/{participation}', 'ParticipationController@remove')->name('participation.remove');
+// Item
+Route::get('/item/create', 'ItemController@create')->name('item.create');
+Route::post('/item', 'ItemController@store')->name('item.store');
+Route::get('/item/{item}/edit', 'ItemController@edit')->name('item.edit');
+Route::get('/item/{item}', 'ItemController@show')->name('item.show');
+Route::patch('/item/{item}', 'ItemController@update')->name('item.update');
+Route::delete('/item/{item}', 'ItemController@remove')->name('item.destroy');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@auth');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-// Misc
-Route::get('/info/users', 'InfoController@users')->name('info.users');
+// Content
+Route::get('/', 'ContentController@index')->name('content.home');
+
+// User
 Route::get('/home', 'HomeController@index')->name('home');
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
 }
-
-// TODO: remove this cloujure
-Route::get('/', function () {
-    return view('welcome');
-});
