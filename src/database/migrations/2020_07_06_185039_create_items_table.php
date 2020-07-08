@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
             $table->integer('status')->default(1);
             $table->integer('type')->default(1);
             $table->string('title', 200)->default('');
-            $table->text('description')->default('');
+            $table->text('description')->nullable();
             $table->boolean('hidden')->default(false);
             $table->timestamps();
 
