@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}" />
-        <link type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"/>
     </head>
 
     <body>
@@ -25,8 +25,7 @@
                             
                             <form action="" method="post" class="form">
                                 @csrf
-
-                                <div class="form__field">
+                                <div class="form__field mb-3">
                                     <label for="username" class="form__label">
                                         idUFFS
                                     </label>
@@ -36,23 +35,24 @@
                                     >
                                 </div>
 
-                                <div class="form__field">
+                                <div class="form__field mb-4">
                                     <label for="password" class="form__label">
                                         Senha
                                     </label>
                                     <input id="password" type="password" 
-                                           class="@error('password') is-invalid @enderror field__input shadow-focus mb-4"
+                                           class="@error('password') is-invalid @enderror field__input shadow-focus"
                                            name="password" placeholder="Digite sua senha" required autocomplete="current-password"
                                     >
                                 </div>
 
-                                <div class="form__field">
+                                <div class="form__field mb-3">
                                     <input type="submit" value="Login" class="btn field__submit shadow-focus">
                                 </div>
                             </form>
 
                             @if ($errors->any()) 
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <i class="fa fa-times" aria-hidden="true"></i>
                                 @foreach ($errors->all() as $error)
                                     {{ $error }}
                                 @endforeach

@@ -9,8 +9,6 @@ html {
 body {
     background: linear-gradient(#fbe7d7, #fdf1d7);
     color: #8f8f8f;
-    font: 100 1rem/1.5 'Caviar Dreams', sans-serif;
-    margin: 0;
     min-height: 100%;
 }
 
@@ -27,7 +25,6 @@ body {
 }
 
 .form__field {
-    margin-bottom: 1rem;
     text-align: center;
     width: 100%;
 }
@@ -67,10 +64,9 @@ body {
     box-shadow: 0 0 0 0.2rem #b2cbd2 !important;
 }
 
-.alert {
-    color: #fc392b;
-    border: dashed 1px #fc392b;
-    padding: 0.8em;
+.alert-danger {
+    background-color: #fdf2e3 !important;
+    border-color: #fdf2e3 !important;
 }
 
 .banner__img {
