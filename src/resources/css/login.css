@@ -7,38 +7,23 @@ html {
 }
 
 body {
-    background-color: #fff;
+    background: linear-gradient(#fbe7d7, #fdf1d7);
     color: #8f8f8f;
     font: 100 1rem/1.5 'Caviar Dreams', sans-serif;
     margin: 0;
     min-height: 100%;
 }
 
-.align {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
+.card-body {
+    background-color: #fdf2e3;
 }
 
-.align__item--start {
-    align-self: flex-start;
-}
-
-.align__item--end {
-    align-self: flex-end;
+.card-media {
+    text-align: center;
 }
 
 .site__logo {
-    width: 100%;
-}
-
-input {
-    border: 0;
-    font: inherit;
-}
-
-input::placeholder {
-    color: #5B5A5B;
+    width: 95%;
 }
 
 .form__field {
@@ -47,47 +32,15 @@ input::placeholder {
     width: 100%;
 }
 
-.form input {
-    outline: 0;
+.field__input {
     padding: .5rem 1rem;
-    width: 100%;
-}
-
-h2 {
-    font-size: 1.5em;
-    font-weight: 100;
-    margin: 0 0 2rem;
-}
-
-svg {
-    height: auto;
-    max-width: 100%;
-    vertical-align: middle;
-}
-
-a {
-    color: #7e8ba3;
-}
-
-.login {
-    border-radius: 1%;
-    text-align: center;
-    padding: 2rem 2rem;
-    border: solid 1px #2B2A2B;
-}
-
-.login label {
-    color: #6f6f6f;
-}
-
-.login input {
-    border: 1px solid #5B5A5B;
+    width: 100% !important;
+    border: solid 1px #007c9d;
     border-radius: 5px;
-    background-color: #fff;
     text-align: center;
+    background-color: #fff;
     outline: none;
-    color: #fff;
-    margin-top: 0.2em;
+    color: #000;
 
     -webkit-transition: all 0.30s ease-in-out;
     -moz-transition: all 0.30s ease-in-out;
@@ -95,20 +48,23 @@ a {
     -o-transition: all 0.30s ease-in-out;
 }
 
-.login input:focus {
-    border: solid 1px #00C483;
-}
-
 .field__submit {
     background: linear-gradient(45deg, #ffaf00, #ff8429);
+    border-radius: 5px !important;
     text-transform: uppercase;
     border: solid 1px #fff;
     width: 60% !important;
-    border-radius: 19px !important;
     letter-spacing: 2px;
-    border-radius: 2%;
-    font-weight: bold;
-    color: #fff;
+    font-weight: bold !important;
+    color: #fff !important;
+}
+
+.form__label {
+    color: #6f6f6f;
+}
+
+.shadow-focus:focus{
+    box-shadow: 0 0 0 0.2rem #b2cbd2 !important;
 }
 
 .alert {
