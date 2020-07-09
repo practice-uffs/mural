@@ -47,18 +47,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $item = Item::create([
-            'user_id' => Auth::user()->id,
-            'location_id' => 1,
-            'category_id' => 1,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
-            'title' => '',
-            'description' => '',
-            'hidden' => false
+        return view('item.create', [
+            'user' => Auth::user()
         ]);
-
-        return $this->edit($item);
     }
 
     /**

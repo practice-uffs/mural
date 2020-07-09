@@ -14,14 +14,6 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-// // Item
-// Route::get('/item/create', 'ItemController@create')->name('item.create');
-// Route::post('/item', 'ItemController@store')->name('item.store');
-// Route::get('/item/{item}/edit', 'ItemController@edit')->name('item.edit');
-// Route::get('/item/{item}', 'ItemController@show')->name('item.show');
-// Route::patch('/item/{item}', 'ItemController@update')->name('item.update');
-// Route::delete('/item/{item}', 'ItemController@remove')->name('item.destroy');
-
 Route::resource('/items', 'ItemController');
 
 // Auth
