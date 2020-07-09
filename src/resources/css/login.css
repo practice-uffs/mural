@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    color: #8f8f8f;
+    font: 100 1rem/1.5 'Caviar Dreams', sans-serif;
+    margin: 0;
+    min-height: 100%;
+}
+
+.align {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.align__item--start {
+    align-self: flex-start;
+}
+
+.align__item--end {
+    align-self: flex-end;
+}
+
+.site__logo {
+    width: 100%;
+}
+
+input {
+    border: 0;
+    font: inherit;
+}
+
+input::placeholder {
+    color: #5B5A5B;
+}
+
+.form__field {
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.form input {
+    outline: 0;
+    padding: .5rem 1rem;
+    width: 100%;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 100;
+    margin: 0 0 2rem;
+}
+
+svg {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+a {
+    color: #7e8ba3;
+}
+
+.login {
+    border-radius: 1%;
+    text-align: center;
+    padding: 2rem 2rem;
+    border: solid 1px #2B2A2B;
+}
+
+.login label {
+    color: #6f6f6f;
+}
+
+.login input {
+    border: 1px solid #5B5A5B;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    outline: none;
+    color: #fff;
+    margin-top: 0.2em;
+
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+.login input:focus {
+    border: solid 1px #00C483;
+}
+
+.field__submit {
+    background: linear-gradient(45deg, #ffaf00, #ff8429);
+    text-transform: uppercase;
+    border: solid 1px #fff;
+    width: 60% !important;
+    border-radius: 19px !important;
+    letter-spacing: 2px;
+    border-radius: 2%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.alert {
+    color: #fc392b;
+    border: dashed 1px #fc392b;
+    padding: 0.8em;
+}
+
+.banner__img {
+    width: 100%;
+}
