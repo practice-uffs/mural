@@ -50,6 +50,12 @@ class LoginController extends Controller
         return redirect()->intended('home');
     }
 
+    public function logout(Request $resquest)
+    {
+        Auth::logout();
+        return redirect()->intended('login');
+    }
+
     private function getOrCreateUser($data)
     {
         $user = User::where('uid', $data->uid)->first();
