@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/tccr.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-toggle/css/bootstrap-toggle.min.css') }}" media="screen">
 
     <!-- Priority scripts -->
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
@@ -95,18 +96,14 @@
         </div>
     </footer>
 
-    <!-- Scripts related to integration with external APIs -->
-    <script src="{{ config('app.apicc_url').'/libs/3rdparty/flexsearch.compact.js' }}" type="text/javascript"></script>
-    <script src="{{ config('app.apicc_url').'/libs/3rdparty/axios.min.js' }}" type="text/javascript"></script>
-    <script src="{{ config('app.apicc_url').'/libs/3rdparty/signals.min.js' }}" type="text/javascript"></script>
-    <script src="{{ config('app.apicc_url').'/libs/iduffs@dev/autocomplete.js' }}" type="text/javascript"></script>
-    
     <!-- App scripts -->
     <script src="{{ asset('js/3rdparty/jquery.min.js') }}"></script>
     <script src="{{ asset('js/3rdparty/bootstrap.bundle.min.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('js/3rdparty/store.everything.min.js') }}" type="text/javascript" charset="utf-8"></script>
+
+    <script src="{{ asset('vendor/bootstrap-toggle/js/bootstrap-toggle.min.js') }}" type="text/javascript" charset="utf-8"></script>
+
     <script src="{{ asset('js/app.js') }}" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('js/tccr.js') }}" type="text/javascript" charset="utf-8"></script>
 
     <!-- Page-specific scripts --> 
     @yield('scripts')

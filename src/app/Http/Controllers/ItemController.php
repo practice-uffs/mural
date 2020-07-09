@@ -53,15 +53,26 @@ class ItemController extends Controller
         ]);
     }
 
+    protected function findCategoriesByItemType(Item $item)
+    {
+        // Filtrar cateogira por tipo
+        $categories = Category::all('name', 'id');
+        return $categories;
+    }
+
     /**
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function edit(Item $item)
     {
+        $categories = $this->findCategoriesByItemType($item);
+
         return view('item.edit', [
             'user' => Auth::user(),
-            'item' => $item
+            'item' => $item,
+            'categories' => $categories,
+            'locations' => Location::all()
         ]);
     }
 
