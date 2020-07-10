@@ -12,6 +12,10 @@ body {
     min-height: 100%;
 }
 
+.practice-logo {
+    width: 95%;
+}
+
 .card-body {
     background-color: #fdf2e3;
 }
@@ -20,8 +24,8 @@ body {
     text-align: center;
 }
 
-.site__logo {
-    width: 95%;
+.form__label {
+    color: #6f6f6f;
 }
 
 .form__field {
@@ -30,12 +34,12 @@ body {
 }
 
 .field__input {
-    padding: .5rem 1rem;
-    width: 100% !important;
     border: solid 1px #007c9d;
+    background-color: #fff;
+    width: 100% !important;
+    padding: .5rem 1rem;
     border-radius: 5px;
     text-align: center;
-    background-color: #fff;
     outline: none;
     color: #000;
 
@@ -56,17 +60,12 @@ body {
     color: #fff !important;
 }
 
-.form__label {
-    color: #6f6f6f;
-}
-
 .shadow-focus:focus{
     box-shadow: 0 0 0 0.2rem #b2cbd2 !important;
 }
 
-.alert-danger {
-    background-color: #fdf2e3 !important;
-    border-color: #fdf2e3 !important;
+.alert-error {
+    color: #761b18;
 }
 
 .banner__img {
