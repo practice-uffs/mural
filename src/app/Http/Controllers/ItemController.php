@@ -22,6 +22,21 @@ class ItemController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $items = Item::all();
+
+        return view('item.index', [
+            'user' => Auth::user(),
+            'items' => $items
+        ]);
+    }
+
+    /**
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -127,7 +142,7 @@ class ItemController extends Controller
         $item->description = $request->get('description');
         $item->hidden = $request->get('hidden');
         $item->updated_at = Carbon::now();
-        
+
         $item->save();
 
         return redirect('/home')->with('success', 'Item updated!');
