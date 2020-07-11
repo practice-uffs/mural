@@ -63,14 +63,3 @@ services:
   - name: "Applications"
     icon: "fas fa-cloud"
     items:
-      - name: "Awesome app"
-        logo: "assets/tools/sample.png"
-        subtitle: "Bookmark example"
-        tag: "app"
-        url: "https://www.reddit.com/r/selfhosted/"
-        target: "_blank" # optionnal html a tag target attribute
-      - name: "Another one"
-        logo: "assets/tools/sample2.png"
-        subtitle: "Another application"
-        tag: "app"
-        url: "#"
