@@ -4,11 +4,9 @@
     <img src="https://img.shields.io/github/workflow/status/ccuffs/template/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
 </p>
 
-# Título
+# Web Feedback
 
-Coloque uma descrição do projeto aqui. Geralmente essa descrição tem de duas a três linhas de tamanho. Ela deve dar uma visão geral sobre o que é o projeto, ex.: tecnologia usada, filosofia de existência, qual problema tenta-se resolver, etc. Se você precisa escrever mais que 3 linhas de descrição, crie subseções.
-
-> **IMPORTANTE:** coloque aqui alguma mensagem que é muito relevante aos usuários do projeto, se for o caso.
+Web Feedback é um sistema cujo principal objetivo é estreitar a comunicação entre a comunidade da UFFS e o programa [Practice](https://practice.uffs.cc/). Esse estreitamento possibilitará que ideias e demandas voltadas para o âmbito da melhoria da educação possam ser publicadas, discutidas, discorridas e desenvolvidas. O Web Feedback irá funcionar como um mural onde qualquer pessoa da comunidade UFFS poderá expor suas ideias, comentários, solicitar serviços, etc, no formato de _post_. A partir desse ***feedback*** o [Practice](https://practice.uffs.cc/) terá facilidade em direcionar o fluxo de desenvolvimento e priorizar projetos. 
 
 ## Features
 
@@ -21,29 +19,76 @@ Aqui você pode colocar uma screenshot do produto resultante desse projeto. Desc
 
 ## Começando
 
-### 1. Primeiro passo para começar
+### 1. Dependências
 
-Geralmente o primeiro passo para começar é instalar dependências para rodar o projeto. Rode:
+Para executar o projeto, inicialmente será preciso instalar as seguintes dependências:
 
-```
-apt get install dependencia
-```
+- [PHP](https://www.php.net/downloads);
+- [Composer](https://getcomposer.org/download/);
+- [MySQL](https://www.mysql.com/downloads/);
+- [NodeJS](https://nodejs.org/en/);
+- [NPM](https://www.npmjs.com/package/npm);
 
-Recomenda-se que cada comando seja colocado em uma linha diferente:
+### 2. Configuração
 
-```
-apt get install outra-coisa
-```
+Feito a instalação das dependências, é necessário obter uma cópia do projeto, para isso faça o `fork` dele através do botão situado no canto superior direito e depois clone-o em sua máquima. Em seguida será preciso configurar a interação entre o projeto e suas dependências.
 
-Dessa forma os usuários podem copiar e colar sem ler as documentação (que é o que geralmente acontece).
+#### Banco de Dados
 
-### 2. Outro(s) passo(s)
-
-Geralmente os próximos passos ensinam como instalar e configurar o projeto para uso/desenvolvimento. Rode:
+O SGBD utilizado no projeto é o MySQL sabendo disso acesse seu gerenciador e crie sua base de dados executando o seguinte comando:
 
 ```
-git clone https://github.com/ccuffs/template template
+CREATE DATABASE <nome-do-banco>
 ```
+
+#### PHP
+
+Instale as dependências do PHP usando o comando abaixo:
+
+```
+composer install
+```
+
+#### Node
+
+Instale também as dependências do NodeJS executando:
+```
+npm install
+```
+
+#### Laravel
+
+Crie o arquivo `.env` a partir do arquivo `.env.example` gerado automaticamente pelo Laravel:
+
+```
+cp .env.example .env
+```
+
+Após isso, no arquivo `.env` altere o valor do campo `DB_DATABASE` para `<nome-do-banco>` criado anteriormente e substitua também o valor dos campos `DB_USERNAME` e `DB_PASSWORD` para seu usuário e senha do banco de dados, respectivamente.
+
+Feita as alterações no `.env` execute o seguinte comando para a criação dos esquemas:
+```
+php artisan migrate
+```
+
+Por fim execute o comando abaixo para a geração da chave de autenticação da aplicação:
+```
+php artisan key:generate
+```
+
+#### Rodando o projeto
+
+Finalmente, após seguido os passos anteriores, gere os recursos JavaScript e CSS:
+```
+npm run dev
+```
+
+e por fim inicie o servidor do Laravel:
+
+```
+php artisan serve
+```
+Após isso a aplicação estará rodando na porta 8000 e poderá ser acessada em [localhost:8000](http://localhost:8000).
 
 ## Contribua
 
@@ -64,6 +109,4 @@ Veja todas as alterações desse projeto no arquivo [CHANGELOG.md](CHANGELOG.md)
 
 Abaixo está uma lista de links interessantes e projetos similares:
 
-* [Outro projeto](https://github.com/projeto)
-* [Projeto inspiração](https://github.com/projeto)
-* [Ferramenta semelhante](https://github.com/projeto)
+* [Google Keep](https://keep.google.com)
