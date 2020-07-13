@@ -22,36 +22,24 @@ class ItemController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        $item = Item::create([
-            'user_id' => Auth::user()->id,
-            'location_id' => 1,
-            'category_id' => 1,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
-            'title' => '',
-            'description' => '',
-            'hidden' => false
-        ]);
-
-        return $this->edit($item);
+        //
     }
 
-    /**
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function show(Item $item)
-    {
-        return view('item.view', [
-            'user' => Auth::user(),
-            'item' => $item
-        ]);
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function create()
+    // {
+    //     //
+    // }
 
     protected function findCategoriesByItemType(Item $item)
     {
@@ -64,15 +52,10 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit(Item $item)
+    public function create()
     {
-        $categories = $this->findCategoriesByItemType($item);
-
-        return view('item.edit', [
-            'user' => Auth::user(),
-            'item' => $item,
-            'categories' => $categories,
-            'locations' => Location::all()
+        return view('item.create', [
+            'user' => Auth::user()
         ]);
     }
 
@@ -110,6 +93,34 @@ class ItemController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function show($item)
+    {
+        return view('item.view', [
+            'user' => Auth::user(),
+            'item' => $item
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($item)
+    {
+        return view('item.edit', [
+            'user' => Auth::user(),
+            'item' => $item
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -138,7 +149,7 @@ class ItemController extends Controller
         $item->description = $request->get('description');
         $item->hidden = $request->get('hidden');
         $item->updated_at = Carbon::now();
-        
+
         $item->save();
 
         return redirect('/home')->with('success', 'Item updated!');

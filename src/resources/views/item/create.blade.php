@@ -23,35 +23,32 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('items.update', $item->id) }}">
-                    @method('PATCH')
+                <form method="post" action="{{ route('items.store') }}">
                     @csrf
 
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="title" class="text-muted">Título</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $item->title }}" placeholder="Ex.: Jogos digitais em aula"/>
+                                <label for="title" class="text-muted">Título/tema</label>
+                                <input type="text" class="form-control" name="title" />
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="location_id" class="text-muted">Local</label>
+                                <input type="text" class="form-control" name="location_id" />
+                            </div>
+                        </div>
+                        <div class="col-2">
                             <div class="form-group">
                                 <label for="category_id" class="text-muted">Categoria</label>
-                                <select name="category_id" id="category_id" class="form-control">
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" @if ($category->id == $item->category_id) selected="selected" @endif>{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control" name="category_id" />
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <div class="form-group">
-                                <label for="location_id" class="text-muted">Local de realização</label>
-                                <select name="location_id" id="location_id" class="form-control">
-                                    @foreach ($locations as $location)
-                                        <option value="{{ $location->id }}" @if ($location->id == $item->location_id) selected="selected" @endif>{{ $location->name }}</option>
-                                    @endforeach
-                                </select>
+                                <label for="hidden" class="text-muted">Visível para todos?</label>
+                                <input type="text" class="form-control" name="hidden" />
                             </div>
                         </div>
                     </div>
@@ -60,23 +57,10 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="abstract" class="text-muted">Descrição</label>
-                                <textarea class="form-control @error('title') is-invalid @enderror" id="description" name="description" rows="8">{{ $item->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">    
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </div>
-                        <div class="col-6 text-right">
-                            <div class="form-group">    
-                                <label for="hidden" class="text-muted mr-2">Esse item ficará visível para todos?</label>
-                                <input type="checkbox" name="hidden" @if ($item->hidden == false) checked="checked" @endif data-toggle="toggle" data-on="Sim" data-off="Não">
-                            </div>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
