@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Helpers;
+
+class HomerConfigHelper
+{
+    public static function getStantardConfig()
+    {
+        $config = array(
+            'title' => 'Demo dashboard',
+            'subtitle' => 'Homer',
+            'logo' => 'logo.png',
+
+            'header' => TRUE,
+
+            'theme' => 'default',
+
+            'colors' => array(
+                'light' => array(
+                    'highlight-primary' => '#3367d6',
+                    'highlight-secondary' => '#4285f4',
+                    'highlight-hover' => '#5a95f5',
+                    'background' => '#f5f5f5',
+                    'card-background' => '#ffffff',
+                    'text' => '#363636',
+                    'text-header' => '#ffffff',
+                    'text-title' => '#303030',
+                    'text-subtitle' => '#424242',
+                    'card-shadow' => 'rgba(0, 0, 0, 0.1)',
+                    'link-hover' => '#363636',
+                ),
+
+                'dark' => array(
+                    'highlight-primary' => '#3367d6',
+                    'highlight-secondary' => '#4285f4',
+                    'highlight-hover' => '#5a95f5',
+                    'background' => '#131313',
+                    'card-background' => '#2b2b2b',
+                    'text' => '#eaeaea',
+                    'text-header' => '#ffffff',
+                    'text-title' => '#fafafa',
+                    'text-subtitle' => '#f5f5f5',
+                    'card-shadow' => 'rgba(0, 0, 0, 0.4)',
+                    'link-hover' => '#ffdd57',
+                ),
+            ),
+
+            'message' => array(
+                'style' => 'is-dark',
+                'title' => '👋 Demo !',
+                'content' => 'This is a dummy homepage demo. <br/> Find more information on <a href="https://github.com/bastienwirtz/homer">github.com/bastienwirtz/homer</a>',
+            ),
+
+            'links' => array(
+                array(
+                    'name' => 'Contribute',
+                    'icon' => 'fab fa-github',
+                    'url' => 'https://github.com/bastienwirtz/homer',
+                    'target' => '_blank',
+                ),
+
+                array(
+                    'name' => 'Wiki',
+                    'icon' => 'fas fa-book',
+                    'url' => 'https://www.wikipedia.org/',
+                ),
+            ),
+
+            'services' => array(
+                array(
+                    'name' => 'Application',
+                    'icon' => 'fas fa-cloud',
+                    'items' => array(
+                        array(
+                            'name' => 'Awesome app',
+                            'logo' => 'assets/tools/sample.png',
+                            'subtitle' => 'Bookmark example',
+                            'tag' => 'app',
+                            'url' => 'https://www.reddit.com/r/selfhosted/',
+                            'target' => '_blank',
+                        ),
+
+                        array(
+                            'name' => 'Another one',
+                            'logo' => 'assets/tools/sample2.png',
+                            'subtitle' => 'Another application',
+                            'tag' => 'app',
+                            'url' => '#',
+                        )
+                    )
+                )
+            )
+        );
+
+        return $config;
+    }
+}
