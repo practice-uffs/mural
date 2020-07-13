@@ -23,33 +23,32 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('items.update', $item->id) }}">
-                    @method('PATCH')
+                <form method="post" action="{{ route('items.store') }}">
                     @csrf
 
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="title" class="text-muted">Título/tema</label>
-                                <input type="text" class="form-control" name="title" value="{{ $item->title }}" />
+                                <input type="text" class="form-control" name="title" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="location_id" class="text-muted">Local</label>
-                                <input type="text" class="form-control" name="location_id" value="{{ $item->location_id }}" />
+                                <input type="text" class="form-control" name="location_id" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">
                                 <label for="category_id" class="text-muted">Categoria</label>
-                                <input type="text" class="form-control" name="category_id" value="{{ $item->category_id }}" />
+                                <input type="text" class="form-control" name="category_id" />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-group">
                                 <label for="hidden" class="text-muted">Visível para todos?</label>
-                                <input type="text" class="form-control" name="hidden" value="{{ $item->hidden }}" />
+                                <input type="text" class="form-control" name="hidden" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +57,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="abstract" class="text-muted">Descrição</label>
-                                <textarea class="form-control" id="description" name="description" rows="3">{{ $item->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
