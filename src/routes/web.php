@@ -19,7 +19,7 @@ Route::resource('/items', 'ItemController');
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@auth');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Content
 Route::get('/', 'ContentController@index')->name('content.index');

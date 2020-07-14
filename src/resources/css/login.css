@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: #8f8f8f;
+    min-height: 100%;
+}
+
+.practice-logo {
+    width: 95%;
+}
+
+.card-media {
+    text-align: center;
+}
+
+.form__label {
+    color: #6f6f6f;
+}
+
+.form__field {
+    text-align: center;
+    width: 100%;
+    color: #6f6f6f;
+    font-size: 1.2rem;
+}
+
+.field__input {
+    border: solid 1px #007c9d;
+    background-color: #fff;
+    width: 100% !important;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    color: #000;
+
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+.field__submit {
+    background: linear-gradient(45deg, #ffaf00, #ff8429);
+    border-radius: 5px !important;
+    text-transform: uppercase;
+    border: solid 1px #fff;
+    width: 60% !important;
+    letter-spacing: 2px;
+    font-weight: bold !important;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+}
+
+.shadow-focus:focus{
+    box-shadow: 0 0 0 0.2rem #b2cbd2 !important;
+}
+
+.alert-error {
+    color: #761b18;
+}
+
+.banner__img {
+    width: 100%;
+}
