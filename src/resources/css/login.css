@@ -7,17 +7,12 @@ html {
 }
 
 body {
-    background: linear-gradient(#fbe7d7, #fdf1d7);
     color: #8f8f8f;
     min-height: 100%;
 }
 
 .practice-logo {
     width: 95%;
-}
-
-.card-body {
-    background-color: #fdf2e3;
 }
 
 .card-media {
