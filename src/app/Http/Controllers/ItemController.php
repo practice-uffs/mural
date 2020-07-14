@@ -30,11 +30,21 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $config = HomerConfigHelper::getStantardConfig();
-
-        dd($config);
 
         $items = Item::all();
+        $itemsToShow = array();
+
+        foreach ($items as $item) {
+            $newItem = array(
+                'name' => $item -> title,
+                'subtitle' => $item -> description,
+                'url' => '/items//' . $item -> id,
+            );
+
+            HomerConfigHelper::addItem($newItem);
+        }
+
+        $config = HomerConfigHelper::getConfig();
 
         return view('item.index', [
             'user' => Auth::user(),
@@ -43,46 +53,14 @@ class ItemController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $item = Item::create([
-            'user_id' => Auth::user()->id,
-            'location_id' => 1,
-            'category_id' => 1,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
-            'title' => '',
-            'description' => '',
-            'hidden' => false
-        ]);
-
-        return $this->edit($item);
-    }
-
-    /**
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function show(Item $item)
-    {
-        return view('item.view', [
-            'user' => Auth::user(),
-            'item' => $item
-        ]);
-    }
-
-    /**
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function edit(Item $item)
-    {
-        return view('item.edit', [
-            'user' => Auth::user(),
-            'item' => $item
+        return view('item.create', [
+            'user' => Auth::user()
         ]);
     }
 
@@ -117,6 +95,34 @@ class ItemController extends Controller
 
         $item->save();
         return redirect('/home')->with('success', 'Item saved!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function show($item)
+    {
+        return view('item.view', [
+            'user' => Auth::user(),
+            'item' => $item
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($item)
+    {
+        return view('item.edit', [
+            'user' => Auth::user(),
+            'item' => $item
+        ]);
     }
 
     /**
