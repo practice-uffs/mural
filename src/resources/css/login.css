@@ -31,6 +31,8 @@ body {
 .form__field {
     text-align: center;
     width: 100%;
+    color: #6f6f6f;
+    font-size: 1.2rem;
 }
 
 .field__input {
@@ -58,6 +60,7 @@ body {
     letter-spacing: 2px;
     font-weight: bold !important;
     color: #fff !important;
+    font-size: 1.2rem !important;
 }
 
 .shadow-focus:focus{
