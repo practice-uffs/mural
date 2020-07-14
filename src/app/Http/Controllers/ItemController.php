@@ -31,15 +31,12 @@ class ItemController extends Controller
         //
     }
 
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     //
-    // }
+    protected function findCategoriesByItemType(Item $item)
+    {
+        // Filtrar cateogira por tipo
+        $categories = Category::all('name', 'id');
+        return $categories;
+    }
 
     /**
      *
@@ -48,7 +45,9 @@ class ItemController extends Controller
     public function create()
     {
         return view('item.create', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'categories' => Category::all(), // TODO: filtrar aqui conforme tipo do item/ideia
+            'locations' => Location::all()
         ]);
     }
 
@@ -65,7 +64,6 @@ class ItemController extends Controller
             'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'hidden' => 'required'
         ]);
 
         // TODO: checar location e category
@@ -78,7 +76,7 @@ class ItemController extends Controller
             'type' => Item::TYPE_IDEA,
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'hidden' => $request->get('hidden', false),
+            'hidden' => $request->get('hidden') == 'on',
         ]);
 
         $item->save();
@@ -109,7 +107,9 @@ class ItemController extends Controller
     {
         return view('item.edit', [
             'user' => Auth::user(),
-            'item' => $item
+            'item' => $item,
+            'categories' => $this->findCategoriesByItemType($item),
+            'locations' => Location::all()
         ]);
     }
 
