@@ -9,8 +9,6 @@ use App\Location;
 use App\Category;
 use Carbon\Carbon;
 
-use App\Helpers\HomerConfigHelper;
-
 class ItemController extends Controller
 {
     /**
@@ -30,25 +28,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-
-        $items = Item::all();
-        $itemsToShow = array();
-
-        foreach ($items as $item) {
-            $newItem = array(
-                'name' => $item -> title,
-                'subtitle' => $item -> description,
-                'url' => '/items//' . $item -> id,
-            );
-
-            HomerConfigHelper::addItem($newItem);
-        }
-
-        $config = HomerConfigHelper::getConfig();
-
         return view('item.index', [
-            'user' => Auth::user(),
-            'items' => $items
+            'user' => Auth::user()
         ]);
     }
 
