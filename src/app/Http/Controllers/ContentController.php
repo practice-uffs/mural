@@ -25,6 +25,6 @@ class ContentController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return redirect()->route('items.index');
     }
 }

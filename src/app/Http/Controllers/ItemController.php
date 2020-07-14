@@ -28,7 +28,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('item.index', [
+            'user' => Auth::user()
+        ]);
     }
 
     protected function findCategoriesByItemType(Item $item)
@@ -39,8 +41,9 @@ class ItemController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -91,7 +94,7 @@ class ItemController extends Controller
      */
     public function show($item)
     {
-        return view('item.view', [
+        return view('item.show', [
             'user' => Auth::user(),
             'item' => $item
         ]);

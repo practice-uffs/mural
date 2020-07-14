@@ -15,14 +15,15 @@
     ],
     "require": {
         "php": "^7.2.5",
+        "ccuffs/auth-iduffs": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "ccuffs/auth-iduffs": "dev-master",
-        "paragonie/paseto": "^1.0.3"
+        "paragonie/paseto": "^1.0.3",
+        "symfony/yaml": "^5.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
