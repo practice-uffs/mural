@@ -6,7 +6,7 @@
 
 # Web Feedback
 
-Web Feedback é um sistema cujo principal objetivo é estreitar a comunicação entre a comunidade da UFFS e o programa [Practice](https://practice.uffs.cc/). Esse estreitamento possibilitará que ideias e demandas voltadas para o âmbito da melhoria da educação possam ser publicadas, discutidas, discorridas e desenvolvidas. O Web Feedback irá funcionar como um mural onde qualquer pessoa da comunidade UFFS poderá expor suas ideias, comentários, solicitar serviços, etc, no formato de _post_. A partir desse ***feedback*** o [Practice](https://practice.uffs.cc/) terá facilidade em direcionar o fluxo de desenvolvimento e priorizar projetos. 
+Web Feedback é um sistema cujo principal objetivo é estreitar a comunicação entre a comunidade da UFFS e o programa [Practice](https://practice.uffs.cc/). Esse estreitamento possibilitará que ideias e demandas voltadas para o âmbito da melhoria da educação possam ser publicadas, discutidas, discorridas e desenvolvidas. O Web Feedback irá funcionar como um mural onde qualquer pessoa da comunidade UFFS poderá expor suas ideias, comentários, solicitar serviços, etc, no formato de _post_. A partir desse ***feedback*** o [Practice](https://practice.uffs.cc/) terá facilidade em direcionar o fluxo de desenvolvimento e priorizar projetos.
 
 ## Features
 
@@ -47,6 +47,28 @@ Instale as dependências do PHP usando o comando abaixo:
 
 ```
 composer install
+```
+
+#### Pacotes
+
+Instale os pacotes php necessários para rodar o projeto:
+```
+sudo apt install php-cli
+```
+```
+sudo apt install php-mbstring
+```
+```
+sudo apt install php-zip
+```
+```
+sudo apt install php-xml
+```
+```
+sudo apt install php-mysql
+```
+```
+sudo apt install php-curl
 ```
 
 #### Node
