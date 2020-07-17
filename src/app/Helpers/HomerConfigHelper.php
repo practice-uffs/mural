@@ -7,7 +7,6 @@ class HomerConfigHelper
     public static $config = array(
         'title' => 'PRACTICE',
         'subtitle' => 'Web Feedback',
-        'logo' => 'imgs/practice-logo.png',
 
         'header' => TRUE,
         'footer' => false,
@@ -17,7 +16,7 @@ class HomerConfigHelper
         'colors' => array(
             'light' => array(
                 'highlight-primary' => '#007c9d',
-                'highlight-secondary' => '#51abce',
+                'highlight-secondary' => '#00506f',
                 'highlight-hover' => '#007c9d',
                 'background' => '#f5f5f5',
                 'card-background' => '#ffffff',
@@ -30,9 +29,9 @@ class HomerConfigHelper
             ),
 
             'dark' => array(
-                'highlight-primary' => '#007c9d',
-                'highlight-secondary' => '#51abce',
-                'highlight-hover' => '#007c9d',
+                'highlight-primary' => '#00506f',
+                'highlight-secondary' => '#007c9d',
+                'highlight-hover' => '#00506f',
                 'background' => '#131313',
                 'card-background' => '#2b2b2b',
                 'text' => '#eaeaea',
@@ -55,19 +54,13 @@ class HomerConfigHelper
                 'name' => 'Criar Item',
                 'icon' => 'fas fa-plus-square',
                 'url' => '/items/create',
-            ),
-
-            array(
-                'name' => 'Wiki',
-                'icon' => 'fas fa-book',
-                'url' => 'https://www.wikipedia.org/',
-            ),
+            )
         ),
 
         'services' => array(
             array(
-                'name' => 'Application',
-                'icon' => 'fas fa-cloud',
+                'name' => 'Items',
+                'icon' => 'fas fa-clipboard-list',
                 'items' => array()
             )
         )
