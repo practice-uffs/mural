@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.19",
+        "@babel/compat-data": "^7.9.0",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0.2",
         "jquery": "^3.5",
