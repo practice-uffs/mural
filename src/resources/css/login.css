@@ -1,71 +1,38 @@
-* {
-    box-sizing: border-box;
+.card__input {
+    border-bottom: 1px solid #007c9d !important;
+    box-shadow: 0 1px 0 0 #007c9d !important;
 }
 
-html {
-    height: 100%;
+.input__label {
+    color: #007c9d !important;
 }
 
-body {
-    color: #8f8f8f;
-    min-height: 100%;
-}
-
-.practice-logo {
-    width: 95%;
-}
-
-.card-media {
-    text-align: center;
-}
-
-.form__label {
-    color: #6f6f6f;
-}
-
-.form__field {
-    text-align: center;
-    width: 100%;
-    color: #6f6f6f;
-    font-size: 1.2rem;
-}
-
-.field__input {
-    border: solid 1px #007c9d;
-    background-color: #fff;
-    width: 100% !important;
-    padding: .5rem 1rem;
-    border-radius: 5px;
-    text-align: center;
-    outline: none;
-    color: #000;
-
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-}
-
-.field__submit {
+.card__btn {
     background: linear-gradient(45deg, #ffaf00, #ff8429);
     border-radius: 5px !important;
     text-transform: uppercase;
-    border: solid 1px #fff;
     width: 60% !important;
     letter-spacing: 2px;
     font-weight: bold !important;
     color: #fff !important;
-    font-size: 1.2rem !important;
-}
-
-.shadow-focus:focus{
-    box-shadow: 0 0 0 0.2rem #b2cbd2 !important;
+    font-size: 1rem !important;
+    margin: 0 auto;
+    box-shadow: none;
 }
 
 .alert-error {
-    color: #761b18;
+    text-align: center;
+    color: #e53935;
+}
+
+.banner {
+    display: flex;
 }
 
 .banner__img {
     width: 100%;
+}
+
+.page-footer {
+    background-color: #ff8429 !important;
 }
