@@ -5,19 +5,20 @@ namespace App\Helpers;
 class HomerConfigHelper
 {
     public static $config = array(
-        'title' => 'Demo dashboard',
-        'subtitle' => 'Homer',
-        'logo' => 'logo.png',
+        'title' => 'PRACTICE',
+        'subtitle' => 'Web Feedback',
+        'logo' => 'imgs/practice-logo.png',
 
         'header' => TRUE,
+        'footer' => false,
 
         'theme' => 'default',
 
         'colors' => array(
             'light' => array(
-                'highlight-primary' => '#3367d6',
-                'highlight-secondary' => '#4285f4',
-                'highlight-hover' => '#5a95f5',
+                'highlight-primary' => '#007c9d',
+                'highlight-secondary' => '#51abce',
+                'highlight-hover' => '#007c9d',
                 'background' => '#f5f5f5',
                 'card-background' => '#ffffff',
                 'text' => '#363636',
@@ -29,9 +30,9 @@ class HomerConfigHelper
             ),
 
             'dark' => array(
-                'highlight-primary' => '#3367d6',
-                'highlight-secondary' => '#4285f4',
-                'highlight-hover' => '#5a95f5',
+                'highlight-primary' => '#007c9d',
+                'highlight-secondary' => '#51abce',
+                'highlight-hover' => '#007c9d',
                 'background' => '#131313',
                 'card-background' => '#2b2b2b',
                 'text' => '#eaeaea',
@@ -45,16 +46,15 @@ class HomerConfigHelper
 
         'message' => array(
             'style' => 'is-dark',
-            'title' => '👋 Demo !',
-            'content' => 'This is a dummy homepage demo. <br/> Find more information on <a href="https://github.com/bastienwirtz/homer">github.com/bastienwirtz/homer</a>',
+            'title' => 'Lorem Ipsum',
+            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         ),
 
         'links' => array(
             array(
-                'name' => 'Contribute',
-                'icon' => 'fab fa-github',
-                'url' => 'https://github.com/bastienwirtz/homer',
-                'target' => '_blank',
+                'name' => 'Criar Item',
+                'icon' => 'fas fa-plus-square',
+                'url' => '/items/create',
             ),
 
             array(
