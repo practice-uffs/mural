@@ -66,7 +66,35 @@
     </div>
 
     <div class="timeline">
+        <ul class="timeline__list">
+            <li class="timeline__item">
+                <div class="timeline__icon">
+                    {{-- <i class="material-icons">error_outline</i> --}}
+                </div>
 
+                <div class="timeline__title">
+                    Jonh Doe
+                </div>
+
+                <div class="timeline__text">
+                    Lorem ipsum dolor sit amet, consectetur
+                </div>
+            </li>
+
+            <li class="timeline__item">
+                <div class="timeline__icon">
+                    {{-- <i class="material-icons">error_outline</i> --}}
+                </div>
+
+                <div class="timeline__title">
+                    Jonh Doe
+                </div>
+
+                <div class="timeline__text">
+                    Lorem ipsum dolor sit amet, consectetur
+                </div>
+            </li>
+        </ul>
     </div>
 </main>
 

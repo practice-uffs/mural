@@ -9395,6 +9395,63 @@ ul[class=reaction-list] {
   border-radius: 50%;
 }
 
+/**
+ * Component inspired by w3schools:
+ * https://www.w3schools.com/howto/howto_css_timeline.asp
+ */
+
+ul[class=timeline__list] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline {
+  margin-bottom: 1rem;
+}
+
+.card + .timeline {
+  margin-top: -1rem;
+}
+
+.timeline__list {
+  position: relative;
+  margin: 0 auto;
+}
+
+.timeline__item {
+  position: relative;
+  border: 1px dashed red;
+  padding: 1rem;
+  padding-left: 2.5rem;
+  /**
+   * Setup vertical ruler
+   */
+  border-left: 4px solid grey;
+  margin-left: 4rem;
+  min-height: 5rem;
+}
+
+.timeline__item:first-child {
+  padding-top: 4rem;
+}
+
+/**
+ * Circles with user pics.
+ */
+
+.timeline__icon {
+  position: absolute;
+  left: -2px;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-color: white;
+  border: 4px solid;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
 .input-field input[type=text]:focus,
 .input-field textarea:focus {
   border-bottom: 1px solid #007c9d !important;

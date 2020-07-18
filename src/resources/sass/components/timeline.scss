@@ -1,1 +1,71 @@
+/**
+ * Component inspired by w3schools:
+ * https://www.w3schools.com/howto/howto_css_timeline.asp
+ */
+
 @import 'custom-variables';
+
+$tl-left-space: 4rem;
+$tl-base-padding: 1rem;
+$tl-item-offset: 4rem;
+$tl-icon-size: 3rem;
+
+// Remove list standard styles
+ul[class="timeline__list"] {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline {
+    margin-bottom: $tl-base-padding;
+}
+
+// Fix top margin
+.card + .timeline {
+    margin-top: -1rem;
+}
+
+.timeline__list {
+    position: relative;
+    margin: 0 auto;
+}
+
+.timeline__item {
+    position: relative;
+    border: 1px dashed red;
+    padding: $tl-base-padding;
+        padding-left: $tl-base-padding + ($tl-icon-size / 2);
+    /**
+     * Setup vertical ruler
+     */
+    border-left: 4px solid grey;
+    margin-left: $tl-left-space;
+    min-height: $tl-base-padding + $tl-item-offset;
+
+
+    &:first-child {
+        padding-top: $tl-item-offset;
+    }
+
+    &:last-child {
+        // padding-bottom: 1rem;
+    }
+}
+
+/**
+ * Circles with user pics.
+ */
+.timeline__icon {
+    position: absolute;
+    left: -2px;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    background-color: white;
+    border: 4px solid ;
+
+    border-radius: 50%;
+    width: $tl-icon-size;
+    height: $tl-icon-size;
+}
