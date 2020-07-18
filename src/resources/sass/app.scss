@@ -10,3 +10,47 @@
 @import '../css/login.css';
 
 @import '../css/spacing-utility.css';
+
+@import 'components/navbar';
+
+// General styles
+
+// input costumization
+.input-field {
+    input[type=text]:focus,
+    textarea:focus {
+        border-bottom: 1px solid $p-blue !important;
+        box-shadow: 0 1px 0 0 $p-blue !important;
+    }
+
+    label,
+    select {
+        color: $p-blue !important;
+    }
+}
+
+// switch
+.switch {
+    label input[type=checkbox]:checked+.lever {
+        background-color: $p-blue;
+    }
+
+    label input[type=checkbox]:checked+.lever:after {
+        background-color: $p-blue-light;
+    }
+}
+
+// buttons
+.btn-primary {
+    background-color: $p-blue;
+
+    &:hover {
+        background-color: #1e8eac;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn {
+        width: 100% !important;
+    }
+}
