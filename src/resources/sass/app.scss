@@ -1,21 +1,20 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-// Variables
+// Variables and utility
 @import 'variables';
+@import '../css/spacing-utility.css';
 
-// Bootstrap
+// Materialize
 @import '~materialize-css/sass/materialize';
 
+// Custom styles and components
 @import '../css/login.css';
-
-@import '../css/spacing-utility.css';
 
 @import 'components/navbar';
 
 // General styles
 
-// input costumization
 .input-field {
     input[type=text]:focus,
     textarea:focus {
@@ -29,23 +28,21 @@
     }
 }
 
-// switch
 .switch {
     label input[type=checkbox]:checked+.lever {
         background-color: $p-blue;
     }
 
     label input[type=checkbox]:checked+.lever:after {
-        background-color: $p-blue-light;
+        background-color: lighten($p-blue, 10%);
     }
 }
 
-// buttons
 .btn-primary {
-    background-color: $p-blue;
+    background-image: linear-gradient(45deg, $p-blue, $p-blue-light);
 
     &:hover {
-        background-color: #1e8eac;
+        background-color: $p-blue-light;
     }
 }
 
