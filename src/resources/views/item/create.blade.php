@@ -9,7 +9,7 @@
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
             <ul id="nav-mobile" class="right">
-                
+
             </ul>
         </div>
 
@@ -198,9 +198,4 @@
         </div>
     </div>
 </footer>
-@endsection
-
-@section('scripts')
-
-
 @endsection

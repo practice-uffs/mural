@@ -92,11 +92,11 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show($item)
+    public function show($id)
     {
         return view('item.show', [
             'user' => Auth::user(),
-            'item' => $item
+            'item' => Item::find($id)
         ]);
     }
 
