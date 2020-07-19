@@ -1,0 +1,100 @@
+/**
+ * Component inspired by w3schools:
+ * https://www.w3schools.com/howto/howto_css_timeline.asp
+ */
+
+@import 'custom-variables';
+
+$tl-left-space: 4rem;
+$tl-base-padding: 1rem;
+$tl-item-offset: 4rem;
+$tl-icon-size: 3rem;
+
+// Remove list standard styles
+ul[class="timeline__list"] {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline {
+    margin-bottom: $tl-base-padding + $tl-item-offset;
+}
+
+// Fix top margin
+.card + .timeline {
+    margin-top: -1rem;
+}
+
+.timeline__list {
+    position: relative;
+    margin: 0 auto;
+}
+
+.timeline__item {
+    // border: 1px ;
+    position: relative;
+    // padding: $tl-base-padding;
+        padding-left: $tl-base-padding + $tl-icon-size / 2;
+
+    /**
+     * Setup vertical ruler
+     */
+    border-left: 4px solid grey;
+    margin-left: $tl-left-space;
+    min-height: $tl-base-padding * 2 + $tl-item-offset;
+
+    &:first-child {
+        padding-top: $tl-item-offset;
+    }
+
+    &:last-child {
+        padding-bottom: 1rem;
+
+        .timeline__content {
+            position: absolute;
+            top: $tl-item-offset;
+        }
+    }
+}
+
+/**
+ * Circles with user pics.
+ */
+.timeline__icon {
+    position: absolute;
+    left: -2px;
+    top: $tl-item-offset;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    background-color: white;
+    border: 4px solid ;
+
+    border-radius: 50%;
+    width: $tl-icon-size;
+    height: $tl-icon-size;
+}
+
+.timeline__item:not(:first-child):not(:last-child) .timeline__content {
+    padding-top: $tl-item-offset;
+}
+
+.timeline__title {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.timeline__text {
+    color: #666;
+}
+
+.timeline__reactions {
+    padding-top: $tl-base-padding / 2;
+}
+
+@media (max-width: 576px) {
+    .timeline {
+        margin-bottom: $tl-base-padding * 2 + $tl-item-offset;
+    }
+}

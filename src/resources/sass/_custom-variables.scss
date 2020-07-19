@@ -1,5 +1,8 @@
 $p-blue: #007c9d;
-$p-blue-light: #51abce;
+$p-blue-light: lighten($p-blue, 10%);
 
-$p-orange: #ffaf00;
-$p-yellow: #ff8429;
+$p-yellow: #ffaf00;
+$p-yellow-light: lighten($p-yellow, 10%);
+
+$p-orange: #ff8429;
+$p-orange-light: lighten($p-orange, 10%);

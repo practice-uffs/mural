@@ -9,9 +9,7 @@
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
             <ul id="nav-mobile" class="right">
-                {{-- <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li> --}}
+
             </ul>
         </div>
 
@@ -200,9 +198,4 @@
         </div>
     </div>
 </footer>
-@endsection
-
-@section('scripts')
-
-
 @endsection
