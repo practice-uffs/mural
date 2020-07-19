@@ -18,7 +18,7 @@ ul[class="timeline__list"] {
 }
 
 .timeline {
-    margin-bottom: $tl-base-padding;
+    margin-bottom: $tl-base-padding + $tl-item-offset;
 }
 
 // Fix top margin
@@ -32,24 +32,29 @@ ul[class="timeline__list"] {
 }
 
 .timeline__item {
+    // border: 1px ;
     position: relative;
-    border: 1px dashed red;
-    padding: $tl-base-padding;
-        padding-left: $tl-base-padding + ($tl-icon-size / 2);
+    // padding: $tl-base-padding;
+        padding-left: $tl-base-padding + $tl-icon-size / 2;
+
     /**
      * Setup vertical ruler
      */
     border-left: 4px solid grey;
     margin-left: $tl-left-space;
-    min-height: $tl-base-padding + $tl-item-offset;
-
+    min-height: $tl-base-padding * 2 + $tl-item-offset;
 
     &:first-child {
         padding-top: $tl-item-offset;
     }
 
     &:last-child {
-        // padding-bottom: 1rem;
+        padding-bottom: 1rem;
+
+        .timeline__content {
+            position: absolute;
+            top: $tl-item-offset;
+        }
     }
 }
 
@@ -59,6 +64,7 @@ ul[class="timeline__list"] {
 .timeline__icon {
     position: absolute;
     left: -2px;
+    top: $tl-item-offset;
     transform: translateX(-50%);
     z-index: 1;
 
@@ -68,4 +74,27 @@ ul[class="timeline__list"] {
     border-radius: 50%;
     width: $tl-icon-size;
     height: $tl-icon-size;
+}
+
+.timeline__item:not(:first-child):not(:last-child) .timeline__content {
+    padding-top: $tl-item-offset;
+}
+
+.timeline__title {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.timeline__text {
+    color: #666;
+}
+
+.timeline__reactions {
+    padding-top: $tl-base-padding / 2;
+}
+
+@media (max-width: 576px) {
+    .timeline {
+        margin-bottom: $tl-base-padding * 2 + $tl-item-offset;
+    }
 }

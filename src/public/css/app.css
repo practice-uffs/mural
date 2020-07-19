@@ -9407,7 +9407,7 @@ ul[class=timeline__list] {
 }
 
 .timeline {
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .card + .timeline {
@@ -9421,19 +9421,26 @@ ul[class=timeline__list] {
 
 .timeline__item {
   position: relative;
-  border: 1px dashed red;
-  padding: 1rem;
   padding-left: 2.5rem;
   /**
    * Setup vertical ruler
    */
   border-left: 4px solid grey;
   margin-left: 4rem;
-  min-height: 5rem;
+  min-height: 6rem;
 }
 
 .timeline__item:first-child {
   padding-top: 4rem;
+}
+
+.timeline__item:last-child {
+  padding-bottom: 1rem;
+}
+
+.timeline__item:last-child .timeline__content {
+  position: absolute;
+  top: 4rem;
 }
 
 /**
@@ -9443,6 +9450,7 @@ ul[class=timeline__list] {
 .timeline__icon {
   position: absolute;
   left: -2px;
+  top: 4rem;
   transform: translateX(-50%);
   z-index: 1;
   background-color: white;
@@ -9450,6 +9458,29 @@ ul[class=timeline__list] {
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
+}
+
+.timeline__item:not(:first-child):not(:last-child) .timeline__content {
+  padding-top: 4rem;
+}
+
+.timeline__title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.timeline__text {
+  color: #666;
+}
+
+.timeline__reactions {
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .timeline {
+    margin-bottom: 6rem;
+  }
 }
 
 .input-field input[type=text]:focus,
