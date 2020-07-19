@@ -9395,6 +9395,11 @@ ul[class=reaction-list] {
   border-radius: 50%;
 }
 
+.reaction--active {
+  color: #007c9d;
+  cursor: pointer;
+}
+
 /**
  * Component inspired by w3schools:
  * https://www.w3schools.com/howto/howto_css_timeline.asp

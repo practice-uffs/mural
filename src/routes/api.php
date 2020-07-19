@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('items', 'API\ItemController');
+Route::apiResource('reactions', 'API\ReactionController');
 
 Route::get('/conf', 'API\ConfigController@homerConfig');

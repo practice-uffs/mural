@@ -42,3 +42,8 @@ ul[class="reaction-list"] {
         border-radius: 50%;
     }
 }
+
+.reaction--active {
+    color: $p-blue;
+    cursor: pointer;
+}
