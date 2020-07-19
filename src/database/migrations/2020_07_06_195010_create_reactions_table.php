@@ -14,7 +14,7 @@ class CreateReactionsTable extends Migration
     public function up()
     {
         Schema::create('reactions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
 
             $table->foreignId('user_id');
             $table->foreignId('item_id');
