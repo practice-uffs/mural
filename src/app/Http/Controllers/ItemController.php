@@ -71,8 +71,6 @@ class ItemController extends Controller
 
         // TODO: checar location e category
 
-        dd($request->get('hidden'));
-
         $item = new Item([
             'user_id' => Auth::user()->id,
             'location_id' => $request->get('location_id'),
