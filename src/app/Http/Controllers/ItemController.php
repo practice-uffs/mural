@@ -71,6 +71,8 @@ class ItemController extends Controller
 
         // TODO: checar location e category
 
+        dd($request->get('hidden'));
+
         $item = new Item([
             'user_id' => Auth::user()->id,
             'location_id' => $request->get('location_id'),
@@ -106,7 +108,7 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit($item)
+    public function edit(Item $item)
     {
         return view('item.edit', [
             'user' => Auth::user(),
@@ -123,19 +125,17 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $item)
     {
         $request->validate([
             'location_id' => 'required',
             'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'hidden' => 'required'
         ]);
 
         // TODO: checar location e category
 
-        $item = Item::find($id);
         $item->user_id = Auth::user()->id;
         $item->location_id = $request->get('location_id');
         $item->category_id = $request->get('category_id');
@@ -143,7 +143,7 @@ class ItemController extends Controller
         $item->type = Item::TYPE_IDEA;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
-        $item->hidden = $request->get('hidden');
+        $item->hidden = $request->get('hidden') == 'on';
         $item->updated_at = Carbon::now();
 
         $item->save();
