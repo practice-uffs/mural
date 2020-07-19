@@ -24,6 +24,14 @@
         <div class="card-content">
             <div class="card-title">
                 {{ $item -> title }}
+                @if ($item -> user_id == $user -> id)
+                    <a href="{{ route('items.edit', $item) }}"
+                        class="btn btn-primary right"
+                    >
+                        <i class="material-icons left">edit</i>
+                        Editar
+                    </a>
+                @endif
             </div>
 
             <p>{{ $item -> description }}</p>
