@@ -69,6 +69,7 @@
                             <div class="col m3 s12">
                                 <div class="input-field">
                                     <select name="category_id" id="category_id">
+                                        <option value="" disabled selected>Selecione uma categoria</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
                                         @endforeach
@@ -80,6 +81,7 @@
                             <div class="col m3 s12">
                                 <div class="input-field">
                                     <select name="location_id" id="location_id">
+                                        <option value="" disabled selected>Selecione um local</option>
                                         @foreach ($locations as $location)
                                             <option value="{{ $location->id }}" {{ $location->id == old('location_id') ? 'selected="selected"' : '' }}>{{ $location->name }}</option>
                                         @endforeach
