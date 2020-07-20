@@ -2,20 +2,20 @@
     <ul class="reaction-list">
         <li
             v-for="reaction in reactions"
-            :key="reaction[0].id"
+            :key="reaction.id"
             :class="['reaction',
-                {'reaction--active': reaction[0].user_id == userId}
+                {'reaction--active': reaction.userCreated}
             ]"
-            @click="del(reaction[0].id)"
+            @click="handleClick(reaction)"
         >
             <div class="reaction__icon">
                 <i class="material-icons">
-                    {{ reaction[0].text }}
+                    {{ reaction.text }}
                 </i>
             </div>
 
             <div class="reaction__count">
-                {{ reaction.length }}
+                {{ reaction.count }}
             </div>
         </li>
     </ul>
@@ -25,7 +25,7 @@
 export default {
     data() {
         return {
-            reactions: []
+            reactions: {},
         }
     },
 
@@ -35,23 +35,54 @@ export default {
     ],
 
     methods: {
-        handleClick(id) {
-            if (this.userCreated) {
-                this.delete(id);
+        handleClick(reaction) {
+            if (reaction.userCreated) {
+                this.del(reaction);
             }
         },
 
-        async del(id) {
-            await window.axios.delete(`/api/reactions/${id}`);
+        async del(reaction) {
+            let reactions = this.reactions;
 
-            let index = this.reactions.findIndex(r => r[0].id == id);
-            this.reactions.splice(index, 1);
+            await window.axios.delete(`/api/reactions/${reaction.id}`);
+
+            if (reaction.count > 1) {
+                reactions[reaction.text].count--;
+                reactions[reaction.text].userCreated = false;
+                this.reactions = reactions;
+
+            } else {
+                Vue.delete(this.reactions, reaction.text);
+            }
         }
     },
 
     async created() {
         let reactionsData = await window.axios.get(`/api/reactions/${this.itemId}`);
-        this.reactions = Object.values(reactionsData.data);
+
+        let reactions = {};
+
+        for (let reaction of reactionsData.data) {
+            let userCreated = (reaction.user_id == this.userId);
+
+            if (reaction.text in reactions) {
+                reactions[reaction.text].count += 1;
+
+            } else {
+                reactions[reaction.text] = {
+                    text: reaction.text,
+                    count: 1,
+                    id: reaction.id,
+                };
+            }
+
+            if (userCreated) {
+                reactions[reaction.text].userCreated = true;
+                reactions[reaction.text].id = reaction.id;
+            }
+        }
+
+        this.reactions = reactions;
     }
 }
 </script>

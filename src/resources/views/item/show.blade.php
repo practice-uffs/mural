@@ -39,28 +39,11 @@
         </div>
 
         <div class="card__reaction">
-            <ul class="reaction-list">
-                @foreach ($reactions as $reaction)
-                    @if ($reaction[0] -> user_id == $user -> id)
-                        <a href="#" class="reaction reaction--active">
-                    @else
-                        <li class="reaction">
-                    @endif
-                            <div class="reaction__icon">
-                                <i class="material-icons">
-                                    {{ $reaction[0] -> text }}
-                                </i>
-                            </div>
-
-                            <div class="reaction__count">
-                                {{ count($reaction) }}
-                            </div>
-                    @if ($reaction[0] -> user_id == $user -> id)
-                        </a>
-                    @else
-                        </li>
-                    @endif
-                @endforeach
+                    <reaction-list
+                        user-id="{{ $user -> id }}"
+                        item-id="{{ $item -> id }}"
+                    >
+                    </reaction-list>
             </ul>
         </div>
     </div>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Reaction;
+use App\Item;
+
 class ReactionController extends Controller
 {
     /**
@@ -31,12 +34,13 @@ class ReactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $itemId
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($itemId)
     {
-        //
+        $reactions = Item::find($itemId) -> reactions;
+        return $reactions;
     }
 
     /**
@@ -59,6 +63,9 @@ class ReactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reaction = Reaction::find($id);
+        $reaction -> delete();
+
+        return $reaction;
     }
 }

@@ -96,10 +96,6 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
 
-        // dd(
-        //     $item -> reactions -> groupBy('text')
-        // );
-
         return view('item.show', [
             'user' => Auth::user(),
             'item' => $item,
