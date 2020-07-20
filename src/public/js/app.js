@@ -2044,133 +2044,206 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      reactions: {}
+      reactions: {},
+      userCreatedAny: false
     };
   },
   props: ['itemId', 'userId'],
   methods: {
-    handleClick: function handleClick(reaction) {
-      if (reaction.userCreated) {
-        this.del(reaction);
-      }
-    },
-    del: function del(reaction) {
+    addReactions: function addReactions() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var reactions;
+        var reactionsData, reactions, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, reaction, userCreated;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                reactions = _this.reactions;
-                _context.next = 3;
-                return window.axios["delete"]("/api/reactions/".concat(reaction.id));
+                _context.next = 2;
+                return window.axios.get("/api/reactions/".concat(_this.itemId));
 
-              case 3:
-                if (reaction.count > 1) {
-                  reactions[reaction.text].count--;
-                  reactions[reaction.text].userCreated = false;
-                  _this.reactions = reactions;
-                } else {
-                  Vue["delete"](_this.reactions, reaction.text);
+              case 2:
+                reactionsData = _context.sent;
+                reactions = {};
+                _iteratorNormalCompletion = true;
+                _didIteratorError = false;
+                _iteratorError = undefined;
+                _context.prev = 7;
+
+                for (_iterator = reactionsData.data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                  reaction = _step.value;
+                  userCreated = reaction.user_id == _this.userId;
+
+                  if (reaction.text in reactions) {
+                    reactions[reaction.text].count += 1;
+                  } else {
+                    reactions[reaction.text] = {
+                      text: reaction.text,
+                      count: 1,
+                      id: reaction.id
+                    };
+                  }
+
+                  if (userCreated) {
+                    reactions[reaction.text].userCreated = true;
+                    reactions[reaction.text].id = reaction.id;
+                    _this.userCreatedAny = true;
+                  }
                 }
 
-              case 4:
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](7);
+                _didIteratorError = true;
+                _iteratorError = _context.t0;
+
+              case 15:
+                _context.prev = 15;
+                _context.prev = 16;
+
+                if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                  _iterator["return"]();
+                }
+
+              case 18:
+                _context.prev = 18;
+
+                if (!_didIteratorError) {
+                  _context.next = 21;
+                  break;
+                }
+
+                throw _iteratorError;
+
+              case 21:
+                return _context.finish(18);
+
+              case 22:
+                return _context.finish(15);
+
+              case 23:
+                _this.reactions = reactions;
+
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[7, 11, 15, 23], [16,, 18, 22]]);
+      }))();
+    },
+    del: function del(reaction) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var reactions;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (reaction.userCreated) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                reactions = _this2.reactions;
+                _context2.next = 5;
+                return window.axios["delete"]("/api/reactions/".concat(reaction.id));
+
+              case 5:
+                if (reaction.count > 1) {
+                  reactions[reaction.text].count--;
+                  reactions[reaction.text].userCreated = false;
+                  _this2.reactions = reactions;
+                } else {
+                  Vue["delete"](_this2.reactions, reaction.text);
+                }
+
+                _this2.userCreatedAny = false;
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    create: function create(text) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var reaction;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return window.axios.post('/api/reactions', {
+                  'text': text,
+                  'user_id': _this3.userId,
+                  'item_id': _this3.itemId
+                });
+
+              case 2:
+                reaction = _context3.sent;
+
+                _this3.addReactions();
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this4 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var reactionsData, reactions, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, reaction, userCreated;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
-              _context2.next = 2;
-              return window.axios.get("/api/reactions/".concat(_this2.itemId));
+              _this4.addReactions();
 
-            case 2:
-              reactionsData = _context2.sent;
-              reactions = {};
-              _iteratorNormalCompletion = true;
-              _didIteratorError = false;
-              _iteratorError = undefined;
-              _context2.prev = 7;
-
-              for (_iterator = reactionsData.data[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                reaction = _step.value;
-                userCreated = reaction.user_id == _this2.userId;
-
-                if (reaction.text in reactions) {
-                  reactions[reaction.text].count += 1;
-                } else {
-                  reactions[reaction.text] = {
-                    text: reaction.text,
-                    count: 1,
-                    id: reaction.id
-                  };
-                }
-
-                if (userCreated) {
-                  reactions[reaction.text].userCreated = true;
-                  reactions[reaction.text].id = reaction.id;
-                }
-              }
-
-              _context2.next = 15;
-              break;
-
-            case 11:
-              _context2.prev = 11;
-              _context2.t0 = _context2["catch"](7);
-              _didIteratorError = true;
-              _iteratorError = _context2.t0;
-
-            case 15:
-              _context2.prev = 15;
-              _context2.prev = 16;
-
-              if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-                _iterator["return"]();
-              }
-
-            case 18:
-              _context2.prev = 18;
-
-              if (!_didIteratorError) {
-                _context2.next = 21;
-                break;
-              }
-
-              throw _iteratorError;
-
-            case 21:
-              return _context2.finish(18);
-
-            case 22:
-              return _context2.finish(15);
-
-            case 23:
-              _this2.reactions = reactions;
-
-            case 24:
+            case 1:
             case "end":
-              return _context2.stop();
+              return _context4.stop();
           }
         }
-      }, _callee2, null, [[7, 11, 15, 23], [16,, 18, 22]]);
+      }, _callee4);
     }))();
   }
 });
@@ -33007,37 +33080,105 @@ var render = function() {
   return _c(
     "ul",
     { staticClass: "reaction-list" },
-    _vm._l(_vm.reactions, function(reaction) {
-      return _c(
-        "li",
-        {
-          key: reaction.id,
-          class: ["reaction", { "reaction--active": reaction.userCreated }],
-          on: {
-            click: function($event) {
-              return _vm.handleClick(reaction)
+    [
+      _vm._l(_vm.reactions, function(reaction) {
+        return _c(
+          "li",
+          {
+            key: reaction.id,
+            class: ["reaction", { "reaction--active": reaction.userCreated }],
+            on: {
+              click: function($event) {
+                return _vm.del(reaction)
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "reaction__icon" }, [
-            _c("i", { staticClass: "material-icons" }, [
-              _vm._v(
-                "\n                " + _vm._s(reaction.text) + "\n            "
-              )
+          },
+          [
+            _c("div", { staticClass: "reaction__icon" }, [
+              _c("i", { staticClass: "material-icons" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(reaction.text) +
+                    "\n            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "reaction__count" }, [
+              _vm._v("\n            " + _vm._s(reaction.count) + "\n        ")
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "reaction__count" }, [
-            _vm._v("\n            " + _vm._s(reaction.count) + "\n        ")
+          ]
+        )
+      }),
+      _vm._v(" "),
+      !_vm.userCreatedAny
+        ? _c("div", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "dropdown-content", attrs: { id: "reactions" } },
+              [
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#!" },
+                      on: {
+                        click: function($event) {
+                          return _vm.create("thumb_up")
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("thumb_up")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#!" },
+                      on: {
+                        click: function($event) {
+                          return _vm.create("thumb_down")
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("thumb_down")
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
           ])
-        ]
-      )
-    }),
-    0
+        : _vm._e()
+    ],
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-trigger reaction__btn btn-floating",
+        attrs: { href: "#!", "data-target": "reactions" }
+      },
+      [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -45212,8 +45353,10 @@ module.exports = function(module) {
  * Materialize inicializations
  */
 document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems);
+  var selectElems = document.querySelectorAll('select');
+  var selectInstances = M.FormSelect.init(selectElems);
+  var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+  var dropdownInstances = M.Dropdown.init(dropdownElems);
 });
 /**
  * First we will load all of this project's JavaScript dependencies which

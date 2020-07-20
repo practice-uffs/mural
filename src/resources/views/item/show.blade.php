@@ -39,12 +39,11 @@
         </div>
 
         <div class="card__reaction">
-                    <reaction-list
-                        user-id="{{ $user -> id }}"
-                        item-id="{{ $item -> id }}"
-                    >
-                    </reaction-list>
-            </ul>
+            <reaction-list
+                user-id="{{ $user -> id }}"
+                item-id="{{ $item -> id }}"
+            >
+            </reaction-list>
         </div>
     </div>
 

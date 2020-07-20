@@ -28,7 +28,13 @@ class ReactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'text' => $request -> text,
+            'user_id' => $request -> user_id,
+            'item_id' => $request -> item_id,
+        ];
+
+        Reaction::create($data);
     }
 
     /**

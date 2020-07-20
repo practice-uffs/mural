@@ -9368,6 +9368,21 @@ ul[class=reaction-list] {
 
 .reaction-list {
   display: flex;
+  position: relative;
+}
+
+.reaction__btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-image: linear-gradient(45deg, #ff8429, #ffbf33);
+  width: 2rem;
+  height: 2rem;
+}
+
+.reaction__btn i {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .reaction {
