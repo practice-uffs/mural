@@ -127,8 +127,8 @@
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Criar
-                                    <i class="material-icons right">send</i>
+                                    Salvar
+                                    <i class="material-icons right">save</i>
                                 </button>
                             </div>
                         </div>

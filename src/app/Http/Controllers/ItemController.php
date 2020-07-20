@@ -94,9 +94,12 @@ class ItemController extends Controller
      */
     public function show($id)
     {
+        $item = Item::find($id);
+
         return view('item.show', [
             'user' => Auth::user(),
-            'item' => Item::find($id)
+            'item' => $item,
+            'reactions' => $item -> reactions -> groupBy('text')
         ]);
     }
 
