@@ -9,6 +9,9 @@ $tl-left-space: 4rem;
 $tl-base-padding: 1rem;
 $tl-item-offset: 4rem;
 $tl-icon-size: 3rem;
+$tl-ruler-width: 4px;
+
+$tl-icon-adjust: 0.3rem;
 
 // Remove list standard styles
 ul[class="timeline__list"] {
@@ -17,13 +20,17 @@ ul[class="timeline__list"] {
     padding: 0;
 }
 
-.timeline {
-    margin-bottom: $tl-base-padding + $tl-item-offset;
-}
-
 // Fix top margin
 .card + .timeline {
     margin-top: -1rem;
+}
+
+.timeline__card {
+    margin-top: 0;
+}
+
+.timeline {
+    margin-bottom: $tl-base-padding + $tl-item-offset;
 }
 
 .timeline__list {
@@ -49,13 +56,21 @@ ul[class="timeline__list"] {
     }
 
     &:last-child {
-        padding-bottom: 1rem;
+        padding-bottom: 0;
 
         .timeline__content {
-            position: absolute;
-            top: $tl-item-offset;
+            position: relative;
+            padding-top: $tl-item-offset;
         }
     }
+}
+
+.timeline--with-comment {
+
+    .timeline__item:last-child {
+        padding-bottom: 3rem!important;
+    }
+    
 }
 
 /**
@@ -64,7 +79,7 @@ ul[class="timeline__list"] {
 .timeline__icon {
     position: absolute;
     left: -2px;
-    top: $tl-item-offset;
+    top: $tl-item-offset + $tl-icon-adjust;
     transform: translateX(-50%);
     z-index: 1;
 
