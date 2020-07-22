@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Item;
+use App\User;
+
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\CommentResource;
 
 class ItemController extends Controller
 {
@@ -18,7 +21,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return ItemResource::collection(Item::paginate());
+        $items = Item::whereNull('parent_id');
+
+        return ItemResource::collection($items -> paginate());
     }
 
     /**
@@ -29,23 +34,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: Adicionar validação
 
-        $item = Item::create([
-            'user_id' => $request -> user_id,
-            'location_id' => $request -> location_id,
-            'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
-            'title' => $request -> title,
-            'description' => $request -> description,
-            'hidden' => $request -> hidden == 'on',
-        ]);
-
-        return response(
-            new ItemResource($item),
-            Response::HTTP_CREATED
-        );
     }
 
     /**
@@ -56,10 +45,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        return response(
-            new ItemResource(Item::find($id)),
-            Response::HTTP_OK
-        );
+        //
     }
 
     /**
@@ -71,19 +57,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $item = Item::find($id);
-
-        $item -> update([
-            'location_id' => $request -> location_id,
-            'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
-            'title' => $request -> title,
-            'description' => $request -> description,
-            'hidden' => $request -> hidden == 'on',
-        ]);
-
-        return response(null, Response::HTTP_OK);
+        //
     }
 
     /**
@@ -94,8 +68,35 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        Item::destroy($id);
+        //
+    }
 
-        return response(null, Response::HTTP_OK);
+    /**
+     * Returns all comments assossiated with an item.
+     * @param  int $parentId item id
+     * @return [type]     [description]
+     */
+    public function listComments($parentId)
+    {
+        $comments = Item::where('parent_id', $parentId);
+
+        return CommentResource::collection($comments -> paginate());
+    }
+
+    public function storeComment(Request $request, $parentId)
+    {
+        $comment = Item::create([
+            'user_id' => $request -> user_id,
+            'parent_id' => $parentId,
+            'type' => Item::TYPE_COMMENT,
+            'title' => User::find($request -> user_id) -> name,
+            'description' => $request -> text,
+            'hidden' => false,
+        ]);
+
+        return response(
+            new CommentResource($comment),
+            Response::HTTP_CREATED
+        );
     }
 }

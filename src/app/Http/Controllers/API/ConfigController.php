@@ -19,7 +19,8 @@ class ConfigController extends Controller
      */
     public function homerConfig()
     {
-        $items = Item::all();
+        $items = Item::whereNull('parent_id') -> get();
+        
         $itemsToShow = array();
 
         foreach ($items as $item) {
