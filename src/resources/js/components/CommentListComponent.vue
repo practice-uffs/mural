@@ -3,6 +3,7 @@
         <ul class="timeline__list">
             <li
                 v-for="comment in comments"
+                v-bind="comment"
                 :key="comment.id"
                 class="timeline__item"
             >
@@ -11,7 +12,7 @@
 
                 <div class="timeline__content">
                     <div class="timeline__title">
-                        {{ comment.user }}
+                        {{ comment.user | capitalize }}
                         <span>
                             {{ comment.date }}
                         </span>
@@ -39,7 +40,7 @@
             </li>
         </ul>
 
-        <div v-if="!userCommented"
+        <div
             class="card timeline__card"
         >
             <div class="card-content">
@@ -58,7 +59,6 @@
 
                 <div class="card-action">
                     <a
-                        href="#"
                         class="btn btn-primary right"
                         @click="createComment"
                     >
@@ -92,30 +92,32 @@ export default {
              *
              */
 
-            let rawComments = await window.axios.get(`/api/items/${this.itemId}/comments`);
+            let { data } = await window.axios.get(`/api/items/${this.itemId}/comments`);
 
-            this.comments = rawComments.data.data;
+            this.comments = data.data;
         },
 
         async createComment() {
-            console.log('miau');
-            await window.axios.post(`/api/items/${this.itemId}/comments`, {
+            let comment = await window.axios.post(`/api/items/${this.itemId}/comments`, {
                 'user_id': this.userId,
                 'text': this.userComment
             });
+
+            this.comments.push(comment.data);
+
         },
 
         adjustLastItemPosition() {
             if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
                 let lastItem = document.querySelector('#timeline .timeline__item:last-child');
                 let padding = lastItem.querySelector('.timeline__content').offsetHeight;
-
-                if (this.userCommented) {
-                    lastItem.style.marginBottom = padding + 'px';
-
-                } else {
+                //
+                // // if (this.userCommented) {
+                // //     lastItem.style.marginBottom = padding + 'px';
+                // //
+                // // } else {
                     lastItem.style.paddingBottom = padding * 1.3 + 'px';
-                }
+                // }
 
             } else {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
@@ -124,9 +126,17 @@ export default {
     },
 
     computed: {
-        userCommented: function() {
-            return this.comments.find(comment => {
-                return comment.user_id == this.userId
+        // userCommented: function() {
+        //     return this.comments.find(comment => {
+        //         return comment.user_id == this.userId
+        //     });
+        // }
+    },
+
+    filters: {
+        capitalize: function (value) {
+            return value.replace(/\w\S*/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
             });
         }
     },

@@ -2074,7 +2074,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var rawComments;
+        var _ref, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2083,10 +2084,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return window.axios.get("/api/items/".concat(_this.itemId, "/comments"));
 
               case 2:
-                rawComments = _context.sent;
-                _this.comments = rawComments.data.data;
+                _ref = _context.sent;
+                data = _ref.data;
+                _this.comments = data.data;
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2098,18 +2100,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var comment;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log('miau');
-                _context2.next = 3;
+                _context2.next = 2;
                 return window.axios.post("/api/items/".concat(_this2.itemId, "/comments"), {
                   'user_id': _this2.userId,
                   'text': _this2.userComment
                 });
 
-              case 3:
+              case 2:
+                comment = _context2.sent;
+
+                _this2.comments.push(comment.data);
+
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -2120,24 +2127,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     adjustLastItemPosition: function adjustLastItemPosition() {
       if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
         var lastItem = document.querySelector('#timeline .timeline__item:last-child');
-        var padding = lastItem.querySelector('.timeline__content').offsetHeight;
+        var padding = lastItem.querySelector('.timeline__content').offsetHeight; //
+        // // if (this.userCommented) {
+        // //     lastItem.style.marginBottom = padding + 'px';
+        // //
+        // // } else {
 
-        if (this.userCommented) {
-          lastItem.style.marginBottom = padding + 'px';
-        } else {
-          lastItem.style.paddingBottom = padding * 1.3 + 'px';
-        }
+        lastItem.style.paddingBottom = padding * 1.3 + 'px'; // }
       } else {
         document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
       }
     }
   },
-  computed: {
-    userCommented: function userCommented() {
-      var _this3 = this;
-
-      return this.comments.find(function (comment) {
-        return comment.user_id == _this3.userId;
+  computed: {// userCommented: function() {
+    //     return this.comments.find(comment => {
+    //         return comment.user_id == this.userId
+    //     });
+    // }
+  },
+  filters: {
+    capitalize: function capitalize(value) {
+      return value.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
     }
   },
@@ -33182,85 +33193,91 @@ var render = function() {
       "ul",
       { staticClass: "timeline__list" },
       _vm._l(_vm.comments, function(comment) {
-        return _c("li", { key: comment.id, staticClass: "timeline__item" }, [
-          _c("div", { staticClass: "timeline__icon" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "timeline__content" }, [
-            _c("div", { staticClass: "timeline__title" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(comment.user) +
-                  "\n                    "
-              ),
-              _c("span", [
+        return _c(
+          "li",
+          _vm._b(
+            { key: comment.id, staticClass: "timeline__item" },
+            "li",
+            comment,
+            false
+          ),
+          [
+            _c("div", { staticClass: "timeline__icon" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "timeline__content" }, [
+              _c("div", { staticClass: "timeline__title" }, [
                 _vm._v(
-                  "\n                        " +
-                    _vm._s(comment.date) +
+                  "\n                    " +
+                    _vm._s(_vm._f("capitalize")(comment.user)) +
                     "\n                    "
+                ),
+                _c("span", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(comment.date) +
+                      "\n                    "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "timeline__text" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(comment.text) +
+                    "\n                "
                 )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "timeline__text" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(comment.text) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(0, true)
-          ])
-        ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0, true)
+            ])
+          ]
+        )
       }),
       0
     ),
     _vm._v(" "),
-    !_vm.userCommented
-      ? _c("div", { staticClass: "card timeline__card" }, [
-          _c("div", { staticClass: "card-content" }, [
-            _c("div", { staticClass: "card-title" }, [
-              _vm._v("\n                Adicionar Comentário\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-field" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.userComment,
-                    expression: "userComment"
-                  }
-                ],
-                staticClass: "materialize-textarea",
-                attrs: { id: "userComment", name: "userComment", rows: "8" },
-                domProps: { value: _vm.userComment },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.userComment = $event.target.value
-                  }
+    _c("div", { staticClass: "card timeline__card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "card-title" }, [
+          _vm._v("\n                Adicionar Comentário\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-field" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userComment,
+                expression: "userComment"
+              }
+            ],
+            staticClass: "materialize-textarea",
+            attrs: { id: "userComment", name: "userComment", rows: "8" },
+            domProps: { value: _vm.userComment },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-action" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary right",
-                  attrs: { href: "#" },
-                  on: { click: _vm.createComment }
-                },
-                [_vm._v("\n                    Comentar\n                ")]
-              )
-            ])
-          ])
+                _vm.userComment = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-action" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary right",
+              on: { click: _vm.createComment }
+            },
+            [_vm._v("\n                    Comentar\n                ")]
+          )
         ])
-      : _vm._e()
+      ])
+    ])
   ])
 }
 var staticRenderFns = [

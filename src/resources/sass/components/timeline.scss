@@ -30,6 +30,75 @@ ul[class="timeline__list"] {
 .timeline__card {
     margin-top: 0;
 }
+//
+// /**
+//  * Setup vertical ruler.
+//  */
+// .timeline__list {
+//     position: relative;
+//     margin: 0 auto;
+//
+//     &::after {
+//         content: '';
+//
+//         position: absolute;
+//         top: 0;
+//         bottom: 0;
+//         left: $tl-left-space;
+//         margin-left: - $tl-ruler-width / 2;
+//
+//         width: $tl-ruler-width;
+//
+//         background-image: linear-gradient(0deg, darken($p-blue, 30%), $p-blue);
+//     }
+// }
+//
+// /*
+//  * Item container.
+//  */
+// .timeline__item {
+//     position: relative;
+//
+//     padding: $tl-base-padding;
+//     padding-left: $tl-left-space + $tl-icon-size;
+//         padding-top: $tl-base-padding * 2;
+//
+//     &:first-child {
+//         padding-top: $tl-item-offset + $tl-base-padding;
+//
+//         &::after {
+//             top: $tl-item-offset + $tl-base-padding;
+//         }
+//     }
+//
+//     &:last-child {
+//         padding-bottom: $tl-item-offset;
+//     }
+//
+//     &::after {
+//         content: '';
+//
+//         position: absolute;
+//         left: $tl-left-space - $tl-icon-size / 2;
+//         top: $tl-base-padding * 2;
+//         z-index: 2;
+//
+//         width: $tl-icon-size;
+//         height: $tl-icon-size;
+//         border-radius: 50%;
+//
+//         border: $tl-ruler-width solid $p-orange;
+//         background: lighten($p-orange, 40%);
+//     }
+// }
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 .timeline__list {
     position: relative;
