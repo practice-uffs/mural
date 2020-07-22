@@ -2202,6 +2202,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2211,7 +2212,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   props: ['itemId', 'userId'],
   methods: {
-    addReactions: function addReactions() {
+    fetchReactions: function fetchReactions() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -2356,7 +2357,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 reaction = _context3.sent;
 
-                _this3.addReactions();
+                _this3.fetchReactions();
 
               case 4:
               case "end":
@@ -2368,22 +2369,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    var _this4 = this;
-
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              _this4.addReactions();
-
-            case 1:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4);
-    }))();
+    this.fetchReactions();
+  },
+  updated: function updated() {
+    var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+    var dropdownInstances = M.Dropdown.init(dropdownElems);
   }
 });
 
@@ -33299,15 +33289,20 @@ var render = function() {
       _vm._l(_vm.reactions, function(reaction) {
         return _c(
           "li",
-          {
-            key: reaction.id,
-            class: ["reaction", { "reaction--active": reaction.userCreated }],
-            on: {
-              click: function($event) {
-                return _vm.del(reaction)
+          _vm._b(
+            {
+              key: reaction.id,
+              class: ["reaction", { "reaction--active": reaction.userCreated }],
+              on: {
+                click: function($event) {
+                  return _vm.del(reaction)
+                }
               }
-            }
-          },
+            },
+            "li",
+            reaction,
+            false
+          ),
           [
             _c("div", { staticClass: "reaction__icon" }, [
               _c("i", { staticClass: "material-icons" }, [
@@ -45570,8 +45565,6 @@ module.exports = function(module) {
 document.addEventListener('DOMContentLoaded', function () {
   var selectElems = document.querySelectorAll('select');
   var selectInstances = M.FormSelect.init(selectElems);
-  var dropdownElems = document.querySelectorAll('.dropdown-trigger');
-  var dropdownInstances = M.Dropdown.init(dropdownElems);
 });
 /**
  * First we will load all of this project's JavaScript dependencies which

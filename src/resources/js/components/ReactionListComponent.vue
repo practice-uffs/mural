@@ -2,6 +2,7 @@
     <ul class="reaction-list">
         <li
             v-for="reaction in reactions"
+            v-bind="reaction"
             :key="reaction.id"
             :class="['reaction',
                 {'reaction--active': reaction.userCreated}
@@ -56,7 +57,7 @@ export default {
     ],
 
     methods: {
-        async addReactions() {
+        async fetchReactions() {
             let reactionsData = await window.axios.get(`/api/reactions/${this.itemId}`);
 
             let reactions = {};
@@ -111,12 +112,17 @@ export default {
                 'item_id': this.itemId
             });
 
-            this.addReactions();
+            this.fetchReactions();
         }
     },
 
-    async created() {
-        this.addReactions();
+    created() {
+        this.fetchReactions();
+    },
+
+    updated() {
+        var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+        var dropdownInstances = M.Dropdown.init(dropdownElems);
     }
 }
 </script>
