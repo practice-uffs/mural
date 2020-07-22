@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Item;
+
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\CommentResource;
 
 class ItemController extends Controller
 {
@@ -28,6 +30,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+
     }
 
     /**
@@ -62,5 +65,34 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Returns all comments assossiated with an item.
+     * @param  int $parentId item id
+     * @return [type]     [description]
+     */
+    public function listComments($parentId)
+    {
+        $comments = Item::where('parend_id', $parentId);
+
+        return CommentResource::collection($comments);
+    }
+
+    public function storeComment(Request $request, $parentId)
+    {
+        $comment = Item::create([
+            'user_id' => $request -> user_id,
+            'parent_id' => $parentId,
+            'type' => Item::TYPE_COMMENT,
+            'title' => User::find($request -> user_id) -> name,
+            'description' => $request -> text,
+            'hidden' => false,
+        ]);
+
+        return response(
+            new CommentResource($comment),
+            Response::HTTP_CREATED
+        );
     }
 }
