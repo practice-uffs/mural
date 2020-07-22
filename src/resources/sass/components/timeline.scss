@@ -29,76 +29,14 @@ ul[class="timeline__list"] {
 // Fix margin of add comment textarea.
 .timeline__card {
     margin-top: 0;
-}
-//
-// /**
-//  * Setup vertical ruler.
-//  */
-// .timeline__list {
-//     position: relative;
-//     margin: 0 auto;
-//
-//     &::after {
-//         content: '';
-//
-//         position: absolute;
-//         top: 0;
-//         bottom: 0;
-//         left: $tl-left-space;
-//         margin-left: - $tl-ruler-width / 2;
-//
-//         width: $tl-ruler-width;
-//
-//         background-image: linear-gradient(0deg, darken($p-blue, 30%), $p-blue);
-//     }
-// }
-//
-// /*
-//  * Item container.
-//  */
-// .timeline__item {
-//     position: relative;
-//
-//     padding: $tl-base-padding;
-//     padding-left: $tl-left-space + $tl-icon-size;
-//         padding-top: $tl-base-padding * 2;
-//
-//     &:first-child {
-//         padding-top: $tl-item-offset + $tl-base-padding;
-//
-//         &::after {
-//             top: $tl-item-offset + $tl-base-padding;
-//         }
-//     }
-//
-//     &:last-child {
-//         padding-bottom: $tl-item-offset;
-//     }
-//
-//     &::after {
-//         content: '';
-//
-//         position: absolute;
-//         left: $tl-left-space - $tl-icon-size / 2;
-//         top: $tl-base-padding * 2;
-//         z-index: 2;
-//
-//         width: $tl-icon-size;
-//         height: $tl-icon-size;
-//         border-radius: 50%;
-//
-//         border: $tl-ruler-width solid $p-orange;
-//         background: lighten($p-orange, 40%);
-//     }
-// }
 
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
+    .card-action {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        text-align: right;
+    }
+}
 
 .timeline__list {
     position: relative;
@@ -112,7 +50,7 @@ ul[class="timeline__list"] {
     /**
      * Setup vertical ruler.
      */
-    border-left: 4px solid grey;
+    border-left: 4px solid $p-orange;
     margin-left: $tl-left-space;
     min-height: $tl-base-padding * 2 + $tl-item-offset;
 
@@ -139,8 +77,8 @@ ul[class="timeline__list"] {
     transform: translateX(-50%);
     z-index: 1;
 
-    background-color: white;
-    border: 4px solid ;
+    background-color: #ffffff;
+    border: 4px solid #000000;
 
     border-radius: 50%;
     width: $tl-icon-size;
@@ -152,7 +90,7 @@ ul[class="timeline__list"] {
 }
 
 .timeline__item .timeline__content {
-    padding-top: $tl-item-offset;
+    padding-top: $tl-item-offset / 1.3;
 }
 
 .timeline__reactions {
@@ -171,7 +109,6 @@ ul[class="timeline__list"] {
         color: #4d4d4d;
     }
 }
-
 
 .timeline__text {
     color: #363636;

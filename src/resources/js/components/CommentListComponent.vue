@@ -59,7 +59,7 @@
 
                 <div class="card-action">
                     <a
-                        class="btn btn-primary right"
+                        class="btn btn-primary"
                         @click="createComment"
                     >
                         Comentar
@@ -111,26 +111,13 @@ export default {
             if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
                 let lastItem = document.querySelector('#timeline .timeline__item:last-child');
                 let padding = lastItem.querySelector('.timeline__content').offsetHeight;
-                //
-                // // if (this.userCommented) {
-                // //     lastItem.style.marginBottom = padding + 'px';
-                // //
-                // // } else {
-                    lastItem.style.paddingBottom = padding * 1.3 + 'px';
-                // }
+
+                lastItem.style.paddingBottom = padding * 1.3 + 'px';
 
             } else {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
             }
         }
-    },
-
-    computed: {
-        // userCommented: function() {
-        //     return this.comments.find(comment => {
-        //         return comment.user_id == this.userId
-        //     });
-        // }
     },
 
     filters: {

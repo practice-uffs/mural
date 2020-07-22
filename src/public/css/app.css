@@ -9434,6 +9434,13 @@ ul[class=timeline__list] {
   margin-top: 0;
 }
 
+.timeline__card .card-action {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  text-align: right;
+}
+
 .timeline__list {
   position: relative;
   margin: 0 auto;
@@ -9445,7 +9452,7 @@ ul[class=timeline__list] {
   /**
    * Setup vertical ruler.
    */
-  border-left: 4px solid grey;
+  border-left: 4px solid #ff8429;
   margin-left: 4rem;
   min-height: 6rem;
   /**
@@ -9472,8 +9479,8 @@ ul[class=timeline__list] {
   top: 4rem;
   transform: translateX(-50%);
   z-index: 1;
-  background-color: white;
-  border: 4px solid;
+  background-color: #ffffff;
+  border: 4px solid #000000;
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -9484,7 +9491,7 @@ ul[class=timeline__list] {
 }
 
 .timeline__item .timeline__content {
-  padding-top: 4rem;
+  padding-top: 3.0769230769rem;
 }
 
 .timeline__reactions {

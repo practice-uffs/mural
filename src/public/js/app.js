@@ -2127,23 +2127,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     adjustLastItemPosition: function adjustLastItemPosition() {
       if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
         var lastItem = document.querySelector('#timeline .timeline__item:last-child');
-        var padding = lastItem.querySelector('.timeline__content').offsetHeight; //
-        // // if (this.userCommented) {
-        // //     lastItem.style.marginBottom = padding + 'px';
-        // //
-        // // } else {
-
-        lastItem.style.paddingBottom = padding * 1.3 + 'px'; // }
+        var padding = lastItem.querySelector('.timeline__content').offsetHeight;
+        lastItem.style.paddingBottom = padding * 1.3 + 'px';
       } else {
         document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
       }
     }
-  },
-  computed: {// userCommented: function() {
-    //     return this.comments.find(comment => {
-    //         return comment.user_id == this.userId
-    //     });
-    // }
   },
   filters: {
     capitalize: function capitalize(value) {
@@ -33270,7 +33259,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "btn btn-primary right",
+              staticClass: "btn btn-primary",
               on: { click: _vm.createComment }
             },
             [_vm._v("\n                    Comentar\n                ")]
