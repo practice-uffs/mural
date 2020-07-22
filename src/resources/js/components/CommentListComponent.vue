@@ -25,15 +25,7 @@
 
                     <div class="timeline__reactions">
                         <ul class="reaction-list">
-                            <li class="reaction">
-                                <div class="reaction__icon">
-                                    <i class="material-icons">error_outline</i>
-                                </div>
-
-                                <div class="reaction__count">
-                                    5
-                                </div>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

@@ -2053,14 +2053,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -33275,21 +33267,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "timeline__reactions" }, [
-      _c("ul", { staticClass: "reaction-list" }, [
-        _c("li", { staticClass: "reaction" }, [
-          _c("div", { staticClass: "reaction__icon" }, [
-            _c("i", { staticClass: "material-icons" }, [
-              _vm._v("error_outline")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "reaction__count" }, [
-            _vm._v(
-              "\n                                5\n                            "
-            )
-          ])
-        ])
-      ])
+      _c("ul", { staticClass: "reaction-list" })
     ])
   }
 ]
