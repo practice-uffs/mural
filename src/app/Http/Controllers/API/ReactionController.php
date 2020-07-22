@@ -4,9 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Reaction;
 use App\Item;
+
+use App\Http\Resources\ReactionResource;
 
 class ReactionController extends Controller
 {
@@ -28,13 +31,16 @@ class ReactionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
+        $reaction = Reaction::create([
             'text' => $request -> text,
             'user_id' => $request -> user_id,
             'item_id' => $request -> item_id,
-        ];
+        ]);
 
-        Reaction::create($data);
+        return response(
+            new ReactionResource($reaction),
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -46,6 +52,7 @@ class ReactionController extends Controller
     public function show($itemId)
     {
         $reactions = Item::find($itemId) -> reactions;
+
         return $reactions;
     }
 
