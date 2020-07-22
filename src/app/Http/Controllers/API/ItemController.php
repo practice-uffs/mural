@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Item;
+use App\User;
 
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\CommentResource;
@@ -74,9 +76,9 @@ class ItemController extends Controller
      */
     public function listComments($parentId)
     {
-        $comments = Item::where('parend_id', $parentId);
+        $comments = Item::where('parent_id', $parentId);
 
-        return CommentResource::collection($comments);
+        return CommentResource::collection($comments -> paginate());
     }
 
     public function storeComment(Request $request, $parentId)

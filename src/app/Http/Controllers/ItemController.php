@@ -9,6 +9,9 @@ use App\Location;
 use App\Category;
 use Carbon\Carbon;
 
+use App\Http\Resources\CommentResource;
+
+
 class ItemController extends Controller
 {
     /**

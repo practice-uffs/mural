@@ -9426,12 +9426,12 @@ ul[class=timeline__list] {
   padding: 0;
 }
 
-.timeline {
-  margin-bottom: 5rem;
-}
-
 .card + .timeline {
   margin-top: -1rem;
+}
+
+.timeline__card {
+  margin-top: 0;
 }
 
 .timeline__list {
@@ -9443,24 +9443,23 @@ ul[class=timeline__list] {
   position: relative;
   padding-left: 2.5rem;
   /**
-   * Setup vertical ruler
+   * Setup vertical ruler.
    */
   border-left: 4px solid grey;
   margin-left: 4rem;
   min-height: 6rem;
+  /**
+   * First and last items positioning.
+   */
 }
 
 .timeline__item:first-child {
   padding-top: 4rem;
 }
 
-.timeline__item:last-child {
-  padding-bottom: 1rem;
-}
-
 .timeline__item:last-child .timeline__content {
   position: absolute;
-  top: 4rem;
+  top: 0;
 }
 
 /**
@@ -9480,27 +9479,34 @@ ul[class=timeline__list] {
   height: 3rem;
 }
 
-.timeline__item:not(:first-child):not(:last-child) .timeline__content {
+.timeline__item:first-child .timeline__icon {
+  top: 8rem;
+}
+
+.timeline__item .timeline__content {
   padding-top: 4rem;
-}
-
-.timeline__title {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.timeline__text {
-  color: #666;
 }
 
 .timeline__reactions {
   padding-top: 0.5rem;
 }
 
-@media (max-width: 576px) {
-  .timeline {
-    margin-bottom: 6rem;
-  }
+/**
+ * Colors and font configurations
+ */
+
+.timeline__title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.timeline__title span {
+  font-size: 0.75rem;
+  color: #4d4d4d;
+}
+
+.timeline__text {
+  color: #363636;
 }
 
 .input-field input[type=text]:focus,

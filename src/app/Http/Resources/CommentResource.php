@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-use App\User;
+use Carbon\Carbon;
 
 class CommentResource extends JsonResource
 {
@@ -22,6 +22,8 @@ class CommentResource extends JsonResource
             'user' => $this -> title,
             'text' => $this -> description,
             'date' => $this -> updated_at,
+            /*'date' => Carbon::createFromFormat('Y-m-d', $this -> updated_at)
+                        -> format('d/m/Y'),*/
         ];
     }
 }

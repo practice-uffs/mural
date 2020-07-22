@@ -1,9 +1,5 @@
 <template>
-    <div
-        id="timeline"
-        :class="['timeline',
-        {'timeline--with-comment': !userCommented}
-    ]">
+    <div id="timeline" class="timeline">
         <ul class="timeline__list">
             <li
                 v-for="comment in comments"
@@ -61,7 +57,13 @@
                 </div>
 
                 <div class="card-action">
-                    <a href="#" class="btn btn-primary right">comentar</a>
+                    <a
+                        href="#"
+                        class="btn btn-primary right"
+                        @click="createComment"
+                    >
+                        Comentar
+                    </a>
                 </div>
             </div>
 
@@ -73,29 +75,7 @@
 export default {
     data() {
         return {
-            comments: [
-                {
-                    'id': 1,
-                    'user_id': 3,
-                    'user': 'John Doe',
-                    'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    'date': new Date(),
-                },
-                {
-                    'id': 2,
-                    'user_id': 1,
-                    'user': 'John Doe',
-                    'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    'date': new Date()
-                },
-                {
-                    'id': 3,
-                    'user_id': 10,
-                    'user': 'John Doe',
-                    'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    'date': new Date()
-                }
-            ],
+            comments: [],
 
             userComment: '',
         }
@@ -114,25 +94,31 @@ export default {
 
             let rawComments = await window.axios.get(`/api/items/${this.itemId}/comments`);
 
-            console.log(rawComments);
+            this.comments = rawComments.data.data;
         },
 
         async createComment() {
+            console.log('miau');
             await window.axios.post(`/api/items/${this.itemId}/comments`, {
                 'user_id': this.userId,
                 'text': this.userComment
             });
         },
 
-        setLastItemHeight() {
-            let lastItem = document.querySelector('#timeline .timeline__item:last-child');
-            let padding = lastItem.querySelector('.timeline__content').offsetHeight;
+        adjustLastItemPosition() {
+            if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
+                let lastItem = document.querySelector('#timeline .timeline__item:last-child');
+                let padding = lastItem.querySelector('.timeline__content').offsetHeight;
 
-            if (this.userCommented) {
-                lastItem.style.marginBottom = padding + 'px';
+                if (this.userCommented) {
+                    lastItem.style.marginBottom = padding + 'px';
+
+                } else {
+                    lastItem.style.paddingBottom = padding * 1.3 + 'px';
+                }
 
             } else {
-                lastItem.style.paddingBottom = padding * 1.3 + 'px';
+                document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
             }
         }
     },
@@ -145,8 +131,12 @@ export default {
         }
     },
 
-    mounted() {
-        this.setLastItemHeight();
+    created() {
+        this.fetchComments();
+    },
+
+    updated() {
+        this.adjustLastItemPosition();
     }
 }
 </script>

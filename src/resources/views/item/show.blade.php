@@ -47,100 +47,10 @@
         </div>
     </div>
 
-    <div class="timeline">
-        <ul class="timeline__list">
-            <li class="timeline__item">
-                <div class="timeline__icon">
-                    {{-- <i class="material-icons">error_outline</i> --}}
-                </div>
-
-                <div class="timeline__content">
-                    <div class="timeline__title">
-                        John Doe
-                    </div>
-
-                    <div class="timeline__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-
-                    <div class="timeline__reactions">
-                        <ul class="reaction-list">
-                            <li class="reaction">
-                                <div class="reaction__icon">
-                                    <i class="material-icons">error_outline</i>
-                                </div>
-
-                                <div class="reaction__count">
-                                    5
-                                </div>
-                            </li>
-
-                            <li class="reaction">
-                                <div class="reaction__icon">
-                                    <i class="material-icons">add</i>
-                                </div>
-
-                                <div class="reaction__count">
-                                    8
-                                </div>
-                            </li>
-
-                            <li class="reaction">
-                                <div class="reaction__icon">
-                                    <i class="material-icons">phone</i>
-                                </div>
-
-                                <div class="reaction__count">
-                                    2
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-
-            <li class="timeline__item">
-                <div class="timeline__icon">
-                    {{-- <i class="material-icons">error_outline</i> --}}
-                </div>
-
-                <div class="timeline__content">
-
-                    <div class="timeline__title">
-                        John Doe
-                    </div>
-
-                    <div class="timeline__text">
-                        Lorem ipsum dolor sit amet, consectetur
-                    </div>
-                </div>
-            </li>
-
-            <li class="timeline__item">
-                <div class="timeline__icon">
-                    {{-- <i class="material-icons">error_outline</i> --}}
-                </div>
-
-                <div class="timeline__content">
-
-                    <div class="timeline__title">
-                        John Doe
-                    </div>
-
-                    <div class="timeline__text">
-                        Lorem ipsum dolor sit amet, consectetur
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-        {{-- <div class="card timeline__card">
-            <div class="card-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-
-        </div> --}}
-    </div>
+    <comment-list
+        user-id="{{ $user -> id }}"
+        item-id="{{ $item -> id }}"
+    ></comment-list>
 </main>
 
 <div class="banner">
