@@ -5,6 +5,7 @@
 
 @import 'custom-variables';
 
+// Component-specific variables
 $tl-left-space: 4rem;
 $tl-base-padding: 1rem;
 $tl-item-offset: 4rem;
@@ -13,24 +14,21 @@ $tl-ruler-width: 4px;
 
 $tl-icon-adjust: 0.3rem;
 
-// Remove list standard styles
+// Remove list standard styles.
 ul[class="timeline__list"] {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-// Fix top margin
+// Fix top margin.
 .card + .timeline {
     margin-top: -1rem;
 }
 
+// Fix margin of add comment textarea.
 .timeline__card {
     margin-top: 0;
-}
-
-.timeline {
-    margin-bottom: $tl-base-padding + $tl-item-offset;
 }
 
 .timeline__list {
@@ -39,38 +37,27 @@ ul[class="timeline__list"] {
 }
 
 .timeline__item {
-    // border: 1px ;
     position: relative;
-    // padding: $tl-base-padding;
         padding-left: $tl-base-padding + $tl-icon-size / 2;
 
     /**
-     * Setup vertical ruler
+     * Setup vertical ruler.
      */
     border-left: 4px solid grey;
     margin-left: $tl-left-space;
     min-height: $tl-base-padding * 2 + $tl-item-offset;
 
+    /**
+     * First and last items positioning.
+     */
     &:first-child {
         padding-top: $tl-item-offset;
     }
 
-    &:last-child {
-        padding-bottom: 0;
-
-        .timeline__content {
-            position: relative;
-            padding-top: $tl-item-offset;
-        }
+    &:last-child .timeline__content {
+        position: absolute;
+        top: 0;
     }
-}
-
-.timeline--with-comment {
-
-    .timeline__item:last-child {
-        padding-bottom: 3rem!important;
-    }
-    
 }
 
 /**
@@ -79,7 +66,7 @@ ul[class="timeline__list"] {
 .timeline__icon {
     position: absolute;
     left: -2px;
-    top: $tl-item-offset + $tl-icon-adjust;
+    top: $tl-item-offset;
     transform: translateX(-50%);
     z-index: 1;
 
@@ -91,25 +78,32 @@ ul[class="timeline__list"] {
     height: $tl-icon-size;
 }
 
-.timeline__item:not(:first-child):not(:last-child) .timeline__content {
+.timeline__item:first-child .timeline__icon {
+    top: $tl-item-offset * 2;
+}
+
+.timeline__item .timeline__content {
     padding-top: $tl-item-offset;
-}
-
-.timeline__title {
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.timeline__text {
-    color: #666;
 }
 
 .timeline__reactions {
     padding-top: $tl-base-padding / 2;
 }
 
-@media (max-width: 576px) {
-    .timeline {
-        margin-bottom: $tl-base-padding * 2 + $tl-item-offset;
+/**
+ * Colors and font configurations
+ */
+.timeline__title {
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    span {
+        font-size: 0.75rem;
+        color: #4d4d4d;
     }
+}
+
+
+.timeline__text {
+    color: #363636;
 }
