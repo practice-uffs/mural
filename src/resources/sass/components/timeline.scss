@@ -9,7 +9,7 @@
 $tl-left-space: 4rem;
 $tl-base-padding: 1rem;
 $tl-item-offset: 4rem;
-$tl-icon-size: 3rem;
+$tl-icon-size: 2rem;
 $tl-ruler-width: 4px;
 
 $tl-icon-adjust: 0.3rem;
@@ -38,60 +38,72 @@ ul[class="timeline__list"] {
     }
 }
 
+/**
+ * Timeline container.
+ */
 .timeline__list {
     position: relative;
     margin: 0 auto;
 }
 
-.timeline__item {
-    position: relative;
-        padding-left: $tl-base-padding + $tl-icon-size / 2;
+/**
+* Vertical ruler.
+*/
+.timeline__list::after {
+    content: '';
 
-    /**
-     * Setup vertical ruler.
-     */
-    border-left: 4px solid $p-orange;
-    margin-left: $tl-left-space;
-    min-height: $tl-base-padding * 2 + $tl-item-offset;
+    position: absolute;
+    top: 0;
+    left: $tl-left-space;
+    bottom: 0;
+    margin-left: - $tl-ruler-width / 2;
 
-    /**
-     * First and last items positioning.
-     */
-    &:first-child {
-        padding-top: $tl-item-offset;
-    }
+    width: $tl-ruler-width;
 
-    &:last-child .timeline__content {
-        position: absolute;
-        top: 0;
-    }
+    background-color: $p-orange;
 }
 
 /**
- * Circles with user pics.
+ * Items' content wrapper.
  */
-.timeline__icon {
+.timeline__content {
+    position: relative;
+    padding: $tl-base-padding;
+        padding-left: $tl-left-space + $tl-icon-size;
+}
+
+/**
+* Circles marking every item.
+*/
+.timeline__content::after {
+    content: '';
+
     position: absolute;
-    left: -2px;
-    top: $tl-item-offset;
-    transform: translateX(-50%);
+    left: $tl-left-space - $tl-icon-size / 2;
+    top: $tl-base-padding;
     z-index: 1;
 
-    background-color: #ffffff;
-    border: 4px solid #000000;
-
-    border-radius: 50%;
-    width: $tl-icon-size;
     height: $tl-icon-size;
+    width: $tl-icon-size;
+    border-radius: 50%;
+
+    border: $tl-ruler-width solid #000000;
+    background-color: #ffffff;
 }
 
-.timeline__item:first-child .timeline__icon {
-    top: $tl-item-offset * 2;
+/**
+ * Adjust first item.
+ */
+.timeline__item:first-child {
+    .timeline__content {
+        padding-top: $tl-item-offset * 2;
+
+        &::after {
+            top: $tl-item-offset * 2;
+        }
+    }
 }
 
-.timeline__item .timeline__content {
-    padding-top: $tl-item-offset / 1.3;
-}
 
 .timeline__reactions {
     padding-top: $tl-base-padding / 2;
