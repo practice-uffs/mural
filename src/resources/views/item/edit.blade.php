@@ -33,7 +33,7 @@
                 <div class="card-content">
 
                     <div class="card-title">
-                        Criar Novo Item
+                        Editar Item
                     </div>
 
                     @if ($errors->any())
