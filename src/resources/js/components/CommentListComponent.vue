@@ -14,7 +14,7 @@
                     <div class="timeline__title">
                         {{ comment.user | capitalize }}
                         <span>
-                            {{ comment.date }}
+                            {{ comment.date | formatDate }}
                         </span>
                     </div>
 
@@ -25,7 +25,7 @@
 
                     <div class="timeline__reactions">
                         <ul class="reaction-list">
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ export default {
     methods: {
         async fetchComments() {
             /**
-             *
+             * Fetch all comments for a given item.
              */
 
             let { data } = await window.axios.get(`/api/items/${this.itemId}/comments`);
@@ -90,6 +90,16 @@ export default {
         },
 
         async createComment() {
+            /**
+             * Creates a new comment.
+             */
+
+            if (!this.hasComment()) {
+                document.querySelector('#timeline .timeline__card').style.marginTop = '0';
+            }
+
+            if (this.userComment == '') return;
+
             let comment = await window.axios.post(`/api/items/${this.itemId}/comments`, {
                 'user_id': this.userId,
                 'text': this.userComment
@@ -97,19 +107,26 @@ export default {
 
             this.comments.push(comment.data);
 
+            this.userComment = '';
+        },
+
+        hasComment() {
+            /**
+             * Returns whether there exists any comment on comment list.
+             */
+
+            return (typeof this.comments !== 'undefined' && this.comments.length > 0);
         },
 
         adjustLastItemPosition() {
-            if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
-                let lastItem = document.querySelector('#timeline .timeline__item:last-child');
-                let padding = lastItem.querySelector('.timeline__content').offsetHeight;
+            /**
+             * If none comment exists yet, add a spacing.
+             */
 
-                lastItem.style.paddingBottom = padding * 1.3 + 'px';
-
-            } else {
+            if (!this.hasComment()) {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
             }
-        }
+        },
     },
 
     filters: {
@@ -117,6 +134,19 @@ export default {
             return value.replace(/\w\S*/g, function (txt) {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
             });
+        },
+
+        formatDate: function (date) {
+            /**
+             * Returns a date on the format dd/mm/YYYY.
+             */
+            let fullDate = new Date(date);
+
+            let day = fullDate.getDate();
+            let month = fullDate.getMonth() + 1;
+            let year = fullDate.getFullYear();
+
+            return `${day}/${month.toString().padStart(2, '0')}/${year}`;
         }
     },
 
