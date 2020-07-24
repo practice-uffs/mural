@@ -5,6 +5,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     var selectElems = document.querySelectorAll('select');
     var selectInstances = M.FormSelect.init(selectElems);
+
+    var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+    var dropdownInstances = M.Dropdown.init(dropdownElems);
 });
 
 /**

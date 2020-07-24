@@ -14,9 +14,14 @@
 @import 'components/navbar';
 @import 'components/reaction';
 @import 'components/timeline';
+@import 'components/header';
+
+// TODO: Substituir para um outro arquivo
+.text-primary {
+    color: $p-blue !important;
+}
 
 // General styles
-
 .input-field {
     input[type=text]:focus,
     textarea:focus {
