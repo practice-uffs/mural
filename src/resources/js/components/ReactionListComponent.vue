@@ -106,7 +106,6 @@ export default {
         },
 
         async create(text) {
-            console.log(this.itemId);
             let reaction = await window.axios.post('/api/reactions', {
                 'text': text,
                 'user_id': this.userId,
@@ -125,12 +124,11 @@ export default {
 
     created() {
         this.fetchReactions();
-        console.log(this.userId, this.itemId);
     },
 
     updated() {
         let dropdownElems = document.querySelectorAll('.dropdown-trigger');
-        let dropdownInstances = M.Dropdown.init(dropdownElems);
+        M.Dropdown.init(dropdownElems);
     }
 }
 </script>

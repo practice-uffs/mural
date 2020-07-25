@@ -155,7 +155,6 @@ export default {
 
     created() {
         this.fetchComments();
-        console.log(this.itemId);
     },
 
     updated() {
