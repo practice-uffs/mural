@@ -13,6 +13,7 @@
                 <div class="timeline__content">
                     <div class="timeline__title">
                         {{ comment.user | capitalize }}
+                        {{ comment.id }}
                         <span>
                             {{ comment.date | formatDate }}
                         </span>
@@ -24,9 +25,11 @@
                     </div>
 
                     <div class="timeline__reactions">
-                        <ul class="reaction-list">
-
-                        </ul>
+                        <reaction-list
+                            :user-id="userId"
+                            :item-id="comment.id"
+                        >
+                        </reaction-list>
                     </div>
                 </div>
             </li>
@@ -65,7 +68,7 @@
 
 <script>
 export default {
-    data() {
+    data: function() {
         return {
             comments: [],
 

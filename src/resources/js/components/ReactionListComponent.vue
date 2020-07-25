@@ -23,12 +23,12 @@
         <div v-if="!userCreatedAny">
             <a class="dropdown-trigger reaction__btn btn-floating"
                 href="#!"
-                data-target="reactions"
+                :data-target="reactionsId"
             >
                 <i class="material-icons">add</i>
             </a>
 
-            <ul id='reactions' class='dropdown-content'>
+            <ul :id='reactionsId' class='dropdown-content'>
                 <li><a href="#!" @click="create('thumb_up')">
                     <i class="material-icons">thumb_up</i>
                 </a></li>
@@ -44,7 +44,7 @@
 <script>
 
 export default {
-    data() {
+    data: function () {
         return {
             reactions: {},
             userCreatedAny: false
@@ -116,13 +116,19 @@ export default {
         }
     },
 
+    computed: {
+        reactionsId: function() {
+            return 'reactions' + this.itemId + this.userId;
+        }
+    },
+
     created() {
         this.fetchReactions();
     },
 
     updated() {
-        var dropdownElems = document.querySelectorAll('.dropdown-trigger');
-        var dropdownInstances = M.Dropdown.init(dropdownElems);
+        let dropdownElems = document.querySelectorAll('.dropdown-trigger');
+        M.Dropdown.init(dropdownElems);
     }
 }
 </script>
