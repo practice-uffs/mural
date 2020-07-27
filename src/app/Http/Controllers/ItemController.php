@@ -36,11 +36,14 @@ class ItemController extends Controller
         ]);
     }
 
-    protected function findCategoriesByItemType(Item $item)
+    /**
+     * Returns the categories for a given type of item
+     * @param int
+     * @return
+     */
+    protected static function findCategoriesByItemType($itemType)
     {
-        // Filtrar cateogira por tipo
-        $categories = Category::all('name', 'id');
-        return $categories;
+        return Category::where('item_type', $itemType) -> get();
     }
 
     /**
@@ -58,7 +61,7 @@ class ItemController extends Controller
             'user' => Auth::user(),
             'type' => $type,
             'formTitle' => $formTitle,
-            'categories' => Category::all(), // TODO: filtrar aqui conforme tipo do item/ideia
+            'categories' => SELF::findCategoriesByItemType($type),
             'locations' => Location::all()
         ]);
     }

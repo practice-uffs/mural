@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    const TYPE_IDEA       = 1;
+    const TYPE_FEEDBACK   = 1;
     const TYPE_SERVICE    = 2;
     const TYPE_COMMENT    = 3;
-    
+
     const STATUS_ACTIVE   = 1;
     const STATUS_REMOVED  = 2;
 
@@ -19,7 +19,7 @@ class Item extends Model
      * @var array
      */
     protected $attributes = [
-        'type'   => Item::TYPE_IDEA,
+        'type'   => Item::TYPE_FEEDBACK,
         'status' => Item::STATUS_ACTIVE,
         'hidden' => false,
     ];
