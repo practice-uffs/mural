@@ -16,7 +16,7 @@ ul[class="reaction-list"] {
 .reaction-list {
     display: flex;
     position: relative;
-
+    min-height: 3rem;
 }
 
 .reaction__btn {

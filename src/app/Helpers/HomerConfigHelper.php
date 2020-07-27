@@ -4,6 +4,8 @@ namespace App\Helpers;
 
 class HomerConfigHelper
 {
+    private static $itemsSectionCreated = false;
+
     public static $config = array(
         'title' => 'PRACTICE',
         'subtitle' => 'Web Feedback',
@@ -45,26 +47,38 @@ class HomerConfigHelper
 
         'message' => array(
             'style' => 'is-dark',
-            'title' => 'Lorem Ipsum',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'title' => 'Sobre',
+            'content' => 'Essa página contém todas as ideias, críticas e afins que os membros da comunidade acadêmica tem e gostariam de socializar com todos, inclusive a equipe PRACTICE.',
         ),
 
         'links' => array(
             array(
-                'name' => 'Criar Item',
-                'icon' => 'fas fa-plus-square',
-                'url' => '/items/create',
-            )
+                'name' => 'Nova Ideia',
+                'icon' => 'far fa-lightbulb',
+                'url' => '/items/create/1',
+            ),
+            array(
+                'name' => 'Solicitar Serviço',
+                'icon' => 'fas fa-concierge-bell',
+                'url' => '/items/create/2',
+            ),
         ),
 
-        'services' => array(
-            array(
-                'name' => 'Items',
+        'services' => array()
+    );
+
+    private static function createItemsSection()
+    {
+        if (! SELF::$itemsSectionCreated) {
+            array_push(SELF::$config['services'], array(
+                'name' => 'Ideias e Sugestões Criadas',
                 'icon' => 'fas fa-clipboard-list',
                 'items' => array()
-            )
-        )
-    );
+            ));
+
+            SELF::$itemsSectionCreated = true;
+        }
+    }
 
     /**
      * Add a list of items to the items section
@@ -73,6 +87,8 @@ class HomerConfigHelper
      */
     public static function addItems($items)
     {
+        SELF::createItemsSection();
+
         foreach ($items as $item) {
             array_push(SELF::$config['services'][0]['items'], $item);
         }
@@ -84,6 +100,8 @@ class HomerConfigHelper
      */
     public static function addItem($item)
     {
+        SELF::createItemsSection();
+
         array_push(SELF::$config['services'][0]['items'], $item);
     }
 

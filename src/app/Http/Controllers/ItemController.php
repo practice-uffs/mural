@@ -9,6 +9,9 @@ use App\Location;
 use App\Category;
 use Carbon\Carbon;
 
+use App\Http\Resources\CommentResource;
+
+
 class ItemController extends Controller
 {
     /**
@@ -45,10 +48,16 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($type)
     {
+        $formTitle = ($type == 1) ?
+            'Adicionar uma ideia' :
+            'Solicitar um serviço';
+
         return view('item.create', [
             'user' => Auth::user(),
+            'type' => $type,
+            'formTitle' => $formTitle,
             'categories' => Category::all(), // TODO: filtrar aqui conforme tipo do item/ideia
             'locations' => Location::all()
         ]);
@@ -76,7 +85,7 @@ class ItemController extends Controller
             'location_id' => $request->get('location_id'),
             'category_id' => $request->get('category_id'),
             'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
+            'type' => $request -> type,
             'title' => $request->get('title'),
             'description' => $request->get('description'),
             'hidden' => $request->get('hidden') == 'on',

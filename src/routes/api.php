@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('items', 'API\ItemController');
+    Route::get('items/{id}/comments', 'API\ItemController@listComments');
+    Route::post('items/{id}/comments', 'API\ItemController@storeComment');
+
 Route::apiResource('reactions', 'API\ReactionController');
 
 Route::get('/conf', 'API\ConfigController@homerConfig');

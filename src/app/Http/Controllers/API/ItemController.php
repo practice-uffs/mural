@@ -4,9 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Item;
+use App\User;
+
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\CommentResource;
 
 class ItemController extends Controller
 {
@@ -17,7 +21,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return ItemResource::collection(Item::paginate());
+        $items = Item::whereNull('parent_id');
+
+        return ItemResource::collection($items -> paginate());
     }
 
     /**
@@ -28,6 +34,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+
     }
 
     /**
@@ -62,5 +69,40 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Returns all comments assossiated with an item.
+     * @param  int $parentId 
+     * @return [type]     [description]
+     */
+    public function listComments($parentId)
+    {
+        $comments = Item::where('parent_id', $parentId);
+
+        return CommentResource::collection($comments -> paginate());
+    }
+
+    /**
+     * Store a newly created comment.
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $parentId
+     * @return \Illuminate\Http\Response
+     */
+    public function storeComment(Request $request, $parentId)
+    {
+        $comment = Item::create([
+            'user_id' => $request -> user_id,
+            'parent_id' => $parentId,
+            'type' => Item::TYPE_COMMENT,
+            'title' => User::find($request -> user_id) -> name,
+            'description' => $request -> text,
+            'hidden' => false,
+        ]);
+
+        return response(
+            new CommentResource($comment),
+            Response::HTTP_CREATED
+        );
     }
 }
