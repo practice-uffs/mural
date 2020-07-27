@@ -88,7 +88,7 @@ class ItemController extends Controller
             'type' => $request -> type,
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'hidden' => $request->get('hidden') == 'on',
+            'hidden' => $this->isSwitchOff($request->get('hidden')) || $this->isService($request->type),
         ]);
 
         $item->save();
@@ -173,5 +173,15 @@ class ItemController extends Controller
         $item->delete();
 
         return redirect('/home')->with('success', 'Item deleted!');
+    }
+
+    private function isSwitchOff($switch_value)
+    {
+        return $switch_value != 'on';
+    }
+
+    private function isService($item_type)
+    {
+        return $item_type == Item::TYPE_SERVICE;
     }
 }
