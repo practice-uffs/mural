@@ -73,7 +73,7 @@ class ItemController extends Controller
 
     /**
      * Returns all comments assossiated with an item.
-     * @param  int $parentId item id
+     * @param  int $parentId 
      * @return [type]     [description]
      */
     public function listComments($parentId)
@@ -83,6 +83,12 @@ class ItemController extends Controller
         return CommentResource::collection($comments -> paginate());
     }
 
+    /**
+     * Store a newly created comment.
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $parentId
+     * @return \Illuminate\Http\Response
+     */
     public function storeComment(Request $request, $parentId)
     {
         $comment = Item::create([
