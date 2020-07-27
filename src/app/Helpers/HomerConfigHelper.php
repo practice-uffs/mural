@@ -55,12 +55,12 @@ class HomerConfigHelper
             array(
                 'name' => 'Nova Ideia',
                 'icon' => 'far fa-lightbulb',
-                'url' => '/items/create',
+                'url' => '/items/create/1',
             ),
             array(
                 'name' => 'Solicitar Serviço',
                 'icon' => 'fas fa-concierge-bell',
-                'url' => '/services/create',
+                'url' => '/items/create/2',
             ),
         ),
 

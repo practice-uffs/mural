@@ -13,7 +13,6 @@
                 <div class="timeline__content">
                     <div class="timeline__title">
                         {{ comment.user | capitalize }}
-                        {{ comment.id }}
                         <span>
                             {{ comment.date | formatDate }}
                         </span>

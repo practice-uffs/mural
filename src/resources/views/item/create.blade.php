@@ -33,7 +33,7 @@
                 <div class="card-content">
 
                     <div class="card-title">
-                        Criar Novo Item
+                        {{ $formTitle }}
                     </div>
 
                     @if ($errors->any())
@@ -58,6 +58,8 @@
 
                     <form method="post" action="{{ route('items.store') }}">
                         @csrf
+
+                        <input type="text" name="type" value="{{ $type }}" class="hide">
 
                         <div class="row">
                             <div class="col m6 s12">
@@ -108,6 +110,7 @@
                                         id="description"
                                         name="description"
                                         rows="8"
+                                        data-length="800"
                                     >{{ old('description', '') }}</textarea>
                                 </div>
                             </div>
