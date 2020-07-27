@@ -58,3 +58,11 @@
         width: 100% !important;
     }
 }
+
+.dropdown-content {
+    li {
+        & > a, & > span {
+            color: $p-blue;
+        }
+    }
+}

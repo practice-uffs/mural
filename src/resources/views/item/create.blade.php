@@ -36,26 +36,6 @@
                         {{ $formTitle }}
                     </div>
 
-                    @if ($errors->any())
-                        <div class="row">
-                            <div class="col m12">
-                                <div class="card-panel red darken-2 white-text">
-                                    <div class="card-title">
-                                        <div class="vertical-wrapper">
-                                            <i class="material-icons">error_outline</i>
-                                            Atenção
-                                        </div>
-                                    </div>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
                     <form method="post" action="{{ route('items.store') }}">
                         @csrf
 
@@ -67,7 +47,6 @@
                                     <label for="title">Título</label>
                                     <input
                                         type="text"
-                                        class="@error('title') is-invalid @enderror"
                                         name="title"
                                         value="{{ old('title', '') }}"
                                         placeholder="Ex.: Jogos digitais em aula"
@@ -80,7 +59,7 @@
                                     <select name="category_id" id="category_id">
                                         <option value="" disabled selected>Selecione uma categoria</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') || $category->id == $type ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                     <label>Categoria</label>
@@ -106,7 +85,7 @@
                                 <div class="input-field">
                                     <label for="description">Descrição</label>
                                     <textarea
-                                        class="materialize-textarea @error('description') is-invalid @enderror"
+                                        class="materialize-textarea"
                                         id="description"
                                         name="description"
                                         rows="8"
@@ -117,23 +96,29 @@
                         </div>
 
                         <div class="row">
-                            <div class="col m6 s12 text-right">
-                                <div class="switch">
-                                    Esse item ficará visível para todos?
-                                    <label>
-                                        Não
-                                        <input
-                                            type="checkbox"
-                                            name="hidden"
-                                            {{ old('hidden') == 'on' ? 'checked="checked"' : '' }}
-                                        >
-                                        <span class="lever"></span>
-                                        Sim
-                                    </label>
-                                </div>
+                            <div class="col m7 s12 text-right">
+                                @if($type == Item::TYPE_SERVICE)
+                                    <p>
+                                        Esse serviço ficará visível somente a você e ao Practice.
+                                    </p>
+                                @else
+                                    <div class="switch">
+                                        Esse item ficará visível para todos?
+                                        <label>
+                                            Não
+                                            <input
+                                                type="checkbox"
+                                                name="hidden"
+                                                {{ old('hidden') == 'on' ? 'checked="checked"' : '' }}
+                                            >
+                                            <span class="lever"></span>
+                                            Sim
+                                        </label>
+                                    </div>
+                                @endif
                             </div>
 
-                            <div class="col m6 s12 right-align">
+                            <div class="col m5 s12 right-align">
                                 <button
                                     type="submit"
                                     class="btn btn-primary"
@@ -144,6 +129,24 @@
                             </div>
                         </div>
                     </form>
+                    @if ($errors->any())
+                        <div class="row">
+                            <div class="col m12">
+                                <div class="card-panel red darken-2 white-text">
+                                    <div class="card-title">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons">error_outline</i>Atenção
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
