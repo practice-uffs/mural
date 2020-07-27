@@ -75,14 +75,24 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    <p class="grey-text text-lighten-4 left">
-                        © 2020 All rights reserved.
+                    <p class="grey-text text-lighten-4 left footer__rights--sm-center">
+                        Projeto licenciado sobre os termos da
+                        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" class="footer__link">
+                            Apache License.
+                        </a>
                     </p>
-                    <p class="grey-text text-lighten-4 right">
-                        Powered by
-                        <a class="grey-text text-lighten-4" href="htpps://materializecss.com">
-                        MaterializeCSS
-                    </a>
+                    <p class="grey-text text-lighten-4 right footer__rights--sm-center">
+                        Build with 
+                        <svg class="footer__heart" viewBox="0 0 32 29.6">
+                            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                        </svg> 
+                        by 
+                        <a href="https://pt.wikipedia.org/wiki/C%C3%B3digo_aberto" target="_blank"
+                            rel="noopener noreferrer" class="footer__link"
+                        >
+                            OpenSource Community.
+                        </a>
                     </p>
                 </div>
             </div>

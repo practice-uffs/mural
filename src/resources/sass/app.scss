@@ -9,8 +9,8 @@
 @import '~materialize-css/sass/materialize';
 
 // Custom styles and components
-@import '../css/login.css';
-
+@import 'login';
+@import 'components/footer';
 @import 'components/navbar';
 @import 'components/reaction';
 @import 'components/timeline';
