@@ -34,7 +34,21 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $item = Item::create([
+            'user_id' => $request -> user_id,
+            'location_id' => $request -> location_id,
+            'category_id' => $request -> category_id,
+            'status' => Item::STATUS_ACTIVE,
+            'type' => Item::TYPE_IDEA,
+            'title' => $request -> title,
+            'description' => $request -> description,
+            'hidden' => $request -> hidden == 'on',
+        ]);
 
+        return response(
+            new ItemResource($item),
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -45,7 +59,10 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        return response(
+            new ItemResource(Item::find($id)),
+            Response::HTTP_OK
+        );
     }
 
     /**
@@ -57,7 +74,22 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::find($id);
+
+        $item -> update([
+            'location_id' => $request -> location_id,
+            'category_id' => $request -> category_id,
+            'status' => Item::STATUS_ACTIVE,
+            'type' => Item::TYPE_IDEA,
+            'title' => $request -> title,
+            'description' => $request -> description,
+            'hidden' => $request -> hidden == 'on',
+        ]);
+
+        return response(
+            new ItemResource($item),
+            Response::HTTP_OK
+        );
     }
 
     /**
@@ -68,12 +100,17 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Item::destroy($id);
+
+        return response(
+            null,
+            Response::HTTP_NO_CONTENT
+        );
     }
 
     /**
      * Returns all comments assossiated with an item.
-     * @param  int $parentId 
+     * @param  int $parentId
      * @return [type]     [description]
      */
     public function listComments($parentId)
