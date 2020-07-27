@@ -4,10 +4,13 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var selectElems = document.querySelectorAll('select');
-    var selectInstances = M.FormSelect.init(selectElems);
+    M.FormSelect.init(selectElems);
 
     var dropdownElems = document.querySelectorAll('.dropdown-trigger');
-    var dropdownInstances = M.Dropdown.init(dropdownElems);
+    M.Dropdown.init(dropdownElems);
+
+    var textareaElems = document.querySelectorAll('textarea[data-length]');
+    M.CharacterCounter.init(textareaElems);
 });
 
 /**
