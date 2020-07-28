@@ -1,20 +1,22 @@
+@import 'custom-variables';
+
 .card__input {
-    border-bottom: 1px solid #007c9d !important;
-    box-shadow: 0 1px 0 0 #007c9d !important;
+    border-bottom: 1px solid $p-blue !important;
+    box-shadow: 0 1px 0 0 $p-blue !important;
 }
 
 .input__label {
-    color: #007c9d !important;
+    color: $p-blue !important;
 }
 
 .card__btn {
-    background: linear-gradient(45deg, #ffaf00, #ff8429);
+    background: linear-gradient(45deg, $p-yellow, $p-orange);
     border-radius: 5px !important;
     text-transform: uppercase;
     width: 60% !important;
     letter-spacing: 2px;
     font-weight: bold !important;
-    color: #fff !important;
+    color: white !important;
     font-size: 1rem !important;
     margin: 0 auto;
     box-shadow: none;
@@ -23,16 +25,4 @@
 .alert-error {
     text-align: center;
     color: #e53935;
-}
-
-.banner {
-    display: flex;
-}
-
-.banner__img {
-    width: 100%;
-}
-
-.page-footer {
-    background-color: #ff8429 !important;
 }
