@@ -122,7 +122,7 @@
                             <div class="col m5 s12 right-align">
                                 <button
                                     type="submit"
-                                    class="btn btn-primary"
+                                    class="btn btn--primary btn--gradient"
                                 >
                                     Criar
                                     <i class="material-icons right">send</i>

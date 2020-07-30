@@ -53,7 +53,7 @@
 
                 <div class="card-action">
                     <a
-                        class="btn btn-primary"
+                        class="btn btn--primary btn--gradient"
                         @click="createComment"
                     >
                         Comentar

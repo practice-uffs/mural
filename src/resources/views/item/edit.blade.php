@@ -132,7 +132,7 @@
                             <div class="col m6 s12 right-align">
                                 <button
                                     type="submit"
-                                    class="btn btn-primary"
+                                    class="btn btn--primary btn--gradient"
                                 >
                                     Salvar
                                     <i class="material-icons right">save</i>

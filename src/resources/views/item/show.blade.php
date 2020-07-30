@@ -33,7 +33,7 @@
                 {{ $item -> title }}
                 @if ($item -> user_id == $user -> id)
                     <a href="{{ route('items.edit', $item) }}"
-                        class="btn btn-primary right"
+                        class="btn btn--primary btn--gradient right"
                     >
                         <i class="material-icons left">edit</i>
                         Editar
