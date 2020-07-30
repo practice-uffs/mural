@@ -2053,6 +2053,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2097,18 +2099,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                /**
+                 * Creates a new comment.
+                 */
+                if (!_this2.hasComment()) {
+                  document.querySelector('#timeline .timeline__card').style.marginTop = '0';
+                }
+
+                if (!(_this2.userComment == '')) {
+                  _context2.next = 3;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 3:
+                _context2.next = 5;
                 return window.axios.post("/api/items/".concat(_this2.itemId, "/comments"), {
                   'user_id': _this2.userId,
                   'text': _this2.userComment
                 });
 
-              case 2:
+              case 5:
                 comment = _context2.sent;
 
                 _this2.comments.push(comment.data);
 
-              case 4:
+                _this2.userComment = '';
+
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2116,12 +2135,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
+    hasComment: function hasComment() {
+      /**
+       * Returns whether there exists any comment on comment list.
+       */
+      return typeof this.comments !== 'undefined' && this.comments.length > 0;
+    },
     adjustLastItemPosition: function adjustLastItemPosition() {
-      if (typeof this.comments !== 'undefined' && this.comments.length > 0) {
-        var lastItem = document.querySelector('#timeline .timeline__item:last-child');
-        var padding = lastItem.querySelector('.timeline__content').offsetHeight;
-        lastItem.style.paddingBottom = padding * 1.3 + 'px';
-      } else {
+      /**
+       * If none comment exists yet, add a spacing.
+       */
+      if (!this.hasComment()) {
         document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
       }
     }
@@ -2131,6 +2155,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return value.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
+    },
+    formatDate: function formatDate(date) {
+      /**
+       * Returns a date on the format dd/mm/YYYY.
+       */
+      var fullDate = new Date(date);
+      var day = fullDate.getDate();
+      var month = fullDate.getMonth() + 1;
+      var year = fullDate.getFullYear();
+      return "".concat(day, "/").concat(month.toString().padStart(2, '0'), "/").concat(year);
     }
   },
   created: function created() {
@@ -2368,12 +2402,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   },
+  computed: {
+    reactionsId: function reactionsId() {
+      return 'reactions' + this.itemId + this.userId;
+    }
+  },
   created: function created() {
     this.fetchReactions();
   },
   updated: function updated() {
     var dropdownElems = document.querySelectorAll('.dropdown-trigger');
-    var dropdownInstances = M.Dropdown.init(dropdownElems);
+    M.Dropdown.init(dropdownElems);
   }
 });
 
@@ -33185,7 +33224,7 @@ var render = function() {
                 _c("span", [
                   _vm._v(
                     "\n                        " +
-                      _vm._s(comment.date) +
+                      _vm._s(_vm._f("formatDate")(comment.date)) +
                       "\n                    "
                   )
                 ])
@@ -33199,7 +33238,16 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(0, true)
+              _c(
+                "div",
+                { staticClass: "timeline__reactions" },
+                [
+                  _c("reaction-list", {
+                    attrs: { "user-id": _vm.userId, "item-id": comment.id }
+                  })
+                ],
+                1
+              )
             ])
           ]
         )
@@ -33241,7 +33289,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "btn btn-primary",
+              staticClass: "btn btn--primary btn--gradient",
               on: { click: _vm.createComment }
             },
             [_vm._v("\n                    Comentar\n                ")]
@@ -33251,16 +33299,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "timeline__reactions" }, [
-      _c("ul", { staticClass: "reaction-list" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -33323,11 +33362,21 @@ var render = function() {
       _vm._v(" "),
       !_vm.userCreatedAny
         ? _c("div", [
-            _vm._m(0),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-trigger reaction__btn btn-floating",
+                attrs: { href: "#!", "data-target": _vm.reactionsId }
+              },
+              [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+            ),
             _vm._v(" "),
             _c(
               "ul",
-              { staticClass: "dropdown-content", attrs: { id: "reactions" } },
+              {
+                staticClass: "dropdown-content",
+                attrs: { id: _vm.reactionsId }
+              },
               [
                 _c("li", [
                   _c(
@@ -33374,21 +33423,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-trigger reaction__btn btn-floating",
-        attrs: { href: "#!", "data-target": "reactions" }
-      },
-      [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -45564,7 +45599,11 @@ module.exports = function(module) {
  */
 document.addEventListener('DOMContentLoaded', function () {
   var selectElems = document.querySelectorAll('select');
-  var selectInstances = M.FormSelect.init(selectElems);
+  M.FormSelect.init(selectElems);
+  var dropdownElems = document.querySelectorAll('.dropdown-trigger');
+  M.Dropdown.init(dropdownElems);
+  var textareaElems = document.querySelectorAll('textarea[data-length]');
+  M.CharacterCounter.init(textareaElems);
 });
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -45867,8 +45906,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jean/Grintex-Practice/web-feedback/src/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jean/Grintex-Practice/web-feedback/src/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jean/Grintex-Practice/web-feedback/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jean/Grintex-Practice/web-feedback/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
