@@ -3,8 +3,6 @@
  * https://www.w3schools.com/howto/howto_css_timeline.asp
  */
 
-@import 'custom-variables';
-
 // Component-specific variables
 $tl-left-space: 4rem;
 $tl-base-padding: 1rem;
@@ -60,7 +58,7 @@ ul[class="timeline__list"] {
 
     width: $tl-ruler-width;
 
-    background-color: $p-orange;
+    background-color: color('orange');
 }
 
 /**

@@ -7,11 +7,11 @@
 }
 
 .page-footer {
-    background-color: $p-orange !important;
+    background-color: color('orange') !important;
 }
 
 .footer__link {
-    color: $p-yellow;
+    color: color('yellow');
 }
 
 .footer__heart {
