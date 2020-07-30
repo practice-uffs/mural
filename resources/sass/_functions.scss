@@ -3,7 +3,7 @@
 }
 
 @function color($key) {
-    @return map-get($color, $key);
+    @return map-get($colors, $key);
 }
 
 @function gradient($key) {
