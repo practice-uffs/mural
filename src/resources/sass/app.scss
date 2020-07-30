@@ -2,15 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 // Variables and utility
-@import 'variables';
 @import '../css/spacing-utility.css';
 
 // Materialize
 @import '~materialize-css/sass/materialize';
 
+@import 'variables';
+@import 'functions';
+
 // Custom styles and components
 @import 'login';
 @import 'components/footer';
+@import 'components/button';
 @import 'components/navbar';
 @import 'components/reaction';
 @import 'components/timeline';
@@ -42,14 +45,6 @@
 
     label input[type=checkbox]:checked+.lever:after {
         background-color: lighten($p-blue, 10%);
-    }
-}
-
-.btn-primary {
-    background-image: linear-gradient(45deg, $p-blue, $p-blue-light);
-
-    &:hover {
-        background-color: $p-blue-light;
     }
 }
 
