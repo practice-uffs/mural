@@ -126,7 +126,7 @@ class ItemController extends Controller
         return view('item.edit', [
             'user' => Auth::user(),
             'item' => $item,
-            'categories' => $this->findCategoriesByItemType($item),
+            'categories' => $this->findCategoriesByItemType($item -> type),
             'locations' => Location::all()
         ]);
     }
