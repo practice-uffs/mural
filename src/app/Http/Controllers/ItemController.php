@@ -153,7 +153,7 @@ class ItemController extends Controller
         $item->location_id = $request->get('location_id');
         $item->category_id = $request->get('category_id');
         $item->status = Item::STATUS_ACTIVE;
-        $item->type = Item::TYPE_IDEA;
+        $item->type = $request -> type;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
         $item->hidden = $request->get('hidden') == 'on';

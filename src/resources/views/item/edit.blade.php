@@ -60,6 +60,8 @@
                         @method('put')
                         @csrf
 
+                        <input type="text" name="type" value="{{ $item -> type }}" class="hide">
+
                         <div class="row">
                             <div class="col m6 s12">
                                 <div class="input-field">
