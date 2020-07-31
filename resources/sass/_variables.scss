@@ -1,0 +1,43 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #007c9d;   // practice theme
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #ff8429; // practice theme
+$yellow: #ffaf00; // practice theme
+$green: #27ad60;
+$teal: #3db4bf;
+$cyan: #6cb2eb;
+
+// Maps
+$colors: (
+    'blue': $blue,
+    'indigo': $indigo,
+    'purple': $purple,
+    'pink': $pink,
+    'red': $red,
+    'orange': $orange,
+    'yellow': $yellow,
+    'green': $green,
+    'teal': $teal,
+    'cyan': $cyan,
+);
+
+$theme-colors: (
+    'primary': $blue,
+    'secondary': $orange,
+);
+
+$gradient-colors: (
+    'primary': ($blue, $indigo),
+    'secondary': ($orange, $yellow),
+);

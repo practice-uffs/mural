@@ -1,0 +1,125 @@
+/**
+ * Component inspired by w3schools:
+ * https://www.w3schools.com/howto/howto_css_timeline.asp
+ */
+
+// Component-specific variables
+$tl-left-space: 4rem;
+$tl-base-padding: 1rem;
+$tl-item-offset: 4rem;
+$tl-icon-size: 2rem;
+$tl-ruler-width: 4px;
+
+$tl-icon-adjust: 0.3rem;
+
+// Remove list standard styles.
+ul[class="timeline__list"] {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Fix top margin.
+.card + .timeline {
+    margin-top: -1rem;
+}
+
+// Fix margin of add comment textarea.
+.timeline__card {
+    margin-top: 0;
+
+    .card-action {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        text-align: right;
+    }
+}
+
+/**
+ * Timeline container.
+ */
+.timeline__list {
+    position: relative;
+    margin: 0 auto;
+}
+
+/**
+* Vertical ruler.
+*/
+.timeline__list::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: $tl-left-space;
+    bottom: 0;
+    margin-left: - $tl-ruler-width / 2;
+
+    width: $tl-ruler-width;
+
+    background-color: color('orange');
+}
+
+/**
+ * Items' content wrapper.
+ */
+.timeline__content {
+    position: relative;
+    padding: $tl-base-padding;
+        padding-left: $tl-left-space + $tl-icon-size;
+}
+
+/**
+* Circles marking every item.
+*/
+.timeline__content::after {
+    content: '';
+
+    position: absolute;
+    left: $tl-left-space - $tl-icon-size / 2;
+    top: $tl-base-padding;
+    z-index: 1;
+
+    height: $tl-icon-size;
+    width: $tl-icon-size;
+    border-radius: 50%;
+
+    border: $tl-ruler-width solid #000000;
+    background-color: #ffffff;
+}
+
+/**
+ * Adjust first item.
+ */
+.timeline__item:first-child {
+    .timeline__content {
+        padding-top: $tl-item-offset * 2;
+
+        &::after {
+            top: $tl-item-offset * 2;
+        }
+    }
+}
+
+
+.timeline__reactions {
+    padding-top: $tl-base-padding / 2;
+}
+
+/**
+ * Colors and font configurations
+ */
+.timeline__title {
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    span {
+        font-size: 0.75rem;
+        color: #4d4d4d;
+    }
+}
+
+.timeline__text {
+    color: #363636;
+}

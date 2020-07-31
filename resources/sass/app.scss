@@ -1,0 +1,63 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Variables and utility
+@import '../css/spacing-utility.css';
+
+// Materialize
+@import '~materialize-css/sass/materialize';
+
+@import 'variables';
+@import 'functions';
+
+// Custom styles and components
+@import 'login';
+@import 'components/footer';
+@import 'components/button';
+@import 'components/navbar';
+@import 'components/reaction';
+@import 'components/timeline';
+@import 'components/header';
+
+// TODO: Substituir para um outro arquivo
+.text-primary {
+    color: $p-blue !important;
+}
+
+// General styles
+.input-field {
+    input[type=text]:focus,
+    textarea:focus {
+        border-bottom: 1px solid $p-blue !important;
+        box-shadow: 0 1px 0 0 $p-blue !important;
+    }
+
+    label,
+    select {
+        color: $p-blue !important;
+    }
+}
+
+.switch {
+    label input[type=checkbox]:checked+.lever {
+        background-color: $p-blue;
+    }
+
+    label input[type=checkbox]:checked+.lever:after {
+        background-color: lighten($p-blue, 10%);
+    }
+}
+
+@media (max-width: 576px) {
+    .btn {
+        width: 100% !important;
+    }
+}
+
+.dropdown-content {
+    li {
+        & > a, & > span {
+            color: $p-blue;
+        }
+    }
+}
