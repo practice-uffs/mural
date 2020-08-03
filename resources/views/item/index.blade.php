@@ -1,36 +1,31 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-    <meta charset=utf-8>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name=robots content=noindex>
-    <!--[if IE]><link rel="icon" href="favicon.png"><![endif]-->
-    <title>homer</title>
-    <link href="{{ asset('homer/css/app.3b90d21f.css') }}" rel=preload as=style>
-    <link href="{{ asset('homer/css/chunk-vendors.49f69c55.css') }}" rel=preload as=style>
-    <link href="{{ asset('homer/js/app.af4239f3.js') }}" rel=preload as=script>
-    <link href="{{ asset('homer/js/chunk-vendors.06bf9d4a.js') }}" rel=preload as=script>
-    <link href="{{ asset('homer/css/chunk-vendors.49f69c55.css') }}" rel=stylesheet>
-    <link href="{{ asset('homer/css/app.3b90d21f.css') }}" rel=stylesheet>
-    <link rel=icon type=image/png sizes=32x32 href="{{ asset('homer/assets/icons/favicon-32x32.png') }}">
-    <link rel=icon type=image/png sizes=16x16 href="{{ asset('homer/assets/icons/favicon-16x16.png') }}">
-    <link rel=manifest href="{{ asset('homer/assets/manifest.json') }}">
-    <meta name=theme-color content=#4DBA87>
-    <meta name=apple-mobile-web-app-capable content=yes>
-    <meta name=apple-mobile-web-app-status-bar-style content=black>
-    <meta name=apple-mobile-web-app-title content="Homer Dashboard">
-    <link rel=apple-touch-icon href="{{ asset('homer/assets/icons/apple-touch-icon-152x152.png') }}">
-    <link rel=mask-icon href="{{ asset('homer/assets/icons/safari-pinned-tab.svg') }}" color=#4DBA87>
-    <meta name=msapplication-TileImage content="{{ asset('homer/assets/icons/msapplication-icon-144x144.png') }}">
-    <meta name=msapplication-TileColor content=#000000>
-</head>
-<body>
-    <noscript>
-        <strong>We're sorry but homer doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id=app></div>
-    <script src="{{ asset('homer/js/chunk-vendors.06bf9d4a.js') }}"></script>
-    <script src="{{ asset('homer/js/app.af4239f3.js') }}"></script>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('header')
+<header>
+    <nav class="header">
+        <div class="header__wrapper">
+            <a href="#" class="header__logo">
+                <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
+            </a>
+
+            <div class="header__nav">
+                <a class="nav__link dropdown-trigger"
+                    data-target="userMenu"
+                >
+                    <i class="material-icons">person</i>{{ $user -> uid }}
+                </a>
+
+                <ul id="userMenu" class="dropdown-content">
+                    <li>
+                        <a href="{{ route('logout') }}" class="text-primary">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+@endsection
+
+@section('content')
+
+@endsection
