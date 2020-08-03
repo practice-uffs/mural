@@ -23,5 +23,3 @@ Route::apiResource('items', 'API\ItemController');
     Route::post('items/{id}/comments', 'API\ItemController@storeComment');
 
 Route::apiResource('reactions', 'API\ReactionController');
-
-Route::get('/conf', 'API\ConfigController@homerConfig');

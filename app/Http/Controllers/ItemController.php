@@ -21,7 +21,7 @@ class ItemController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index']]);
     }
 
     /**
@@ -31,8 +31,11 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         return view('item.index', [
-            'user' => Auth::user()
+            'user' => $user,
+            'items' => SELF::getGlobalItems($user),
         ]);
     }
 
@@ -44,6 +47,19 @@ class ItemController extends Controller
     protected static function findCategoriesByItemType($itemType)
     {
         return Category::where('item_type', $itemType) -> get();
+    }
+
+    /**
+     * Returns all items that may be retrieved for the given user.
+     * @return [type] [description]
+     * @param  [type] $user [description]
+     */
+    protected static function getGlobalItems($user) {
+        $items = Item::where('hidden', false)
+            -> whereNull('parent_id')
+            -> get();
+
+        return $items;
     }
 
     /**
