@@ -8,7 +8,7 @@
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
-            <div class="header__nav">
+            <div class="header__auth">
                 @if (Auth::check())
                     <a class="nav__link dropdown-trigger"
                         data-target="userMenu"
@@ -29,6 +29,15 @@
                 </ul>
             </div>
         </div>
+        @if (Auth::check())
+            <div class="header__nav">
+                <ul>
+                    <li>
+                        <a href="#">Criar Item</a>
+                    </li>
+                </ul>
+            </div>
+        @endif  
     </nav>
 </header>
 @endsection

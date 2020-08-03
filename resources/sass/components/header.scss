@@ -1,3 +1,10 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .header {
     height: auto;
     line-height: normal;
@@ -20,11 +27,29 @@
     }
 
     /**
-     * Right navigation menu.
+     * Right user-related menu.
      */
-    &__nav {
+    &__auth {
         display: inline-block;
         float: right;
+    }
+}
+
+/**
+ * Bottom navigation section.
+ */
+.header__nav {
+    @extend .container;
+
+    li {
+        float: left;
+        text-decoration: none;
+
+        a {
+            display: block;
+            color: black;
+            padding: 1rem;
+        }
     }
 }
 
