@@ -21,7 +21,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::whereNull('parent_id');
+        $items = Item::where('hidden', false)
+            -> whereNull('parent_id');
 
         return ItemResource::collection($items -> paginate());
     }
