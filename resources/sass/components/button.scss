@@ -3,7 +3,6 @@
 
 @each $color, $value in $theme-colors {
     .btn--#{$color} {
-        color: color-yiq($value);
         background-color: $value;
 
         &:hover {

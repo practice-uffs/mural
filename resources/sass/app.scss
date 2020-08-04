@@ -18,33 +18,34 @@
 @import 'components/reaction';
 @import 'components/timeline';
 @import 'components/header';
-
-// TODO: Substituir para um outro arquivo
-.text-primary {
-    color: $p-blue !important;
-}
+@import 'components/card';
 
 // General styles
+
+.text-secondary {
+    color: theme-color('secondary');
+}
+
 .input-field {
     input[type=text]:focus,
     textarea:focus {
-        border-bottom: 1px solid $p-blue !important;
-        box-shadow: 0 1px 0 0 $p-blue !important;
+        border-bottom: 1px solid theme-color('primary') !important;
+        box-shadow: 0 1px 0 0 theme-color('primary') !important;
     }
 
     label,
     select {
-        color: $p-blue !important;
+        color: theme-color('primary') !important;
     }
 }
 
 .switch {
     label input[type=checkbox]:checked+.lever {
-        background-color: $p-blue;
+        background-color: theme-color('primary');
     }
 
     label input[type=checkbox]:checked+.lever:after {
-        background-color: lighten($p-blue, 10%);
+        background-color: lighten(theme-color('primary'), 10%);
     }
 }
 
@@ -57,7 +58,7 @@
 .dropdown-content {
     li {
         & > a, & > span {
-            color: $p-blue;
+            color: theme-color('primary');
         }
     }
 }
