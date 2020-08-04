@@ -18,7 +18,7 @@ Route::resource('/items', 'ItemController')->except([
     'create'
 ]);
 
-Route::get('/items/create/{type}', 'ItemController@create');
+Route::get('/items/create/{type}', 'ItemController@create') -> name('items.create');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
