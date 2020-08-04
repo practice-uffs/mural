@@ -25,21 +25,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user = Auth::user();
-
-        return view('item.index', [
-            'user' => $user,
-            'items' => SELF::getGlobalItems($user),
-        ]);
-    }
-
-    /**
      * Returns the categories for a given type of item
      * @param int
      * @return
@@ -54,12 +39,33 @@ class ItemController extends Controller
      * @return [type] [description]
      * @param  [type] $user [description]
      */
-    protected static function getGlobalItems($user) {
+    protected static function getGlobalItems($user)
+    {
         $items = Item::where('hidden', false)
             -> whereNull('parent_id')
             -> get();
 
         return $items;
+    }
+
+    protected static function isItemVisible($itemType, $hidden)
+    {
+        return !$hidden == 'on' || $itemType == Item::TYPE_SERVICE;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $user = Auth::user();
+
+        return view('item.index', [
+            'user' => $user,
+            'items' => SELF::getGlobalItems($user),
+        ]);
     }
 
     /**
@@ -107,7 +113,7 @@ class ItemController extends Controller
             'type' => $request -> type,
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'hidden' => $this->isSwitchOff($request->get('hidden')) || $this->isService($request->type),
+            'hidden' => SELF::isItemVisible($request -> type, $request -> hidden)
         ]);
 
         $item->save();
@@ -172,7 +178,7 @@ class ItemController extends Controller
         $item->type = $request -> type;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
-        $item->hidden = $request->get('hidden') == 'on';
+        $item->hidden = SELF::isItemVisible($request -> type, $request -> hidden);
         $item->updated_at = Carbon::now();
 
         $item->save();
@@ -192,15 +198,5 @@ class ItemController extends Controller
         $item->delete();
 
         return redirect('/home')->with('success', 'Item deleted!');
-    }
-
-    private function isSwitchOff($switch_value)
-    {
-        return $switch_value != 'on';
-    }
-
-    private function isService($item_type)
-    {
-        return $item_type == Item::TYPE_SERVICE;
     }
 }
