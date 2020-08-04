@@ -58,13 +58,15 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
+        $type = $request->type;
 
         return view('item.index', [
             'user' => $user,
             'items' => SELF::getGlobalItems($user),
+            'current_item_type' => $type ? $type : Item::TYPE_FEEDBACK
         ]);
     }
 
@@ -84,7 +86,8 @@ class ItemController extends Controller
             'type' => $type,
             'formTitle' => $formTitle,
             'categories' => SELF::findCategoriesByItemType($type),
-            'locations' => Location::all()
+            'locations' => Location::all(),
+            'current_item_type' => $type
         ]);
     }
 
@@ -133,7 +136,8 @@ class ItemController extends Controller
         return view('item.show', [
             'user' => Auth::user(),
             'item' => $item,
-            'reactions' => $item -> reactions -> groupBy('text')
+            'reactions' => $item -> reactions -> groupBy('text'),
+            'current_item_type' => $item->type
         ]);
     }
 

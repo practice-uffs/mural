@@ -34,7 +34,7 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn waves-block card__btn my-3">
+                            <button type="submit" class="btn waves-block card__btn my-3 mx-auto">
                                 Login
                             </button>
 

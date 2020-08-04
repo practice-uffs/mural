@@ -5,6 +5,41 @@
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
+            <ul>
+                <li>
+                    <a href="{{ route('items.index', ['type' => Item::TYPE_FEEDBACK]) }}"
+                        class="
+                            nav__link
+                            @if ($current_item_type == Item::TYPE_FEEDBACK)
+                                nav__link--active
+                            @endif
+                        "
+                    >
+                        <i class="material-icons pr-1">
+                            feedback
+                        </i>
+                        Feedback
+                    </a>
+                </li>
+                @if(Auth::check())
+                    <li>
+                        <a href="{{ route('items.index', ['type' => Item::TYPE_SERVICE]) }}" 
+                            class="
+                                nav__link
+                                @if ($current_item_type == Item::TYPE_SERVICE)
+                                    nav__link--active
+                                @endif
+                            "
+                        >
+                            <i class="material-icons pr-1">
+                                shop
+                            </i>
+                            Serviços
+                        </a>
+                    </li>
+                @endif
+            </ul>
+
             <div class="header__auth">
                 @if (Auth::check())
                     <a class="nav__link dropdown-trigger"
