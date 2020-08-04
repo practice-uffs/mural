@@ -8,11 +8,18 @@
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
-            <div class="header__nav">
-                <a class="nav__link dropdown-trigger"
-                    data-target="userMenu"
-                >
-                    <i class="material-icons">person</i>{{ $user -> uid }}
+            <div class="header__auth">
+                @if (Auth::check())
+                    <a class="nav__link dropdown-trigger"
+                        data-target="userMenu"
+                    >
+                            <i class="material-icons">person</i>{{ $user -> uid }}
+                @else
+                    <a href="{{ route('login') }}"
+                        class="nav__link"
+                    >
+                        <i class="material-icons">login</i> Entrar
+                @endif
                 </a>
 
                 <ul id="userMenu" class="dropdown-content">
