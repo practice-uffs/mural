@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Item;
 use App\Location;
 use App\Category;
@@ -66,7 +67,9 @@ class ItemController extends Controller
         return view('item.index', [
             'user' => $user,
             'items' => SELF::getGlobalItems($user),
-            'current_item_type' => $type ? $type : Item::TYPE_FEEDBACK
+            'categories' => SELF::findCategoriesByItemType($type),
+            'current_item_type' => $type,
+            'locations' => Location::all()
         ]);
     }
 
@@ -100,9 +103,11 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'type' => 'required',
+            'title' => 'required',
+            'hidden' => 'required',
             'location_id' => 'required',
             'category_id' => 'required',
-            'title' => 'required',
             'description' => 'required',
         ]);
 
@@ -110,17 +115,21 @@ class ItemController extends Controller
 
         $item = new Item([
             'user_id' => Auth::user()->id,
-            'location_id' => $request->get('location_id'),
-            'category_id' => $request->get('category_id'),
+            'location_id' => $request->location_id,
+            'category_id' => $request->category_id,
             'status' => Item::STATUS_ACTIVE,
-            'type' => $request -> type,
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
+            'type' => $request->type,
+            'title' => $request->title,
+            'description' => $request->description,
             'hidden' => SELF::isItemVisible($request -> type, $request -> hidden)
         ]);
 
         $item->save();
-        return redirect('/home')->with('success', 'Item saved!');
+
+        return response(
+            ['message' => 'Serviço criado com sucesso!'],
+            Response::HTTP_CREATED
+        );
     }
 
     /**
