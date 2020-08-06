@@ -36,6 +36,7 @@
 
         <div
             class="card timeline__card"
+            v-if="userId"
         >
             <div class="card-content">
                 <div class="card-title">
@@ -96,10 +97,6 @@ export default {
              * Creates a new comment.
              */
 
-            if (!this.hasComment()) {
-                document.querySelector('#timeline .timeline__card').style.marginTop = '0';
-            }
-
             if (this.userComment == '') return;
 
             let comment = await window.axios.post(`/api/items/${this.itemId}/comments`, {
@@ -110,6 +107,13 @@ export default {
             this.comments.push(comment.data);
 
             this.userComment = '';
+
+            if (!this.hasComment()) {
+                document.querySelector('#timeline .timeline__card').style.marginTop = '0';
+
+            } else {
+                document.querySelector('#timeline .timeline__item:last-child').style.paddingBottom = '0';
+            }
         },
 
         hasComment() {
@@ -125,7 +129,18 @@ export default {
              * If none comment exists yet, add a spacing.
              */
 
-            if (!this.hasComment()) {
+            let lastItem = document.querySelector('#timeline .timeline__item:last-child');
+            let padding = lastItem.querySelector('.timeline__content').offsetHeight;
+
+            if (this.hasComment()) {
+                if (this.userId) {
+                    lastItem.style.paddingBottom = padding * 1.3 + 'px';
+
+                } else {
+                    lastItem.style.marginBottom = padding + 'px';
+                }
+
+            } else {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '4rem';
             }
         },
