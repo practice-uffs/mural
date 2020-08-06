@@ -83,7 +83,7 @@
                     <a href="{{ route('items.show', $item -> id) }}"
                         class="grey-text text-darken-4"
                     >
-                        <div class="card">
+                        <div class="card hoverable">
                             <div class="card-content">
                                 <span class="card-title">
                                     {{ $item -> title }}
