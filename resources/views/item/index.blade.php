@@ -29,6 +29,18 @@
                 </ul>
             </div>
         </div>
+
+        <div class="header__nav">
+            <ul>
+                <li>
+                    <a href="#" id="viewTrigger">
+                        <span class="material-icons">
+                            view_list
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 @endsection
@@ -65,7 +77,7 @@
 
         <h4>Lista de ideias criadas</h4>
 
-        <div class="row">
+        <div class="row" id="viewList">
             @foreach ($items as $item)
                 <div class="col s12 m6 xl4">
                     <a href="{{ route('items.show', $item -> id) }}"
@@ -87,3 +99,26 @@
         </div>
     </main>
 @endsection
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    let viewList = document.getElementById('viewList');
+    let viewTrigger = document.getElementById('viewTrigger');
+
+    viewTrigger.addEventListener('click', function() {
+        viewList.querySelectorAll('div.col').forEach((elem) => {
+            elem.classList.toggle('m6');
+            elem.classList.toggle('xl4');
+
+            if (elem.classList.contains('m6')) {
+                viewTrigger.querySelector('span').innerHTML = 'view_list';
+
+            } else {
+                viewTrigger.querySelector('span').innerHTML = 'view_module';
+            }
+        });
+    });
+
+
+});
+</script>
