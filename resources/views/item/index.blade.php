@@ -1,3 +1,103 @@
+<div id="modalFeedback" class="modal">
+    <form method="post" action="{{ route('items.store') }}">
+        @csrf
+
+        <div class="modal-content">
+            <h4>Adicionar uma ideia</h4>
+
+
+            <input type="text" name="type" value="{{ $type }}" class="hide">
+
+            <div class="row">
+                <div class="col m6 s12">
+                    <div class="input-field">
+                        <label for="title">Título</label>
+                        <input
+                            type="text"
+                            name="title"
+                            value="{{ old('title', '') }}"
+                            placeholder="Ex.: Jogos digitais em aula"
+                        />
+                    </div>
+                </div>
+
+                <div class="col m3 s12">
+                    <div class="input-field">
+                        <select name="category_id" id="category_id">
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == old('category_id') || $category->id == $type ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+                </div>
+
+                <div class="col m3 s12">
+                    <div class="input-field">
+                        <select name="location_id" id="location_id">
+                            <option value="" disabled selected>Selecione um local</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}" {{ $location->id == old('location_id') ? 'selected="selected"' : '' }}>{{ $location->name }}</option>
+                            @endforeach
+                        </select>
+                        <label>Local de realização</label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m12 s12">
+                    <div class="input-field">
+                        <label for="description">Descrição</label>
+                        <textarea
+                            class="materialize-textarea"
+                            id="description"
+                            name="description"
+                            rows="8"
+                            data-length="800"
+                        >{{ old('description', '') }}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m7 s12 text-right">
+                    @if($type == Item::TYPE_SERVICE)
+                        <p>
+                            Esse serviço ficará visível somente a você e ao Practice.
+                        </p>
+                    @else
+                        <div class="switch">
+                            Esse item ficará visível para todos?
+                            <label>
+                                Não
+                                <input
+                                    type="checkbox"
+                                    name="hidden"
+                                    {{ old('hidden') == 'on' ? 'checked="checked"' : '' }}
+                                >
+                                <span class="lever"></span>
+                                Sim
+                            </label>
+                        </div>
+                    @endif
+                </div>
+        </div>
+
+        <div class="modal-footer">
+            <button
+                type="submit"
+                class="btn btn--primary btn--gradient modal-close"
+            >
+                Criar
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+</div>
+
 @extends('layouts.app')
 
 @section('header')
@@ -59,8 +159,8 @@
                         </div>
 
                         <div class="card-action">
-                            <a href="{{ route('items.create', 1) }}"
-                                class="text-secondary"
+                            <a href="#modalFeedback"
+                                class="text-secondary modal-trigger"
                             >
                                 Adicionar Feedback
                             </a>
