@@ -68,31 +68,28 @@
 
             <div class="row">
                 <div class="col m9 s12">
-                    <div v-if="!success" class="warning left">
-                        <p>
+                    <ul class="left">
+                        <li v-if="!success" class="warning">
                             <i class="material-icons warning--vertical-align">
                                 warning
                             </i>
                             Esse serviço ficará visível somente a você e a equipe do Practice.
-                        </p>
-                    </div>
-
-                    <div class="error left">
-                        <p v-for="error in errors" :key="error.title">
+                        </li>
+                        <li v-for="error in errors" :key="error.title" class="error">
                             <i class="material-icons error--vertical-align">
                                 error
                             </i>
                             {{ error[0] }}
-                        </p>
-                    </div>
-
-                    <div v-if="success" class="success left">
-                        <p>
+                        </li>
+                        <li v-if="success" class="success">
                             <i class="material-icons success--vertical-align">
                                 check
                             </i>
                             {{ success }}
-                        </p>
+                        </li>
+                    </ul>
+
+                    <div v-if="success" class="success left">
                     </div>
                 </div>
                 <div class="col m3 s12">
@@ -199,10 +196,6 @@ export default {
     @import "../../sass/variables";
 
     $row-offset-padding: 0.75rem;
-
-    p {
-        margin: 0;
-    }
 
     .modal {
         max-height: 100% !important;
