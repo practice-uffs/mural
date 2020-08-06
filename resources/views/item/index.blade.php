@@ -56,5 +56,34 @@
                 </div>
             @endforeach
         </div>
+
+        @if(Auth::check())
+            <div class="fixed-action-btn fixed-action-btn--width">
+                <a class="btn-floating btn-large btn--primary modal-trigger"
+                    data-position="left" href="#service-form"
+                    data-tooltip=" 
+                        Criar um novo
+                        @if($current_item_type == Item::TYPE_SERVICE)
+                            Serviço
+                        @else
+                            Feedback
+                        @endif
+                    "
+                >
+                    <i class="large material-icons">add</i>
+                </a>
+            </div>
+
+            @if($current_item_type == Item::TYPE_FEEDBACK)
+            @else
+                <service-form
+                    url="{{ route('items.store') }}"
+                    categories="{{ json_encode($categories) }}"
+                    locations="{{ json_encode($locations) }}"
+                >
+                </service-form>
+            @endif
+
+        @endif
     </main>
 @endsection
