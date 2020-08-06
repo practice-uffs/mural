@@ -38,13 +38,15 @@
         <div class="card-content">
             <div class="card-title">
                 {{ $item -> title }}
-                @if ($item -> user_id == $user -> id)
-                    <a href="{{ route('items.edit', $item) }}"
-                        class="btn btn--primary btn--gradient right"
-                    >
-                        <i class="material-icons left">edit</i>
-                        Editar
-                    </a>
+                @if (Auth::check())
+                    @if ($item -> user_id == $user -> id)
+                        <a href="{{ route('items.edit', $item) }}"
+                            class="btn btn--primary btn--gradient right"
+                        >
+                            <i class="material-icons left">edit</i>
+                            Editar
+                        </a>
+                    @endif
                 @endif
             </div>
 
@@ -54,7 +56,9 @@
 
         <div class="card__reaction">
             <reaction-list
-                user-id="{{ $user -> id }}"
+                @if ($user)
+                    user-id="{{ $user -> id }}"
+                @endif
                 item-id="{{ $item -> id }}"
             >
             </reaction-list>
@@ -62,7 +66,9 @@
     </div>
 
     <comment-list
-        user-id="{{ $user -> id }}"
+        @if ($user)
+            user-id="{{ $user -> id }}"
+        @endif
         item-id="{{ $item -> id }}"
     ></comment-list>
 </main>
