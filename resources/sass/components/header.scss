@@ -40,14 +40,28 @@ ul {
 .header__nav {
     @extend .container;
 
+    ul {
+        overflow: hidden;
+    }
+
     li {
         float: left;
         text-decoration: none;
 
         a {
             display: block;
-            color: black;
             padding: 1rem;
+            color: darken(theme-color('primary'), 10%);
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: transparent !important;
+                color: darken(theme-color('primary'), 20%);
+            }
+
+            .material-icons {
+                font-size: 2rem;
+            }
         }
     }
 }
