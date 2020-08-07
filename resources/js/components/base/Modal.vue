@@ -6,7 +6,7 @@
             </h5>
 
             <div class="modal__body">
-                <slot></slot>    
+                <slot></slot>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
                 class="btn btn--primary btn--gradient"
                 @click="handleClick"
             >
-                {{ btnAction }}
+                {{ btnActionTxt }}
                 <i class="material-icons right">send</i>
             </a>
         </div>
@@ -27,7 +27,7 @@ export default {
     props: {
         modalId: String,
         modalTitle: String,
-        btnAction: String,
+        btnActionTxt: String,
     },
 
     methods: {
