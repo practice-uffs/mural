@@ -37,7 +37,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('async-helper', require('./components/AsyncHelperComponent.vue').default);
+Vue.component('base-modal', require('./components/base/Modal.vue').default);
 Vue.component('reaction-list', require('./components/ReactionListComponent.vue').default);
 Vue.component('comment-list', require('./components/CommentListComponent.vue').default);
 
