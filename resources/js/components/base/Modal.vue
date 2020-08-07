@@ -12,10 +12,9 @@
             </div>
         </div>
 
-        <div class="modal-footer">
+        <div class="modal-footer" ref="modalFooter">
             <a
                 class="btn btn--primary btn--gradient"
-                ref="btnAction"
                 @click="handleClick"
             >
                 {{ btnActionTxt }}
@@ -35,9 +34,9 @@ export default {
 
     methods: {
         addLoader() {
-            this.$refs.btnAction.outerHTML = `
+            this.$refs.modalFooter.innerHTML = `
             <div class="preloader-wrapper small active">
-                <div class="spinner-layer spinner-green-only">
+                <div class="spinner-layer">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div>
@@ -49,6 +48,19 @@ export default {
                     </div>
                 </div>
             </div>
+            `;
+        },
+
+        resetBtn() {
+            this.$refs.modalFooter.innerHTML = `
+            <a
+                class="btn btn--primary btn--gradient"
+                ref="btnAction"
+                @click="handleClick"
+            >
+                ${this.btnActionTxt}
+                <i class="material-icons right">send</i>
+            </a>
             `;
         },
 

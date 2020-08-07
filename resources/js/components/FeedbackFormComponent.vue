@@ -3,7 +3,7 @@
         :modal-id="modalId"
         :modal-title="modalTitle"
         :btn-action-txt="btnActionTxt"
-        @click="createFeedback"
+        @click="handleClick"
         ref="modalWrapper"
     >
         <input type="text" name="type" value="1" class="hide">
@@ -150,11 +150,18 @@ export default {
                 'type': 1,
             }
 
-            window.axios.post('/api/items', data).then(function(response) {
+            await window.axios.post('/api/items', data).then(function(response) {
                 console.log(response);
             });
+        },
+
+        handleClick() {
+            this.createFeedback();
 
             this.$refs.modalWrapper.closeModal();
+            this.$refs.modalWrapper.resetBtn();
+
+            window.location.href = '/items';
         }
     },
 
