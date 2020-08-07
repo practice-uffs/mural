@@ -4,6 +4,7 @@
         :modal-title="modalTitle"
         :btn-action-txt="btnActionTxt"
         @click="createFeedback"
+        ref="modalWrapper"
     >
         <input type="text" name="type" value="1" class="hide">
 
@@ -15,8 +16,8 @@
                         type="text"
                         name="title"
                         v-model="title"
-                        placeholder="Ex.: Jogos digitais em aula"
                     />
+                    <span class="helper-text">Ex.: Jogos digitais em aula</span>
                 </div>
             </div>
 
@@ -145,15 +146,15 @@ export default {
                 'category_id': this.categoryId,
                 'title': this.title,
                 'description': this.description,
-                'hidden': this.hidden ? 'on' : 'off',
+                'hidden': this.hidden ? 'off' : 'on',
                 'type': 1,
             }
-
-            console.log(data);
 
             window.axios.post('/api/items', data).then(function(response) {
                 console.log(response);
             });
+
+            this.$refs.modalWrapper.closeModal();
         }
     },
 

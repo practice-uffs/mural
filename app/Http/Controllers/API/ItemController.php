@@ -40,7 +40,7 @@ class ItemController extends Controller
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
             'status' => Item::STATUS_ACTIVE,
-            'type' => Item::TYPE_IDEA,
+            'type' => $request -> type,
             'title' => $request -> title,
             'description' => $request -> description,
             'hidden' => $request -> hidden == 'on',

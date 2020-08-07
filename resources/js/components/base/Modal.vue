@@ -15,6 +15,7 @@
         <div class="modal-footer">
             <a
                 class="btn btn--primary btn--gradient"
+                ref="btnAction"
                 @click="handleClick"
             >
                 {{ btnActionTxt }}
@@ -33,8 +34,33 @@ export default {
     },
 
     methods: {
+        addLoader() {
+            this.$refs.btnAction.outerHTML = `
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            `;
+        },
+
         handleClick() {
+            this.addLoader();
             this.$emit('click');
+        },
+
+        closeModal() {
+            M.Modal.getInstance(
+                document.getElementById(this.modalId)
+            ).close();
         }
     }
 }

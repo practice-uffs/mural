@@ -99,13 +99,15 @@
             @endforeach
         </div>
     </main>
+    @if (Auth::check())
+        <feedback-form
+            modal-id="modalFeedback"
+            modal-title="Adicionar um Feedback"
+            btn-action-txt="Criar"
+            user-id="{{ $user -> id }}"
+        ></feedback-form>
+    @endif
 
-    <feedback-form
-        modal-id="modalFeedback"
-        modal-title="Adicionar um Feedback"
-        btn-action-txt="Criar"
-        user-id="{{ $user -> id }}"
-    ></feedback-form>
 @endsection
 
 <script type="text/javascript">
