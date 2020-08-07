@@ -56,6 +56,11 @@ class Item extends Model
         return $this->hasOne('App\Category');
     }
 
+    public function specification()
+    {
+        return $this->hasOne('App\Specification');
+    }
+
     public function reactions()
     {
         return $this->hasMany('App\Reaction');
