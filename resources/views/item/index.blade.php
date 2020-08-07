@@ -86,7 +86,7 @@
                     >
                         <div class="card hoverable">
                             <div class="card-content">
-                                <span class="card-title">
+                                <span class="card-title truncate">
                                     {{ $item -> title }}
                                 </span>
                                 <p class="truncate grey-text text-darken-3">
