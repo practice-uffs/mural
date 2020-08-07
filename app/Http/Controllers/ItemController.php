@@ -64,7 +64,7 @@ class ItemController extends Controller
 
         return view('item.index', [
             'user' => $user,
-            'items' => SELF::getGlobalItems($user),
+            'items' => SELF::getGlobalItems($user)
         ]);
     }
 
