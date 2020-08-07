@@ -46,14 +46,6 @@
 @endsection
 
 @section('content')
-    @if (Auth::check())
-        <feedback-form
-            modal-id="modalFeedback"
-            modal-title="Adicionar um Feedback"
-            btn-action-txt="Criar"
-            user-id="{{ $user -> id }}"
-        ></feedback-form>
-    @endif
 
     <main class="container">
         @if (Auth::check())
@@ -107,6 +99,13 @@
             @endforeach
         </div>
     </main>
+
+    <feedback-form
+        modal-id="modalFeedback"
+        modal-title="Adicionar um Feedback"
+        btn-action-txt="Criar"
+        user-id="{{ $user -> id }}"
+    ></feedback-form>
 @endsection
 
 <script type="text/javascript">

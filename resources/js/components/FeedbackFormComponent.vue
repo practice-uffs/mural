@@ -3,6 +3,7 @@
         :modal-id="modalId"
         :modal-title="modalTitle"
         :btn-action-txt="btnActionTxt"
+        @click="createFeedback"
     >
         <input type="text" name="type" value="1" class="hide">
 
@@ -13,26 +14,31 @@
                     <input
                         type="text"
                         name="title"
+                        v-model="title"
                         placeholder="Ex.: Jogos digitais em aula"
                     />
                 </div>
             </div>
 
             <div class="col m3 s12">
-                <div class="input-field">
-                    <select name="category_id" id="category_id">
+                <!-- <div class="input-field"> -->
+                    <select name="category_id" id="category_id" class="browser-default" v-model="categoryId">
                         <option value="" disabled selected>Selecione uma categoria</option>
-                        <!-- @foreach ($categoriesFeedback as $category)
-                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
-                        @endforeach -->
+
+                        <option v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id"
+                        >
+                            {{ category.name }}
+                        </option>
                     </select>
                     <label>Categoria</label>
-                </div>
+                <!-- </div> -->
             </div>
 
             <div class="col m3 s12">
-                <div class="input-field">
-                    <select name="location_id" id="location_id" v-model="location">
+                <!-- <div class="input-field"> -->
+                    <select name="location_id" id="location_id" class="browser-default" v-model="locationId">
                         <option value="" disabled selected>Selecione um local</option>
 
                         <option v-for="location in locations"
@@ -42,9 +48,10 @@
                             {{ location.name }}
                         </option>
                     </select>
+
                     <label>Local de realização</label>
 
-                </div>
+                <!-- </div> -->
             </div>
         </div>
 
@@ -56,6 +63,7 @@
                         class="materialize-textarea"
                         id="description"
                         name="description"
+                        v-model="description"
                         rows="8"
                         data-length="800"
                     ></textarea>
@@ -72,6 +80,7 @@
                         <input
                             type="checkbox"
                             name="hidden"
+                            v-model="hidden"
                         >
                         <span class="lever"></span>
                         Sim
@@ -86,9 +95,14 @@
 export default {
     data: function() {
         return {
-            categories: [],
-            locations: [],
-            location: '',
+            categories: null,
+            locations: null,
+
+            title: '',
+            categoryId: '',
+            locationId: '',
+            description: '',
+            hidden: '',
         }
     },
 
@@ -101,6 +115,10 @@ export default {
 
     methods: {
         async loadCategories() {
+            /**
+             * Fetch the categories corresponding to the given item_type.
+             */
+
             let { data } = await window.axios.get('/api/categories', {
                 params: {
                     'item_type': '1',
@@ -111,9 +129,31 @@ export default {
         },
 
         async loadLocations() {
+            /**
+             * Fetch all locations.
+             */
+
             let { data } = await window.axios.get('/api/locations');
 
             this.locations = data;
+        },
+
+        async createFeedback() {
+            let data = {
+                'user_id': this.userId,
+                'location_id': this.locationId,
+                'category_id': this.categoryId,
+                'title': this.title,
+                'description': this.description,
+                'hidden': this.hidden ? 'on' : 'off',
+                'type': 1,
+            }
+
+            console.log(data);
+
+            window.axios.post('/api/items', data).then(function(response) {
+                console.log(response);
+            });
         }
     },
 
