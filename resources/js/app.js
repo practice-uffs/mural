@@ -3,8 +3,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    var selectElems = document.querySelectorAll('select');
-    M.FormSelect.init(selectElems);
+    // var selectElems = document.querySelectorAll('select');
+    // M.FormSelect.init(selectElems);
 
     var dropdownElems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropdownElems);

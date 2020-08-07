@@ -22,8 +22,8 @@
             </div>
 
             <div class="col m3 s12">
-                <!-- <div class="input-field"> -->
-                    <select name="category_id" id="category_id" class="browser-default" v-model="categoryId">
+                <div class="input-field">
+                    <select name="category_id" id="category_id" v-model="categoryId">
                         <option value="" disabled selected>Selecione uma categoria</option>
 
                         <option v-for="category in categories"
@@ -34,12 +34,12 @@
                         </option>
                     </select>
                     <label>Categoria</label>
-                <!-- </div> -->
+                </div>
             </div>
 
             <div class="col m3 s12">
-                <!-- <div class="input-field"> -->
-                    <select name="location_id" id="location_id" class="browser-default" v-model="locationId">
+                <div class="input-field">
+                    <select name="location_id" id="location_id" v-model="locationId">
                         <option value="" disabled selected>Selecione um local</option>
 
                         <option v-for="location in locations"
@@ -52,7 +52,7 @@
 
                     <label>Local de realização</label>
 
-                <!-- </div> -->
+                </div>
             </div>
         </div>
 
@@ -169,6 +169,11 @@ export default {
         this.loadLocations();
         this.loadCategories();
     },
+
+    updated() {
+        var selectElems = document.querySelectorAll('select');
+        M.FormSelect.init(selectElems);
+    }
 
 }
 </script>
