@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('header')
 <header>
@@ -67,7 +67,7 @@
                                     <select name="category_id" id="category_id">
                                         <option value="" disabled selected>Selecione uma categoria</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') || $category->id == $type ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                     <label>Categoria</label>
@@ -160,4 +160,4 @@
         </div>
     </div>
 </main>
-@endsection
+@endsection --}}
