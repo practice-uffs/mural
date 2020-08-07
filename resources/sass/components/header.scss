@@ -39,15 +39,31 @@ ul {
  */
 .header__nav {
     @extend .container;
+    @extend .p-2;
+
+    ul {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
 
     li {
-        float: left;
         text-decoration: none;
 
         a {
+            @extend .p-3;
             display: block;
-            color: black;
-            padding: 1rem;
+            color: darken(theme-color('primary'), 10%);
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1) !important;
+                color: darken(theme-color('primary'), 20%);
+            }
+
+            .material-icons {
+                font-size: 2rem;
+            }
         }
     }
 }
@@ -56,11 +72,11 @@ ul {
  * Menu trigger.
  */
 .nav__link {
-    @extend .px-2;
 
     color: color('blue');
-    display: flex;
+    display: flex !important;
     align-items: center;
+    @extend .px-2;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);

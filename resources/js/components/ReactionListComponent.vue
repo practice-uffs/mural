@@ -20,7 +20,7 @@
             </div>
         </li>
 
-        <div v-if="!userCreatedAny">
+        <div v-if="!userCreatedAny && userId">
             <a class="dropdown-trigger reaction__btn btn-floating"
                 href="#!"
                 :data-target="reactionsId"
@@ -51,10 +51,12 @@ export default {
         }
     },
 
-    props: [
-        'itemId',
-        'userId',
-    ],
+    props: {
+        'itemId': Number,
+        'userId' : {
+            default: null
+        }
+    },
 
     methods: {
         async fetchReactions() {
