@@ -15,6 +15,11 @@ use App\Http\Resources\CommentResource;
 
 class ItemController extends Controller
 {
+    const RESPONSE_MESSAGES = [
+        '1' => 'Feedback criado com sucesso!',
+        '2' => 'Serviço criado com sucesso!'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -111,6 +116,7 @@ class ItemController extends Controller
             'description' => 'required',
         ]);
 
+        $item_type = $request->type;
         // TODO: checar location e category
 
         $item = new Item([
@@ -118,16 +124,16 @@ class ItemController extends Controller
             'location_id' => $request->location_id,
             'category_id' => $request->category_id,
             'status' => Item::STATUS_ACTIVE,
-            'type' => $request->type,
+            'type' => $item_type,
             'title' => $request->title,
             'description' => $request->description,
-            'hidden' => SELF::isItemVisible($request -> type, $request -> hidden)
+            'hidden' => SELF::isItemVisible($item_type, $request -> hidden)
         ]);
 
         $item->save();
 
         return response(
-            ['message' => 'Serviço criado com sucesso!'],
+            ['message' => SELF::RESPONSE_MESSAGES[$item_type]],
             Response::HTTP_CREATED
         );
     }

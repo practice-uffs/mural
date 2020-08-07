@@ -128,8 +128,7 @@ export default {
             description: "",
             title: "",
             errors: {},
-            success: "",
-            modal: Object
+            success: ""
         }
     },
     props: {
@@ -145,7 +144,7 @@ export default {
                 inDuration: 350
             }
             var modal = document.querySelector('#service-form');
-            this.modal = M.Modal.init(modal, options);
+            M.Modal.init(modal, options);
         },
         focusOnTitle: function() {
             this.$refs.title.focus();
