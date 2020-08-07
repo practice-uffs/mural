@@ -88,18 +88,26 @@
                             {{ success }}
                         </li>
                     </ul>
-
-                    <div v-if="success" class="success left">
-                    </div>
                 </div>
                 <div class="col m3 s12">
+                    
                     <button
+                        v-show="!success"
                         type="submit"
                         class="btn btn-waves btn--primary btn--gradient my-2 right"
                         @click="create"
                     >
                         Criar
                         <i class="material-icons right">send</i>
+                    </button>
+
+                    <button
+                        v-show="success"
+                        type="submit"
+                        class="btn modal-close btn--primary btn--gradient my-2 right"
+                    >
+                        Fechar
+                        <i class="material-icons right">close</i>
                     </button>
                 </div>
             </div>
@@ -133,6 +141,7 @@ export default {
         setupModal(){
             var options = {
                 onOpenEnd: this.focusOnTitle,
+                onCloseStart: this.clearSuccessMessage,
                 inDuration: 350
             }
             var modal = document.querySelector('#service-form');
@@ -141,6 +150,9 @@ export default {
         focusOnTitle: function() {
             this.$refs.title.focus();
         },
+        clearSuccessMessage(){
+            this.success = "";
+        },
         handleError(err){
             let data = err.response.data;
             this.errors = data.errors;
@@ -148,7 +160,6 @@ export default {
         handleSuccess(response){
             this.success = response.data.message;
             this.resetData();
-            setTimeout(this.closeModal, 1500);
         },
         create(){
             this.errors = {};
@@ -172,10 +183,7 @@ export default {
             this.location = "";
             this.description = "";
         },
-        closeModal(){
-            this.modal.close();
-            this.success = "";
-        }
+        
     },
     computed: {
         categoriesArray() {
