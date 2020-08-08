@@ -41,6 +41,7 @@ Vue.component('base-modal', require('./components/base/Modal.vue').default);
 Vue.component('reaction-list', require('./components/ReactionListComponent.vue').default);
 Vue.component('comment-list', require('./components/CommentListComponent.vue').default);
 Vue.component('feedback-form', require('./components/FeedbackFormComponent.vue').default);
+Vue.component('service-form', require('./components/ServiceForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

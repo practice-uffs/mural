@@ -1,14 +1,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-// Variables and utility
-@import '../css/spacing-utility.css';
-
 // Materialize
 @import '~materialize-css/sass/materialize';
 
 @import 'variables';
 @import 'functions';
+@import 'utilities';
 
 // Custom styles and components
 @import 'login';

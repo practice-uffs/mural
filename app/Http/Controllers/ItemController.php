@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Item;
 use App\Location;
 use App\Category;
@@ -14,6 +15,11 @@ use App\Http\Resources\CommentResource;
 
 class ItemController extends Controller
 {
+    const RESPONSE_MESSAGES = [
+        '1' => 'Feedback criado com sucesso!',
+        '2' => 'Serviço criado com sucesso!'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -58,13 +64,15 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
 
         return view('item.index', [
             'user' => $user,
-            'items' => SELF::getGlobalItems($user)
+            'items' => SELF::getGlobalItems($user),
+            'serviceCategories' => SELF::findCategoriesByItemType(Item::TYPE_SERVICE),
+            'locations' => Location::all()
         ]);
     }
 
@@ -97,27 +105,34 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'type' => 'required',
+            'title' => 'required',
+            'hidden' => 'required',
             'location_id' => 'required',
             'category_id' => 'required',
-            'title' => 'required',
             'description' => 'required',
         ]);
 
+        $item_type = $request->type;
         // TODO: checar location e category
 
         $item = new Item([
             'user_id' => Auth::user()->id,
-            'location_id' => $request->get('location_id'),
-            'category_id' => $request->get('category_id'),
+            'location_id' => $request->location_id,
+            'category_id' => $request->category_id,
             'status' => Item::STATUS_ACTIVE,
-            'type' => $request -> type,
-            'title' => $request->get('title'),
-            'description' => $request->get('description'),
-            'hidden' => SELF::isItemVisible($request -> type, $request -> hidden)
+            'type' => $item_type,
+            'title' => $request->title,
+            'description' => $request->description,
+            'hidden' => SELF::isItemVisible($item_type, $request -> hidden)
         ]);
 
         $item->save();
-        return redirect('/home')->with('success', 'Item saved!');
+
+        return response(
+            ['message' => SELF::RESPONSE_MESSAGES[$item_type]],
+            Response::HTTP_CREATED
+        );
     }
 
     /**
