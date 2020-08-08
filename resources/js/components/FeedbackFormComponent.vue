@@ -29,9 +29,7 @@
                         <option v-for="category in categories"
                             :key="category.id"
                             :value="category.id"
-                        >
-                            {{ category.name }}
-                        </option>
+                        >{{ category.name }}</option>
                     </select>
                     <label>Categoria</label>
                 </div>
@@ -45,9 +43,7 @@
                         <option v-for="location in locations"
                             :value="location.id"
                             :key="location.id"
-                        >
-                            {{ location.name }}
-                        </option>
+                        >{{ location.name }}</option>
                     </select>
 
                     <label>Local de realização</label>

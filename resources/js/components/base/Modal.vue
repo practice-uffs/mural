@@ -1,7 +1,7 @@
 <template>
-    <div class="modal" :id="modalId">
+    <div class="modal modal--cascade" :id="modalId">
         <div class="modal-content">
-            <div class="modal__header z-depth-3">
+            <div class="modal__header">
                 <h5>
                     {{ modalTitle }}
                 </h5>
@@ -77,42 +77,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '../../../sass/_variables';
-@import '../../../sass/_functions';
-
-.modal {
-    min-width: 70%;
-    overflow: visible !important;
-
-    .modal-content {
-        position: relative;
-    }
-}
-
-/**
- * Adjust content "top margin"
- */
-.modal__header + .modal__body {
-    padding-top: 4rem;
-}
-
-/**
- * Setup modal header cascade
- */
-.modal__header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-1.5%, -50%);
-    margin-bottom: 4rem;
-
-    width: 103%;
-    padding: 1rem;
-
-    background-image: linear-gradient(35deg, gradient('primary'));
-    color: theme-color('light');
-    border-radius: $card-border-radius * 2;
-}
-</style>
