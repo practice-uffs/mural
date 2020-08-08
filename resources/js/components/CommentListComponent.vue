@@ -76,10 +76,13 @@ export default {
         }
     },
 
-    props: [
-        'userId',
-        'itemId',
-    ],
+    props: {
+        'userId': {
+            default: null,
+        },
+
+        'itemId': [String, Number],
+    },
 
     methods: {
         async fetchComments() {
@@ -129,10 +132,10 @@ export default {
              * If none comment exists yet, add a spacing.
              */
 
-            let lastItem = document.querySelector('#timeline .timeline__item:last-child');
-            let padding = lastItem.querySelector('.timeline__content').offsetHeight;
 
             if (this.hasComment()) {
+                let lastItem = document.querySelector('#timeline .timeline__item:last-child');
+                let padding = lastItem.querySelector('.timeline__content').offsetHeight;
                 if (this.userId) {
                     lastItem.style.paddingBottom = padding * 1.3 + 'px';
 

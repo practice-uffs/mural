@@ -7,7 +7,7 @@
                 </h5>
             </div>
         </div>
-        
+
         <div class="modal-content">
             <div class="row">
                 <div class="col m8 s12">
@@ -90,13 +90,13 @@
                     </ul>
                 </div>
                 <div class="col m3 s12">
-                    
+
                     <button
                         type="submit"
                         class="btn btn-waves btn--primary btn--gradient my-2 right"
                         :class="{'modal-close' : success}"
                         @click="create"
-                        
+
                     >
                         {{ success ? 'Fechar' : 'Criar' }}
                         <i class="material-icons right">
@@ -131,7 +131,7 @@ export default {
         locations: String
     },
     methods: {
-        
+
         setupModal(){
             let options = {
                 onOpenEnd: this.focusOnTitle,
@@ -145,25 +145,25 @@ export default {
         focusOnTitle: function() {
             this.$refs.title.focus();
         },
-        
+
         clearSuccessMessage(){
             this.success = "";
         },
-        
+
         handleError(err){
             let data = err.response.data;
             this.errors = data.errors;
         },
-        
+
         handleSuccess(response){
             this.success = response.data.message;
             this.resetData();
         },
-        
+
         create(){
             if(!this.success){
                 this.errors = {};
-                
+
                 let data = {
                     'type': SERVICE,
                     'title': this.title,
@@ -184,7 +184,7 @@ export default {
             this.location = "";
             this.description = "";
         },
-        
+
     },
     computed: {
         categoriesArray() {
@@ -226,7 +226,7 @@ export default {
     @each $type in $type-messages {
         .#{nth($type, 1)} {
             color: nth($type, 2);
-            
+
             &--vertical-align{
                 vertical-align: bottom;
             }

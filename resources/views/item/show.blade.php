@@ -59,7 +59,7 @@
 
         <div class="card__reaction">
             <reaction-list
-                @if ($user)
+                @if (Auth::check())
                     user-id="{{ $user -> id }}"
                 @endif
                 item-id="{{ $item -> id }}"
@@ -69,7 +69,7 @@
     </div>
 
     <comment-list
-        @if ($user)
+        @if (Auth::check())
             user-id="{{ $user -> id }}"
         @endif
         item-id="{{ $item -> id }}"

@@ -48,6 +48,7 @@
 @endsection
 
 @section('content')
+
     <main class="container">
         @if (Auth::check())
             <div class="row">
@@ -61,8 +62,8 @@
                         </div>
 
                         <div class="card-action">
-                            <a href="{{ route('items.create', 1) }}"
-                                class="text-secondary"
+                            <a href="#modalFeedback"
+                                class="text-secondary modal-trigger"
                             >
                                 Adicionar Feedback
                             </a>
@@ -87,7 +88,7 @@
                     >
                         <div class="card hoverable">
                             <div class="card-content">
-                                <span class="card-title">
+                                <span class="card-title truncate">
                                     {{ $item -> title }}
                                 </span>
                                 <p class="truncate grey-text text-darken-3">
@@ -109,6 +110,15 @@
             </service-form>
         @endif
     </main>
+    @if (Auth::check())
+        <feedback-form
+            modal-id="modalFeedback"
+            modal-title="Adicionar um Feedback"
+            btn-action-txt="Criar"
+            user-id="{{ $user -> id }}"
+        ></feedback-form>
+    @endif
+
 @endsection
 
 <script type="text/javascript">

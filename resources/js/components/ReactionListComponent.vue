@@ -52,7 +52,7 @@ export default {
     },
 
     props: {
-        'itemId': Number,
+        'itemId': [String, Number],
         'userId' : {
             default: null
         }
