@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
-@section('content')
-
+@section('header')
 <header>
     <nav class="header">
         <div class="header__wrapper">
-            <a href="#" class="header__logo">
+            <a href="{{ route('items.index') }}"
+                class="header__logo"
+            >
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
@@ -32,7 +33,9 @@
         </div>
     </nav>
 </header>
+@endsection
 
+@section('content')
 <main class="container">
     <div class="card">
         <div class="card-content">

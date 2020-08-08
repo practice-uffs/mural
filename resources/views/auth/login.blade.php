@@ -17,7 +17,7 @@
                             <div class="input-field mx-4">
                                 <input id="username" type="text" name="username" value="{{ old('username') }}"
                                     class="validate @error('username') is-invalid @enderror card__input" 
-                                    required autofocus autocomplete="off"
+                                    required autofocus placeholder="fulano.silva"
                                 >
                                 <label for="username" class="input__label">
                                     idUFFS
@@ -34,7 +34,7 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn waves-block card__btn my-3">
+                            <button type="submit" class="btn waves-block card__btn my-3 mx-auto">
                                 Login
                             </button>
 

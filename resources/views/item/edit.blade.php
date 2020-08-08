@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-
+@section('header')
 <header>
     <nav class="header">
         <div class="header__wrapper">
@@ -32,7 +31,9 @@
         </div>
     </nav>
 </header>
+@endsection
 
+@section('content')
 <main class="container">
     <div class="row">
         <div class="col l12">

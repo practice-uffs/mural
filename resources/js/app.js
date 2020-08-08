@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
+
 });
 
 /**
@@ -37,7 +38,7 @@ window.Vue = require('vue');
 Vue.component('async-helper', require('./components/AsyncHelperComponent.vue').default);
 Vue.component('reaction-list', require('./components/ReactionListComponent.vue').default);
 Vue.component('comment-list', require('./components/CommentListComponent.vue').default);
-
+Vue.component('service-form', require('./components/ServiceForm.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

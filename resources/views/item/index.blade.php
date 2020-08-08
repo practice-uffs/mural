@@ -4,7 +4,9 @@
 <header>
     <nav class="header">
         <div class="header__wrapper">
-            <a href="#" class="header__logo">
+            <a href="{{ route('items.index') }}"
+                class="header__logo"
+            >
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
@@ -64,8 +66,8 @@
                             >
                                 Adicionar Feedback
                             </a>
-                            <a href="{{ route('items.create', 2) }}"
-                                class="text-secondary"
+                            <a href="#service-form"
+                                class="text-secondary modal-trigger"
                             >
                                 Solicitar Serviço
                             </a>
@@ -97,6 +99,15 @@
                 </div>
             @endforeach
         </div>
+
+        @if(Auth::check())
+            <service-form
+                url="{{ route('items.store') }}"
+                categories="{{ json_encode($serviceCategories) }}"
+                locations="{{ json_encode($locations) }}"
+            >
+            </service-form>
+        @endif
     </main>
 @endsection
 

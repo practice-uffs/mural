@@ -67,3 +67,17 @@ $gradient-colors: (
 // Spacing
 $card-padding: 24px;
 $card-border-radius: 2px;
+
+// spacing vars used by _utilities
+$spacer: 1rem;
+
+$one: calc(0.25 * #{$spacer});
+$two: calc(0.5 * #{$spacer});
+$three: $spacer;
+$four: calc(1.5 * #{$spacer});
+$five: calc(3 * #{$spacer});
+
+$spaces: 0, $one, $two, $three, $four, $five;
+$position: (t top), (r right), (b bottom), (l left);
+$spacing-types: (m margin), (p padding), (b border);
+$directions: (x right left), (y top bottom);
