@@ -92,22 +92,16 @@
                 <div class="col m3 s12">
                     
                     <button
-                        v-show="!success"
                         type="submit"
                         class="btn btn-waves btn--primary btn--gradient my-2 right"
+                        :class="{'modal-close' : success}"
                         @click="create"
+                        
                     >
-                        Criar
-                        <i class="material-icons right">send</i>
-                    </button>
-
-                    <button
-                        v-show="success"
-                        type="submit"
-                        class="btn modal-close btn--primary btn--gradient my-2 right"
-                    >
-                        Fechar
-                        <i class="material-icons right">close</i>
+                        {{ success ? 'Fechar' : 'Criar' }}
+                        <i class="material-icons right">
+                            {{ success ? 'close' : 'send' }}
+                        </i>
                     </button>
                 </div>
             </div>
@@ -161,20 +155,23 @@ export default {
             this.resetData();
         },
         create(){
-            this.errors = {};
-            
-            let data = {
-                'type': SERVICE,
-                'title': this.title,
-                'description': this.description,
-                'hidden': 'on',
-                'location_id': this.location,
-                'category_id': this.category,
-            };
+            if(!this.success){
 
-            let promise = window.axios.post(this.url, data);
-            promise.then(this.handleSuccess)
-            .catch(this.handleError);
+                this.errors = {};
+                
+                let data = {
+                    'type': SERVICE,
+                    'title': this.title,
+                    'description': this.description,
+                    'hidden': 'on',
+                    'location_id': this.location,
+                    'category_id': this.category,
+                };
+
+                let promise = window.axios.post(this.url, data);
+                promise.then(this.handleSuccess)
+                .catch(this.handleError);
+            }
         },
         resetData(){
             this.title = "";
