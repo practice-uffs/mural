@@ -43,8 +43,6 @@ ul {
 
     ul {
         overflow: hidden;
-        display: flex;
-        justify-content: center;
     }
 
     ul {
@@ -53,6 +51,7 @@ ul {
 
     li {
         text-decoration: none;
+        @extend .left;
 
         a {
             @extend .p-3;
@@ -80,13 +79,4 @@ ul {
     color: color('blue');
     display: flex !important;
     align-items: center;
-    @extend .px-2;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    &--active {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
 }

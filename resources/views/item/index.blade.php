@@ -4,7 +4,7 @@
 <header>
     <nav class="header">
         <div class="header__wrapper">
-            <a href="{{ route('items.index', ['type' => Item::TYPE_FEEDBACK]) }}"
+            <a href="{{ route('items.index') }}"
                 class="header__logo"
             >
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
@@ -34,38 +34,6 @@
 
         <div class="header__nav">
             <ul>
-                @if(Auth::check())
-                    <li>
-                        <a href="{{ route('items.index', ['type' => Item::TYPE_FEEDBACK]) }}"
-                            class="
-                                nav__link
-                                @if ($current_item_type == Item::TYPE_FEEDBACK)
-                                    nav__link--active
-                                @endif
-                            "
-                        >
-                            <span class="material-icons pr-1">
-                                feedback
-                            </span>
-                            Feedback
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('items.index', ['type' => Item::TYPE_SERVICE]) }}" 
-                            class="
-                                nav__link mx-2
-                                @if ($current_item_type == Item::TYPE_SERVICE)
-                                    nav__link--active
-                                @endif
-                            "
-                        >
-                            <span class="material-icons pr-1">
-                                shop
-                            </span>
-                            Serviços
-                        </a>
-                    </li>
-                @endif
                 <li>
                     <a href="#" id="viewTrigger">
                         <span class="material-icons">
@@ -98,8 +66,8 @@
                             >
                                 Adicionar Feedback
                             </a>
-                            <a href="{{ route('items.create', 2) }}"
-                                class="text-secondary"
+                            <a href="#service-form"
+                                class="text-secondary modal-trigger"
                             >
                                 Solicitar Serviço
                             </a>
@@ -133,32 +101,12 @@
         </div>
 
         @if(Auth::check())
-            <div class="fixed-action-btn fixed-action-btn--width">
-                <a class="btn-floating btn-large btn--primary modal-trigger" data-position="left"
-                    href="#{{$current_item_type == Item::TYPE_SERVICE ? 'service' : 'feedback' }}-form"
-                    data-tooltip=" 
-                        Criar um novo
-                        @if($current_item_type == Item::TYPE_SERVICE)
-                            Serviço
-                        @else
-                            Feedback
-                        @endif
-                    "
-                >
-                    <i class="large material-icons">add</i>
-                </a>
-            </div>
-
-            @if($current_item_type == Item::TYPE_FEEDBACK)
-            @else
-                <service-form
-                    url="{{ route('items.store') }}"
-                    categories="{{ json_encode($categories) }}"
-                    locations="{{ json_encode($locations) }}"
-                >
-                </service-form>
-            @endif
-
+            <service-form
+                url="{{ route('items.store') }}"
+                categories="{{ json_encode($serviceCategories) }}"
+                locations="{{ json_encode($locations) }}"
+            >
+            </service-form>
         @endif
     </main>
 @endsection

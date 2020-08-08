@@ -4,7 +4,7 @@
 <header>
     <nav class="header">
         <div class="header__wrapper">
-            <a href="{{ route('items.index', ['type' => Item::TYPE_FEEDBACK]) }}"
+            <a href="{{ route('items.index') }}"
                 class="header__logo"
             >
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">

@@ -47,7 +47,7 @@ class LoginController extends Controller
         $user = $this->getOrCreateUser($userData);
 
         Auth::login($user);
-        return redirect()->route('items.index', ['type' => 1]);
+        return redirect()->route('items.index');
     }
 
     public function logout(Request $resquest)

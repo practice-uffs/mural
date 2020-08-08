@@ -67,13 +67,11 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $type = $request->type;
 
         return view('item.index', [
             'user' => $user,
             'items' => SELF::getGlobalItems($user),
-            'categories' => SELF::findCategoriesByItemType($type),
-            'current_item_type' => $type,
+            'serviceCategories' => SELF::findCategoriesByItemType(Item::TYPE_SERVICE),
             'locations' => Location::all()
         ]);
     }
@@ -94,8 +92,7 @@ class ItemController extends Controller
             'type' => $type,
             'formTitle' => $formTitle,
             'categories' => SELF::findCategoriesByItemType($type),
-            'locations' => Location::all(),
-            'current_item_type' => $type
+            'locations' => Location::all()
         ]);
     }
 
@@ -151,8 +148,7 @@ class ItemController extends Controller
         return view('item.show', [
             'user' => Auth::user(),
             'item' => $item,
-            'reactions' => $item -> reactions -> groupBy('text'),
-            'current_item_type' => $item->type
+            'reactions' => $item -> reactions -> groupBy('text')
         ]);
     }
 
