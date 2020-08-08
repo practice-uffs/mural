@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
 
-    var btnNew = document.querySelectorAll("a[data-tooltip]");
-    M.Tooltip.init(btnNew);
-
 });
 
 /**

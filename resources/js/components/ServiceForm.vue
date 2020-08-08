@@ -131,32 +131,37 @@ export default {
         locations: String
     },
     methods: {
+        
         setupModal(){
-            var options = {
+            let options = {
                 onOpenEnd: this.focusOnTitle,
                 onCloseStart: this.clearSuccessMessage,
                 inDuration: 350
             }
-            var modal = document.querySelector('#service-form');
+            let modal = document.querySelector('#service-form');
             M.Modal.init(modal, options);
         },
+
         focusOnTitle: function() {
             this.$refs.title.focus();
         },
+        
         clearSuccessMessage(){
             this.success = "";
         },
+        
         handleError(err){
             let data = err.response.data;
             this.errors = data.errors;
         },
+        
         handleSuccess(response){
             this.success = response.data.message;
             this.resetData();
         },
+        
         create(){
             if(!this.success){
-
                 this.errors = {};
                 
                 let data = {
@@ -200,6 +205,7 @@ export default {
     @import "../../sass/variables";
 
     $row-offset-padding: 0.75rem;
+    $type-messages: (success $green, warning $yellow, error $red);
 
     .modal {
         max-height: 100% !important;
@@ -217,28 +223,13 @@ export default {
         margin-bottom: 0 !important;
     }
 
-    .warning {
-        color: $yellow;
-
-        &--vertical-align {
-            vertical-align: bottom;
-        }
-    }
-
-    .error {
-        color: $red;
-
-        &--vertical-align {
-            vertical-align: bottom;
-        }
-        
-    }
-
-    .success {
-        color: $green;
-    
-        &--vertical-align {
-            vertical-align: bottom;
+    @each $type in $type-messages {
+        .#{nth($type, 1)} {
+            color: nth($type, 2);
+            
+            &--vertical-align{
+                vertical-align: bottom;
+            }
         }
     }
 
