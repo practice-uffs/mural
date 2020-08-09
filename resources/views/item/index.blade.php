@@ -4,7 +4,9 @@
 <header>
     <nav class="header">
         <div class="header__wrapper">
-            <a href="#" class="header__logo">
+            <a href="{{ route('items.index') }}"
+                class="header__logo"
+            >
                 <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
             </a>
 
@@ -46,6 +48,7 @@
 @endsection
 
 @section('content')
+
     <main class="container">
         @if (Auth::check())
             <div class="row">
@@ -59,13 +62,13 @@
                         </div>
 
                         <div class="card-action">
-                            <a href="{{ route('items.create', 1) }}"
-                                class="text-secondary"
+                            <a href="#modalFeedback"
+                                class="text-secondary modal-trigger"
                             >
                                 Adicionar Feedback
                             </a>
-                            <a href="{{ route('items.create', 2) }}"
-                                class="text-secondary"
+                            <a href="#service-form"
+                                class="text-secondary modal-trigger"
                             >
                                 Solicitar Serviço
                             </a>
@@ -85,7 +88,7 @@
                     >
                         <div class="card hoverable">
                             <div class="card-content">
-                                <span class="card-title">
+                                <span class="card-title truncate">
                                     {{ $item -> title }}
                                 </span>
                                 <p class="truncate grey-text text-darken-3">
@@ -97,7 +100,25 @@
                 </div>
             @endforeach
         </div>
+
+        @if(Auth::check())
+            <service-form
+                url="{{ route('items.store') }}"
+                categories="{{ json_encode($serviceCategories) }}"
+                locations="{{ json_encode($locations) }}"
+            >
+            </service-form>
+        @endif
     </main>
+    @if (Auth::check())
+        <feedback-form
+            modal-id="modalFeedback"
+            modal-title="Adicionar um Feedback"
+            btn-action-txt="Criar"
+            user-id="{{ $user -> id }}"
+        ></feedback-form>
+    @endif
+
 @endsection
 
 <script type="text/javascript">

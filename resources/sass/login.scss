@@ -1,16 +1,14 @@
-@import 'custom-variables';
-
 .card__input {
-    border-bottom: 1px solid $p-blue !important;
-    box-shadow: 0 1px 0 0 $p-blue !important;
+    border-bottom: 1px solid $blue !important;
+    box-shadow: 0 1px 0 0 $blue !important;
 }
 
 .input__label {
-    color: $p-blue !important;
+    color: $blue !important;
 }
 
 .card__btn {
-    background: linear-gradient(45deg, $p-yellow, $p-orange);
+    background: linear-gradient(45deg, $yellow, $orange);
     border-radius: 5px !important;
     text-transform: uppercase;
     width: 60% !important;
@@ -18,7 +16,6 @@
     font-weight: bold !important;
     color: white !important;
     font-size: 1rem !important;
-    margin: 0 auto;
     box-shadow: none;
 }
 

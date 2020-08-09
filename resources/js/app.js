@@ -3,14 +3,17 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    var selectElems = document.querySelectorAll('select');
-    M.FormSelect.init(selectElems);
+    // var selectElems = document.querySelectorAll('select');
+    // M.FormSelect.init(selectElems);
 
     var dropdownElems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropdownElems);
 
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
+
+    var modalElems = document.querySelectorAll('.modal');
+    M.Modal.init(modalElems);
 });
 
 /**
@@ -34,9 +37,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('async-helper', require('./components/AsyncHelperComponent.vue').default);
+Vue.component('base-modal', require('./components/base/Modal.vue').default);
 Vue.component('reaction-list', require('./components/ReactionListComponent.vue').default);
 Vue.component('comment-list', require('./components/CommentListComponent.vue').default);
+Vue.component('feedback-form', require('./components/FeedbackFormComponent.vue').default);
+Vue.component('service-form', require('./components/ServiceFormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
