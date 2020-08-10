@@ -1,112 +1,96 @@
 <template>
-    <div id="service-form" class="modal modal--overflow-y-visible">
-        <div class="modal-header">
-            <div class="mt-1">
-                <h5>
-                    Qual serviço você precisa?
-                </h5>
+    <base-modal
+        modal-title="Qual Serviço você precisa?"
+        :btn-action-txt="btnAction.value"
+        :btn-icon-txt="btnAction.icon"
+        :modal-id="modalId.default"
+        :modal-options="modalOptions"
+        @click="create"
+    >
+        <div class="row">
+            <div class="col m6 s12">
+                <div class="input-field">
+                    <label for="title">Título</label>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Ex.: Jogos digitais em aula"
+                        v-model="title"
+                        ref="title"
+                    />
+                </div>
+            </div>
+
+            <div class="col m3 s12">
+                <div class="input-field">
+                    <select name="category_id" id="category_id" v-model="categoryId">
+                        <option value="" disabled selected> Selecione uma categoria</option>
+                        <option v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id"
+                        >{{ category.name }}</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+            </div>
+
+            <div class="col m3 s12">
+                <div class="input-field">
+                    <select name="location_id" id="location_id" v-model="locationId">
+                        <option value="" disabled selected>Selecione um local</option>
+                        <option v-for="location in locations"
+                            :key="location.id"
+                            :value="location.id"
+                        >{{ location.name }}</option>
+                    </select>
+                    <label>Local de realização</label>
+                </div>
             </div>
         </div>
 
-        <div class="modal-content">
-            <div class="row">
-                <div class="col m8 s12">
-                    <div class="input-field">
-                        <label for="title">Título</label>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Ex.: Jogos digitais em aula"
-                            v-model="title"
-                            ref="title"
-                        />
-                    </div>
-                </div>
-
-                <div class="col m4 s12">
-                    <div class="input-field">
-                        <select name="category_id" id="category_id" v-model="category">
-                            <option value="" disabled selected> Selecione uma categoria</option>
-                            <option v-for="category in categoriesArray"
-                                :key="category.id"
-                                :value="category.id"
-                            >{{ category.name }}</option>
-                        </select>
-                        <label>Categoria</label>
-                    </div>
+        <div class="row">
+            <div class="col m12 s12">
+                <div class="input-field">
+                    <label for="description">Descrição</label>
+                    <textarea
+                        class="materialize-textarea"
+                        id="description"
+                        name="description"
+                        rows="8"
+                        data-length="800"
+                        v-model="description"
+                    ></textarea>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col m4 s12">
-                    <div class="input-field">
-                        <select name="location_id" id="location_id" v-model="location">
-                            <option value="" disabled selected>Selecione um local</option>
-                            <option v-for="location in locationsArray"
-                                :key="location.id"
-                                :value="location.id"
-                            >{{ location.name }}</option>
-                        </select>
-                        <label>Local de realização</label>
-                    </div>
-                </div>
-
-                <div class="col m8 s12">
-                    <div class="input-field">
-                        <label for="description">Descrição</label>
-                        <textarea
-                            class="materialize-textarea"
-                            id="description"
-                            name="description"
-                            rows="8"
-                            data-length="800"
-                            v-model="description"
-                        ></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col m9 s12">
-                    <ul class="left">
-                        <li v-if="!success" class="warning">
-                            <i class="material-icons warning--vertical-align">
-                                warning
-                            </i>
-                            Esse serviço ficará visível somente a você e a equipe do Practice.
-                        </li>
-                        <li v-for="error in errors" :key="error.title" class="error">
-                            <i class="material-icons error--vertical-align">
-                                error
-                            </i>
-                            {{ error[0] }}
-                        </li>
-                        <li v-if="success" class="success">
-                            <i class="material-icons success--vertical-align">
-                                check
-                            </i>
-                            {{ success }}
-                        </li>
-                    </ul>
-                </div>
-                <div class="col m3 s12">
-
-                    <button
-                        type="submit"
-                        class="btn btn-waves btn--primary btn--gradient my-2 right"
-                        :class="{'modal-close' : success}"
-                        @click="create"
-
-                    >
-                        {{ success ? 'Fechar' : 'Criar' }}
-                        <i class="material-icons right">
-                            {{ success ? 'close' : 'send' }}
+        <div class="row">
+            <div class="col m12 s12">
+                <ul class="left">
+                    <li v-if="success" class="success">
+                        <i class="material-icons success--vertical-align">
+                            check
                         </i>
-                    </button>
-                </div>
+                        {{ success }}
+                    </li>
+                    <li v-else class="warning">
+                        <i class="material-icons warning--vertical-align">
+                            warning
+                        </i>
+                        Discussões e informações relativas ao andamento do
+                        serviço ficarão visíveis somente a você e aos membros
+                        do Practice.
+                    </li>
+                    <li v-for="error in errors" :key="error.title" class="error">
+                        <i class="material-icons error--vertical-align">
+                            error
+                        </i>
+                        {{ error[0] }}
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </base-modal>
 </template>
 
 <script>
@@ -117,37 +101,58 @@ export default {
 
     data(){
         return {
-            category: "",
-            location: "",
+            categories: null,
+            locations: null,
+
+            categoryId: "",
+            locationId: "",
             description: "",
             title: "",
+            
+            btnAction: {
+                type: String,
+                value: "Criar",
+                icon: "send"
+            },
+            modalId: {
+                type: String,
+                default: "modalService"
+            },
+            modalOptions: {
+                onOpenEnd: this.focusOnTitle,
+                onCloseStart: this.setCreationState,
+            },
+
             errors: {},
             success: ""
         }
     },
     props: {
         url: String,
-        categories: String,
-        locations: String
     },
     methods: {
+        async loadCategories() {
+            let { data } = await window.axios.get('/api/categories', {
+                params: {
+                    'item_type': SERVICE,
+                }
+            });
+            this.categories = data;
+        },
 
-        setupModal(){
-            let options = {
-                onOpenEnd: this.focusOnTitle,
-                onCloseStart: this.clearSuccessMessage,
-                inDuration: 350
-            }
-            let modal = document.querySelector('#service-form');
-            M.Modal.init(modal, options);
+        async loadLocations() {
+            let { data } = await window.axios.get('/api/locations');
+            this.locations = data;
         },
 
         focusOnTitle: function() {
             this.$refs.title.focus();
         },
 
-        clearSuccessMessage(){
+        setCreationState(){
             this.success = "";
+            this.btnAction.icon = "send";
+            this.btnAction.value = "Criar";
         },
 
         handleError(err){
@@ -157,45 +162,46 @@ export default {
 
         handleSuccess(response){
             this.success = response.data.message;
+            this.btnAction.icon = "close";
+            this.btnAction.value = "Fechar";
             this.resetData();
         },
 
         create(){
             if(!this.success){
                 this.errors = {};
-
                 let data = {
                     'type': SERVICE,
                     'title': this.title,
                     'description': this.description,
                     'hidden': 'on',
-                    'location_id': this.location,
-                    'category_id': this.category,
+                    'location_id': this.locationId,
+                    'category_id': this.categoryId,
                 };
 
-                let promise = window.axios.post(this.url, data);
-                promise.then(this.handleSuccess)
+                let service = window.axios.post(this.url, data);
+                service.then(this.handleSuccess)
                 .catch(this.handleError);
             }
         },
         resetData(){
             this.title = "";
-            this.category = "";
-            this.location = "";
+            this.categoryId = "";
+            this.locationId = "";
             this.description = "";
         },
 
-    },
-    computed: {
-        categoriesArray() {
-            return JSON.parse(this.categories);
-        },
-        locationsArray(){
-            return JSON.parse(this.locations);
+        setDropdownSelect(){
+            var selectElems = document.querySelectorAll(`#${this.modalId.default} select`);
+            M.FormSelect.init(selectElems);
         }
     },
-    mounted(){
-        this.setupModal();
+    created(){
+        this.loadCategories();
+        this.loadLocations();
+    },
+    updated(){
+        this.setDropdownSelect();
     }
 }
 </script>
@@ -204,24 +210,7 @@ export default {
 
     @import "../../sass/variables";
 
-    $row-offset-padding: 0.75rem;
     $type-messages: (success $green, warning $yellow, error $red);
-
-    .modal {
-        max-height: 100% !important;
-    }
-
-    .modal--overflow-y-visible {
-        overflow-y: visible;
-    }
-
-    .modal-header {
-        padding: 12px calc(24px + #{$row-offset-padding}) 0 calc(24px + #{$row-offset-padding});
-    }
-
-    .row--bt-0 {
-        margin-bottom: 0 !important;
-    }
 
     @each $type in $type-messages {
         .#{nth($type, 1)} {
