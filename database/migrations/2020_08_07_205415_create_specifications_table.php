@@ -15,9 +15,7 @@ class CreateSpecificationsTable extends Migration
     {
         Schema::create('specifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->foreignId('item_id')->constrained();
-
+            
             $table->text('content');
             $table->timestamps();
         });
