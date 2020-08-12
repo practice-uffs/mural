@@ -29,6 +29,7 @@ class Item extends Model
         'parent_id',
         'location_id',
         'category_id',
+        'specification_id',
         'status',
         'type',
         'title',

@@ -49,15 +49,11 @@ class ItemController extends Controller
 
         if ($data['type'] == Item::TYPE_SERVICE) {
             $specification = Specification::create([
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                'content' => $request -> content
             ]);
 
-            // dd($specification);
-
-            $data['specification_id'] = "4";
+            $data['specification_id'] = $specification -> id;
         }
-
-        dd(Specification::all());
 
         $item = Item::create($data);
 
