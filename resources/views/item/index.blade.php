@@ -67,7 +67,7 @@
                             >
                                 Adicionar Feedback
                             </a>
-                            <a href="#service-form"
+                            <a href="#modalService"
                                 class="text-secondary modal-trigger"
                             >
                                 Solicitar Serviço
@@ -100,15 +100,6 @@
                 </div>
             @endforeach
         </div>
-
-        @if(Auth::check())
-            <service-form
-                url="{{ route('items.store') }}"
-                categories="{{ json_encode($serviceCategories) }}"
-                locations="{{ json_encode($locations) }}"
-            >
-            </service-form>
-        @endif
     </main>
     @if (Auth::check())
         <feedback-form
@@ -117,6 +108,10 @@
             btn-action-txt="Criar"
             user-id="{{ $user -> id }}"
         ></feedback-form>
+
+        <service-form
+            url="{{ route('items.store') }}"
+        />
     @endif
 
 @endsection

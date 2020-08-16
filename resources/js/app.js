@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
 
-    var modalElems = document.querySelectorAll('.modal');
-    M.Modal.init(modalElems);
 });
 
 /**

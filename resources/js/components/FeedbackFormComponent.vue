@@ -154,6 +154,7 @@ export default {
         handleClick() {
             this.createFeedback();
 
+            this.$refs.modalWrapper.addLoader();
             this.$refs.modalWrapper.closeModal();
             this.$refs.modalWrapper.resetBtn();
 
