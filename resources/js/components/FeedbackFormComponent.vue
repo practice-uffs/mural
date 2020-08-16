@@ -95,6 +95,9 @@ export default {
             categories: null,
             locations: null,
 
+            modalTitle: 'Adicionar um Feedback',
+            btnActionTxt: 'Criar',
+
             title: '',
             categoryId: '',
             locationId: '',
@@ -105,8 +108,6 @@ export default {
 
     props: {
         modalId: String,
-        modalTitle: String,
-        btnActionTxt: String,
         userId: String,
     },
 

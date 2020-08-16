@@ -104,13 +104,11 @@
     @if (Auth::check())
         <feedback-form
             modal-id="modalFeedback"
-            modal-title="Adicionar um Feedback"
-            btn-action-txt="Criar"
             user-id="{{ $user -> id }}"
         ></feedback-form>
 
         <service-form
-            url="{{ route('items.store') }}"
+            modal-id="modalService"
         />
     @endif
 
