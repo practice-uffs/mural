@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::resource('/items', 'ItemController')->except([
-    'create'
+    'create', 'edit'
 ]);
-
-Route::get('/items/create/{type}', 'ItemController@create') -> name('items.create');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
