@@ -29,6 +29,7 @@ class Item extends Model
         'parent_id',
         'location_id',
         'category_id',
+        'specification_id',
         'status',
         'type',
         'title',
@@ -54,6 +55,11 @@ class Item extends Model
     public function category()
     {
         return $this->hasOne('App\Category');
+    }
+
+    public function specification()
+    {
+        return $this->hasOne('App\Specification');
     }
 
     public function reactions()

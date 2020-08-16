@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 
 use App\Item;
 use App\User;
+use App\Specification;
 
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\CommentResource;
@@ -35,7 +36,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $item = Item::create([
+        $data = [
             'user_id' => $request -> user_id,
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
@@ -44,7 +45,17 @@ class ItemController extends Controller
             'title' => $request -> title,
             'description' => $request -> description,
             'hidden' => $request -> hidden == 'on',
-        ]);
+        ];
+
+        if ($data['type'] == Item::TYPE_SERVICE) {
+            $specification = Specification::create([
+                'content' => $request -> content
+            ]);
+
+            $data['specification_id'] = $specification -> id;
+        }
+
+        $item = Item::create($data);
 
         return response(
             new ItemResource($item),

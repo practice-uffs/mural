@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->foreignId('parent_id')->nullable();
             $table->foreignId('location_id')->nullable();
             $table->foreignId('category_id')->nullable();
+            $table->foreignId('specification_id')->nullable();
 
             $table->integer('status')->default(1);
             $table->integer('type')->default(1);
@@ -34,11 +35,14 @@ class CreateItemsTable extends Migration
             $table->index('category_id');
             $table->index('type');
             $table->index('hidden');
+        });
 
+        Schema::table('items', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('parent_id')->references('id')->on('items');
             $table->foreign('location_id')->references('id')->on('locations');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('specification_id')->references('id')->on('specifications');
         });
     }
 
