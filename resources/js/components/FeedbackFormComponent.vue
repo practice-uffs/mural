@@ -160,6 +160,11 @@ export default {
             this.$refs.modalWrapper.resetBtn();
 
             window.location.href = '/items';
+        },
+
+        setDropdownSelect() {
+            var selectElems = document.querySelectorAll(`#${this.modalId} select`);
+            M.FormSelect.init(selectElems);
         }
     },
 
@@ -169,8 +174,7 @@ export default {
     },
 
     updated() {
-        var selectElems = document.querySelectorAll('select');
-        M.FormSelect.init(selectElems);
+        this.setDropdownSelect();
     }
 
 }

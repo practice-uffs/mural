@@ -194,7 +194,7 @@ export default {
         },
 
         setDropdownSelect() {
-            var selectElems = document.querySelectorAll(`#${this.modalId.default} select`);
+            var selectElems = document.querySelectorAll(`#${this.modalId} select`);
             M.FormSelect.init(selectElems);
         }
     },
