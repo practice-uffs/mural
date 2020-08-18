@@ -22,6 +22,14 @@ Route::apiResource('items', 'API\ItemController');
     Route::get('items/{id}/comments', 'API\ItemController@listComments');
     Route::post('items/{id}/comments', 'API\ItemController@storeComment');
 
+Route::apiResource('services', 'API\ServiceController')->only([
+    'store'
+]);
+   
+Route::apiResource('feedbacks', 'API\FeedbackController')->only([
+    'store'
+]);
+
 Route::apiResource('reactions', 'API\ReactionController');
 
 Route::apiResource('categories', 'API\CategoryController')->only([

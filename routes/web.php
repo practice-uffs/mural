@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::resource('/items', 'ItemController')->except([
-    'create', 'edit'
+    'create',
 ]);
 
 // Auth
