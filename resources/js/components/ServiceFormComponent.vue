@@ -104,15 +104,15 @@ export default {
             categories: null,
             locations: null,
 
-            categoryId: "",
-            locationId: "",
-            description: "",
-            title: "",
+            categoryId: '',
+            locationId: '',
+            description: '',
+            title: '',
             
             btnAction: {
                 type: String,
-                value: "Criar",
-                icon: "send"
+                value: 'Criar',
+                icon: 'send'
             },
 
             modalOptions: {
@@ -121,7 +121,7 @@ export default {
             },
 
             errors: {},
-            success: ""
+            success: ''
         }
     },
     
@@ -152,9 +152,9 @@ export default {
         },
 
         setCreationState() {
-            this.success = "";
-            this.btnAction.icon = "send";
-            this.btnAction.value = "Criar";
+            this.success = '';
+            this.btnAction.icon = 'send';
+            this.btnAction.value = 'Criar';
         },
 
         handleError(err) {
@@ -164,19 +164,19 @@ export default {
 
         handleSuccess(response) {
             this.success = response.data.message;
-            this.btnAction.icon = "close";
-            this.btnAction.value = "Fechar";
+            this.btnAction.icon = 'close';
+            this.btnAction.value = 'Fechar';
             this.resetData();
         },
 
         create() {
-            if(!this.success) {
+            if (!this.success) {
                 this.errors = {};
                 let data = {
                     'type': SERVICE,
                     'title': this.title,
                     'description': this.description,
-                    'hidden': 'on',
+                    'hidden': true,
                     'location_id': this.locationId,
                     'category_id': this.categoryId,
                 };
@@ -186,11 +186,12 @@ export default {
                     .catch(this.handleError);
             }
         },
+        
         resetData() {
-            this.title = "";
-            this.categoryId = "";
-            this.locationId = "";
-            this.description = "";
+            this.title = '';
+            this.categoryId = '';
+            this.locationId = '';
+            this.description = '';
         },
 
         setDropdownSelect() {
