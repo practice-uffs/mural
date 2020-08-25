@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Item;
 use App\User;
@@ -30,7 +31,24 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->validate([
+            'user_id' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'hidden' => 'bool',
+        ]);
+
+        $data['type'] = Item::TYPE_FEEDBACK;
+        $data['status'] = Item::STATUS_ACTIVE;
+
+        $item = Item::create($data);
+
+        return response(
+            new FeedbackResource($item),
+            Response::HTTP_CREATED
+        );
     }
 
     /**
