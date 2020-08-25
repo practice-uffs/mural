@@ -129,7 +129,7 @@ export default {
     },
 
     updated() {
-        let dropdownElems = document.querySelectorAll('.dropdown-trigger');
+        let dropdownElems = document.querySelectorAll('.reaction__btn');
         M.Dropdown.init(dropdownElems);
     }
 }
