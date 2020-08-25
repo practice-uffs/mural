@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // var selectElems = document.querySelectorAll('select');
     // M.FormSelect.init(selectElems);
 
+    var dropdownOptions = {
+        coverTrigger: false,
+        alignment: 'right'
+    };
     var dropdownElems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(dropdownElems);
+    M.Dropdown.init(dropdownElems, dropdownOptions);
 
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
