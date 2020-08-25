@@ -109,6 +109,7 @@
 
         <service-form
             modal-id="modalService"
+            user-id="{{ $user -> id }}"
         />
     @endif
 

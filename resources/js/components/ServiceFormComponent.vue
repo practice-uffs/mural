@@ -94,7 +94,6 @@
 </template>
 
 <script>
-
 const SERVICE = 2;
 
 export default {
@@ -127,7 +126,7 @@ export default {
     
     props: {
         modalId: String,
-        url: String
+        userId: String
     },
 
     methods: {
@@ -173,7 +172,7 @@ export default {
             if (!this.success) {
                 this.errors = {};
                 let data = {
-                    'type': SERVICE,
+                    'user_id': this.userId,
                     'title': this.title,
                     'description': this.description,
                     'hidden': true,
@@ -181,12 +180,12 @@ export default {
                     'category_id': this.categoryId,
                 };
 
-                window.axios.post('/api/items', data)
+                window.axios.post('/api/services', data)
                     .then(this.handleSuccess)
                     .catch(this.handleError);
             }
         },
-        
+
         resetData() {
             this.title = '';
             this.categoryId = '';

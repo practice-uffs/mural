@@ -89,6 +89,8 @@
 </template>
 
 <script>
+const FEEDBACK = 1;
+
 export default {
     data: function() {
         return {
@@ -119,7 +121,7 @@ export default {
 
             let { data } = await window.axios.get('/api/categories', {
                 params: {
-                    'item_type': '1',
+                    'item_type': FEEDBACK,
                 }
             });
 
@@ -143,23 +145,33 @@ export default {
                 'category_id': this.categoryId,
                 'title': this.title,
                 'description': this.description,
-                'hidden': this.hidden ? 'off' : 'on',
-                'type': 1,
+                'hidden': !this.hidden,
             }
 
-            await window.axios.post('/api/items', data).then(function(response) {
+            await window.axios.post('/api/feedback', data).then(function(response) {
                 console.log(response);
             });
         },
 
-        handleClick() {
-            this.createFeedback();
-
+        async handleClick() {
             this.$refs.modalWrapper.addLoader();
+
+            await this.createFeedback();
+
             this.$refs.modalWrapper.closeModal();
             this.$refs.modalWrapper.resetBtn();
 
+            this.resetData();
+
             window.location.href = '/items';
+        },
+
+        resetData() {
+            this.title = '';
+            this.categoryId = '';
+            this.locationId = '';
+            this.description = '';
+            this.hidden = '';
         },
 
         setDropdownSelect() {
