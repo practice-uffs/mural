@@ -23,11 +23,11 @@ Route::apiResource('items', 'API\ItemController');
     Route::post('items/{id}/comments', 'API\ItemController@storeComment');
 
 Route::apiResource('services', 'API\ServiceController')->only([
-    'store'
+    'index', 'store'
 ]);
    
 Route::apiResource('feedbacks', 'API\FeedbackController')->only([
-    'store'
+    'index', 'store'
 ]);
 
 Route::apiResource('reactions', 'API\ReactionController');
