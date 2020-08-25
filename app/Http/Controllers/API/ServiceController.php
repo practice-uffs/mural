@@ -4,6 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+use App\Item;
+use App\Specification;
+
+use App\Http\Resources\ServiceResource;
 
 class ServiceController extends Controller
 {
@@ -14,7 +20,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::where('type', Item::TYPE_SERVICE)
+            -> whereNull('parent_id');
+        
+        return ServiceResource::collection($items -> paginate());
     }
 
     /**
@@ -25,7 +34,30 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        
+        $data['hidden'] = true;
+        $data['type'] = Item::TYPE_SERVICE;
+        $data['status'] = Item::STATUS_ACTIVE;
+
+        $specification = Specification::create([
+            'content' => json_encode($request -> specification)
+        ]);
+
+        $data['specification_id'] = $specification -> id;
+
+        $item = Item::create($data);
+
+        return response(
+            new ServiceResource($item),
+            Response::HTTP_CREATED
+        );
     }
 
     /**

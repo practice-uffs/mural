@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Item;
-use App\User;
 
 use App\Http\Resources\FeedbackResource;
 
@@ -20,7 +19,11 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::where('type', Item::TYPE_FEEDBACK)
+            -> whereNull('parent_id')
+            -> where('hidden', false);
+        
+        return FeedbackResource::collection($items -> paginate());
     }
 
     /**
