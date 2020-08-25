@@ -68,7 +68,10 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        //
+        return response(
+            new ServiceResource(Item::find($id)),
+            Response::HTTP_OK
+        );
     }
 
     /**
@@ -80,7 +83,36 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $data['hidden'] = true;
+        $data['type'] = Item::TYPE_SERVICE;
+        $data['status'] = Item::STATUS_ACTIVE;
+
+        $service = Item::find($id);
+        $specification = Specification::find($service->specification_id);
+
+        try {
+            $specification->update([
+                'content' => json_encode($request -> specification)
+            ]);
+            
+            $service->update($data);
+
+            return response(
+                new ServiceResource($service),
+                Response::HTTP_OK
+            );
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

@@ -62,7 +62,10 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-        //
+        return response(
+            new FeedbackResource(Item::find($id)),
+            Response::HTTP_OK
+        );
     }
 
     /**
@@ -74,7 +77,31 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'location_id' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'hidden' => 'bool',
+        ]);
+
+        $data['type'] = Item::TYPE_FEEDBACK;
+        $data['status'] = Item::STATUS_ACTIVE;
+
+        $feedback = Item::find($id);
+
+        try {
+            $feedback->update($data);
+            
+            return response(
+                new FeedbackResource($feedback),
+                Response::HTTP_OK
+            );
+            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
