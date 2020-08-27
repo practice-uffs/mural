@@ -12,7 +12,6 @@ use Carbon\Carbon;
 
 use App\Http\Resources\CommentResource;
 
-
 class ItemController extends Controller
 {
     const RESPONSE_MESSAGES = [
@@ -71,27 +70,6 @@ class ItemController extends Controller
         return view('item.index', [
             'user' => $user,
             'items' => SELF::getGlobalItems($user),
-            'serviceCategories' => SELF::findCategoriesByItemType(Item::TYPE_SERVICE),
-            'locations' => Location::all()
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($type)
-    {
-        $formTitle = ($type == 1) ?
-            'Adicionar uma ideia' :
-            'Solicitar um serviço';
-
-        return view('item.create', [
-            'user' => Auth::user(),
-            'type' => $type,
-            'formTitle' => $formTitle,
-            'categories' => SELF::findCategoriesByItemType($type),
             'locations' => Location::all()
         ]);
     }

@@ -3,7 +3,7 @@
         modal-title="Qual Serviço você precisa?"
         :btn-action-txt="btnAction.value"
         :btn-icon-txt="btnAction.icon"
-        :modal-id="modalId.default"
+        :modal-id="modalId"
         :modal-options="modalOptions"
         @click="create"
     >
@@ -94,7 +94,6 @@
 </template>
 
 <script>
-
 const SERVICE = 2;
 
 export default {
@@ -104,32 +103,32 @@ export default {
             categories: null,
             locations: null,
 
-            categoryId: "",
-            locationId: "",
-            description: "",
-            title: "",
+            categoryId: '',
+            locationId: '',
+            description: '',
+            title: '',
             
             btnAction: {
                 type: String,
-                value: "Criar",
-                icon: "send"
+                value: 'Criar',
+                icon: 'send'
             },
-            modalId: {
-                type: String,
-                default: "modalService"
-            },
+
             modalOptions: {
                 onOpenEnd: this.focusOnTitle,
                 onCloseStart: this.setCreationState,
             },
 
             errors: {},
-            success: ""
+            success: ''
         }
     },
+    
     props: {
-        url: String,
+        modalId: String,
+        userId: String
     },
+
     methods: {
         async loadCategories() {
             let { data } = await window.axios.get('/api/categories', {
@@ -137,11 +136,13 @@ export default {
                     'item_type': SERVICE,
                 }
             });
+
             this.categories = data;
         },
 
         async loadLocations() {
             let { data } = await window.axios.get('/api/locations');
+            
             this.locations = data;
         },
 
@@ -149,58 +150,61 @@ export default {
             this.$refs.title.focus();
         },
 
-        setCreationState(){
-            this.success = "";
-            this.btnAction.icon = "send";
-            this.btnAction.value = "Criar";
+        setCreationState() {
+            this.success = '';
+            this.btnAction.icon = 'send';
+            this.btnAction.value = 'Criar';
         },
 
-        handleError(err){
+        handleError(err) {
             let data = err.response.data;
             this.errors = data.errors;
         },
 
-        handleSuccess(response){
+        handleSuccess(response) {
             this.success = response.data.message;
-            this.btnAction.icon = "close";
-            this.btnAction.value = "Fechar";
+            this.btnAction.icon = 'close';
+            this.btnAction.value = 'Fechar';
             this.resetData();
         },
 
-        create(){
-            if(!this.success){
+        create() {
+            if (!this.success) {
                 this.errors = {};
                 let data = {
-                    'type': SERVICE,
+                    'user_id': this.userId,
                     'title': this.title,
                     'description': this.description,
-                    'hidden': 'on',
+                    'hidden': true,
                     'location_id': this.locationId,
                     'category_id': this.categoryId,
                 };
 
-                let service = window.axios.post(this.url, data);
-                service.then(this.handleSuccess)
-                .catch(this.handleError);
+                window.axios.post('/api/services', data)
+                    .then(this.handleSuccess)
+                    .catch(this.handleError);
             }
         },
-        resetData(){
-            this.title = "";
-            this.categoryId = "";
-            this.locationId = "";
-            this.description = "";
+
+        resetData() {
+            this.title = '';
+            this.categoryId = '';
+            this.locationId = '';
+            this.description = '';
         },
 
-        setDropdownSelect(){
-            var selectElems = document.querySelectorAll(`#${this.modalId.default} select`);
+        setDropdownSelect() {
+            var selectElems = document.querySelectorAll(`#${this.modalId} select`);
             M.FormSelect.init(selectElems);
         }
     },
-    created(){
+
+    created() {
         this.loadCategories();
         this.loadLocations();
     },
-    updated(){
+
+    updated() {
         this.setDropdownSelect();
     }
 }

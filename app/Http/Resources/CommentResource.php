@@ -21,9 +21,7 @@ class CommentResource extends JsonResource
             'user_id' => $this -> user_id,
             'user' => $this -> title,
             'text' => $this -> description,
-            'date' => $this -> updated_at,
-            /*'date' => Carbon::createFromFormat('Y-m-d', $this -> updated_at)
-                        -> format('d/m/Y'),*/
+            'date' => $this -> updated_at
         ];
     }
 }

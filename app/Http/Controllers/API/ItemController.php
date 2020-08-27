@@ -22,8 +22,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::where('hidden', false)
-            -> whereNull('parent_id');
+        $items = Item::whereNull('parent_id');
 
         return ItemResource::collection($items -> paginate());
     }
@@ -44,7 +43,7 @@ class ItemController extends Controller
             'type' => $request -> type,
             'title' => $request -> title,
             'description' => $request -> description,
-            'hidden' => $request -> hidden == 'on',
+            'hidden' => $request -> hidden,
         ];
 
         if ($data['type'] == Item::TYPE_SERVICE) {
