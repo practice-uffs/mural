@@ -10,9 +10,7 @@
             @click="del(reaction)"
         >
             <div class="reaction__icon">
-                <i class="material-icons">
-                    {{ reaction.text }}
-                </i>
+                <img :src="'/img/reactions/' + reaction.text">
             </div>
 
             <div class="reaction__count">
@@ -29,13 +27,13 @@
             </a>
 
             <ul :id='reactionsId' class='dropdown-content'>
-                <li><a href="#!" @click="create('thumb_up')">
-                    <i class="material-icons">thumb_up</i>
-                </a></li>
-
-                <li><a href="#!" @click="create('thumb_down')">
-                    <i class="material-icons">thumb_down</i>
-                </a></li>
+                <li 
+                    v-for="img in allReactionsIcons"
+                    :key="img">
+                    <a href="#!" @click="create(img)">
+                        <img :src="'/img/reactions/' + img" class="">
+                    </a>
+                </li>
             </ul>
         </div>
     </ul>
@@ -82,6 +80,7 @@ export default {
                     reactions[reaction.text].userCreated = true;
                     reactions[reaction.text].id = reaction.id;
                     this.userCreatedAny = true;
+                    
                 }
             }
 
@@ -121,6 +120,19 @@ export default {
     computed: {
         reactionsId: function() {
             return 'reactions' + this.itemId + this.userId;
+        },
+
+        allReactionsIcons: function() {
+            return [
+                '1F44D.svg',
+                '1F44E.svg',
+                '1F389.svg',
+                '1F440.svg',
+                '1F604.svg',
+                '1F615.svg',
+                '1F680.svg',
+                '2764.svg',
+            ];
         }
     },
 
