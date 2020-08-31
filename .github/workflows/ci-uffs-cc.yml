@@ -31,8 +31,6 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
         php artisan migrate
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: vendor/bin/phpunit
 
     # Deploy to ci.uffs.cc
     - name: Extract branch name
