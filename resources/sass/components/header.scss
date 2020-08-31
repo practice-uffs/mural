@@ -44,41 +44,9 @@ ul {
 }
 
 /**
- * Bottom navigation section.
- */
-.header__nav {
-    @extend .container;
-
-    ul.header__nav-links {
-        overflow: hidden;
-    }
-
-    li.header__nav-item {
-        text-decoration: none;
-
-        a {
-            @extend .p-3;
-            display: block;
-            color: darken(theme-color('primary'), 5%);
-            transition: all 0.3s;
-
-            &:hover {
-                background-color: transparent !important;
-                color: darken(theme-color('primary'), 20%);
-            }
-
-            .material-icons {
-                font-size: 2rem;
-            }
-        }
-    }
-}
-
-/**
  * Menu trigger.
  */
 .nav__link {
-
     color: color('blue');
     display: flex !important;
     align-items: center;

@@ -32,41 +32,14 @@
                 </div>
             </div>
         @endif
-        
-        <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a href="#feedbacks">Feedbacks</a></li>
-            <li class="tab"><a href="#services">Serviços</a></li>
-        </ul>
 
-        <div id="feedbacks">
-            <h4>Lista de Feedbacks criados</h4>
+        <item-list item-type=1></item-list>
+        <item-list item-type=2></item-list>
 
-            <div class="row" id="viewList">
-                @foreach ($feedbacks as $feedback)
-                    <div class="col s12 m6 xl4">
-                        <a href="{{ route('items.show', $feedback -> id) }}"
-                            class="grey-text text-darken-4"
-                        >
-                            <div class="card hoverable">
-                                <div class="card-content">
-                                    <span class="card-title truncate">
-                                        {{ $feedback -> title }}
-                                    </span>
-                                    <p class="truncate grey-text text-darken-3">
-                                        {{ $feedback -> description }}
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div id="services">
+        {{-- <div id="services">
             <h4>Lista de Serviços criados</h4>
 
-            <div class="row" id="viewList">
+            <div class="row" data-toggle="toggle-list">
                 @foreach ($services as $service)
                     <div class="col s12 m6 xl4">
                         <a href="{{ route('items.show', $service -> id) }}"
@@ -86,7 +59,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
         
     </main>
     @if (Auth::check())
@@ -98,30 +71,8 @@
         <service-form
             modal-id="modalService"
             user-id="{{ $user -> id }}"
-        />
+        ></service-form>
     @endif
 
 @endsection
 
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    let viewList = document.getElementById('viewList');
-    let viewTrigger = document.getElementById('viewTrigger');
-
-    viewTrigger.addEventListener('click', function() {
-        viewList.querySelectorAll('div.col').forEach((elem) => {
-            elem.classList.toggle('m6');
-            elem.classList.toggle('xl4');
-
-            if (elem.classList.contains('m6')) {
-                viewTrigger.querySelector('span').innerHTML = 'view_list';
-
-            } else {
-                viewTrigger.querySelector('span').innerHTML = 'view_module';
-            }
-        });
-    });
-
-
-});
-</script>

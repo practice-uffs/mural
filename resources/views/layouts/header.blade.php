@@ -39,14 +39,9 @@
 
         @if ($home ?? false)
             <div class="header__nav">
-                <ul class="header__nav-links">
-                    <li class="header__nav-item">
-                        <a href="#" id="viewTrigger">
-                            <span class="material-icons">
-                                view_list
-                            </span>
-                        </a>
-                    </li>
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a href="#feedbacks">Feedbacks</a></li>
+                    <li class="tab"><a href="#services">Serviços</a></li>
                 </ul>
             </div>
         @endif
