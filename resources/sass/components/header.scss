@@ -48,28 +48,22 @@ ul {
  */
 .header__nav {
     @extend .container;
-    @extend .p-2;
 
-    ul {
+    ul.header__nav-links {
         overflow: hidden;
     }
 
-    ul {
-        overflow: hidden;
-    }
-
-    li {
+    li.header__nav-item {
         text-decoration: none;
-        @extend .left;
 
         a {
             @extend .p-3;
             display: block;
-            color: darken(theme-color('primary'), 10%);
+            color: darken(theme-color('primary'), 5%);
             transition: all 0.3s;
 
             &:hover {
-                background-color: rgba(0, 0, 0, 0.1) !important;
+                background-color: transparent !important;
                 color: darken(theme-color('primary'), 20%);
             }
 

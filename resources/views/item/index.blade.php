@@ -1,32 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
-<header>
-    <nav class="header">
-        <div class="header__wrapper">
-            <a href="{{ route('items.index') }}"
-                class="header__logo"
-            >
-                <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
-            </a>
-
-            @include('layouts.headerAuth')
-        </div>
-
-        <div class="header__nav">
-            <ul>
-                <li>
-                    <a href="#" id="viewTrigger">
-                        <span class="material-icons">
-                            view_list
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-@endsection
+@include('layouts.header', ['home' => true])
 
 @section('content')
 
@@ -58,29 +32,62 @@
                 </div>
             </div>
         @endif
+        
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#feedbacks">Feedbacks</a></li>
+            <li class="tab"><a href="#services">Serviços</a></li>
+        </ul>
 
-        <h4>Lista de ideias criadas</h4>
+        <div id="feedbacks">
+            <h4>Lista de Feedbacks criados</h4>
 
-        <div class="row" id="viewList">
-            @foreach ($items as $item)
-                <div class="col s12 m6 xl4">
-                    <a href="{{ route('items.show', $item -> id) }}"
-                        class="grey-text text-darken-4"
-                    >
-                        <div class="card hoverable">
-                            <div class="card-content">
-                                <span class="card-title truncate">
-                                    {{ $item -> title }}
-                                </span>
-                                <p class="truncate grey-text text-darken-3">
-                                    {{ $item -> description }}
-                                </p>
+            <div class="row" id="viewList">
+                @foreach ($feedbacks as $feedback)
+                    <div class="col s12 m6 xl4">
+                        <a href="{{ route('items.show', $feedback -> id) }}"
+                            class="grey-text text-darken-4"
+                        >
+                            <div class="card hoverable">
+                                <div class="card-content">
+                                    <span class="card-title truncate">
+                                        {{ $feedback -> title }}
+                                    </span>
+                                    <p class="truncate grey-text text-darken-3">
+                                        {{ $feedback -> description }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
+
+        <div id="services">
+            <h4>Lista de Serviços criados</h4>
+
+            <div class="row" id="viewList">
+                @foreach ($services as $service)
+                    <div class="col s12 m6 xl4">
+                        <a href="{{ route('items.show', $service -> id) }}"
+                            class="grey-text text-darken-4"
+                        >
+                            <div class="card hoverable">
+                                <div class="card-content">
+                                    <span class="card-title truncate">
+                                        {{ $service -> title }}
+                                    </span>
+                                    <p class="truncate grey-text text-darken-3">
+                                        {{ $service -> description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        
     </main>
     @if (Auth::check())
         <feedback-form

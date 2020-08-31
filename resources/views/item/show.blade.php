@@ -1,20 +1,6 @@
 @extends('layouts.app')
 
-@section('header')
-<header>
-    <nav class="header">
-        <div class="header__wrapper">
-            <a href="{{ route('items.index') }}"
-                class="header__logo"
-            >
-                <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
-            </a>
-
-            @include('layouts.headerAuth')
-        </div>
-    </nav>
-</header>
-@endsection
+@include('layouts.header')
 
 @section('content')
 <main class="container">

@@ -3,8 +3,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // var selectElems = document.querySelectorAll('select');
-    // M.FormSelect.init(selectElems);
+    var selectElems = document.querySelectorAll('select');
+    M.FormSelect.init(selectElems);
 
     var dropdownOptions = {
         coverTrigger: false,
@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
 
+    var tabElems = document.querySelectorAll('.tabs');
+    M.Tabs.init(tabElems);
+
 });
 
 /**
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
 
 window.Vue = require('vue');
 

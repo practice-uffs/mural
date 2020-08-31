@@ -40,22 +40,28 @@ class ItemController extends Controller
     }
 
     /**
-     * Returns all items that may be retrieved for the given user.
-     * @return [type] [description]
-     * @param  [type] $user [description]
+     * Returns all feedbacks that may be seen.
      */
-    protected static function getGlobalItems($user)
+    protected static function getGlobalFeedbacks()
     {
         $items = Item::where('hidden', false)
             -> whereNull('parent_id')
+            -> where('type', Item::TYPE_FEEDBACK)
             -> get();
 
         return $items;
     }
 
-    protected static function isItemVisible($itemType, $hidden)
+    /**
+     * Returns all services that may be retrieved for the given user.
+     */
+    protected static function getGlobalServices()
     {
-        return !$hidden == 'on' || $itemType == Item::TYPE_SERVICE;
+        $items = Item::whereNull('parent_id')
+            -> where('type', Item::TYPE_SERVICE)
+            -> get();
+
+        return $items;
     }
 
     /**
@@ -69,7 +75,8 @@ class ItemController extends Controller
 
         return view('item.index', [
             'user' => $user,
-            'items' => SELF::getGlobalItems($user),
+            'feedbacks' => SELF::getGlobalFeedbacks(),
+            'services' => SELF::getGlobalServices(),
             'locations' => Location::all()
         ]);
     }
