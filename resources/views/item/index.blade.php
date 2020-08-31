@@ -16,7 +16,7 @@
         <div class="header__nav">
             <ul>
                 <li>
-                    <a href="#" id="viewTrigger">
+                    <a href="javascript:void" id="viewTrigger">
                         <span class="material-icons">
                             view_list
                         </span>
@@ -72,9 +72,34 @@
                                 <span class="card-title truncate">
                                     {{ $item -> title }}
                                 </span>
-                                <p class="truncate grey-text text-darken-3">
+                                <p class="grey-text text-darken-3">
                                     {{ $item -> description }}
                                 </p>
+                                <div class="user-info pt-3 pl-3">
+                                    <img src="{{asset('img/avatars/avatar-' . ($user->id % 4 + 1) . '.png') }}" width="45" class="user-info__avatar" alt="Avatar">
+                                    <div class="user-info__uid-name px-2">
+                                        <div>
+                                            {{ $user->name }}
+                                        </div>
+                                        <div class="pl-2">
+                                            {{ $user->uid }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="reaction-list pt-4 pl-3"> 
+                                    @foreach ($item->getReactionsAmount() as $reaction => $amount)
+                                        <li class="reaction reaction--active pl-2">
+                                            <div class="reaction__icon">
+                                                <i class="material-icons" class="reaction__icons">
+                                                    {{ $reaction }}
+                                                </i>
+                                            </div>
+                                            <div class="reaction__count">
+                                                {{ $amount }}
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </a>
