@@ -43,6 +43,7 @@ jobs:
         host: ${{ env.BUILD_HOST }}
         username: ${{ secrets.CI_USERNAME }}
         password: ${{ secrets.CI_PASSWORD }}
+        port: 22
         script: |
           mkdir -p ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
     - name: Clean vendor files
@@ -61,6 +62,7 @@ jobs:
         host: ${{ env.BUILD_HOST }}
         username: ${{ secrets.CI_USERNAME }}
         password: ${{ secrets.CI_PASSWORD }}
+        port: 22
         script: |
           cd ${{ env.BUILD_WEB_DIRECTORY }}/${{ steps.extract_branch.outputs.branch }}/${{ github.sha }}
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
