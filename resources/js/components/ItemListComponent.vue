@@ -28,9 +28,35 @@
                             <span class="card-title truncate">
                                 {{ item.title }}
                             </span>
+                            
                             <p class="truncate grey-text text-darken-3">
                                 {{ item.description }}
                             </p>
+
+                            <div class="user-info pt-3 pl-3">
+                                <img 
+                                    :src="'img/avatars/avatar-' + (Number(item.user_id) % 4 + 1) + '.png'"
+                                    height="45" 
+                                    class="user-info__avatar" 
+                                    alt="Avatar"
+                                >
+
+                                <div class="user-info__uid-name px-2">
+                                    <div>
+                                        {{ item.user.name }}
+                                    </div>
+                                    <div class="pl-2">
+                                        {{ item.user.uid }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__reaction">
+                            <reaction-list
+                                :item-id="item.id"
+                                :user-id="userId"
+                                static-list
+                            ></reaction-list>
                         </div>
                     </div>
                 </a>
@@ -50,7 +76,8 @@ export default {
     data() {
         return {
             items: [],
-            listToggled: false
+            listToggled: false,
+            user: {}
         }
     },
 
@@ -77,14 +104,12 @@ export default {
         },
 
         async fetchServices() {
-            console.log(this.userId);
             let { data } = await window.axios.get('/api/services', {
                 params: {
                     user_id: this.userId
                 }
             });
 
-            console.log(data);
             this.items = data.data;
         },
 

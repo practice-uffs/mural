@@ -11,6 +11,26 @@
     padding: $card-padding/2 $card-padding/2 $card-padding $card-padding;
 }
 
+.user-info {
+    color: $blue;
+    text-align: left;
+    display: flex;
+
+    &__avatar {
+        border-radius: 45px;
+    }
+    
+    &__uid-name {
+        display: inherit;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+
+    div {
+        width: 100%;
+    }
+}
+
 @each $color, $value in $theme-colors {
     .card.card--#{$color} {
         .card__header {

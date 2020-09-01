@@ -67,4 +67,23 @@ class Item extends Model
         return $this->hasMany('App\Reaction');
     }
 
+    public function getReactionsAmount()
+    {
+        $reactionsAmount = Array();
+        $reactions = $this->find($this->id)->reactions->groupBy('text');
+        
+        $reactionNames = $reactions->keys();
+
+        foreach($reactionNames as $reactionName) {
+            $reactionsAmount[$reactionName] = $reactions[$reactionName]->count();
+        }
+        
+        return $reactionsAmount;
+    }
+
+    public function hasReactions()
+    {
+        return $this->find($this->id)->reactions->count();
+    }
+
 }

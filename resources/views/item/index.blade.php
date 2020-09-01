@@ -33,15 +33,18 @@
             </div>
         @endif
 
-        <item-list item-type=1></item-list>
+        <item-list 
+            item-type=1
+            user-id="{{ $user -> id }}"
+        ></item-list>
         @if (Auth::check())
             <item-list 
                 item-type=2 
                 user-id="{{ $user -> id }}"
             ></item-list>
         @endif
-        
     </main>
+    
     @if (Auth::check())
         <feedback-form
             modal-id="modalFeedback"
