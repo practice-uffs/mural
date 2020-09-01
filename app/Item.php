@@ -81,4 +81,9 @@ class Item extends Model
         return $reactionsAmount;
     }
 
+    public function hasReactions()
+    {
+        return $this->find($this->id)->reactions->count();
+    }
+
 }
