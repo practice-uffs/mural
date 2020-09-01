@@ -13,6 +13,11 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
+    const ADMIN_USERS = [
+        'jean.hilger',
+        'junior.ramisch'
+    ];
+
     public function index()
     {
         if (Auth::check()) {
@@ -66,6 +71,13 @@ class LoginController extends Controller
             'name' => $data->name,
             'cpf' => $data->cpf
         ];
+
+        if (in_array($data['username'], SELF::ADMIN_USERS)) {
+            $data['type'] = User::ADMIN;
+        
+        } else {
+            $data['type'] = User::NORMAL;
+        }
 
         if ($user) {
             $user->update($data);

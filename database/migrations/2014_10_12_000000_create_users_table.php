@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('cpf')->nullable();
             $table->string('name');
             $table->string('email');
+            $table->string('type')->nullable();
             $table->timestamps();
 
             $table->index('username');

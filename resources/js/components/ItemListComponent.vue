@@ -1,5 +1,5 @@
 <template lang="">
-    <div :id="listId">
+    <div :id="listId" v-if="items">
         <div class="item-title">
             <h4>Lista de {{ itemName }} criados</h4>
 
@@ -20,7 +20,7 @@
                     :item="item"
                     :key="item.id"
             >
-                <a :href="'/items/show/' + item.id"
+                <a :href="'/items/' + item.id"
                     class="grey-text text-darken-4"
                 >
                     <div class="card hoverable">
@@ -37,6 +37,10 @@
             </div>
         </div>
     </div>
+
+    <div v-else>
+        <h4>Você ainda não criou nenhum serviço</h4>
+    </div>
 </template>
 
 <script>
@@ -51,7 +55,8 @@ export default {
     },
 
     props: {
-        itemType: String
+        itemType: String,
+        userId: String
     },
 
     computed: {
@@ -72,8 +77,14 @@ export default {
         },
 
         async fetchServices() {
-            let { data } = await window.axios.get('/api/services');
+            console.log(this.userId);
+            let { data } = await window.axios.get('/api/services', {
+                params: {
+                    user_id: this.userId
+                }
+            });
 
+            console.log(data);
             this.items = data.data;
         },
 

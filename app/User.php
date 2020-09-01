@@ -11,12 +11,19 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ADMIN = 'admin';
+    const NORMAL = 'normal';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'uid',  'cpf'
+        'name', 'email', 'password', 'username', 'uid',  'cpf', 'type'
     ];
+
+    public function isAdmin() {
+        return $this -> type == SELF::ADMIN;
+    }
 }

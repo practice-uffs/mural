@@ -148,7 +148,7 @@ export default {
                 'hidden': !this.hidden,
             }
 
-            await window.axios.post('/api/feedback', data).then(function(response) {
+            await window.axios.post('/api/feedbacks', data).then(function(response) {
                 console.log(response);
             });
         },

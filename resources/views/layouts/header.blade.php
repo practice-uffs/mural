@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        @if ($home ?? false)
+        @if (Auth::check() && ($home ?? false))
             <div class="header__nav">
                 <ul class="tabs tabs-fixed-width">
                     <li class="tab"><a href="#feedbacks">Feedbacks</a></li>

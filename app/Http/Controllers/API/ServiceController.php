@@ -5,23 +5,42 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 use App\Item;
+use App\User;
 use App\Specification;
 
 use App\Http\Resources\ServiceResource;
 
 class ServiceController extends Controller
 {
+    protected function getServicesForNormalUser($userId) {
+        return Item::where('type', Item::TYPE_SERVICE)
+            -> whereNull('parent_id')
+            -> where('user_id', $userId);
+    }
+
+    protected function getServicesForAdminUser() {
+        return Item::where('type', Item::TYPE_SERVICE)
+            -> whereNull('parent_id');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::where('type', Item::TYPE_SERVICE)
-            -> whereNull('parent_id');
+        $user = User::find($request -> user_id);
+
+        if ($user -> isAdmin()) {
+            $items = SELF::getServicesForAdminUser();
+        
+        } else {
+            $items = SELF::getServicesForNormalUser($user -> id);
+        }
         
         return ServiceResource::collection($items -> paginate());
     }
