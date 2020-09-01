@@ -26,14 +26,52 @@
                 <i class="material-icons">add</i>
             </a>
 
-            <ul :id='reactionsId' class='dropdown-content'>
-                <li 
-                    v-for="img in allReactionsIcons"
-                    :key="img">
-                    <a href="#!" @click="create(img)">
-                        <img :src="'/img/reactions/' + img" class="">
-                    </a>
-                </li>
+            <ul :id='reactionsId' class='row dropdown-content reaction__dropdown'>
+                <div class="col s6">
+                    <li>
+                        <a href="#!" @click="create('1F44D.svg')">
+                            <img src="/img/reactions/1F44D.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F44E.svg')">
+                            <img src="/img/reactions/1F44E.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F389.svg')">
+                            <img src="/img/reactions/1F389.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F440.svg')">
+                            <img src="/img/reactions/1F440.svg" class="">
+                        </a>
+                    </li>
+                </div>
+
+                <div class="col s6">
+                    <li>
+                        <a href="#!" @click="create('1F604.svg')">
+                            <img src="/img/reactions/1F604.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F615.svg')">
+                            <img src="/img/reactions/1F615.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F680.svg')">
+                            <img src="/img/reactions/1F680.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('2764.svg')">
+                            <img src="/img/reactions/2764.svg" class="">
+                        </a>
+                    </li>
+                </div>
             </ul>
         </div>
     </ul>
@@ -120,19 +158,6 @@ export default {
     computed: {
         reactionsId: function() {
             return 'reactions' + this.itemId + this.userId;
-        },
-
-        allReactionsIcons: function() {
-            return [
-                '1F44D.svg',
-                '1F44E.svg',
-                '1F389.svg',
-                '1F440.svg',
-                '1F604.svg',
-                '1F615.svg',
-                '1F680.svg',
-                '2764.svg',
-            ];
         }
     },
 
@@ -142,7 +167,7 @@ export default {
 
     updated() {
         let dropdownElems = document.querySelectorAll('.reaction__btn');
-        M.Dropdown.init(dropdownElems);
+        M.Dropdown.init(dropdownElems, {constrainWidth: false});
     }
 }
 </script>

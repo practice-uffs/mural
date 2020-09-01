@@ -64,3 +64,10 @@ ul[class="reaction-list"] {
     background-color: lighten(theme-color('primary'), 63%);
     cursor: pointer;
 }
+
+.reaction__dropdown {
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+}
