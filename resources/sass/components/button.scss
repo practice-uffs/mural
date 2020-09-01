@@ -18,3 +18,9 @@
 .fixed-action-btn--width {
     width: 56px !important;
 }
+
+@media (max-width: 576px) {
+    .btn {
+        width: 100% !important;
+    }
+}

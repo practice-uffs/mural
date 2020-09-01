@@ -37,6 +37,10 @@
     select {
         color: theme-color('primary') !important;
     }
+    
+    textarea {
+        min-height: 6rem;
+    }
 }
 
 .switch {
@@ -46,12 +50,6 @@
 
     label input[type=checkbox]:checked+.lever:after {
         background-color: lighten(theme-color('primary'), 10%);
-    }
-}
-
-@media (max-width: 576px) {
-    .btn {
-        width: 100% !important;
     }
 }
 
