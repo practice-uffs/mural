@@ -40,31 +40,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Returns all feedbacks that may be seen.
-     */
-    protected static function getGlobalFeedbacks()
-    {
-        $items = Item::where('hidden', false)
-            -> whereNull('parent_id')
-            -> where('type', Item::TYPE_FEEDBACK)
-            -> get();
-
-        return $items;
-    }
-
-    /**
-     * Returns all services that may be retrieved for the given user.
-     */
-    protected static function getGlobalServices()
-    {
-        $items = Item::whereNull('parent_id')
-            -> where('type', Item::TYPE_SERVICE)
-            -> get();
-
-        return $items;
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -74,10 +49,7 @@ class ItemController extends Controller
         $user = Auth::user();
 
         return view('item.index', [
-            'user' => $user,
-            'feedbacks' => SELF::getGlobalFeedbacks(),
-            'services' => SELF::getGlobalServices(),
-            'locations' => Location::all()
+            'user' => $user
         ]);
     }
 

@@ -20,8 +20,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $items = Item::where('type', Item::TYPE_FEEDBACK)
-            -> whereNull('parent_id')
-            -> where('hidden', false);
+            -> whereNull('parent_id');
         
         return FeedbackResource::collection($items -> paginate());
     }
