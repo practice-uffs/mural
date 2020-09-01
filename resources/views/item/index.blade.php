@@ -35,31 +35,6 @@
 
         <item-list item-type=1></item-list>
         <item-list item-type=2></item-list>
-
-        {{-- <div id="services">
-            <h4>Lista de Serviços criados</h4>
-
-            <div class="row" data-toggle="toggle-list">
-                @foreach ($services as $service)
-                    <div class="col s12 m6 xl4">
-                        <a href="{{ route('items.show', $service -> id) }}"
-                            class="grey-text text-darken-4"
-                        >
-                            <div class="card hoverable">
-                                <div class="card-content">
-                                    <span class="card-title truncate">
-                                        {{ $service -> title }}
-                                    </span>
-                                    <p class="truncate grey-text text-darken-3">
-                                        {{ $service -> description }}
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div> --}}
         
     </main>
     @if (Auth::check())

@@ -3,7 +3,7 @@
         <div class="item-title">
             <h4>Lista de {{ itemName }} criados</h4>
 
-            <a href="#" 
+            <a href="#!" 
                     data-target="list-toggler" 
                     class="hide-on-small-only" 
                     @click="toggleListView"
@@ -17,10 +17,10 @@
         <div class="row" data-toggle="toggle-list">
             <div class="col s12 m6 xl4"
                     v-for="item in items" 
-                    v-bind="item"
+                    :item="item"
                     :key="item.id"
             >
-                <a :href="'/items/show' + item.id"
+                <a :href="'/items/show/' + item.id"
                     class="grey-text text-darken-4"
                 >
                     <div class="card hoverable">
@@ -80,7 +80,7 @@ export default {
         toggleListView(event) {
             let itemList = document.getElementById(this.listId);
             let listView = itemList.querySelector('[data-toggle="toggle-list"]');
-            let triggerIcon = event.target;
+            let triggerIcon = itemList.querySelector('[data-target="list-toggler"] span');
 
             listView.querySelectorAll('div.col').forEach((elem) => {
                 elem.classList.toggle('m6');
@@ -98,17 +98,13 @@ export default {
         }
     },
 
-    mounted() {
+    created() {
         if (this.itemType == FEEDBACK) {
             this.fetchFeedbacks();
         
         } else {
             this.fetchServices();
         }
-    },
-
-    updated() {
-        console.error(this.items);
     }
 }
 </script>
