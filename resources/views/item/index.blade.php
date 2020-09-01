@@ -13,10 +13,10 @@
             @include('layouts.headerAuth')
         </div>
 
-        <div class="header__nav">
+        <div class="header__nav hide-on-small-only">
             <ul>
                 <li>
-                    <a href="#" id="viewTrigger">
+                    <a href="javascript:void(0)" id="viewTrigger">
                         <span class="material-icons">
                             view_list
                         </span>
@@ -62,7 +62,7 @@
         <h4>Lista de ideias criadas</h4>
 
         <div class="row" id="viewList">
-            @foreach ($items as $item)
+            @foreach ($items as $key => $item)
                 <div class="col s12 m6 xl4">
                     <a href="{{ route('items.show', $item -> id) }}"
                         class="grey-text text-darken-4"
@@ -72,13 +72,44 @@
                                 <span class="card-title truncate">
                                     {{ $item -> title }}
                                 </span>
-                                <p class="truncate grey-text text-darken-3">
+                                <p class="grey-text text-darken-3 truncate">
                                     {{ $item -> description }}
                                 </p>
+                                <div class="user-info pt-3 pl-3">
+                                    <img src="{{asset('img/avatars/avatar-' . ($user->id % 4 + 1) . '.png') }}" height="45" class="user-info__avatar" alt="Avatar">
+                                    <div class="user-info__uid-name px-2">
+                                        <div>
+                                            {{ $user->name }}
+                                        </div>
+                                        <div class="pl-2">
+                                            {{ $user->uid }}
+                                        </div>
+                                    </div>
+                                </div>
+                                @if($item->hasReactions())
+                                    <ul class="reaction-list pt-4 pl-3"> 
+                                        @foreach ($item->getReactionsAmount() as $reaction => $amount)
+                                            <li class="reaction reaction--active pl-2">
+                                                <div class="reaction__icon">
+                                                    <i class="material-icons" class="reaction__icons">
+                                                        {{ $reaction }}
+                                                    </i>
+                                                </div>
+                                                <div class="reaction__count">
+                                                    {{ $amount }}
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                         </div>
                     </a>
                 </div>
+                @if(!(($key+1) % 3))
+                    <div class="clearfix hide-on-med-and-down"></div>
+                @endif
+                
             @endforeach
         </div>
     </main>
