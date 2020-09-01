@@ -10,7 +10,7 @@
         </div>
         <a class="nav__link dropdown-trigger" data-target="userMenu">
             <img src="{{asset('img/avatars/avatar-' . ($user->id % 4 + 1) . '.png') }}" 
-                class="header__avatar" alt="Avatar"
+                class="header__avatar" alt="Avatar" height="45"
             >
     @else
         <a href="{{ route('login') }}"
