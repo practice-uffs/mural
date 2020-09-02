@@ -10,9 +10,7 @@
             @click="del(reaction)"
         >
             <div class="reaction__icon">
-                <i class="material-icons">
-                    {{ reaction.text }}
-                </i>
+                <img :src="'/img/reactions/' + reaction.text">
             </div>
 
             <div class="reaction__count">
@@ -28,14 +26,52 @@
                 <i class="material-icons">add</i>
             </a>
 
-            <ul :id='reactionsId' class='dropdown-content'>
-                <li><a href="#!" @click="create('thumb_up')">
-                    <i class="material-icons">thumb_up</i>
-                </a></li>
+            <ul :id='reactionsId' class='row dropdown-content reaction__dropdown'>
+                <div class="col s6">
+                    <li>
+                        <a href="#!" @click="create('1F44D.svg')">
+                            <img src="/img/reactions/1F44D.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F44E.svg')">
+                            <img src="/img/reactions/1F44E.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F389.svg')">
+                            <img src="/img/reactions/1F389.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F440.svg')">
+                            <img src="/img/reactions/1F440.svg" class="">
+                        </a>
+                    </li>
+                </div>
 
-                <li><a href="#!" @click="create('thumb_down')">
-                    <i class="material-icons">thumb_down</i>
-                </a></li>
+                <div class="col s6">
+                    <li>
+                        <a href="#!" @click="create('1F604.svg')">
+                            <img src="/img/reactions/1F604.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F615.svg')">
+                            <img src="/img/reactions/1F615.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('1F680.svg')">
+                            <img src="/img/reactions/1F680.svg" class="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!" @click="create('2764.svg')">
+                            <img src="/img/reactions/2764.svg" class="">
+                        </a>
+                    </li>
+                </div>
             </ul>
         </div>
     </ul>
@@ -82,6 +118,7 @@ export default {
                     reactions[reaction.text].userCreated = true;
                     reactions[reaction.text].id = reaction.id;
                     this.userCreatedAny = true;
+                    
                 }
             }
 
@@ -130,7 +167,7 @@ export default {
 
     updated() {
         let dropdownElems = document.querySelectorAll('.reaction__btn');
-        M.Dropdown.init(dropdownElems);
+        M.Dropdown.init(dropdownElems, {constrainWidth: false});
     }
 }
 </script>

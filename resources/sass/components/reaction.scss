@@ -36,11 +36,12 @@ ul[class="reaction-list"] {
 // Reaction Item
 .reaction {
     position: relative;
-    padding-right: 10px;
+    padding: 2px;
+    margin-right: 10px;
 
     &__icon {
-        display: inline;
-        font-size: 1.5rem;
+        width: 3rem;
+        height: 3rem;
     }
 
     &__count {
@@ -60,6 +61,13 @@ ul[class="reaction-list"] {
 }
 
 .reaction--active {
-    color: color('blue');
+    background-color: lighten(theme-color('primary'), 63%);
     cursor: pointer;
+}
+
+.reaction__dropdown {
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
 }
