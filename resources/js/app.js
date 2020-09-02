@@ -3,8 +3,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // var selectElems = document.querySelectorAll('select');
-    // M.FormSelect.init(selectElems);
+    var selectElems = document.querySelectorAll('select');
+    M.FormSelect.init(selectElems);
 
     var dropdownOptions = {
         coverTrigger: false,
@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var textareaElems = document.querySelectorAll('textarea[data-length]');
     M.CharacterCounter.init(textareaElems);
 
+    var tabElems = document.querySelectorAll('.tabs');
+    M.Tabs.init(tabElems);
+
 });
 
 /**
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
 
 window.Vue = require('vue');
 
@@ -44,6 +47,7 @@ Vue.component('reaction-list', require('./components/ReactionListComponent.vue')
 Vue.component('comment-list', require('./components/CommentListComponent.vue').default);
 Vue.component('feedback-form', require('./components/FeedbackFormComponent.vue').default);
 Vue.component('service-form', require('./components/ServiceFormComponent.vue').default);
+Vue.component('item-list', require('./components/ItemListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

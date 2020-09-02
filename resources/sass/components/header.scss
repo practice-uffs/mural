@@ -43,47 +43,9 @@ ul {
 }
 
 /**
- * Bottom navigation section.
- */
-.header__nav {
-    @extend .container;
-    @extend .p-2;
-
-    ul {
-        overflow: hidden;
-    }
-
-    ul {
-        overflow: hidden;
-    }
-
-    li {
-        text-decoration: none;
-        @extend .left;
-
-        a {
-            @extend .p-3;
-            display: block;
-            color: darken(theme-color('primary'), 10%);
-            transition: all 0.3s;
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.1) !important;
-                color: darken(theme-color('primary'), 20%);
-            }
-
-            .material-icons {
-                font-size: 2rem;
-            }
-        }
-    }
-}
-
-/**
  * Menu trigger.
  */
 .nav__link {
-
     color: color('blue');
     display: flex !important;
     align-items: center;

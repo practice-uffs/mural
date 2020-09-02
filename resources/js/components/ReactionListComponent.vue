@@ -5,7 +5,7 @@
             v-bind="reaction"
             :key="reaction.id"
             :class="['reaction',
-                {'reaction--active': reaction.userCreated}
+                {'reaction--active': reaction.userCreated && !staticList}
             ]"
             @click="del(reaction)"
         >
@@ -18,7 +18,7 @@
             </div>
         </li>
 
-        <div v-if="!userCreatedAny && userId">
+        <div v-if="!userCreatedAny && userId && !staticList">
             <a class="dropdown-trigger reaction__btn btn-floating"
                 href="#!"
                 :data-target="reactionsId"
@@ -88,9 +88,13 @@ export default {
     },
 
     props: {
-        'itemId': [String, Number],
-        'userId' : {
+        itemId: [String, Number],
+        userId: {
             default: null
+        },
+        staticList: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -101,7 +105,7 @@ export default {
             let reactions = {};
 
             for (let reaction of reactionsData.data) {
-                let userCreated = (reaction.user_id == this.userId);
+                let userCreated = (!this.staticList && reaction.user_id == this.userId);
 
                 if (reaction.text in reactions) {
                     reactions[reaction.text].count += 1;

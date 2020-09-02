@@ -40,25 +40,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Returns all items that may be retrieved for the given user.
-     * @return [type] [description]
-     * @param  [type] $user [description]
-     */
-    protected static function getGlobalItems($user)
-    {
-        $items = Item::where('hidden', false)
-            -> whereNull('parent_id')
-            -> get();
-
-        return $items;
-    }
-
-    protected static function isItemVisible($itemType, $hidden)
-    {
-        return !$hidden == 'on' || $itemType == Item::TYPE_SERVICE;
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -68,9 +49,7 @@ class ItemController extends Controller
         $user = Auth::user();
 
         return view('item.index', [
-            'user' => $user,
-            'items' => SELF::getGlobalItems($user),
-            'locations' => Location::all()
+            'user' => $user
         ]);
     }
 
