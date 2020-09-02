@@ -83,7 +83,10 @@ export default {
 
     props: {
         itemType: String,
-        userId: String
+        userId: {
+            type: String,
+            default: null
+        }
     },
 
     computed: {

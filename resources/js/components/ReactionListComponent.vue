@@ -69,7 +69,7 @@ export default {
             let reactions = {};
 
             for (let reaction of reactionsData.data) {
-                let userCreated = (reaction.user_id == this.userId);
+                let userCreated = (!this.staticList && reaction.user_id == this.userId);
 
                 if (reaction.text in reactions) {
                     reactions[reaction.text].count += 1;
