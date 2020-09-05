@@ -107,16 +107,16 @@ export default {
                 'text': this.userComment
             });
 
-            this.comments.push(comment.data);
-
-            this.userComment = '';
-
             if (!this.hasComment()) {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '0';
 
             } else {
                 document.querySelector('#timeline .timeline__item:last-child').style.paddingBottom = '0';
             }
+
+            this.comments.push(comment.data);
+
+            this.userComment = '';
         },
 
         hasComment() {
