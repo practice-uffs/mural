@@ -19,12 +19,14 @@
         </li>
 
         <div v-if="!userCreatedAny && userId && !staticList">
-            <a class="dropdown-trigger reaction__btn btn-floating"
-                href="#!"
-                :data-target="reactionsId"
-            >
-                <i class="material-icons">add</i>
-            </a>
+            <in-place-loader ref="loader">
+                <a class="dropdown-trigger reaction__btn btn-floating"
+                    href="#!"
+                    :data-target="reactionsId"
+                >
+                    <i class="material-icons">add</i>
+                </a>
+            </in-place-loader>
 
             <ul :id='reactionsId' class='row dropdown-content reaction__dropdown'>
                 <div class="col s6">
@@ -149,6 +151,7 @@ export default {
         },
 
         async create(text) {
+            this.$refs.loader.start();
             let reaction = await window.axios.post('/api/reactions', {
                 'text': text,
                 'user_id': this.userId,
@@ -156,6 +159,7 @@ export default {
             });
 
             this.fetchReactions();
+            this.$refs.loader.finish();
         }
     },
 

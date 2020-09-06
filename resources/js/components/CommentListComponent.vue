@@ -53,12 +53,14 @@
                 </div>
 
                 <div class="card-action">
-                    <a
-                        class="btn btn--primary btn--gradient"
-                        @click="createComment"
-                    >
-                        Comentar
-                    </a>
+                    <in-place-loader ref="loader">
+                        <a
+                            class="btn btn--primary btn--gradient"
+                            @click="createComment"
+                        >
+                            Comentar
+                        </a>
+                    </in-place-loader>
                 </div>
             </div>
 
@@ -100,6 +102,7 @@ export default {
              * Creates a new comment.
              */
 
+            this.$refs.loader.start();
             if (this.userComment == '') return;
 
             let comment = await window.axios.post(`/api/items/${this.itemId}/comments`, {
@@ -108,6 +111,7 @@ export default {
             });
 
             this.comments.push(comment.data);
+            this.$refs.loader.finish();
 
             this.userComment = '';
 

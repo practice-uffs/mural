@@ -48,6 +48,7 @@ Vue.component('comment-list', require('./components/CommentListComponent.vue').d
 Vue.component('feedback-form', require('./components/FeedbackFormComponent.vue').default);
 Vue.component('service-form', require('./components/ServiceFormComponent.vue').default);
 Vue.component('item-list', require('./components/ItemListComponent.vue').default);
+Vue.component('in-place-loader', require('./components/base/InPlaceLoader.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

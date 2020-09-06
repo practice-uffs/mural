@@ -12,15 +12,17 @@
             </div>
         </div>
 
-        <div class="modal-footer" ref="modalFooter">
-            <a
-                class="btn btn--primary btn--gradient"
-                :class="{'modal-close' : btnIconTxt == 'close'}"
-                @click="handleClick"
-            >
-                {{ btnActionTxt }}
-                <i class="material-icons right">{{ btnIconTxt }}</i>
-            </a>
+        <div class="modal-footer">
+            <in-place-loader ref="loader">
+                <a
+                    class="btn btn--primary btn--gradient"
+                    :class="{'modal-close' : btnIconTxt == 'close'}"
+                    @click="handleClick"
+                >
+                    {{ btnActionTxt }}
+                    <i class="material-icons right">{{ btnIconTxt }}</i>
+                </a>
+            </in-place-loader>
         </div>
     </div>
 </template>
@@ -39,39 +41,16 @@ export default {
     },
 
     methods: {
+        handleClick() {
+            this.$emit('click');
+        },
+
         addLoader() {
-            this.$refs.modalFooter.innerHTML = `
-            <div class="preloader-wrapper small active">
-                <div class="spinner-layer">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            `;
+            this.$refs.loader.start();
         },
 
         resetBtn() {
-            this.$refs.modalFooter.innerHTML = `
-            <a
-                class="btn btn--primary btn--gradient"
-                ref="btnAction"
-                @click="handleClick"
-            >
-                ${this.btnActionTxt}
-                <i class="material-icons right">${this.btnIconTxt}</i>
-            </a>
-            `;
-        },
-
-        handleClick() {
-            this.$emit('click');
+            this.$refs.loader.finish();
         },
 
         closeModal() {
@@ -79,11 +58,13 @@ export default {
                 document.getElementById(this.modalId)
             ).close();
         },
+
         initModal(){
             var modalElems = document.querySelectorAll(`#${this.modalId}`);
             M.Modal.init(modalElems, this.modalOptions);
         }
     },
+    
     mounted(){
         this.initModal();
     }
