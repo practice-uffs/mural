@@ -15,52 +15,52 @@
         </div>
 
         <div class="row" data-toggle="toggle-list">
-            <div class="col s12 m6 xl4"
-                    v-for="item in items" 
-                    :item="item"
-                    :key="item.id"
-            >
-                <a :href="'/items/' + item.id"
-                    class="grey-text text-darken-4"
-                >
-                    <div class="card hoverable">
-                        <div class="card-content">
-                            <span class="card-title truncate">
-                                {{ item.title }}
-                            </span>
-                            
-                            <p class="truncate grey-text text-darken-3">
-                                {{ item.description }}
-                            </p>
+            <template v-for="(item, index) in items">
+                <div class="col s12 m6 xl4" :item="item" :key="item.id">
+                    <a :href="'/items/' + item.id"
+                        class="grey-text text-darken-4"
+                    >
+                        <div class="card hoverable">
+                            <div class="card-content">
+                                <span class="card-title truncate">
+                                    {{ item.title }}
+                                </span>
+                                
+                                <p class="truncate grey-text text-darken-3">
+                                    {{ item.description }}
+                                </p>
 
-                            <div class="user-info pt-3 pl-3">
-                                <img 
-                                    :src="'img/avatars/avatar-' + (Number(item.user_id) % 4 + 1) + '.png'"
-                                    height="45" 
-                                    class="user-info__avatar" 
-                                    alt="Avatar"
-                                >
+                                <div class="user-info pt-3 pl-3">
+                                    <img 
+                                        :src="'img/avatars/avatar-' + (Number(item.user_id) % 4 + 1) + '.png'"
+                                        height="45" 
+                                        class="user-info__avatar" 
+                                        alt="Avatar"
+                                    >
 
-                                <div class="user-info__uid-name px-2">
-                                    <div>
-                                        {{ item.user.name }}
-                                    </div>
-                                    <div class="pl-2">
-                                        {{ item.user.uid }}
+                                    <div class="user-info__uid-name px-2">
+                                        <div>
+                                            {{ item.user.name }}
+                                        </div>
+                                        <div class="pl-2">
+                                            {{ item.user.uid }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card__reaction">
+                                <reaction-list
+                                    :item-id="item.id"
+                                    :user-id="userId"
+                                    static-list
+                                ></reaction-list>
+                            </div>
                         </div>
-                        <div class="card__reaction">
-                            <reaction-list
-                                :item-id="item.id"
-                                :user-id="userId"
-                                static-list
-                            ></reaction-list>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+                <div v-if="!((index+1) % 3)" class="clearfix hide-on-med-and-down">
+                </div>
+            </template>
         </div>
     </div>
 
