@@ -173,6 +173,8 @@ export default {
             this.resetData();
             
             this.$refs.loader.finish();
+
+            window.location.href = '/items#services';
         },
 
         create() {
