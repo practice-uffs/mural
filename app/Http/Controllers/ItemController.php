@@ -54,6 +54,16 @@ class ItemController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function create(Request $request)
+    {
+        //
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -61,35 +71,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'type' => 'required',
-            'title' => 'required',
-            'hidden' => 'required',
-            'location_id' => 'required',
-            'category_id' => 'required',
-            'description' => 'required',
-        ]);
-
-        $item_type = $request->type;
-        // TODO: checar location e category
-
-        $item = new Item([
-            'user_id' => Auth::user()->id,
-            'location_id' => $request->location_id,
-            'category_id' => $request->category_id,
-            'status' => Item::STATUS_ACTIVE,
-            'type' => $item_type,
-            'title' => $request->title,
-            'description' => $request->description,
-            'hidden' => SELF::isItemVisible($item_type, $request -> hidden)
-        ]);
-
-        $item->save();
-
-        return response(
-            ['message' => SELF::RESPONSE_MESSAGES[$item_type]],
-            Response::HTTP_CREATED
-        );
+        //
     }
 
     /**
@@ -150,7 +132,7 @@ class ItemController extends Controller
         $item->type = $request -> type;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
-        $item->hidden = SELF::isItemVisible($request -> type, $request -> hidden);
+        $item->hidden = $request -> hidden == 'on' ? false : true;
         $item->updated_at = Carbon::now();
 
         $item->save();
