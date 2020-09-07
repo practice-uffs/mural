@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'functions';
 
+/**
+ * Cascade modals have "fancier" headers, inspired
+ * in the mdbootstrap's modals.
+ */
 .modal--cascade {
     min-width: 70%;
     overflow: visible !important;
@@ -34,4 +38,14 @@
     color: theme-color('light');
     border-radius: $card-border-radius * 2;
     @extend .z-depth-3;
+}
+
+/**
+ * A modal popup is a modal with little information.
+ */
+
+.modal--popup {
+    width: max-content !important;
+    border-radius: 10px;
+    overflow: hidden !important;
 }

@@ -13,16 +13,14 @@
         </div>
 
         <div class="modal-footer">
-            <in-place-loader ref="loader">
-                <a
-                    class="btn btn--primary btn--gradient"
-                    :class="{'modal-close' : btnIconTxt == 'close'}"
-                    @click="handleClick"
-                >
-                    {{ btnActionTxt }}
-                    <i class="material-icons right">{{ btnIconTxt }}</i>
-                </a>
-            </in-place-loader>
+            <a
+                class="btn btn--primary btn--gradient"
+                :class="{'modal-close' : btnIconTxt == 'close'}"
+                @click="handleClick"
+            >
+                {{ btnActionTxt }}
+                <i class="material-icons right">{{ btnIconTxt }}</i>
+            </a>
         </div>
     </div>
 </template>
@@ -45,14 +43,6 @@ export default {
             this.$emit('click');
         },
 
-        addLoader() {
-            this.$refs.loader.start();
-        },
-
-        resetBtn() {
-            this.$refs.loader.finish();
-        },
-
         closeModal() {
             M.Modal.getInstance(
                 document.getElementById(this.modalId)
@@ -60,7 +50,7 @@ export default {
         },
 
         initModal(){
-            var modalElems = document.querySelectorAll(`#${this.modalId}`);
+            let modalElems = document.querySelectorAll(`#${this.modalId}`);
             M.Modal.init(modalElems, this.modalOptions);
         }
     },

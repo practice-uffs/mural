@@ -1,96 +1,101 @@
 <template>
-    <base-modal
-        modal-title="Qual Serviço você precisa?"
-        :btn-action-txt="btnAction.value"
-        :btn-icon-txt="btnAction.icon"
-        :modal-id="modalId"
-        :modal-options="modalOptions"
-        @click="create"
-    >
-        <div class="row">
-            <div class="col m6 s12">
-                <div class="input-field">
-                    <label for="title">Título</label>
-                    <input
-                        type="text"
-                        name="title"
-                        placeholder="Ex.: Jogos digitais em aula"
-                        v-model="title"
-                        ref="title"
-                    />
+    <div>
+        <base-modal
+            modal-title="Qual Serviço você precisa?"
+            :btn-action-txt="btnAction.value"
+            :btn-icon-txt="btnAction.icon"
+            :modal-id="modalId"
+            :modal-options="modalOptions"
+            @click="create"
+            ref="modalWrapper"
+        >
+            <div class="row">
+                <div class="col m6 s12">
+                    <div class="input-field">
+                        <label for="title">Título</label>
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Ex.: Jogos digitais em aula"
+                            v-model="title"
+                            ref="title"
+                        />
+                    </div>
+                </div>
+
+                <div class="col m3 s12">
+                    <div class="input-field">
+                        <select name="category_id" id="category_id" v-model="categoryId">
+                            <option value="" disabled selected> Selecione uma categoria</option>
+                            <option v-for="category in categories"
+                                :key="category.id"
+                                :value="category.id"
+                            >{{ category.name }}</option>
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+                </div>
+
+                <div class="col m3 s12">
+                    <div class="input-field">
+                        <select name="location_id" id="location_id" v-model="locationId">
+                            <option value="" disabled selected>Selecione um local</option>
+                            <option v-for="location in locations"
+                                :key="location.id"
+                                :value="location.id"
+                            >{{ location.name }}</option>
+                        </select>
+                        <label>Local de realização</label>
+                    </div>
                 </div>
             </div>
 
-            <div class="col m3 s12">
-                <div class="input-field">
-                    <select name="category_id" id="category_id" v-model="categoryId">
-                        <option value="" disabled selected> Selecione uma categoria</option>
-                        <option v-for="category in categories"
-                            :key="category.id"
-                            :value="category.id"
-                        >{{ category.name }}</option>
-                    </select>
-                    <label>Categoria</label>
+            <div class="row">
+                <div class="col m12 s12">
+                    <div class="input-field">
+                        <label for="description">Descrição</label>
+                        <textarea
+                            class="materialize-textarea"
+                            id="description"
+                            name="description"
+                            rows="8"
+                            data-length="800"
+                            v-model="description"
+                        ></textarea>
+                    </div>
                 </div>
             </div>
 
-            <div class="col m3 s12">
-                <div class="input-field">
-                    <select name="location_id" id="location_id" v-model="locationId">
-                        <option value="" disabled selected>Selecione um local</option>
-                        <option v-for="location in locations"
-                            :key="location.id"
-                            :value="location.id"
-                        >{{ location.name }}</option>
-                    </select>
-                    <label>Local de realização</label>
+            <div class="row">
+                <div class="col m12 s12">
+                    <ul class="left">
+                        <li v-if="success" class="success">
+                            <i class="material-icons success--vertical-align">
+                                check
+                            </i>
+                            {{ success }}
+                        </li>
+                        <li v-else class="warning">
+                            <i class="material-icons warning--vertical-align">
+                                warning
+                            </i>
+                            Discussões e informações relativas ao andamento do
+                            serviço ficarão visíveis somente a você e aos membros
+                            do Practice.
+                        </li>
+                        <li v-for="error in errors" :key="error.title" class="error">
+                            <i class="material-icons error--vertical-align">
+                                error
+                            </i>
+                            {{ error[0] }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </base-modal>
 
-        <div class="row">
-            <div class="col m12 s12">
-                <div class="input-field">
-                    <label for="description">Descrição</label>
-                    <textarea
-                        class="materialize-textarea"
-                        id="description"
-                        name="description"
-                        rows="8"
-                        data-length="800"
-                        v-model="description"
-                    ></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col m12 s12">
-                <ul class="left">
-                    <li v-if="success" class="success">
-                        <i class="material-icons success--vertical-align">
-                            check
-                        </i>
-                        {{ success }}
-                    </li>
-                    <li v-else class="warning">
-                        <i class="material-icons warning--vertical-align">
-                            warning
-                        </i>
-                        Discussões e informações relativas ao andamento do
-                        serviço ficarão visíveis somente a você e aos membros
-                        do Practice.
-                    </li>
-                    <li v-for="error in errors" :key="error.title" class="error">
-                        <i class="material-icons error--vertical-align">
-                            error
-                        </i>
-                        {{ error[0] }}
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </base-modal>
+        <popup-loader ref="loader" loader-id="serviceLoader" title="Aguarde enquanto seu serviço é criado"></popup-loader>
+    </div>
 </template>
 
 <script>
@@ -166,9 +171,15 @@ export default {
             this.btnAction.icon = 'close';
             this.btnAction.value = 'Fechar';
             this.resetData();
+            
+            this.$refs.loader.finish();
         },
 
         create() {
+            this.$refs.modalWrapper.closeModal();
+            
+            this.$refs.loader.start();
+            
             if (!this.success) {
                 this.errors = {};
                 let data = {
