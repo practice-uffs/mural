@@ -149,8 +149,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/variables';
-@import '../../sass/functions';
+@import '../../../sass/variables';
+@import '../../../sass/functions';
 
 .item-title {
     display: flex;

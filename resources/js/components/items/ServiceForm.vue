@@ -225,7 +225,7 @@ export default {
 
 <style lang="scss">
 
-    @import "../../sass/variables";
+    @import "../../../sass/variables";
 
     $type-messages: (success $green, warning $yellow, error $red);
 
