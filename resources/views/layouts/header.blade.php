@@ -4,7 +4,7 @@
             <a href="{{ route('items.index') }}"
                 class="header__logo"
             >
-                <img src="{{ asset('img/logo-practice.png') }}" class="nav__img">
+                <img src="{{ asset('img/logo-practice.png') }}" width="180">
             </a>
 
             <div class="header__auth">

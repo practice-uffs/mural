@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'functions';
 
+
 .modal--cascade {
     min-width: 70%;
     overflow: visible !important;
@@ -34,4 +35,8 @@
     color: theme-color('light');
     border-radius: $card-border-radius * 2;
     @extend .z-depth-3;
+}
+
+.modal--max-height-100 {
+    max-height: 100%;
 }
