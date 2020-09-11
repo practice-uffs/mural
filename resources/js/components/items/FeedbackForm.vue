@@ -87,8 +87,6 @@
                 </div>
             </div>
         </base-modal>
-
-        <popup-loader ref="loader" loader-id="feedbackLoader" title="Aguarde enquanto criamos seu feedback"></popup-loader>
     </div>
 </template>
 

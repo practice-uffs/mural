@@ -93,8 +93,6 @@
                 </div>
             </div>
         </base-modal>
-
-        <popup-loader ref="loader" loader-id="serviceLoader" title="Aguarde enquanto seu serviço é criado"></popup-loader>
     </div>
 </template>
 

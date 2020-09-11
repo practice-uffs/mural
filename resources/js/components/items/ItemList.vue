@@ -20,8 +20,30 @@
                     :item="item"
                     :key="item.id"
             >
-                <div class="content-loader" v-if="item._blank">
-                    CREATING
+                <div class="card content-loader" v-if="item._blank">
+                    <div class="card-content">
+                        <div class="content-loader__title">
+                        </div>
+
+                        <div class="content-loader__description">
+                        </div>
+
+                        <div class="content-loader__user-info">
+                            <div class="content-loader__user-img">
+                            </div>
+
+                            <div class="content-loader__user-name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-loader__reaction-list">
+                        <div class="content-loader__reaction-item">
+                        </div>
+
+                        <div class="content-loader__reaction-item">
+                        </div>
+                    </div>
                 </div>
 
                 <a :href="'/items/' + item.id"

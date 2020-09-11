@@ -44,7 +44,6 @@ window.Vue = require('vue');
 
 Vue.component('base-modal', require('./components/base/Modal.vue').default);
 Vue.component('in-place-loader', require('./components/base/InPlaceLoader.vue').default);
-Vue.component('popup-loader', require('./components/base/PopupLoader.vue').default);
 
 Vue.component('reaction-list', require('./components/items/ReactionList.vue').default);
 Vue.component('comment-list', require('./components/items/CommentList.vue').default);
