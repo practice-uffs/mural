@@ -20,8 +20,13 @@
                     :item="item"
                     :key="item.id"
             >
+                <div class="content-loader" v-if="item._blank">
+                    CREATING
+                </div>
+
                 <a :href="'/items/' + item.id"
                     class="grey-text text-darken-4"
+                    v-else
                 >
                     <div class="card hoverable">
                         <div class="card-content">
@@ -75,7 +80,6 @@ const FEEDBACK = '1';
 export default {
     data() {
         return {
-            items: [],
             listToggled: false,
             user: {}
         }
@@ -86,7 +90,8 @@ export default {
         userId: {
             type: String,
             default: null
-        }
+        },
+        items: Array
     },
 
     computed: {
@@ -100,22 +105,6 @@ export default {
     },
 
     methods: {
-        async fetchFeedbacks() {
-            let { data } = await window.axios.get('/api/feedbacks');
-
-            this.items = data.data;
-        },
-
-        async fetchServices() {
-            let { data } = await window.axios.get('/api/services', {
-                params: {
-                    user_id: this.userId
-                }
-            });
-
-            this.items = data.data;
-        },
-
         toggleListView(event) {
             let itemList = document.getElementById(this.listId);
             let listView = itemList.querySelector('[data-toggle="toggle-list"]');
@@ -134,15 +123,6 @@ export default {
             }
 
             this.listToggled = !this.listToggled;
-        }
-    },
-
-    created() {
-        if (this.itemType == FEEDBACK) {
-            this.fetchFeedbacks();
-        
-        } else {
-            this.fetchServices();
         }
     }
 }

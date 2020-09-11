@@ -171,16 +171,13 @@ export default {
             this.btnAction.icon = 'close';
             this.btnAction.value = 'Fechar';
             this.resetData();
-            
-            this.$refs.loader.finish();
 
-            window.location.href = '/items#services';
+            this.$emit('created', response.data);
         },
 
         create() {
             this.$refs.modalWrapper.closeModal();
-            
-            this.$refs.loader.start();
+            this.$emit('blank');
             
             if (!this.success) {
                 this.errors = {};

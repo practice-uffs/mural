@@ -152,22 +152,18 @@ export default {
                 'hidden': !this.hidden,
             }
 
-            await window.axios.post('/api/feedbacks', data).then(function(response) {
-                console.log(response);
-            });
+            let feedback = await window.axios.post('/api/feedbacks', data);
+
+            this.$emit('created', feedback.data);
         },
 
         async handleClick() {
             this.$refs.modalWrapper.closeModal();
-            this.$refs.loader.start();
+            this.$emit('blank');
 
             await this.createFeedback();
 
-            this.$refs.loader.finish();
-
             this.resetData();
-
-            window.location.href = '/items';
         },
 
         resetData() {
