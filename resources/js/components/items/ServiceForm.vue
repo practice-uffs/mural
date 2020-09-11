@@ -8,6 +8,7 @@
             :modal-options="modalOptions"
             @click="create"
             ref="modalWrapper"
+            class="modal--max-height-100"
         >
             <div class="row">
                 <div class="col m6 s12">
