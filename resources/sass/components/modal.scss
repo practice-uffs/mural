@@ -1,7 +1,10 @@
 @import 'variables';
 @import 'functions';
 
-
+/**
+ * Cascade modals have "fancier" headers, inspired
+ * in the mdbootstrap's modals.
+ */
 .modal--cascade {
     min-width: 70%;
     overflow: visible !important;

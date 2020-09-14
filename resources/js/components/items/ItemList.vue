@@ -20,7 +20,32 @@
                     <a :href="'/items/' + item.id"
                         class="grey-text text-darken-4"
                     >
-                        <div class="card hoverable">
+                        <div class="card content-loader" v-if="item._blank">
+                            <div class="card-content">
+                                <div class="content-loader__title">
+                                </div>
+
+                                <div class="content-loader__description">
+                                </div>
+
+                                <div class="content-loader__user-info">
+                                    <div class="content-loader__user-img">
+                                    </div>
+
+                                    <div class="content-loader__user-name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-loader__reaction-list">
+                                <div class="content-loader__reaction-item">
+                                </div>
+
+                                <div class="content-loader__reaction-item">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card hoverable" v-else>
                             <div class="card-content">
                                 <span class="card-title truncate">
                                     {{ item.title }}
@@ -75,7 +100,6 @@ const FEEDBACK = '1';
 export default {
     data() {
         return {
-            items: [],
             listToggled: false,
             user: {}
         }
@@ -86,7 +110,8 @@ export default {
         userId: {
             type: String,
             default: null
-        }
+        },
+        items: Array
     },
 
     computed: {
@@ -100,22 +125,6 @@ export default {
     },
 
     methods: {
-        async fetchFeedbacks() {
-            let { data } = await window.axios.get('/api/feedbacks');
-
-            this.items = data.data;
-        },
-
-        async fetchServices() {
-            let { data } = await window.axios.get('/api/services', {
-                params: {
-                    user_id: this.userId
-                }
-            });
-
-            this.items = data.data;
-        },
-
         toggleListView(event) {
             let itemList = document.getElementById(this.listId);
             let listView = itemList.querySelector('[data-toggle="toggle-list"]');
@@ -135,22 +144,13 @@ export default {
 
             this.listToggled = !this.listToggled;
         }
-    },
-
-    created() {
-        if (this.itemType == FEEDBACK) {
-            this.fetchFeedbacks();
-        
-        } else {
-            this.fetchServices();
-        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/variables';
-@import '../../sass/functions';
+@import '../../../sass/variables';
+@import '../../../sass/functions';
 
 .item-title {
     display: flex;

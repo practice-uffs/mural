@@ -53,12 +53,14 @@
                 </div>
 
                 <div class="card-action">
-                    <a
-                        class="btn btn--primary btn--gradient"
-                        @click="createComment"
-                    >
-                        Comentar
-                    </a>
+                    <in-place-loader ref="loader">
+                        <a
+                            class="btn btn--primary btn--gradient"
+                            @click="createComment"
+                        >
+                            Comentar
+                        </a>
+                    </in-place-loader>
                 </div>
             </div>
 
@@ -100,12 +102,18 @@ export default {
              * Creates a new comment.
              */
 
+            this.$refs.loader.start();
             if (this.userComment == '') return;
 
             let comment = await window.axios.post(`/api/items/${this.itemId}/comments`, {
                 'user_id': this.userId,
                 'text': this.userComment
             });
+
+            this.comments.push(comment.data);
+            this.$refs.loader.finish();
+
+            this.userComment = '';
 
             if (!this.hasComment()) {
                 document.querySelector('#timeline .timeline__card').style.marginTop = '0';
