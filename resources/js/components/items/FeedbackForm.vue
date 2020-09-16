@@ -3,7 +3,7 @@
         <base-modal
             :modal-id="modalId"
             :modal-title="modalTitle"
-            :btn-action-txt="btnActionTxt"
+            :modal-options="modalOptions"
             @click="handleClick"
             ref="modalWrapper"
         >
@@ -17,6 +17,7 @@
                             type="text"
                             name="title"
                             v-model="title"
+                            ref="title"
                         />
                         <span class="helper-text">Ex.: Jogos digitais em aula</span>
                     </div>
@@ -100,22 +101,32 @@ export default {
             locations: null,
 
             modalTitle: 'Adicionar um Feedback',
-            btnActionTxt: 'Criar',
 
             title: '',
             categoryId: '',
             locationId: '',
             description: '',
             hidden: '',
+
+            modalOptions: {
+                onOpenEnd: this.focusOnTitleAndSwitchTab
+            }
         }
     },
 
     props: {
         modalId: String,
         userId: String,
+        context: Object
     },
 
     methods: {
+        
+        focusOnTitleAndSwitchTab: function() {
+            document.querySelector('ul.tabs').M_Tabs.select('feedbacks');
+            this.$refs.title.focus();
+        },
+
         async loadCategories() {
             /**
              * Fetch the categories corresponding to the given item_type.
@@ -140,7 +151,24 @@ export default {
             this.locations = data;
         },
 
-        async createFeedback() {
+        handleError(err){
+            let data = err.response.data;
+            this.$refs.modalWrapper.errors = data.errors;
+        },
+
+        handleSuccess(response){
+            this.$refs.modalWrapper.closeModal();
+            
+            this.$emit('blank');
+            
+            this.resetData();
+            
+            setTimeout(function(){
+                this.$emit('created', response.data);
+            }.bind(this), 1000);
+        },
+
+        createFeedback() {
             let data = {
                 'user_id': this.userId,
                 'location_id': this.locationId,
@@ -150,18 +178,13 @@ export default {
                 'hidden': !this.hidden,
             }
 
-            let feedback = await window.axios.post('/api/feedbacks', data);
-
-            this.$emit('created', feedback.data);
+            window.axios.post('/api/feedbacks', data)
+                .then(this.handleSuccess)
+                .catch(this.handleError);
         },
 
-        async handleClick() {
-            this.$refs.modalWrapper.closeModal();
-            this.$emit('blank');
-
-            await this.createFeedback();
-
-            this.resetData();
+        handleClick() {
+            this.createFeedback();
         },
 
         resetData() {
@@ -170,6 +193,7 @@ export default {
             this.locationId = '';
             this.description = '';
             this.hidden = '';
+            this.$refs.modalWrapper.errors = [];
         },
 
         setDropdownSelect() {

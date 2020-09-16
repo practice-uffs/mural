@@ -1,5 +1,5 @@
 <template>
-    <div class="modal modal--cascade" :id="modalId">
+    <div class="modal modal--cascade modal--max-height-100 " :id="modalId">
         <div class="modal-content pb-0">
             <div class="modal__header">
                 <h5>
@@ -13,20 +13,38 @@
         </div>
 
         <div class="modal-footer">
-            <a
-                class="btn btn--primary btn--gradient"
-                :class="{'modal-close' : btnIconTxt == 'close'}"
-                @click="handleClick"
-            >
-                {{ btnActionTxt }}
-                <i class="material-icons right">{{ btnIconTxt }}</i>
-            </a>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="left-align px-3">
+                        <li v-for="error in errors" :key="error.title" class="error">
+                            <i class="material-icons error--vertical-align">
+                                error
+                            </i>
+                            {{ error[0] }}
+                        </li>
+                    </ul>
+                    <a
+                        class="btn btn--primary btn--gradient"
+                        @click="handleClick"
+                    >
+                        Criar
+                        <i class="material-icons right">{{ btnIconTxt }}</i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    
+    data(){
+        return {
+            errors: Array
+        }
+    },
+
     props: {
         modalOptions: {},
         modalId: String,
