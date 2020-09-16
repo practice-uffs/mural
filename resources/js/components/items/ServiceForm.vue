@@ -2,13 +2,10 @@
     <div>
         <base-modal
             modal-title="Qual Serviço você precisa?"
-            :btn-action-txt="btnAction.value"
-            :btn-icon-txt="btnAction.icon"
             :modal-id="modalId"
             :modal-options="modalOptions"
             @click="create"
             ref="modalWrapper"
-            class="modal--max-height-100"
         >
             <div class="row">
                 <div class="col m6 s12">
@@ -70,25 +67,13 @@
             <div class="row">
                 <div class="col m12 s12">
                     <ul class="left">
-                        <li v-if="success" class="success">
-                            <i class="material-icons success--vertical-align">
-                                check
-                            </i>
-                            {{ success }}
-                        </li>
-                        <li v-else class="warning">
+                        <li class="warning">
                             <i class="material-icons warning--vertical-align">
                                 warning
                             </i>
                             Discussões e informações relativas ao andamento do
                             serviço ficarão visíveis somente a você e aos membros
                             do Practice.
-                        </li>
-                        <li v-for="error in errors" :key="error.title" class="error">
-                            <i class="material-icons error--vertical-align">
-                                error
-                            </i>
-                            {{ error[0] }}
                         </li>
                     </ul>
                 </div>
@@ -112,18 +97,10 @@ export default {
             description: '',
             title: '',
             
-            btnAction: {
-                type: String,
-                value: 'Criar',
-                icon: 'send'
-            },
-
             modalOptions: {
-                onOpenEnd: this.focusOnTitle,
-                onCloseStart: this.setCreationState,
+                onOpenEnd: this.focusOnTitleAndSwitchTab
             },
 
-            errors: {},
             success: ''
         }
     },
@@ -134,6 +111,12 @@ export default {
     },
 
     methods: {
+        
+        focusOnTitleAndSwitchTab: function() {
+            document.querySelector('ul.tabs').M_Tabs.select('services');
+            this.$refs.title.focus();
+        },
+
         async loadCategories() {
             let { data } = await window.axios.get('/api/categories', {
                 params: {
@@ -150,49 +133,38 @@ export default {
             this.locations = data;
         },
 
-        focusOnTitle: function() {
-            this.$refs.title.focus();
-        },
-
-        setCreationState() {
-            this.success = '';
-            this.btnAction.icon = 'send';
-            this.btnAction.value = 'Criar';
-        },
-
         handleError(err) {
             let data = err.response.data;
-            this.errors = data.errors;
+            this.$refs.modalWrapper.errors = data.errors;
         },
 
         handleSuccess(response) {
-            this.success = response.data.message;
-            this.btnAction.icon = 'close';
-            this.btnAction.value = 'Fechar';
+            this.$refs.modalWrapper.closeModal();
+            
+            this.$emit('blank');
+            
             this.resetData();
-
-            this.$emit('created', response.data);
+            
+            setTimeout(function(){
+                this.$emit('created', response.data);
+            }.bind(this), 1000);
+            
         },
 
         create() {
-            this.$refs.modalWrapper.closeModal();
-            this.$emit('blank');
             
-            if (!this.success) {
-                this.errors = {};
-                let data = {
-                    'user_id': this.userId,
-                    'title': this.title,
-                    'description': this.description,
-                    'hidden': true,
-                    'location_id': this.locationId,
-                    'category_id': this.categoryId,
-                };
+            let data = {
+                'user_id': this.userId,
+                'title': this.title,
+                'description': this.description,
+                'hidden': true,
+                'location_id': this.locationId,
+                'category_id': this.categoryId,
+            };
 
-                window.axios.post('/api/services', data)
-                    .then(this.handleSuccess)
-                    .catch(this.handleError);
-            }
+            window.axios.post('/api/services', data)
+                .then(this.handleSuccess)
+                .catch(this.handleError);
         },
 
         resetData() {
@@ -200,6 +172,7 @@ export default {
             this.categoryId = '';
             this.locationId = '';
             this.description = '';
+            this.$refs.modalWrapper.errors = [];
         },
 
         setDropdownSelect() {
@@ -223,7 +196,7 @@ export default {
 
     @import "../../../sass/variables";
 
-    $type-messages: (success $green, warning $yellow, error $red);
+    $type-messages: (warning $yellow, error $red);
 
     @each $type in $type-messages {
         .#{nth($type, 1)} {
