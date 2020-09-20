@@ -18,9 +18,9 @@ class CreateDocumentsTable extends Migration
 
             $table->foreignId('item_id')->constrained();
 
-            $table->string('name', 256);
-            $table->string('path', 256);
-            $table->string('mime_type', 32);
+            $table->string('name', 512);
+            $table->string('path', 512);
+            $table->string('mime_type', 128);
             $table->text('description');
             $table->timestamps();
         });
