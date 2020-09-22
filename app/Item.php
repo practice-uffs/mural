@@ -67,6 +67,11 @@ class Item extends Model
         return $this->hasMany('App\Reaction');
     }
 
+    public function documents()
+    {
+        return $this->hasMany('App\Document');
+    }
+
     public function getReactionsAmount()
     {
         $reactionsAmount = Array();
