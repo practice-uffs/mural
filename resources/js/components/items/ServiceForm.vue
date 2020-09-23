@@ -145,13 +145,10 @@ export default {
             
             this.resetData();
             
-            setTimeout(function(){
-                this.$emit('created', response.data);
-            }.bind(this), 1000);
-            
+            this.$emit('created', response.data);
         },
 
-        create() {
+        async create() {
             
             let data = {
                 'user_id': this.userId,
@@ -162,9 +159,13 @@ export default {
                 'category_id': this.categoryId,
             };
 
-            window.axios.post('/api/services', data)
-                .then(this.handleSuccess)
-                .catch(this.handleError);
+            try {
+                let response = await window.axios.post('/api/services', data);
+                this.handleSuccess(response);
+            }
+            catch(err) {
+                this.handleError(err);
+            }
         },
 
         resetData() {

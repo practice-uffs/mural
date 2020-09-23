@@ -163,12 +163,10 @@ export default {
             
             this.resetData();
             
-            setTimeout(function(){
-                this.$emit('created', response.data);
-            }.bind(this), 1000);
+            this.$emit('created', response.data);
         },
 
-        createFeedback() {
+        async createFeedback() {
             let data = {
                 'user_id': this.userId,
                 'location_id': this.locationId,
@@ -177,10 +175,14 @@ export default {
                 'description': this.description,
                 'hidden': !this.hidden,
             }
-
-            window.axios.post('/api/feedbacks', data)
-                .then(this.handleSuccess)
-                .catch(this.handleError);
+            
+            try {
+                let response = await window.axios.post('/api/feedbacks', data);
+                this.handleSuccess(response);
+            }
+            catch (err){
+                this.handleError(err);
+            }
         },
 
         handleClick() {
