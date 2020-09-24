@@ -39,3 +39,5 @@ Route::apiResource('categories', 'API\CategoryController')->only([
 Route::apiResource('locations', 'API\LocationController')->only([
     'index'
 ]);
+
+Route::apiResource('documents', 'API\DocumentController');
