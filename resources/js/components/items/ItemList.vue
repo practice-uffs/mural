@@ -45,16 +45,42 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- CARD DOS ITENS DO FEEDBACK -->
                         <div class="card hoverable" v-else>
-                            <div class="card-content">
-                                <span class="card-title truncate">
-                                    {{ item.title }}
-                                </span>
+                            <div class="card-content row">
                                 
-                                <p class="truncate grey-text text-darken-3">
-                                    {{ item.description }}
-                                </p>
+                                 <div>
+                                    <span class="card-title truncate">
+                                        {{ item.title}}
+                                    </span>
+                                    <p v-if="item.description.lenght < 200" class="truncate grey-text text-darken-3">{{ item.description.substring(0,200)+'...'}} </p>
+                                    <p v-else class="truncate grey-text text-darken-3">{{ item.description}} </p>
+                                </div>
+                            
+                                 <div>
+                                    <span class="card-title truncate">
+                                        Categoria
+                                    </span>
+                                    <p class="truncate grey-text text-darken-3">{{ item.category_id}} </p>
+                                </div>
+                            
+                                 <div>
+                                    <span class="card-title truncate">
+                                        Data
+                                    </span>
+                                    <p class="truncate grey-text text-darken-3">{{ item.created_at | formatDate }} </p>
+                                </div>
 
+                                 <div>
+                                    <span class="card-title truncate">
+                                        ID
+                                    </span>
+                                    <p class="truncate grey-text text-darken-3">{{ item.id}} </p>
+                                </div>
+
+                                    
+                                <!-- USUÁEIO QUE SOLICITOU O SERVIÇO -->
                                 <div class="user-info pt-3 pl-3">
                                     <img 
                                         :src="'img/avatars/avatar-' + (Number(item.user_id) % 4 + 1) + '.png'"
@@ -64,7 +90,7 @@
                                     >
 
                                     <div class="user-info__uid-name px-2">
-                                        <div>
+                                         <div>
                                             {{ item.user.name }}
                                         </div>
                                         <div class="pl-2">
@@ -95,6 +121,14 @@
 </template>
 
 <script>
+import moment from 'moment'
+
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).format('MM/DD/YYYY')
+    }
+});
+
 const FEEDBACK = '1';
 
 export default {
@@ -115,6 +149,9 @@ export default {
     },
 
     computed: {
+        formatted(){
+            return Vue.filter('date')(this.value)
+        },
         itemName() {
             return (this.itemType == FEEDBACK ? 'Feedbacks' : 'Serviços');
         },
