@@ -24,7 +24,9 @@ Route::post('/login', 'Auth\LoginController@auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Content
-Route::get('/', 'ContentController@index')->name('content.index');
+// Route::get('/', 'ContentController@index')->name('content.index');
+Route::get('/', function(){ return view('index');});
+
 Route::get('/home', 'ContentController@index')->name('content.home');
 
 if (App::environment('local')) {
