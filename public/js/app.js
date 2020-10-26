@@ -3428,10 +3428,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      banner: 'img/banner-practice.png'
+      banner: 'img/banner-practice.png',
+      logo: 'img/logo-practice.png'
     };
   }
 });
@@ -58392,7 +58398,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("header", {}, [
-    _vm._m(0),
+    _c("div", { staticClass: "container row justify-content-around" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", [
+        _c("img", {
+          attrs: { src: _vm.logo, width: "200", alt: "Logo Practice" }
+        })
+      ])
+    ]),
     _vm._v(" "),
     _c("img", {
       attrs: {
@@ -58408,7 +58422,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", [
       _c("h1", [_vm._v("Seja Bem-vinde ao")]),
       _vm._v(" "),
       _c("p", [

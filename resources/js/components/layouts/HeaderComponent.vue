@@ -1,8 +1,13 @@
 <template>
     <header class=''>
-        <div class="container">
-            <h1>Seja Bem-vinde ao</h1>
-            <p>Portal de serviçoes do <strong>Practice</strong></p>
+        <div class="container row justify-content-around">
+            <div>
+                <h1>Seja Bem-vinde ao</h1>
+                <p>Portal de serviçoes do <strong>Practice</strong></p>
+            </div>
+            <div>
+                <img :src="logo" width="200" alt="Logo Practice">
+            </div>
         </div>
 
         <!-- Banner separador -->    
@@ -14,7 +19,8 @@
 export default {
     data(){
         return {
-            banner:'img/banner-practice.png'
+            banner:'img/banner-practice.png',
+            logo:'img/logo-practice.png',
         }
     }
 }
