@@ -16,10 +16,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
+        @include('layouts.navbar');
         <div id="app">
-            <navbar>
-                auth = {{Auth::check()}};
-            </navbar>
             <header-component></header-component>
             <menu-component></menu-component>
             <div class="container">

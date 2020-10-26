@@ -57,7 +57,6 @@ Vue.component('item-wrapper', require('./components/wrappers/ItemWrapper.vue').d
 Vue.component('header-component', require('./components/layouts/HeaderComponent.vue').default);
 Vue.component('footer-component', require('./components/layouts/FooterComponent.vue').default);
 Vue.component('menu-component', require('./components/layouts/MenuComponent.vue').default);
-Vue.component('navbar', require('./components/layouts/NavBar.vue').default);
 Vue.component('banner', require('./components/layouts/Banner.vue').default);
 
 // Home
