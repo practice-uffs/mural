@@ -52,6 +52,18 @@ Vue.component('service-form', require('./components/items/ServiceForm.vue').defa
 Vue.component('item-list', require('./components/items/ItemList.vue').default);
 
 Vue.component('item-wrapper', require('./components/wrappers/ItemWrapper.vue').default);
+
+// Layout
+Vue.component('header-component', require('./components/layouts/HeaderComponent.vue').default);
+Vue.component('footer-component', require('./components/layouts/FooterComponent.vue').default);
+Vue.component('menu-component', require('./components/layouts/MenuComponent.vue').default);
+Vue.component('navbar', require('./components/layouts/NavBar.vue').default);
+Vue.component('banner', require('./components/layouts/Banner.vue').default);
+
+// Home
+Vue.component('feedbacks', require('./components/home/Feedbacks.vue').default);
+Vue.component('services', require('./components/home/Services.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
