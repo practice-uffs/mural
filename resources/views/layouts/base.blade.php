@@ -20,7 +20,7 @@
         <div id="app">
             <header-component></header-component>
             <menu-component></menu-component>
-            <div class="container">
+            <div>
                 @yield('content')
             </div>
             <banner></banner>
