@@ -3416,6 +3416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Banner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Banner */ "./resources/js/components/layouts/Banner.vue");
 //
 //
 //
@@ -3432,8 +3433,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Banner: _Banner__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       banner: 'img/banner-practice.png',
@@ -58397,25 +58401,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", {}, [
-    _c("div", { staticClass: "container row justify-content-around" }, [
-      _vm._m(0),
+  return _c(
+    "header",
+    {},
+    [
+      _c("div", { staticClass: "container row justify-content-around" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", [
+          _c("img", {
+            attrs: { src: _vm.logo, width: "200", alt: "Logo Practice" }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _c("div", [
-        _c("img", {
-          attrs: { src: _vm.logo, width: "200", alt: "Logo Practice" }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("img", {
-      attrs: {
-        src: _vm.banner,
-        width: "100%",
-        alt: "banner das cores do practice, azul, amarelo e laranja"
-      }
-    })
-  ])
+      _c("banner")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {

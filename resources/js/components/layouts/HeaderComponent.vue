@@ -10,13 +10,16 @@
             </div>
         </div>
 
-        <!-- Banner separador -->    
-        <img :src="banner" width="100%" alt="banner das cores do practice, azul, amarelo e laranja">
+        <banner> </banner>
     </header>
 </template>
 
 <script>
+import Banner from './Banner';
 export default {
+    components:{
+        Banner,
+    },
     data(){
         return {
             banner:'img/banner-practice.png',
