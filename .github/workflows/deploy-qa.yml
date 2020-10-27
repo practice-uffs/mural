@@ -18,8 +18,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.PROD_HOST }}
-        username: ${{ secrets.PROD_USERNAME }}
-        password: ${{ secrets.PROD_PASSWORD }}
+        username: ${{ secrets.QA_USERNAME }}
+        password: ${{ secrets.QA_PASSWORD }}
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
           git pull
