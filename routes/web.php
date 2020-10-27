@@ -23,11 +23,14 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-// Content
-// Route::get('/', 'ContentController@index')->name('content.index');
-Route::get('/', function(){ return view('index');});
+// Routes autenticadas
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/servicos','ServiceController@index')->name('services');
+    Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
+});
 
-Route::get('/home', 'ContentController@index')->name('content.home');
+// Index
+Route::get('/', function(){ return view('index');})->name('index');
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');

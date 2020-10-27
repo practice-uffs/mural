@@ -14,9 +14,9 @@
 
     <nuvens qnt="3"></nuvens>
     
-    <services></services>
+    <index-services></index-services>
     
-    <feedbacks></feedbacks>
+    <index-feedbacks></index-feedbacks>
     
 </section>
 @endsection

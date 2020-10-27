@@ -19,7 +19,9 @@
         @include('layouts.navbar');
         <div id="app">
             <header-component></header-component>
+            @if (Auth::check())
             <menu-component></menu-component>
+            @endif
             <div>
                 @yield('content')
             </div>

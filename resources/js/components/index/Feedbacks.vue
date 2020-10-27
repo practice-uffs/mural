@@ -8,7 +8,7 @@
                 <div clas="p-5">
                     <h3 class="card-title">{{feedback.title}}</h3>
                     <p class="card-text">{{feedback.description}}</p>
-                    <small>{{feedback.user}} - {{ feedback.created_at | formatDate }} </small>
+                    <small>{{feedback.user.name}} - {{ feedback.created_at | formatDate }} </small>
                 </div>
             </div>
         </div>
@@ -36,24 +36,19 @@ export default {
     name:"feedbacks",
     data(){
         return{
-            feedbacks:[
-                {
-                    id:1,
-                    title:'Criação de Funcionalidades',
-                    description:'Este serviço é ideal para a criação de novas funcionalidades',
-                    user:'fulado',
-                    created_at: Date.now(),
-                },
-                {
-                    id:2,
-                    title:'Modificações e Atualizações',
-                    description:'Escontrou algum erro? Necessita algum melhoria? Este é o espaço para isso.',
-                    user:'ciclano',
-                    created_at: Date.now(),
-                },
-            ]
+            feedbacks:[]
         }
     },
+    methods: {
+        async fetchFeedbacks() {
+            let { data } = await axios.get('/api/feedbacks?limit=5');
+
+            this.feedbacks = data.data;
+        },
+    },
+    created() {
+        this.fetchFeedbacks();
+    }
 
 }
 </script>
