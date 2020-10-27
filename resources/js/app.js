@@ -60,9 +60,9 @@ Vue.component('menu-component', require('./components/layouts/MenuComponent.vue'
 Vue.component('banner', require('./components/layouts/Banner.vue').default);
 Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
 
-// Home
-Vue.component('feedbacks', require('./components/home/Feedbacks.vue').default);
-Vue.component('services', require('./components/home/Services.vue').default);
+// Index
+Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
+Vue.component('index-services', require('./components/index/Services.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
