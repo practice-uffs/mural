@@ -23,13 +23,13 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-// Content
-// Routes for logged-in users
+// Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/servicos', function(){ return view('pages/itens');});
-    Route::get('/feedbacks', function(){ return view('pages/itens');});
+    Route::get('/servicos','ServiceController@index')->name('services');
+    Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
 });
 
+// Index
 Route::get('/', function(){ return view('index');})->name('index');
 
 if (App::environment('local')) {
