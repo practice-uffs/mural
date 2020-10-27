@@ -5,7 +5,7 @@ on:
       - dev
 env:
   PROD_HOST: qa.mural.practice.uffs.cc
-  PROD_WEB_DIRECTORY: /home/ccuffspractice/qa.mural.practice.uffs.cc
+  PROD_WEB_DIRECTORY: /home/practiceqamural/qa.mural.practice.uffs.cc
   COMPOSER_BIN: php-7.3 ~/.php/composer/composer
   PHP_BIN: php-7.3
 jobs:
