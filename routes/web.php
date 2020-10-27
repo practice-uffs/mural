@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/feedbacks', function(){ return view('pages/itens');});
 });
 
-Route::get('/', function(){ return view('index');});
+Route::get('/', function(){ return view('index');})->name('index');
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');

@@ -52,7 +52,7 @@ class LoginController extends Controller
         $user = $this->getOrCreateUser($userData);
 
         Auth::login($user);
-        return redirect()->route('items.index');
+        return redirect()->route('index');
     }
 
     public function logout(Request $resquest)
