@@ -16,7 +16,7 @@
             </div>
         </div>
         @else
-        <a href="/login" class="nav-link"><i class="material-icons">login</i> Entrar </a>
+        <a href="/login" class="nav-link d-flex align-items-center"><i class="material-icons">login</i> Entrar </a>
         @endif
         
     </div>
