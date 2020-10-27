@@ -6,7 +6,7 @@
                 <p>Portal de serviçoes do <strong>Practice</strong></p>
             </div>
             <div>
-                <img :src="logo" width="200" alt="Logo Practice">
+                <h1>Web Feedback</h1>
             </div>
         </div>
 
@@ -23,7 +23,6 @@ export default {
     data(){
         return {
             banner:'img/banner-practice.png',
-            logo:'img/logo-practice.png',
         }
     }
 }
