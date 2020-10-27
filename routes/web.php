@@ -24,10 +24,13 @@ Route::post('/login', 'Auth\LoginController@auth');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Content
-// Route::get('/', 'ContentController@index')->name('content.index');
-Route::get('/', function(){ return view('index');});
+// Routes for logged-in users
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/servicos', function(){ return view('pages/itens');});
+    Route::get('/feedbacks', function(){ return view('pages/itens');});
+});
 
-Route::get('/home', 'ContentController@index')->name('content.home');
+Route::get('/', function(){ return view('index');});
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
