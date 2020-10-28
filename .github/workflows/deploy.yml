@@ -6,6 +6,8 @@ on:
 env:
   PROD_HOST: mural.practice.uffs.cc
   PROD_WEB_DIRECTORY: /home/ccuffspractice/mural.practice.uffs.cc
+  COMPOSER_BIN: php-7.3 ~/.php/composer/composer
+  PHP_BIN: php-7.3
 jobs:
   deploy:
     name: Deploy to production
@@ -21,5 +23,8 @@ jobs:
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
           git pull
-          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-          php artisan migrate
+          ${{ env.COMPOSER_BIN }} install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+          ${{ env.PHP_BIN }} artisan migrate
+          ${{ env.PHP_BIN }} artisan db:seed
+          npm install
+          npm run production
