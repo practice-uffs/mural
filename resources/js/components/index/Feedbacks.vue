@@ -1,7 +1,7 @@
 <template>
 <div class="mt-5 text-center bg-blue py-3">     
     <h2 >Feedbacks</h2>
-    <p>Veja as opniões dos nossos clientes</p>
+    <p>Veja as opiniões dos nossos clientes</p>
     <div id="carouselExampleControls" class="carousel slide m-5" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" v-bind:key="feedback.id"  v-for="(feedback,idx) in feedbacks"  v-bind:class="{'active':idx === 0}">
