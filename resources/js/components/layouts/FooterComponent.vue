@@ -2,10 +2,10 @@
         <!-- WebFeedback Footer -->
         <footer>
                 <!-- Grid row -->
-            <div class="container grid-items">
+            <div class="container text-light row justify-content-center">
 
                 <!-- Grid column -->
-                <div class="grid-item">
+                <div class="col-sm-12 col-md-6">
 
                     <h4 >Web Feedback</h4>
                     <p >
@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Grid column -->
-                <div class="grid-item">
+                <div class="col-sm-12 col-md-4">
                     <h5 class="white-text">Saiba mais</h5>
                     <ul>
                         <li>
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
 
-                <div class="text-light text-center">
+                <div class="text-light text-center col-sm-12 col-md-12">
                     <p>
                         Projeto licenciado sobre os termos da <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" class="footer__link">Apache License.</a>
                     </p>
