@@ -64,6 +64,11 @@ Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
 Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
 Vue.component('index-services', require('./components/index/Services.vue').default);
 
+// Feedback
+Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
+Vue.component('feedback-list',require('./components/feedbacks/FeedbackList.vue').default);
+Vue.component('feedback',require('./components/feedbacks/Feedback.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
