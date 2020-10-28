@@ -2,8 +2,8 @@
     <header class=''>
         <div class="container row justify-content-around">
             <div>
-                <h1>Seja Bem-vinde ao</h1>
-                <p>Portal de serviçoes do <strong>Practice</strong></p>
+                <h1>Seja Bem-vindo ao</h1>
+                <p>Portal de serviços do <strong>Practice</strong></p>
             </div>
             <div>
                 <h1>Web Feedback</h1>
