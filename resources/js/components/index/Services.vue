@@ -28,9 +28,9 @@ export default {
                 {
                     id:2,
                     title:'Modificações e Atualizações',
-                    description:'Crescer é uma experiencia compartilhada, portanto nosso crescimento não seria diferente. \
+                    description:'Crescer é uma experiência compartilhada, portanto nosso crescimento não seria diferente. \
                                  Contamos com a ajuda de toda nossa comunidade para evoluirmos, cada membro pode fazer parte deste crescimento com \
-                                 criticas e sujestões de melhorias e correções, aproximando ainda mais a comunidade do crescimento e inovação do Practice e da UFFS!',
+                                 criticas e sugestões de melhorias e correções, aproximando ainda mais a comunidade do crescimento e inovação do Practice e da UFFS!',
                     img:'img/undraw.co/Collaboration.png'
                 },
             ]
