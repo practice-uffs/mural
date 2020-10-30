@@ -5,7 +5,7 @@ on:
       - dev
 env:
   PROD_HOST: qa.mural.practice.uffs.cc
-  PROD_WEB_DIRECTORY: /home/ccuffspractice/qa.mural.practice.uffs.cc
+  PROD_WEB_DIRECTORY: /home/practiceqamural/qa.mural.practice.uffs.cc
   COMPOSER_BIN: php-7.3 ~/.php/composer/composer
   PHP_BIN: php-7.3
 jobs:
@@ -13,13 +13,13 @@ jobs:
     name: Deploy to QA
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Prepare deploy server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.PROD_HOST }}
-        username: ${{ secrets.PROD_USERNAME }}
-        password: ${{ secrets.PROD_PASSWORD }}
+        username: ${{ secrets.QA_USERNAME }}
+        password: ${{ secrets.QA_PASSWORD }}
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
           git pull
