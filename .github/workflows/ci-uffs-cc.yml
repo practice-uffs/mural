@@ -17,7 +17,7 @@ jobs:
     name: Build and test Laravel app
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Setup ENV Laravel Configuration for CI
       run: |
         php -r "file_exists('.env') || copy('.env.ci', '.env');"

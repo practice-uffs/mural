@@ -11,7 +11,7 @@ jobs:
     name: Deploy to production
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Prepare deploy server
       uses: appleboy/ssh-action@master
       with:
