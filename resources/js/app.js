@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 
 import './bootstrap';
+import $ from 'jquery';
+
 
 window.Vue = require('vue');
 
