@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     function index(){
-        return view('pages/itens');
+        return view('pages/services');
     }
 }
