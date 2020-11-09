@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 
 import './bootstrap';
+import $ from 'jquery';
+
 
 window.Vue = require('vue');
 
@@ -52,6 +54,23 @@ Vue.component('service-form', require('./components/items/ServiceForm.vue').defa
 Vue.component('item-list', require('./components/items/ItemList.vue').default);
 
 Vue.component('item-wrapper', require('./components/wrappers/ItemWrapper.vue').default);
+
+// Layout
+Vue.component('header-component', require('./components/layouts/HeaderComponent.vue').default);
+Vue.component('footer-component', require('./components/layouts/FooterComponent.vue').default);
+Vue.component('menu-component', require('./components/layouts/MenuComponent.vue').default);
+Vue.component('banner', require('./components/layouts/Banner.vue').default);
+Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
+
+// Index
+Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
+Vue.component('index-services', require('./components/index/Services.vue').default);
+
+// Feedback
+Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
+Vue.component('feedback-list',require('./components/feedbacks/FeedbackList.vue').default);
+Vue.component('feedback',require('./components/feedbacks/Feedback.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

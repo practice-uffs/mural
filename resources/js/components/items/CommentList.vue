@@ -121,9 +121,7 @@ export default {
             } else {
                 document.querySelector('#timeline .timeline__item:last-child').style.paddingBottom = '0';
             }
-
-            this.comments.push(comment.data);
-
+            
             this.userComment = '';
         },
 
