@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 
 import './bootstrap';
-import $ from 'jquery';
 
 
 window.Vue = require('vue');
@@ -68,9 +67,6 @@ Vue.component('index-services', require('./components/index/Services.vue').defau
 
 // Feedback
 Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
-Vue.component('feedback-list',require('./components/feedbacks/FeedbackList.vue').default);
-Vue.component('feedback',require('./components/feedbacks/Feedback.vue').default);
-
 
 // Services
 Vue.component('services-page',require('./components/services/ServicePage.vue').default);
