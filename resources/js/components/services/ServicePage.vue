@@ -11,14 +11,17 @@
         </div>
     </div>
     <hr>
+    <ServiceLists :user="user" />
     </section>
 </template>
 
 <script>
+import ServiceLists from './ServiceLists';
 
 export default {
     name:"services",
     components:{
+        ServiceLists,
     },
     props:['user'],
     data(){
