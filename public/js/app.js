@@ -4071,6 +4071,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4090,7 +4111,11 @@ Vue.filter('formatDate', function (value) {
   data: function data() {
     return {
       services: [],
-      audios: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["AUDIOS"]
+      audios: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["AUDIOS"],
+      videos: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["VIDEOS"],
+      txts_imgs: [],
+      estudio: [],
+      eventos: []
     };
   },
   methods: {
@@ -4534,7 +4559,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.card-service{\n}\nimg{\n  width: 250px;\n}\n\n", ""]);
+exports.push([module.i, "\n@media screen and (max-width: 600px){\n.img-tumb{\n    min-width: 50px;\n}\n}\n.img-tumb{\n    max-width: 215px;\n    max-height: 150px;\n}\n\n", ""]);
 
 // exports
 
@@ -63646,15 +63671,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card-service row" }, [
-    _vm.service.id % 2 === 0
-      ? _c("img", { attrs: { src: _vm.service.img, alt: "" } })
-      : _vm._e(),
+  return _c("div", { staticClass: "card-service row p-3" }, [
+    _c("img", {
+      staticClass:
+        "col-sm-12 col-md-5 align-items-center\n                img-tumb",
+      attrs: { src: _vm.service.img, alt: "" }
+    }),
     _vm._v(" "),
-    _c("div", { staticClass: "col-8" }, [
+    _c("div", { staticClass: "col-sm-12 col-md-7" }, [
       _c("h4", [_vm._v(_vm._s(_vm.service.title))]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.service.description))]),
+      _c("p", { staticClass: "text-justify" }, [
+        _vm._v(_vm._s(_vm.service.description))
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row pl-3 p-1" }, [
         _c("button", { staticClass: "btn btn-info" }, [_vm._v("Solicitar")]),
@@ -63662,12 +63691,19 @@ var render = function() {
         _c("p", { staticClass: "align-items-center m-2 " }, [
           _vm._v("Prazo: " + _vm._s(_vm.service.deadline) + " días(úteis)")
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.service.id % 2 !== 0
-      ? _c("img", { attrs: { src: _vm.service.img, alt: "" } })
-      : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.service.example
+        ? _c("strong", [
+            _c("p", [
+              _vm._v("Examplo: "),
+              _c("a", { attrs: { href: _vm.service.example } }, [
+                _vm._v(_vm._s(_vm.service.example))
+              ])
+            ])
+          ])
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -63708,21 +63744,68 @@ var render = function() {
         _vm._v(" "),
         _c("h3", [_vm._v("Audio")]),
         _vm._v(" "),
-        _vm._l(_vm.audios, function(service) {
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.audios, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        ),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Vídeos")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.videos, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        ),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Estúdio")]),
+        _vm._v(" "),
+        _vm._l(_vm.txts_imgs, function(service) {
           return _c("Service", {
             key: service.id,
-            staticClass: "justify-content-center",
+            staticClass:
+              "justify-content-center\n                          col-sm-12 col-md-6 ",
             attrs: { service: service }
           })
         }),
         _vm._v(" "),
-        _c("h3", [_vm._v("Vídeos")]),
-        _vm._v(" "),
-        _c("h3", [_vm._v("Estúdio")]),
-        _vm._v(" "),
         _c("h3", [_vm._v("Texto e Imagem")]),
         _vm._v(" "),
-        _c("h3", [_vm._v("Evento")])
+        _vm._l(_vm.estudio, function(service) {
+          return _c("Service", {
+            key: service.id,
+            staticClass:
+              "justify-content-center\n                          col-sm-12 col-md-6 ",
+            attrs: { service: service }
+          })
+        }),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Evento")]),
+        _vm._v(" "),
+        _vm._l(_vm.eventos, function(service) {
+          return _c("Service", {
+            key: service.id,
+            staticClass:
+              "justify-content-center\n                          col-sm-12 col-md-6 ",
+            attrs: { service: service }
+          })
+        })
       ],
       2
     )
@@ -77972,10 +78055,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************!*\
   !*** ./resources/js/components/services/json/services.json ***!
   \*************************************************************/
-/*! exports provided: AUDIOS, default */
+/*! exports provided: AUDIOS, VIDEOS, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"AUDIOS\":[{\"id\":1,\"img\":\"/img/undraw.co/Recording.png\",\"title\":\"Áudio Promocional Simples\",\"description\":\"Apenas uma faixa de áudio com objetivo de anunciar e/ou divulgar algo, apenas uma chamada. Podem ainda ser adicionados pequenos efeitos e trilhas.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/audio_conversation.png\",\"title\":\"Áudio Expositivo Longo\",\"description\":\"Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples\",\"deadline\":7},{\"id\":3,\"img\":\"/img/undraw.co/podcast.png\",\"title\":\"Áudio Institucional Promocional\",\"description\":\"Áudio curto com efeitos sonoros e até duas pessoas, para instruções e/ou procedimentos institucionais.\",\"deadline\":7}]}");
+module.exports = JSON.parse("{\"AUDIOS\":[{\"id\":1,\"img\":\"/img/undraw.co/Recording.png\",\"title\":\"Áudio Promocional Simples\",\"description\":\"Apenas uma faixa de áudio com objetivo de anunciar e/ou divulgar algo, apenas uma chamada. Podem ainda ser adicionados pequenos efeitos e trilhas.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/audio_conversation.png\",\"title\":\"Áudio Expositivo Longo\",\"description\":\"Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples\",\"deadline\":7},{\"id\":3,\"img\":\"/img/undraw.co/podcast.png\",\"title\":\"Áudio Institucional Promocional\",\"description\":\"Áudio curto com efeitos sonoros e até duas pessoas, para instruções e/ou procedimentos institucionais.\",\"deadline\":7}],\"VIDEOS\":[{\"id\":1,\"img\":\"/img/undraw.co/video_influencer.png\",\"title\":\"Vídeo Aula Simples\",\"description\":\"Vídeo com apenas o interlocutor em plano principal. Há a possibilidade de serem incluídos outros materiais ao longo do vídeo, como outros vídeos, textos e imagens. Vídeo e materiais enviados pelo solicitante.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/draw.png\",\"title\":\"Hand Drawn Vídeo\",\"description\":\"Animação ilustrando a explicação da fala do narrador ou o próprio narrador escrevendo em tempo real, com ou sem segundo vídeo ao lado mostrando o narrador. Os vídeos e/ou instruções devem ser enviadas pelo solicitante.\",\"deadline\":7,\"example\":\"https://www.youtube.com/watch?v=kcft5B1c-JE&feature=youtu.be\"},{\"id\":3,\"img\":\"/img/undraw.co/img_composition.png\",\"title\":\"Composição de Imagens\",\"description\":\"Vídeo compilado de imagens sobre o tema e com uma narração explicativa. Pode incluir vídeo mostrando o narrador. As imagens e a narração devem ser enviadas pelo solicitante\",\"deadline\":7},{\"id\":4,\"img\":\"/img/undraw.co/call.png\",\"title\":\"Vídeo com Slides\",\"description\":\"Vídeo dos slides no plano principal com a narração explicativa. Pode incluir vídeo mostrando o narrador. Os vídeos e materiais devem ser enviados pelo solicitante.\",\"deadlne\":7,\"example\":\"https://www.youtube.com/watch?v=KxjHA3gxcAM\"},{\"id\":5,\"img\":\"/img/undraw.co/slides.png\",\"title\":\"Vídeo com Slides em Estúdio\",\"description\":\"Vídeo do narrador no estúdio aparecendo por completo e os slides sendo projetados ao lado dele. O vídeo será gravado no estúdio do PRACTICE e os slides devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":6,\"img\":\"/img/undraw.co/tutorial.png\",\"title\":\"Vídeo Tutorial\",\"description\":\"Vídeo explicativo ensinando passo a passo da utilização de uma ferramenta e/ou software. Pode haver segundo vídeo com a imagem do narrador ou apenas o vídeo tutorial. Os vídeos devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":7,\"img\":\"/img/undraw.co/vid_composition.png\",\"title\":\"Composição de Vídeos\",\"description\":\"Compilação de diversos vídeos e com uma narração explicativa, com a possibilidade de ter a imagem do narrador ao lado. Os vídeos devem ser enviados pelo solicitante. \",\"deadlne\":7},{\"id\":8,\"img\":\"/img/undraw.co/animating.png\",\"title\":\"Animação Curta Explicativa\",\"description\":\"Uma vídeo animado de curta duração sobre algum tema de explicação rápida com uma narração. A narração e as instruções devem ser enviadas pelo solicitante.\",\"deadlne\":7},{\"id\":9,\"img\":\"/img/undraw.co/online_ad.png\",\"title\":\"Vídeo Curto Promocional\",\"description\":\"Vídeo comercial para divulgação de eventos, pode ser feito apenas mostrando o apresentador ou podem conter outros elementos como pequenas animações. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7},{\"id\":10,\"img\":\"/img/undraw.co/alert.png\",\"title\":\"Vídeo de aviso\",\"description\":\"Um vídeo curto para avisar/alertar/lembrar sobre algum ocorrido e/ou informação importante acerca da universidade. O vídeo de aviso pode conter efeitos sonoros e transições rápidas, que deixam o anúncio mais dinâmico. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7}]}");
 
 /***/ }),
 
