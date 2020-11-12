@@ -1,17 +1,17 @@
 <template>
-  <div class="card-service row">
-      <img v-if="service.id % 2 === 0" 
+  <div class="card-service row p-3">
+      <img class="col-sm-12 col-md-5 align-items-center
+                  img-tumb"
           :src="service.img" alt="" />
-      <div class="col-8">
+      <div class="col-sm-12 col-md-7">
         <h4>{{service.title}}</h4>
-        <p>{{service.description}}</p>
+        <p class="text-justify">{{service.description}}</p>
         <div class="row pl-3 p-1"> 
           <button class="btn btn-info">Solicitar</button> 
           <p class="align-items-center m-2 ">Prazo: {{service.deadline}} días(úteis)</p>
         </div>
+        <strong v-if="service.example" ><p>Examplo: <a :href="service.example">{{service.example}}</a></p></strong>
       </div>
-      <img v-if="service.id % 2 !== 0" 
-          :src="service.img" alt="" />
   </div>
 </template>
 
@@ -24,10 +24,14 @@ export default {
 </script>
 
 <style>
-.card-service{
+@media screen and (max-width: 600px){
+  .img-tumb{
+    min-width: 50px;
+  }
 }
-img{
-  width: 250px;
-}
+  .img-tumb{
+    max-width: 215px;
+    max-height: 150px;
+  }
 
 </style>
