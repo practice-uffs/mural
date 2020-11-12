@@ -5,8 +5,8 @@
                 <h1>Seja Bem-vindo ao</h1>
                 <p>Portal de serviços do <strong>Practice</strong></p>
             </div>
-            <div>
-                <h1>Web Feedback</h1>
+            <div class="ml-5">
+                <img class="logo-webfeedback text-right" :src="logo" alt="logotipo do web feedback">
             </div>
         </div>
 
@@ -22,8 +22,13 @@ export default {
     },
     data(){
         return {
-            banner:'img/banner-practice.png',
+            logo:'img/logo-webfeedback.png',
         }
     }
 }
 </script>
+<style scoped>
+.logo-webfeedback{
+    width: 400px;
+}
+</style>
