@@ -1,0 +1,26 @@
+{
+    "AUDIOS":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/Recording.png",
+            "title":"Áudio Promocional Simples",
+            "description":"Apenas uma faixa de áudio com objetivo de anunciar e/ou divulgar algo, apenas uma chamada. Podem ainda ser adicionados pequenos efeitos e trilhas.",
+            "deadline":7
+        },
+        {
+            "id":2,
+            "img":"/img/undraw.co/audio_conversation.png",
+            "title":"Áudio Expositivo Longo",
+            "description":"Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples",
+            "deadline":7
+        },
+        {
+            "id":3,
+            "img":"/img/undraw.co/podcast.png",
+            "title":"Áudio Institucional Promocional",
+            "description":"Áudio curto com efeitos sonoros e até duas pessoas, para instruções e/ou procedimentos institucionais.",
+            "deadline":7
+        }
+    ]
+}
+
