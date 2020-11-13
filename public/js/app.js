@@ -63394,6 +63394,12 @@ var staticRenderFns = [
             "a",
             { staticClass: "p-2 text-muted", attrs: { href: "/servicos" } },
             [_vm._v("Serviços")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "p-2 text-muted", attrs: { href: "/lousas" } },
+            [_vm._v("Lousa")]
           )
         ])
       ]
@@ -77822,8 +77828,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/borges/Documentos/JOBS/practice/web-feedback/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/borges/Documentos/JOBS/practice/web-feedback/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/cleisson/Documentos/GitHub/PRACTICE/web-feedback/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/cleisson/Documentos/GitHub/PRACTICE/web-feedback/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
