@@ -70,6 +70,9 @@ Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue')
 
 // Services
 Vue.component('services-page',require('./components/services/ServicePage.vue').default);
+
+// Lousa
+Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
