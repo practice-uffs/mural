@@ -19,21 +19,40 @@
                     v-for="service in videos" :key="service.id" 
                     v-bind:service="service"/>
         </div>
-        <h3>Estúdio</h3>
+        <h3>Texto</h3>
+        <div class="row">
             <Service class="justify-content-center
                             col-sm-12 col-md-6 "
-                v-for="service in txts_imgs" :key="service.id" 
+                v-for="service in textos" :key="service.id" 
                 v-bind:service="service"/>
-        <h3>Texto e Imagem</h3>
+        </div>
+        <div class="text-justify mb-5 m-3 px-5">
+            <p><strong>Obs:</strong> As solicitações dos serviços de texto precisam conter: Autor(es), Título e Subtítulo, Imagens e gráficos com indicações de ordem que serão apresentadas no texto,
+                Referências bibliográficas utilizadas já dentro das normas ABNT; Caso seja necessário, licenças de direitos autorais das imagens utilizadas </p>
+            <p><strong>Orientações bem estabelecidas de design:</strong> Imagens em boa resolução, Referências de onde as imagens foram retiradas, Imagens salvas em formato JPE </p>
+        </div>
+
+        <h3>Imagens</h3>
+        <div class="row">
+            <Service class="justify-content-center
+                            col-sm-12 col-md-6 "
+                v-for="service in imagens" :key="service.id" 
+                v-bind:service="service"/>
+        </div>
+        <h3>Estúdio</h3>
+        <div class="row">
             <Service class="justify-content-center
                             col-sm-12 col-md-6 "
                 v-for="service in estudio" :key="service.id" 
                 v-bind:service="service"/>
+        </div>
         <h3>Evento</h3>
+        <div class="row">
             <Service class="justify-content-center
                             col-sm-12 col-md-6 "
                 v-for="service in eventos" :key="service.id" 
                 v-bind:service="service"/>
+        </div>
     </div>
   </div>
 </template>
@@ -42,7 +61,7 @@
 import moment from 'moment'
 import MyServices from './MyServices';
 import Service from './Service';
-import {AUDIOS,VIDEOS} from './json/services.json';
+import {AUDIOS,VIDEOS,TEXTOS,IMAGENS} from './json/services.json';
 
 Vue.filter('formatDate', function(value) {
     if (value) {
@@ -62,7 +81,8 @@ export default {
             services:[],
             audios: AUDIOS,
             videos: VIDEOS,
-            txts_imgs: [],
+            textos: TEXTOS,
+            imagens: IMAGENS,
             estudio: [],
             eventos: [],
         }
