@@ -5,6 +5,7 @@
         <MyServices
                 v-for="service in services" :key="service.id" 
                 v-bind:service="service"/>
+                
         <h3>Audio</h3>
         <div class="row">
             <Service class="justify-content-center
@@ -12,6 +13,7 @@
                     v-for="service in audios" :key="service.id" 
                     v-bind:service="service"/>
         </div>
+
         <h3>Vídeos</h3>
         <div class="row">
             <Service class="justify-content-center
@@ -19,6 +21,7 @@
                     v-for="service in videos" :key="service.id" 
                     v-bind:service="service"/>
         </div>
+
         <h3>Texto</h3>
         <div class="row">
             <Service class="justify-content-center
@@ -39,18 +42,20 @@
                 v-for="service in imagens" :key="service.id" 
                 v-bind:service="service"/>
         </div>
-        <h3>Estúdio</h3>
-        <div class="row">
-            <Service class="justify-content-center
-                            col-sm-12 col-md-6 "
-                v-for="service in estudio" :key="service.id" 
-                v-bind:service="service"/>
-        </div>
+
         <h3>Evento</h3>
         <div class="row">
             <Service class="justify-content-center
                             col-sm-12 col-md-6 "
                 v-for="service in eventos" :key="service.id" 
+                v-bind:service="service"/>
+        </div>
+
+        <h3>Estúdio</h3>
+        <div class="row">
+            <Service class="justify-content-center
+                            col-sm-12 col-md-6 "
+                v-for="service in estudio" :key="service.id" 
                 v-bind:service="service"/>
         </div>
     </div>
@@ -61,7 +66,7 @@
 import moment from 'moment'
 import MyServices from './MyServices';
 import Service from './Service';
-import {AUDIOS,VIDEOS,TEXTOS,IMAGENS} from './json/services.json';
+import {AUDIOS,VIDEOS,TEXTOS,IMAGENS,EVENTOS} from './json/services.json';
 
 Vue.filter('formatDate', function(value) {
     if (value) {
@@ -84,7 +89,7 @@ export default {
             textos: TEXTOS,
             imagens: IMAGENS,
             estudio: [],
-            eventos: [],
+            eventos: EVENTOS,
         }
     },
     methods:{

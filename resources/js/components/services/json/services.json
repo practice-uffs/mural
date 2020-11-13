@@ -141,6 +141,15 @@
             "description":"Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo, paleta de cores, marca d’água e padronagem",
             "deadline":15
         }
+    ],
+    "EVENTOS":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/event.png",
+            "title":"Evento virtual",
+            "description":"Suporte para a realização de semanas acadêmicas e eventos virtuais em geral?",
+            "deadline":7
+        }
     ]
 }
 
