@@ -95,6 +95,70 @@
             "description":"Um vídeo curto para avisar/alertar/lembrar sobre algum ocorrido e/ou informação importante acerca da universidade. O vídeo de aviso pode conter efeitos sonoros e transições rápidas, que deixam o anúncio mais dinâmico. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.",
             "deadlne":7
         }
+    ],
+    "TEXTOS":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/cartilha.png",
+            "title":"Cartilha",
+            "description":"Uma cartilha reúne informações elementares ou instruções sobre um determinado tema em um formato dinâmico. O texto é curto e direto e normalmente são utilizadas muitas imagens, figuras e gráficos para auxiliar na apresentação do tema.",
+            "deadline":7
+        },
+        {
+            "id":2,
+            "img":"/img/undraw.co/manual.png",
+            "title":"Manual",
+            "description":"Um manual apresenta instruções para realização de algo (tarefa, montagem de produto, estabelecimento de rotina, etc). O texto tem uma ordem de passos que deve ser seguido para que se obtenha sucesso na atividade que o texto orienta.",
+            "deadline":7
+        },
+        {
+            "id":3,
+            "img":"/img/undraw.co/panfleto.png",
+            "title":"Panfleto",
+            "description":"O panfleto é um meio de divulgação de algo. O texto é sucinto e direto e tem por objetivo apresentar o básico sobre o tema para o leitor.",
+            "deadline":7
+        },
+        {
+            "id":4,
+            "img":"/img/undraw.co/cartaz.png",
+            "title":"Cartaz",
+            "description":"O cartaz tem por objetivo divulgar algo ou alguém, escrito de forma resumida e direta. Devem ser apresentadas em um cartaz apenas as informações fundamentais do que se pretende divulgar (nome, apresentador e data, se for um evento, por exemplo). Utiliza de linguagem simples e direta e recursos visuais (design e imagens) para chamar atenção do leitor.",
+            "deadline":7
+        }
+    ],
+    "IMAGENS":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/pack_simples.png",
+            "title":"Identidade Visual Simples",
+            "description":"Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo e paleta de cores;",
+            "deadline":15
+        },
+        {
+            "id":2,
+            "img":"/img/undraw.co/pack_completo.png",
+            "title":"Identidade Visual Completa",
+            "description":"Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo, paleta de cores, marca d’água e padronagem",
+            "deadline":15
+        }
+    ],
+    "EVENTOS":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/event.png",
+            "title":"Evento virtual",
+            "description":"Suporte para a realização de semanas acadêmicas e eventos virtuais em geral?",
+            "deadline":7
+        }
+    ],
+    "ESTUDIO":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/estudio.png",
+            "title":"Gravação em estúdio",
+            "description":"Você precisa produzir vídeos com uma estrutura peculiar ou com recursos muito específicos? O serviço de estúdo do programa pode te ajudar. Com uma infra-estutura preparada para isso!",
+            "deadline":7
+        }
     ]
 }
 
