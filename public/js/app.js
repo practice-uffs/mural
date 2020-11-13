@@ -3951,6 +3951,53 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "lousas",
+  data: function data() {
+    return {
+      img: '/img/undraw.co/undraw_professor_8lrt.png'
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/services/MyServices.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/services/MyServices.vue?vue&type=script&lang=js& ***!
@@ -4092,6 +4139,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4113,9 +4184,10 @@ Vue.filter('formatDate', function (value) {
       services: [],
       audios: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["AUDIOS"],
       videos: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["VIDEOS"],
-      txts_imgs: [],
-      estudio: [],
-      eventos: []
+      textos: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["TEXTOS"],
+      imagens: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["IMAGENS"],
+      eventos: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["EVENTOS"],
+      estudio: _json_services_json__WEBPACK_IMPORTED_MODULE_4__["ESTUDIO"]
     };
   },
   methods: {
@@ -4522,6 +4594,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.separador-nuvens[data-v-d04d8828]{\n    margin: 80px;\n    width: 180px;\n}\n@media screen and (max-width: 600px){\n#nuvem2[data-v-d04d8828],#nuvem3[data-v-d04d8828]{\n     display: none;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.img-lousa[data-v-631b9e84]{\n    width: 400px;\n}\n", ""]);
 
 // exports
 
@@ -57149,6 +57240,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/services/MyServices.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/services/MyServices.vue?vue&type=style&index=0&lang=css& ***!
@@ -63511,6 +63632,12 @@ var staticRenderFns = [
             "a",
             { staticClass: "p-2 text-muted", attrs: { href: "/servicos" } },
             [_vm._v("Serviços")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "p-2 text-muted", attrs: { href: "/lousas" } },
+            [_vm._v("Lousa")]
           )
         ])
       ]
@@ -63556,6 +63683,97 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("div", { staticClass: "row d-flex align-items-center" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-12 col-md-4" }, [
+        _c("img", {
+          staticClass: "img-lousa",
+          attrs: { src: _vm.img, alt: "" }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-12 col-md-8 text-right" }, [
+      _c("h2", [_vm._v("Lousa virtual ")]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "A lousa virtual permite que você faça interações online de uma forma fácil, criativa e com bastante interação."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row d-flex align-items-center" }, [
+      _c("div", { staticClass: "col-sm-12 col-md-8 text-right" }, [
+        _c("p", [
+          _c("strong", [_vm._v("Quer seu próprio espaço de interação?")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-12 col-md-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-warning",
+            attrs: {
+              type: "button",
+              "data-toggle": "modal",
+              "data-target": "#LousaModal"
+            }
+          },
+          [_vm._v("Criar nova lousa")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row d-flex align-items-center pt-5" }, [
+      _c("h2", [_vm._v(" Suas lousas")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -63774,44 +63992,98 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("h3", [_vm._v("Estúdio")]),
+        _c("h3", [_vm._v("Texto")]),
         _vm._v(" "),
-        _vm._l(_vm.txts_imgs, function(service) {
-          return _c("Service", {
-            key: service.id,
-            staticClass:
-              "justify-content-center\n                          col-sm-12 col-md-6 ",
-            attrs: { service: service }
-          })
-        }),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.textos, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        ),
         _vm._v(" "),
-        _c("h3", [_vm._v("Texto e Imagem")]),
+        _vm._m(0),
         _vm._v(" "),
-        _vm._l(_vm.estudio, function(service) {
-          return _c("Service", {
-            key: service.id,
-            staticClass:
-              "justify-content-center\n                          col-sm-12 col-md-6 ",
-            attrs: { service: service }
-          })
-        }),
+        _c("h3", [_vm._v("Imagens")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.imagens, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        ),
         _vm._v(" "),
         _c("h3", [_vm._v("Evento")]),
         _vm._v(" "),
-        _vm._l(_vm.eventos, function(service) {
-          return _c("Service", {
-            key: service.id,
-            staticClass:
-              "justify-content-center\n                          col-sm-12 col-md-6 ",
-            attrs: { service: service }
-          })
-        })
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.eventos, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        ),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Estúdio")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.estudio, function(service) {
+            return _c("Service", {
+              key: service.id,
+              staticClass:
+                "justify-content-center\n                          col-sm-12 col-md-6 ",
+              attrs: { service: service }
+            })
+          }),
+          1
+        )
       ],
       2
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-justify mb-5 m-3 px-5" }, [
+      _c("p", [
+        _c("strong", [_vm._v("Obs:")]),
+        _vm._v(
+          " As solicitações dos serviços de texto precisam conter: Autor(es), Título e Subtítulo, Imagens e gráficos com indicações de ordem que serão apresentadas no texto,\n              Referências bibliográficas utilizadas já dentro das normas ABNT; Caso seja necessário, licenças de direitos autorais das imagens utilizadas "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Orientações bem estabelecidas de design:")]),
+        _vm._v(
+          " Imagens em boa resolução, Referências de onde as imagens foram retiradas, Imagens salvas em formato JPE "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -76243,7 +76515,9 @@ Vue.component('index-services', __webpack_require__(/*! ./components/index/Servi
 
 Vue.component('feedback-page', __webpack_require__(/*! ./components/feedbacks/FeedbackPage.vue */ "./resources/js/components/feedbacks/FeedbackPage.vue")["default"]); // Services
 
-Vue.component('services-page', __webpack_require__(/*! ./components/services/ServicePage.vue */ "./resources/js/components/services/ServicePage.vue")["default"]);
+Vue.component('services-page', __webpack_require__(/*! ./components/services/ServicePage.vue */ "./resources/js/components/services/ServicePage.vue")["default"]); // Lousa
+
+Vue.component('lousas-page', __webpack_require__(/*! ./components/lousas/LousaPage.vue */ "./resources/js/components/lousas/LousaPage.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -77721,6 +77995,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/lousas/LousaPage.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/lousas/LousaPage.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LousaPage.vue?vue&type=template&id=631b9e84&scoped=true& */ "./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true&");
+/* harmony import */ var _LousaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LousaPage.vue?vue&type=script&lang=js& */ "./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& */ "./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _LousaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "631b9e84",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/lousas/LousaPage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./LousaPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=style&index=0&id=631b9e84&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_style_index_0_id_631b9e84_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./LousaPage.vue?vue&type=template&id=631b9e84&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/lousas/LousaPage.vue?vue&type=template&id=631b9e84&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LousaPage_vue_vue_type_template_id_631b9e84_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/services/MyServices.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/services/MyServices.vue ***!
@@ -78055,10 +78416,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************!*\
   !*** ./resources/js/components/services/json/services.json ***!
   \*************************************************************/
-/*! exports provided: AUDIOS, VIDEOS, default */
+/*! exports provided: AUDIOS, VIDEOS, TEXTOS, IMAGENS, EVENTOS, ESTUDIO, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"AUDIOS\":[{\"id\":1,\"img\":\"/img/undraw.co/Recording.png\",\"title\":\"Áudio Promocional Simples\",\"description\":\"Apenas uma faixa de áudio com objetivo de anunciar e/ou divulgar algo, apenas uma chamada. Podem ainda ser adicionados pequenos efeitos e trilhas.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/audio_conversation.png\",\"title\":\"Áudio Expositivo Longo\",\"description\":\"Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples\",\"deadline\":7},{\"id\":3,\"img\":\"/img/undraw.co/podcast.png\",\"title\":\"Áudio Institucional Promocional\",\"description\":\"Áudio curto com efeitos sonoros e até duas pessoas, para instruções e/ou procedimentos institucionais.\",\"deadline\":7}],\"VIDEOS\":[{\"id\":1,\"img\":\"/img/undraw.co/video_influencer.png\",\"title\":\"Vídeo Aula Simples\",\"description\":\"Vídeo com apenas o interlocutor em plano principal. Há a possibilidade de serem incluídos outros materiais ao longo do vídeo, como outros vídeos, textos e imagens. Vídeo e materiais enviados pelo solicitante.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/draw.png\",\"title\":\"Hand Drawn Vídeo\",\"description\":\"Animação ilustrando a explicação da fala do narrador ou o próprio narrador escrevendo em tempo real, com ou sem segundo vídeo ao lado mostrando o narrador. Os vídeos e/ou instruções devem ser enviadas pelo solicitante.\",\"deadline\":7,\"example\":\"https://www.youtube.com/watch?v=kcft5B1c-JE&feature=youtu.be\"},{\"id\":3,\"img\":\"/img/undraw.co/img_composition.png\",\"title\":\"Composição de Imagens\",\"description\":\"Vídeo compilado de imagens sobre o tema e com uma narração explicativa. Pode incluir vídeo mostrando o narrador. As imagens e a narração devem ser enviadas pelo solicitante\",\"deadline\":7},{\"id\":4,\"img\":\"/img/undraw.co/call.png\",\"title\":\"Vídeo com Slides\",\"description\":\"Vídeo dos slides no plano principal com a narração explicativa. Pode incluir vídeo mostrando o narrador. Os vídeos e materiais devem ser enviados pelo solicitante.\",\"deadlne\":7,\"example\":\"https://www.youtube.com/watch?v=KxjHA3gxcAM\"},{\"id\":5,\"img\":\"/img/undraw.co/slides.png\",\"title\":\"Vídeo com Slides em Estúdio\",\"description\":\"Vídeo do narrador no estúdio aparecendo por completo e os slides sendo projetados ao lado dele. O vídeo será gravado no estúdio do PRACTICE e os slides devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":6,\"img\":\"/img/undraw.co/tutorial.png\",\"title\":\"Vídeo Tutorial\",\"description\":\"Vídeo explicativo ensinando passo a passo da utilização de uma ferramenta e/ou software. Pode haver segundo vídeo com a imagem do narrador ou apenas o vídeo tutorial. Os vídeos devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":7,\"img\":\"/img/undraw.co/vid_composition.png\",\"title\":\"Composição de Vídeos\",\"description\":\"Compilação de diversos vídeos e com uma narração explicativa, com a possibilidade de ter a imagem do narrador ao lado. Os vídeos devem ser enviados pelo solicitante. \",\"deadlne\":7},{\"id\":8,\"img\":\"/img/undraw.co/animating.png\",\"title\":\"Animação Curta Explicativa\",\"description\":\"Uma vídeo animado de curta duração sobre algum tema de explicação rápida com uma narração. A narração e as instruções devem ser enviadas pelo solicitante.\",\"deadlne\":7},{\"id\":9,\"img\":\"/img/undraw.co/online_ad.png\",\"title\":\"Vídeo Curto Promocional\",\"description\":\"Vídeo comercial para divulgação de eventos, pode ser feito apenas mostrando o apresentador ou podem conter outros elementos como pequenas animações. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7},{\"id\":10,\"img\":\"/img/undraw.co/alert.png\",\"title\":\"Vídeo de aviso\",\"description\":\"Um vídeo curto para avisar/alertar/lembrar sobre algum ocorrido e/ou informação importante acerca da universidade. O vídeo de aviso pode conter efeitos sonoros e transições rápidas, que deixam o anúncio mais dinâmico. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7}]}");
+module.exports = JSON.parse("{\"AUDIOS\":[{\"id\":1,\"img\":\"/img/undraw.co/Recording.png\",\"title\":\"Áudio Promocional Simples\",\"description\":\"Apenas uma faixa de áudio com objetivo de anunciar e/ou divulgar algo, apenas uma chamada. Podem ainda ser adicionados pequenos efeitos e trilhas.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/audio_conversation.png\",\"title\":\"Áudio Expositivo Longo\",\"description\":\"Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples\",\"deadline\":7},{\"id\":3,\"img\":\"/img/undraw.co/podcast.png\",\"title\":\"Áudio Institucional Promocional\",\"description\":\"Áudio curto com efeitos sonoros e até duas pessoas, para instruções e/ou procedimentos institucionais.\",\"deadline\":7}],\"VIDEOS\":[{\"id\":1,\"img\":\"/img/undraw.co/video_influencer.png\",\"title\":\"Vídeo Aula Simples\",\"description\":\"Vídeo com apenas o interlocutor em plano principal. Há a possibilidade de serem incluídos outros materiais ao longo do vídeo, como outros vídeos, textos e imagens. Vídeo e materiais enviados pelo solicitante.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/draw.png\",\"title\":\"Hand Drawn Vídeo\",\"description\":\"Animação ilustrando a explicação da fala do narrador ou o próprio narrador escrevendo em tempo real, com ou sem segundo vídeo ao lado mostrando o narrador. Os vídeos e/ou instruções devem ser enviadas pelo solicitante.\",\"deadline\":7,\"example\":\"https://www.youtube.com/watch?v=kcft5B1c-JE&feature=youtu.be\"},{\"id\":3,\"img\":\"/img/undraw.co/img_composition.png\",\"title\":\"Composição de Imagens\",\"description\":\"Vídeo compilado de imagens sobre o tema e com uma narração explicativa. Pode incluir vídeo mostrando o narrador. As imagens e a narração devem ser enviadas pelo solicitante\",\"deadline\":7},{\"id\":4,\"img\":\"/img/undraw.co/call.png\",\"title\":\"Vídeo com Slides\",\"description\":\"Vídeo dos slides no plano principal com a narração explicativa. Pode incluir vídeo mostrando o narrador. Os vídeos e materiais devem ser enviados pelo solicitante.\",\"deadlne\":7,\"example\":\"https://www.youtube.com/watch?v=KxjHA3gxcAM\"},{\"id\":5,\"img\":\"/img/undraw.co/slides.png\",\"title\":\"Vídeo com Slides em Estúdio\",\"description\":\"Vídeo do narrador no estúdio aparecendo por completo e os slides sendo projetados ao lado dele. O vídeo será gravado no estúdio do PRACTICE e os slides devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":6,\"img\":\"/img/undraw.co/tutorial.png\",\"title\":\"Vídeo Tutorial\",\"description\":\"Vídeo explicativo ensinando passo a passo da utilização de uma ferramenta e/ou software. Pode haver segundo vídeo com a imagem do narrador ou apenas o vídeo tutorial. Os vídeos devem ser enviados pelo solicitante.\",\"deadlne\":7},{\"id\":7,\"img\":\"/img/undraw.co/vid_composition.png\",\"title\":\"Composição de Vídeos\",\"description\":\"Compilação de diversos vídeos e com uma narração explicativa, com a possibilidade de ter a imagem do narrador ao lado. Os vídeos devem ser enviados pelo solicitante. \",\"deadlne\":7},{\"id\":8,\"img\":\"/img/undraw.co/animating.png\",\"title\":\"Animação Curta Explicativa\",\"description\":\"Uma vídeo animado de curta duração sobre algum tema de explicação rápida com uma narração. A narração e as instruções devem ser enviadas pelo solicitante.\",\"deadlne\":7},{\"id\":9,\"img\":\"/img/undraw.co/online_ad.png\",\"title\":\"Vídeo Curto Promocional\",\"description\":\"Vídeo comercial para divulgação de eventos, pode ser feito apenas mostrando o apresentador ou podem conter outros elementos como pequenas animações. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7},{\"id\":10,\"img\":\"/img/undraw.co/alert.png\",\"title\":\"Vídeo de aviso\",\"description\":\"Um vídeo curto para avisar/alertar/lembrar sobre algum ocorrido e/ou informação importante acerca da universidade. O vídeo de aviso pode conter efeitos sonoros e transições rápidas, que deixam o anúncio mais dinâmico. O vídeo pode ser enviado pelo solicitante ou gravado no estúdio do PRACTICE.\",\"deadlne\":7}],\"TEXTOS\":[{\"id\":1,\"img\":\"/img/undraw.co/cartilha.png\",\"title\":\"Cartilha\",\"description\":\"Uma cartilha reúne informações elementares ou instruções sobre um determinado tema em um formato dinâmico. O texto é curto e direto e normalmente são utilizadas muitas imagens, figuras e gráficos para auxiliar na apresentação do tema.\",\"deadline\":7},{\"id\":2,\"img\":\"/img/undraw.co/manual.png\",\"title\":\"Manual\",\"description\":\"Um manual apresenta instruções para realização de algo (tarefa, montagem de produto, estabelecimento de rotina, etc). O texto tem uma ordem de passos que deve ser seguido para que se obtenha sucesso na atividade que o texto orienta.\",\"deadline\":7},{\"id\":3,\"img\":\"/img/undraw.co/panfleto.png\",\"title\":\"Panfleto\",\"description\":\"O panfleto é um meio de divulgação de algo. O texto é sucinto e direto e tem por objetivo apresentar o básico sobre o tema para o leitor.\",\"deadline\":7},{\"id\":4,\"img\":\"/img/undraw.co/cartaz.png\",\"title\":\"Cartaz\",\"description\":\"O cartaz tem por objetivo divulgar algo ou alguém, escrito de forma resumida e direta. Devem ser apresentadas em um cartaz apenas as informações fundamentais do que se pretende divulgar (nome, apresentador e data, se for um evento, por exemplo). Utiliza de linguagem simples e direta e recursos visuais (design e imagens) para chamar atenção do leitor.\",\"deadline\":7}],\"IMAGENS\":[{\"id\":1,\"img\":\"/img/undraw.co/pack_simples.png\",\"title\":\"Identidade Visual Simples\",\"description\":\"Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo e paleta de cores;\",\"deadline\":15},{\"id\":2,\"img\":\"/img/undraw.co/pack_completo.png\",\"title\":\"Identidade Visual Completa\",\"description\":\"Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo, paleta de cores, marca d’água e padronagem\",\"deadline\":15}],\"EVENTOS\":[{\"id\":1,\"img\":\"/img/undraw.co/event.png\",\"title\":\"Evento virtual\",\"description\":\"Suporte para a realização de semanas acadêmicas e eventos virtuais em geral?\",\"deadline\":7}],\"ESTUDIO\":[{\"id\":1,\"img\":\"/img/undraw.co/estudio.png\",\"title\":\"Gravação em estúdio\",\"description\":\"Você precisa produzir vídeos com uma estrutura peculiar ou com recursos muito específicos? O serviço de estúdo do programa pode te ajudar. Com uma infra-estutura preparada para isso!\",\"deadline\":7}]}");
 
 /***/ }),
 

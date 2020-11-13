@@ -26,15 +26,15 @@
             </div>
         </div>
 
-        <item-list 
+        <item-list
             item-type=1
             user-id="authUserId"
             :items="feedbacks"
         ></item-list>
 
         <div v-if="authUserId">
-            <item-list 
-                item-type=2 
+            <item-list
+                item-type=2
                 user-id="authUserId"
                 :items="services"
             ></item-list>
@@ -54,7 +54,7 @@
             ></service-form>
         </div>
     </main>
-    
+
 </template>
 
 <script>
@@ -120,6 +120,6 @@ export default {
             this.fetchServices();
         }
     }
-    
+
 }
 </script>

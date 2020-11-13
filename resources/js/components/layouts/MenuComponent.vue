@@ -4,6 +4,7 @@
         <a class="p-2 text-muted" href="/">Home</a>
         <a class="p-2 text-muted" href="/feedbacks">Feedbacks</a>
         <a class="p-2 text-muted" href="/servicos">Serviços</a>
+        <a class="p-2 text-muted" href="/lousas">Lousa</a>
     </nav>
 </div>
 </template>
