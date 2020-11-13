@@ -150,6 +150,15 @@
             "description":"Suporte para a realização de semanas acadêmicas e eventos virtuais em geral?",
             "deadline":7
         }
+    ],
+    "ESTUDIO":[
+        {
+            "id":1,
+            "img":"/img/undraw.co/estudio.png",
+            "title":"Gravação em estúdio",
+            "description":"Você precisa produzir vídeos com uma estrutura peculiar ou com recursos muito específicos? O serviço de estúdo do programa pode te ajudar. Com uma infra-estutura preparada para isso!",
+            "deadline":7
+        }
     ]
 }
 

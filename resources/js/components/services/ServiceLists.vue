@@ -5,7 +5,7 @@
         <MyServices
                 v-for="service in services" :key="service.id" 
                 v-bind:service="service"/>
-                
+
         <h3>Audio</h3>
         <div class="row">
             <Service class="justify-content-center
@@ -66,7 +66,7 @@
 import moment from 'moment'
 import MyServices from './MyServices';
 import Service from './Service';
-import {AUDIOS,VIDEOS,TEXTOS,IMAGENS,EVENTOS} from './json/services.json';
+import {AUDIOS,VIDEOS,TEXTOS,IMAGENS,EVENTOS,ESTUDIO} from './json/services.json';
 
 Vue.filter('formatDate', function(value) {
     if (value) {
@@ -88,8 +88,8 @@ export default {
             videos: VIDEOS,
             textos: TEXTOS,
             imagens: IMAGENS,
-            estudio: [],
             eventos: EVENTOS,
+            estudio: ESTUDIO,
         }
     },
     methods:{
