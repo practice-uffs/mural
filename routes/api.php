@@ -22,10 +22,14 @@ Route::apiResource('items', 'API\ItemController');
     Route::get('items/{id}/comments', 'API\ItemController@listComments');
     Route::post('items/{id}/comments', 'API\ItemController@storeComment');
 
+Route::apiResource('lousas', 'API\LousaController')->only([
+    'index'
+]);
+
 Route::apiResource('services', 'API\ServiceController')->only([
     'index', 'store', 'show', 'update'
 ]);
-   
+
 Route::apiResource('feedbacks', 'API\FeedbackController')->only([
     'index', 'store', 'show', 'update'
 ]);

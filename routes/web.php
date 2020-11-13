@@ -25,6 +25,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos','ServiceController@index')->name('services');
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
 });
