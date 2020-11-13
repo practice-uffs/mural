@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <a class="nav__link dropdown-trigger" data-target="userMenu">
-                        <img src="{{asset('img/avatars/avatar-' . ($user->id % 4 + 1) . '.png') }}" 
+                        <img src="{{asset('img/avatars/avatar-' . ($user->id % 4 + 1) . '.png') }}"
                             class="header__avatar" alt="Avatar" height="45"
                         >
                 @else
@@ -28,7 +28,7 @@
                         <i class="material-icons">login</i> Entrar
                 @endif
                 </a>
-            
+
                 <ul id="userMenu" class="dropdown-content">
                     <li>
                         <a href="{{ route('logout') }}" class="text-primary">Sair</a>
@@ -42,6 +42,7 @@
                 <ul class="tabs tabs-fixed-width">
                     <li class="tab"><a href="#feedbacks">Feedbacks</a></li>
                     <li class="tab"><a href="#services">Serviços</a></li>
+                    <li class="tab"><a href="#lousas">Lousas</a></li>
                 </ul>
             </div>
         @endif
