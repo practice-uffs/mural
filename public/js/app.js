@@ -63835,7 +63835,7 @@ var render = function() {
         {
           staticClass:
             "row col-sm-12 col-md-1 \n               justify-content-center ",
-          attrs: { href: "/items/" + _vm.service.id }
+          attrs: { href: "/servico/" + _vm.service.id }
         },
         [
           _c("span", { staticClass: "material-icons" }, [

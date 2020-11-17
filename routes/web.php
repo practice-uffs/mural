@@ -27,6 +27,9 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos','ServiceController@index')->name('services');
+    Route::resource('/servico', 'ItemController')->except([
+        'create', 'store'
+    ]);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
 });
 
