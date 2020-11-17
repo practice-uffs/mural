@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
         'create', 'store'
     ]);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
+    Route::resource('/feedback', 'ItemController')->except([
+        'create', 'store'
+    ]);
 });
 
 // Index
