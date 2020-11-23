@@ -48,3 +48,4 @@ Route::apiResource('reactions', 'API\ReactionController');
 Route::apiResource('categories', 'API\CategoryController')->only(['index']);
 Route::apiResource('locations', 'API\LocationController')->only(['index']);
 Route::apiResource('documents', 'API\DocumentController');
+Route::apiResource('specifications', 'API\SpecificationController')->only(['index']);
