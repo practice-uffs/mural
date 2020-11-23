@@ -34,6 +34,7 @@ class Item extends Model
         'type',
         'title',
         'description',
+        'github_issue_link',
         'hidden'
     ];
 

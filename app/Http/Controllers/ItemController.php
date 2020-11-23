@@ -121,6 +121,7 @@ class ItemController extends Controller
         $item->description = $request->get('description');
         $item->hidden = $request -> hidden == 'on' ? false : true;
         $item->updated_at = Carbon::now();
+        $item->github_issue_link = $request->get('github_issue_link');
 
         $item->save();
 
