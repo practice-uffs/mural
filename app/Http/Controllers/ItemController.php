@@ -39,20 +39,7 @@ class ItemController extends Controller
         return Category::where('item_type', $itemType) -> get();
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $user = Auth::user();
-
-        return view('item.index', [
-            'user' => $user
-        ]);
-    }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -84,7 +71,7 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
 
-        return view('pages.item', [
+        return view('pages.item.show', [
             'user' => Auth::user(),
             'item' => $item,
             'reactions' => $item -> reactions -> groupBy('text')
@@ -99,7 +86,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('item.edit', [
+        return view('pages.item.edit', [
             'user' => Auth::user(),
             'item' => $item,
             'categories' => $this->findCategoriesByItemType($item -> type),
