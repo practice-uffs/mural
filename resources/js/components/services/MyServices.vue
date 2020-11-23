@@ -18,7 +18,7 @@
             <p><strong>ID</strong></p>
             <p>{{service.id}}</p>
         </div>
-        <a :href="'/items/'+service.id" 
+        <a :href="'/servico/'+service.id" 
            class="row col-sm-12 col-md-1 
                   justify-content-center ">
             <span class="material-icons">insert_comment</span>

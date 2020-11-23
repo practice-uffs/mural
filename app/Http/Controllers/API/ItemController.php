@@ -43,6 +43,7 @@ class ItemController extends Controller
             'type' => $request -> type,
             'title' => $request -> title,
             'description' => $request -> description,
+            'github_issue_link' => $request -> github_issue_link,
             'hidden' => $request -> hidden,
         ];
 
@@ -94,6 +95,7 @@ class ItemController extends Controller
             'type' => Item::TYPE_IDEA,
             'title' => $request -> title,
             'description' => $request -> description,
+            'github_issue_link' => $request -> github_issue_link,
             'hidden' => $request -> hidden == 'on',
         ]);
 
