@@ -39,6 +39,19 @@ class ItemController extends Controller
         return Category::where('item_type', $itemType) -> get();
     }
 
+        /**	
+     * Display a listing of the resource.	
+     *	
+     * @return \Illuminate\Http\Response	
+     */	
+    public function index(Request $request)	
+    {	
+        $user = Auth::user();	
+
+        return view('pages.item.index', [	
+            'user' => $user	
+        ]);	
+    }
  
     /**
      * Show the form for creating a new resource.

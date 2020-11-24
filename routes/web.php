@@ -27,17 +27,17 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos','ServiceController@index')->name('services');
-    Route::resource('/servico', 'ItemController')->except([
-        'create', 'store'
-    ]);
+    Route::resource('/servico', 'ItemController')->except(['create', 'store']);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
-    Route::resource('/feedback', 'ItemController')->except([
-        'create', 'store'
-    ]);
+    Route::resource('/feedback', 'ItemController')->except(['create', 'store']);
+
+    // Admin
+    Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
 });
 
 // Index
 Route::get('/', function(){ return view('index');})->name('index');
+
 
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');

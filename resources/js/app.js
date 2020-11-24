@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 
 import './bootstrap';
-
+import moment from 'moment';
 
 window.Vue = require('vue');
 
@@ -73,11 +73,28 @@ Vue.component('services-page',require('./components/services/ServicePage.vue').d
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
+
+// Admin
+Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+Vue.filter('formatDate', function(value) {
+    moment.locale();
+    if (value) {
+        return moment(String(value)).format('MM/DD/YYYY')
+    }
+}); 
+Vue.filter('prettyDate', function(value) {
+    moment.locale('pt-br');
+    if (value) {
+        return moment(String(value)).fromNow()
+    }
+}); 
+
 
 const app = new Vue({
     el: '#app',
