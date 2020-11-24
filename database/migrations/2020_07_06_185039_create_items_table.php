@@ -27,6 +27,7 @@ class CreateItemsTable extends Migration
             $table->string('title', 200)->default('');
             $table->text('description')->nullable();
             $table->boolean('hidden')->default(false);
+            $table->text('github_issue_link')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
@@ -35,9 +36,7 @@ class CreateItemsTable extends Migration
             $table->index('category_id');
             $table->index('type');
             $table->index('hidden');
-        });
 
-        Schema::table('items', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('parent_id')->references('id')->on('items');
             $table->foreign('location_id')->references('id')->on('locations');
