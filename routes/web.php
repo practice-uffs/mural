@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/feedback', 'ItemController')->except(['create', 'store']);
 
     // Admin
-    Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
 });
 
 // Index
