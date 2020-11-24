@@ -20,7 +20,7 @@
         <div id="app">
             <header-component></header-component>
             @if (Auth::check())
-            <menu-component></menu-component>
+                <menu-component :user="{{Auth()->user()}}"></menu-component>
             @endif
             <div>
                 @yield('content')

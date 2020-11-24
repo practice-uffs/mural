@@ -5,7 +5,12 @@
         <a class="p-2 text-muted" href="/feedbacks">Feedbacks</a>
         <a class="p-2 text-muted" href="/servicos">Serviços</a>
         <a class="p-2 text-muted" href="/lousas">Lousa</a>
-        <a class="p-2 text-muted" href="/admin">Admin</a>
+        <a v-if="user.type == 'admin'" class="p-2 text-muted" href="/admin">Admin</a>
     </nav>
 </div>
 </template>
+<script>
+export default {
+    props:['user']
+}
+</script>script
