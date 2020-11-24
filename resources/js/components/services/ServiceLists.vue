@@ -63,16 +63,9 @@
 </template>
 
 <script>
-import moment from 'moment'
 import MyServices from './MyServices';
 import Service from './Service';
 import {AUDIOS,VIDEOS,TEXTOS,IMAGENS,EVENTOS,ESTUDIO} from './json/services.json';
-
-Vue.filter('formatDate', function(value) {
-    if (value) {
-        return moment(String(value)).format('MM/DD/YYYY')
-    }
-}); 
 
 export default {
     name:'ServiceLists',

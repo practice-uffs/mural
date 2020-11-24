@@ -1,5 +1,6 @@
 <template>
 <div class="card m-1" >
+<a class="card-link" :href="'/feedback/'+feedback.id">
   <div class="card-body">
     <h5 class="card-title">{{feedback.title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{feedback.user.name}} - {{feedback.created_at | formatDate}}</h6>
@@ -7,17 +8,12 @@
     <!-- <a href="" class="card-link">Localização {{feedback.location_id}}</a>
     <a href="" class="card-link">Categoria {{feedback.category_id}}</a> -->
   </div>
+</a>
 </div>
 </template>
 
 <script>
-import moment from 'moment';
 
-Vue.filter('formatDate', function(value) {
-    if (value) {
-        return moment(String(value)).format('MM/DD/YYYY')
-    }
-});
 export default {
     name:'Feedback',
     props:['feedback']
@@ -25,6 +21,12 @@ export default {
 </script>
 
 <style>
-
+.card-link:active,
+.card-link:hover,
+.card-link:visited,
+.card-link:link{
+  text-decoration: none;
+  color: #264653;
+}
 
 </style>
