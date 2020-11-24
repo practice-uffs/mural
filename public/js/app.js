@@ -1940,7 +1940,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AdminPage',
@@ -2001,6 +2000,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4620,7 +4629,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.my-service{\n    box-shadow: 0px 0px 4px -1px #636363;\n    background-color: #f0f0f0;\n}\n.my-service:hover{\n    background-color: #ededed;\n}\na, a:hover, a:visited, a:active{\n    text-decoration: none;\n}\n\n", ""]);
+exports.push([module.i, "\n.my-service{\n    box-shadow: 0px 0px 4px -1px #636363;\n    background-color: #f0f0f0;\n}\n.my-service:hover{\n    background-color: #ededed;\n}\na, a:hover, a:visited, a:active{\n    text-decoration: none;\n}\n.github-icon{\n    width: 50px;\n}\n.inactive{\n    -webkit-filter: opacity(0.5);\n            filter: opacity(0.5);\n}\n\n", ""]);
 
 // exports
 
@@ -61585,11 +61594,9 @@ var render = function() {
       _vm._v(" "),
       _c("h2", [_vm._v("Serviços")]),
       _vm._v(" "),
-      _vm._l(_vm.services, function(service) {
+      _vm._l(_vm.services.reverse(), function(service) {
         return _c("Services", { key: service.id, attrs: { service: service } })
-      }),
-      _vm._v(" "),
-      _c("h2", [_vm._v("Feedbacks")])
+      })
     ],
     2
   )
@@ -61623,13 +61630,27 @@ var render = function() {
         "my-service row text-center p-3 m-3\n            d-flex justify-content-around align-items-center"
     },
     [
-      _c("span", { staticClass: "material-icons " }, [_vm._v("grading")]),
+      _c("a", { attrs: { href: _vm.service.github_issue_link } }, [
+        _c("img", {
+          staticClass: "github-icon",
+          class: { inactive: _vm.service.github_issue_link !== "" },
+          attrs: {
+            src: "/img/GitHub-Mark-64px.png",
+            alt: "link para a isssue no github",
+            title: "link para a isssue no github"
+          }
+        })
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-11 col-md-6 text-left" }, [
+      _c("div", { staticClass: "'col-sm-11 col-md-6 text-left" }, [
         _c("p", [
-          _c("strong", [_vm._v(_vm._s(_vm.service.title))]),
-          _vm._v(" "),
-          _c("small")
+          _c("strong", [_vm._v(_vm._s(_vm.service.title) + " ")]),
+          _c("small", [
+            _vm._v(
+              "- atualizadada " +
+                _vm._s(_vm._f("prettyDate")(_vm.service.updated_at))
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("p", [
@@ -61640,17 +61661,23 @@ var render = function() {
       _c("div", [
         _vm._m(0),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.service.category_id))])
+        _c("p", [_vm._v(_vm._s(_vm.service.user.username))])
       ]),
       _vm._v(" "),
       _c("div", [
         _vm._m(1),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm._f("prettyDate")(_vm.service.created_at)))])
+        _c("p", [_vm._v(_vm._s(_vm.service.category_id))])
       ]),
       _vm._v(" "),
       _c("div", [
         _vm._m(2),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm._f("formatDate")(_vm.service.created_at)))])
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._m(3),
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.service.id))])
       ]),
@@ -61674,6 +61701,12 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("strong", [_vm._v("Usuario")])])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
