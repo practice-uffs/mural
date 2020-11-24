@@ -61590,7 +61590,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h1", [_vm._v("Gerenciamento de Serviços e Feedbacks")]),
+      _c("h1", [_vm._v("Gerenciamento de Serviços")]),
       _vm._v(" "),
       _c("h2", [_vm._v("Serviços")]),
       _vm._v(" "),

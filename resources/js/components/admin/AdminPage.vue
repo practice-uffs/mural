@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Gerenciamento de Serviços e Feedbacks</h1>
+    <h1>Gerenciamento de Serviços</h1>
 
     <h2>Serviços</h2>
     <Services
