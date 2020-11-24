@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWhiteboardsTable extends Migration
+class CreateStickersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateWhiteboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('whiteboards', function (Blueprint $table) {
+        Schema::create('stickers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('hash');
-            $table->string('name');
-            $table->foreignId('user_id');
+            $table->foreignId('whiteboard_id');
             $table->text('data');
             $table->timestamps();
 
-            $table->index('user_id');
+            $table->index('whiteboard_id');
         });
 
-        Schema::table('whiteboards', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('stickers', function($table) {
+            $table->foreign('whiteboard_id')->references('id')->on('whiteboards');
         });
     }
 
@@ -36,6 +34,6 @@ class CreateWhiteboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whiteboards');
+        Schema::dropIfExists('stickers');
     }
 }
