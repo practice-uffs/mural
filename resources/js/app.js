@@ -73,6 +73,9 @@ Vue.component('services-page',require('./components/services/ServicePage.vue').d
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
+
+// Admin
+Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
