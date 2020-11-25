@@ -15,9 +15,16 @@ class CreateSpecificationsTable extends Migration
     {
         Schema::create('specifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
-            $table->text('content');
+            $table->text('img')->nullable();
+            $table->text('title')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('deadline')->nullable();
+            $table->text('example')->nullable();
             $table->timestamps();
+
+            $table->foreignId('category_id')->nullable();
+            
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
