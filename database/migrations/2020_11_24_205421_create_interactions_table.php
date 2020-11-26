@@ -22,9 +22,7 @@ class CreateInteractionsTable extends Migration
 
             $table->index('sticker_id');
             $table->index('user_id');
-        });
 
-        Schema::table('interactions', function($table) {
             $table->foreign('sticker_id')->references('id')->on('stickers');
             $table->foreign('user_id')->references('id')->on('users');
         });

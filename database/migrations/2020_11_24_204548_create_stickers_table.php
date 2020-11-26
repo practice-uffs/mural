@@ -20,9 +20,7 @@ class CreateStickersTable extends Migration
             $table->timestamps();
 
             $table->index('whiteboard_id');
-        });
 
-        Schema::table('stickers', function($table) {
             $table->foreign('whiteboard_id')->references('id')->on('whiteboards');
         });
     }
