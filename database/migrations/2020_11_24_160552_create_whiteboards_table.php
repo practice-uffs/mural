@@ -22,9 +22,7 @@ class CreateWhiteboardsTable extends Migration
             $table->timestamps();
 
             $table->index('user_id');
-        });
 
-        Schema::table('whiteboards', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
