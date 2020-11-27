@@ -57,19 +57,14 @@ class ServiceController extends Controller
             'user_id' => 'required',
             'location_id' => 'required',
             'category_id' => 'required',
+            'specification_id' => 'required',
             'title' => 'required',
             'description' => 'required'
         ]);
         
-        $data['hidden'] = true;
+        $data['hidden'] = false;
         $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
-
-        $specification = Specification::create([
-            'content' => json_encode($request -> specification)
-        ]);
-
-        $data['specification_id'] = $specification -> id;
+        $data['status'] = Item::STATUS_WAITING;
 
         $item = Item::create($data);
 
@@ -107,21 +102,18 @@ class ServiceController extends Controller
             'location_id' => 'required',
             'category_id' => 'required',
             'title' => 'required',
+            'specification_id' => 'required',
+            'github_issue_link' => 'required',
             'description' => 'required'
         ]);
 
         $data['hidden'] = true;
         $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $data['status'] = Item::STATUS_WAITING;
 
         $service = Item::find($id);
-        $specification = Specification::find($service->specification_id);
 
-        try {
-            $specification->update([
-                'content' => json_encode($request -> specification)
-            ]);
-            
+        try {           
             $service->update($data);
 
             return response(
