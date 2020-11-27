@@ -128,7 +128,7 @@ class ItemController extends Controller
         $item->user_id = Auth::user()->id;
         $item->location_id = $request->get('location_id');
         $item->category_id = $request->get('category_id');
-        $item->status = Item::STATUS_ACTIVE;
+        $item->status = Item::STATUS_WAITING;
         $item->type = $request -> type;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
