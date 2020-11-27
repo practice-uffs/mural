@@ -39,7 +39,7 @@ class ItemController extends Controller
             'user_id' => $request -> user_id,
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
+            'status' => Item::STATUS_WAITING,
             'type' => $request -> type,
             'title' => $request -> title,
             'description' => $request -> description,
@@ -91,7 +91,7 @@ class ItemController extends Controller
         $item -> update([
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
+            'status' => Item::STATUS_WAITING,
             'type' => Item::TYPE_IDEA,
             'title' => $request -> title,
             'description' => $request -> description,

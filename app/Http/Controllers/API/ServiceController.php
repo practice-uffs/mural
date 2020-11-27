@@ -64,7 +64,7 @@ class ServiceController extends Controller
         
         $data['hidden'] = false;
         $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $data['status'] = Item::STATUS_WAITING;
 
         $item = Item::create($data);
 
@@ -109,7 +109,7 @@ class ServiceController extends Controller
 
         $data['hidden'] = true;
         $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $data['status'] = Item::STATUS_WAITING;
 
         $service = Item::find($id);
 
