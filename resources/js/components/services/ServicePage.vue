@@ -12,16 +12,19 @@
     </div>
     <hr>
     <ServiceLists :user="user" />
+    <ServiceModal :user="user" />
     </section>
 </template>
 
 <script>
 import ServiceLists from './ServiceLists';
+import ServiceModal from './ServiceModal';
 
 export default {
     name:"services",
     components:{
         ServiceLists,
+        ServiceModal,
     },
     props:['user'],
     data(){
