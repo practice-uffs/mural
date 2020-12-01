@@ -49,6 +49,24 @@ class AuthController extends Controller
         }
         return $this->respondWithToken($token);
     }
+
+    public function me()
+    {
+        return response()->json(auth('api')->user());
+    }
+
+    public function logout()
+    {
+        auth('api')->logout();
+
+        return response()->json(['message' => 'Logout realizado com sucesso']);
+    }
+
+    public function refresh()
+    {
+        return $this->respondWithToken(auth('api')->refresh());
+    }
+    
         /**
      * Get the token array structure.
      *

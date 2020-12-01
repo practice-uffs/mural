@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 // ENDPOINT LOGIN
 Route::post('auth/login', 'API\AuthController@login');
-Route::post('auth/logout', 'API\AuthController@logout');
 
 // ROUTES THAT NEED TOKEN AUTHENTICATION
 Route::group(['middleware'=>['apiJwt']],function(){
+    //ENDPOINTS AUTHORIZATIONS JWT
+    Route::post('auth/logout', 'API\AuthController@logout');
+    Route::post('auth/refresh', 'API\AuthController@refresh');
+    Route::post('auth/me', 'API\AuthController@me');
+
     // ENDPOINT FEEDBACK SENSIVE
     Route::apiResource('feedbacks', 'API\FeedbackController')->only([
         'store', 'show', 'update'
