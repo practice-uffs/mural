@@ -23,7 +23,7 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::apiResource('feedbacks', 'API\FeedbackController')->only([
         'store', 'show', 'update'
     ]);
-        
+
     // ENPOINTS SERVICES
     Route::apiResource('services', 'API\ServiceController')->only([
         'index', 'store', 'show', 'update'
@@ -35,17 +35,6 @@ Route::group(['middleware'=>['apiJwt']],function(){
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
 });
-
-// ENDPOINT AUTHORIZATION
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-// ENDPOINT ITEMS (DEPRECATED)
-Route::apiResource('items', 'API\ItemController');
-Route::get('items/{id}/comments', 'API\ItemController@listComments');
-Route::post('items/{id}/comments', 'API\ItemController@storeComment');
-
 
 // ENDPOINTS FEEDBACK NOT SENSIVE
 Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
