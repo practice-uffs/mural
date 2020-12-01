@@ -21,33 +21,35 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only(['username','password']);
-
-        //Gera o token e realiza o Login do usuário
-        if (! $token = auth('api')->attempt($credentials)) {
-
-            // Confere se esse usuário existe na base idUFFS
-            $credentials_uffs = [
-                'user'     => $request->input('username'),
-                'password' => $request->input('password'),
+        // Confere se esse usuário existe na base idUFFS
+        $credentials_uffs = [
+            'user'     => $request->input('username'),
+            'password' => $request->input('password'),
+        ];
+        $auth = new \CCUFFS\Auth\AuthIdUFFS();
+        $userData = $auth->login($credentials_uffs);
+        
+        if (!$userData) {
+            return response()->json(['error' => 'usuário ou senha incorreta'], 401);
+        }else{
+            //Gera o token e realiza o Login do usuário
+            $credentials = [
+                'username' => $userData->username,
+                'password' => $userData->pessoa_id,
             ];
-            $auth = new \CCUFFS\Auth\AuthIdUFFS();
-            $userData = $auth->login($credentials_uffs);
-            
-            if (!$userData) {
-                return response()->json(['error' => 'usuário ou senha incorreta'], 401);
-            }
-
-            // Caso usuário exista na base idUFFS, ele criará o usuário no webfeedback
-            $userData->password = bcrypt($credentials['password']);
-            $user = $this->getOrCreateUser($userData);
-            // e tentará gerar o token e fazer login novamente
             if (! $token = auth('api')->attempt($credentials)) {
-                return response()->json(['error' => 'não autorizado'], 401);
+                
+                $userData->password = bcrypt($credentials['password']);
+                // Caso usuário exista na base idUFFS, ele criará o usuário no webfeedback
+                $user = $this->getOrCreateUser($userData);
+                // e tentará gerar o token e fazer login novamente
+                if (! $token = auth('api')->attempt($credentials)) {
+                    return response()->json(['error' => 'não autorizado'], 401);
+                }
+                return $this->respondWithToken($token);
             }
             return $this->respondWithToken($token);
         }
-        return $this->respondWithToken($token);
     }
 
     public function me()
