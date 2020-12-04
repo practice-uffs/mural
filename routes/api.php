@@ -23,6 +23,7 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::post('auth/refresh', 'API\AuthController@refresh');
     Route::post('auth/me', 'API\AuthController@me');
 
+});
     // ENDPOINT FEEDBACK SENSIVE
     Route::apiResource('feedbacks', 'API\FeedbackController')->only([
         'store', 'show', 'update'
@@ -38,7 +39,6 @@ Route::group(['middleware'=>['apiJwt']],function(){
     
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
-});
 
 // ENDPOINTS FEEDBACK NOT SENSIVE
 Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
