@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         $auth = new \CCUFFS\Auth\AuthIdUFFS();
         $userData = $auth->login($credentials);
-        $userData->password = bcrypt($credentials['password']);
+        $userData->password = bcrypt($userData->pessoa_id);
 
         if (!$userData) {
             return redirect()
