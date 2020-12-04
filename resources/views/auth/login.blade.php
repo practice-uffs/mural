@@ -1,4 +1,4 @@
-@extends("layouts.app", ["view_name" => "Login"])
+@extends("layouts.base", ["view_name" => "Login"])
 
 @section('content')
 <main>
