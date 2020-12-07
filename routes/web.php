@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
+if (App::environment('local')) {
+    Route::get('/test', 'TestController@index');
+}
 
+//DEPRECATED
 Route::resource('/items', 'ItemController')->except([
     'create', 'store'
-]);
+    ]);
+
+// Index
+Route::get('/', function(){ return view('index');})->name('index');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
@@ -35,11 +42,3 @@ Route::group(['middleware' => ['auth']], function () {
     // Admin
     Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
 });
-
-// Index
-Route::get('/', function(){ return view('index');})->name('index');
-
-
-if (App::environment('local')) {
-    Route::get('/test', 'TestController@index');
-}

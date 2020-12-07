@@ -23,6 +23,7 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::post('auth/refresh', 'API\AuthController@refresh');
     Route::post('auth/me', 'API\AuthController@me');
 
+});
     // ENDPOINT FEEDBACK SENSIVE
     Route::apiResource('feedbacks', 'API\FeedbackController')->only([
         'store', 'show', 'update'
@@ -38,7 +39,6 @@ Route::group(['middleware'=>['apiJwt']],function(){
     
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
-});
 
 // ENDPOINTS FEEDBACK NOT SENSIVE
 Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
@@ -49,3 +49,6 @@ Route::apiResource('categories', 'API\CategoryController')->only(['index']);
 Route::apiResource('locations', 'API\LocationController')->only(['index']);
 Route::apiResource('documents', 'API\DocumentController');
 Route::apiResource('specifications', 'API\SpecificationController')->only(['index']);
+
+// ENDPOINTS GITHUB WEBHOOK
+Route::post('webhook/github/comment', 'API\GithubWebhookController@issueComment');

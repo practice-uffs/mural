@@ -7,7 +7,7 @@
 export default {
     data(){
         return {
-            banner:'img/banner-practice.png'
+            banner:'../../img/banner-practice.png'
         }
     }
 }

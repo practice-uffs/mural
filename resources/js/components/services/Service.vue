@@ -7,7 +7,7 @@
         <h4>{{service.title}}</h4>
         <p class="text-justify">{{service.description}}</p>
         <div class="row pl-3 p-1"> 
-          <button class="btn btn-info">Solicitar</button> 
+          <button class="btn btn-info" data-toggle="modal" data-target="#ServiceModal">Solicitar</button> 
           <p class="align-items-center m-2 ">Prazo: {{service.deadline}} días(úteis)</p>
         </div>
         <strong v-if="service.example" ><p>Examplo: <a :href="service.example">{{service.example}}</a></p></strong>
