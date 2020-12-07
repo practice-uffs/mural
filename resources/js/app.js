@@ -73,6 +73,7 @@ Vue.component('services-page',require('./components/services/ServicePage.vue').d
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
+Vue.component('idlousa-page',require('./components/lousas/IdLousa.vue').default);
 
 // Admin
 Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
@@ -87,13 +88,13 @@ Vue.filter('formatDate', function(value) {
     if (value) {
         return moment(String(value)).format('MM/DD/YYYY')
     }
-}); 
+});
 Vue.filter('prettyDate', function(value) {
     moment.locale('pt-br');
     if (value) {
         return moment(String(value)).fromNow()
     }
-}); 
+});
 
 
 const app = new Vue({
