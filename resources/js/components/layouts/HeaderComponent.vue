@@ -22,7 +22,7 @@ export default {
     },
     data(){
         return {
-            logo:'img/logo-webfeedback.png',
+            logo:'../../img/logo-webfeedback.png',
         }
     }
 }

@@ -93,9 +93,14 @@ Feita as alterações no `.env` execute o seguinte comando para a criação dos 
 php artisan migrate
 ```
 
-Por fim execute o comando abaixo para a geração da chave de autenticação da aplicação:
+Na sequencia execute o comando abaixo para a geração da chave de autenticação da aplicação:
 ```
 php artisan key:generate
+```
+
+Por fim execute o comendo abaixo para ferar o token de autenticação JWT para a API
+```
+php artisan jwt:secret
 ```
 
 #### Rodando o projeto

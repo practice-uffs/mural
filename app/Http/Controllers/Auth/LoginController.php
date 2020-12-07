@@ -42,6 +42,7 @@ class LoginController extends Controller
 
         $auth = new \CCUFFS\Auth\AuthIdUFFS();
         $userData = $auth->login($credentials);
+        $userData->password = bcrypt($userData->pessoa_id);
 
         if (!$userData) {
             return redirect()
@@ -67,6 +68,7 @@ class LoginController extends Controller
         $user = User::where('uid', $data->uid)->first();
         $data = [
             'username' => $data->username,
+            'password' => $data->password,
             'email' => $data->email,
             'uid' => $data->uid,
             'name' => $data->name,
