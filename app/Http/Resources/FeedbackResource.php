@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 use App\User;
+use App\Location;
+use App\Category;
+use App\Specification;
 
 class FeedbackResource extends JsonResource
 {
@@ -19,10 +22,9 @@ class FeedbackResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'user' => User::find($this->user_id),
-            'location_id' => $this->location_id,
-            'category_id' => $this->category_id,
-            'status' => $this->status,
+            'user' => User::find($this->user_id)->name,
+            'location_id' => Location::find($this->location_id)->name,
+            'category_id' => Category::find($this->category_id)->name,
             'title' => $this->title,
             'description' => $this->description,
             'hidden' =>$this->hidden,
