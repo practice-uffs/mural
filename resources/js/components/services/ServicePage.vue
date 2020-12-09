@@ -11,8 +11,8 @@
         </div>
     </div>
     <hr>
-    <ServiceLists :user="user" />
-    <ServiceModal :user="user" />
+    <ServiceLists :user="user" :token="token" />
+    <ServiceModal :user="user" :token="token" />
     </section>
 </template>
 
@@ -26,7 +26,7 @@ export default {
         ServiceLists,
         ServiceModal,
     },
-    props:['user'],
+    props:['user','token'],
     data(){
         return {
             img:'/img/undraw.co/User_flow.png',

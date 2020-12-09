@@ -62,7 +62,7 @@ import Swal from 'sweetalert2';
 const SERVICE = 2;
 
 export default {
-    props:['user'],
+    props:['user','token'],
     data(){
         return {
             className:'',
@@ -118,7 +118,12 @@ export default {
             };
 
             try {
-                let response = await window.axios.post('/api/services', data);
+                alert(`Bearer ${this.token.access_token}`);
+                let response = await window.axios.post('/api/services', data,{
+                    headers:{
+                        'Authorization': `Bearer ${this.token.access_token}`
+                    },
+                });
                 this.handleSuccess(response);
             }
             catch(err) {
