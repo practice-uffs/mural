@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <FeedbackForm :user="user"/>
+        <FeedbackForm :user="user" :token="token"/>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import FeedbackForm from './FeedbackForm';
 
 export default {
     name:'FeedbackModal',
-    props:['feedback','user'],
+    props:['feedback','user','token'],
     components:{
       FeedbackForm,
     }

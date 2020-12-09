@@ -12,7 +12,7 @@
     </div>
     <hr>
     <FeedbackList />
-    <FeedbackModal :user="user" />
+    <FeedbackModal :user="user" :token="token" />
     </section>
 </template>
 
@@ -26,7 +26,7 @@ export default {
         FeedbackList,
         FeedbackModal,
     },
-    props:['user'],
+    props:['user','token'],
     data(){
         return {
             img:'/img/undraw.co/Collaboration.png',
