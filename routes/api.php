@@ -31,12 +31,12 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::apiResource('services', 'API\ServiceController')->only([
         'index', 'store', 'show', 'update'
     ]);
-});
 
     Route::apiResource('service', 'API\ItemController');
     Route::get('service/{id}/comments', 'API\ItemController@listComments');
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
     
+});
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
 

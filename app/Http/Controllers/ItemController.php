@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Session;
 use App\Item;
 use App\User;
 use App\Location;
@@ -96,7 +97,7 @@ class ItemController extends Controller
             'user' => Auth::user(),
             'item' => $item,
             'reactions' => $item -> reactions -> groupBy('text')
-        ]);
+        ])->with('token',Session::get('token'));
     }
 
     /**
