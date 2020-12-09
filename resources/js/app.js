@@ -51,7 +51,7 @@ Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
 Vue.filter('formatDate', function(value) {
     moment.locale();
     if (value) {
-        return moment(String(value)).format('MM/DD/YYYY')
+        return moment(String(value)).format('DD/MM/YYYY')
     }
 }); 
 Vue.filter('prettyDate', function(value) {

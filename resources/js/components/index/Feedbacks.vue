@@ -8,7 +8,8 @@
                 <div clas="p-5">
                     <h3 class="card-title">{{feedback.title}}</h3>
                     <p class="card-text">{{feedback.description}}</p>
-                    <small>{{feedback.user.name}} - {{ feedback.created_at | formatDate }} </small>
+                    <p><small>{{feedback.user}} - {{ feedback.created_at | formatDate }} </small></p>
+                    <p><small>{{feedback.location_id}} </small></p>
                 </div>
             </div>
         </div>
@@ -37,7 +38,7 @@ export default {
         async fetchFeedbacks() {
             let { data } = await axios.get('/api/feedbacks?limit=5');
 
-            this.feedbacks = data.data;
+            this.feedbacks = data.data.filter(fb => fb.category_id == "Crítica");
         },
     },
     created() {
