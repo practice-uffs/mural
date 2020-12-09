@@ -17,11 +17,6 @@ if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
 }
 
-//DEPRECATED
-Route::resource('/items', 'ItemController')->except([
-    'create', 'store'
-    ]);
-
 // Index
 Route::get('/', function(){ return view('index');})->name('index');
 
