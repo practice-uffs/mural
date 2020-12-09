@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Session;
 use App\User;
 use App\Http\Controllers\Controller;
 
@@ -49,12 +50,42 @@ class LoginController extends Controller
             ->withErrors([
                 'credential' => 'Login ou Senha inválidos, por favor verifique os dados e tente novamente.'
                 ]);
-            }
-        $userData->password = bcrypt($userData->pessoa_id);
-        $user = $this->getOrCreateUser($userData);
+        }else{                
+            $credentials = [
+                'username' => $userData->username,
+                'password' => $userData->pessoa_id,
+            ];
+            if (! $token = auth('api')->attempt($credentials)) {
 
-        Auth::login($user);
-        return redirect()->route('index');
+                $userData->password = bcrypt($userData->pessoa_id);
+                $user = $this->getOrCreateUser($userData);
+
+                if (! $token = auth('api')->attempt($credentials)) {
+                    return redirect()->route('login')
+                    ->withErrors(['credential' => 'Usuário não autorizado']);
+                }
+                $token = $this->respondWithToken($token);
+                Session::put('token',$token);
+                Auth::login($user);
+                return view('index')->with('token',Session::get('token'));
+            }
+            $userData->password = bcrypt($userData->pessoa_id);
+            $user = $this->getOrCreateUser($userData);
+            $token = $this->respondWithToken($token);
+            Session::put('token',$token);
+            Auth::login($user);
+            return view('index')->with('token',Session::get('token'));
+        }
+    }
+
+
+    protected function respondWithToken($token)
+    {
+        return json_encode([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 
     public function logout(Request $resquest)
