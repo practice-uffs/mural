@@ -23,7 +23,7 @@ class ServiceResource extends JsonResource
             'user' => User::find($this->user_id)->username,
             'location_id' => $this->location_id,
             'category_id' => $this->category_id,
-            'specification_id' =>$this->$specification_id,
+            'specification_id' => $this->specification_id,
             'status' => $this->status,
             'title' => $this->title,
             'description' => $this->description,
