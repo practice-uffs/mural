@@ -17,18 +17,13 @@ class ServiceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $specification = json_decode(
-            Specification::find($this->specification_id)
-                ->content
-        );
-
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'user' => User::find($this->user_id),
+            'user' => User::find($this->user_id)->username,
             'location_id' => $this->location_id,
             'category_id' => $this->category_id,
-            'specification' =>$specification,
+            'specification_id' =>$this->$specification_id,
             'status' => $this->status,
             'title' => $this->title,
             'description' => $this->description,
