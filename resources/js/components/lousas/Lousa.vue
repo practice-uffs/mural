@@ -108,7 +108,7 @@
 
 <script>
   export default {
-      name:"idlousa",
+      name:"dlousa",
   }
 
 </script>

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class IdLousaController extends Controller
 {
     function index(){
-        return view('pages/idlousa');
+        // return view('pages/lousa');
     }
 }

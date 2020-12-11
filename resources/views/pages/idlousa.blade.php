@@ -1,7 +1,7 @@
 @extends('layouts.lousa')
 @section('content')
 <section>
-    <idlousa-page :user="{{Auth()->user()}}"></idlousa-page>
+    <lousa-page :user="{{Auth()->user()}}"></lousa-page>
 </section>
 @endsection
 

@@ -33,7 +33,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lousas','LousaController@index')->name('lousas');
-    Route::get('/idlousa','IdLousaController@index')->name('idlousa');
+    Route::get('/lousa','IdLousaController@index')->name('lousa');
     Route::get('/servicos','ServiceController@index')->name('services');
     Route::resource('/servico', 'ItemController')->except(['create', 'store']);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');

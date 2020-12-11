@@ -43,7 +43,7 @@ Vue.component('item-page',require('./components/items/ItemPage.vue').default);
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
-Vue.component('idlousa-page',require('./components/lousas/IdLousa.vue').default);
+Vue.component('lousa-page',require('./components/lousas/Lousa.vue').default);
 
 // Admin
 Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
@@ -60,12 +60,12 @@ Vue.filter('prettyDate', function(value) {
     if (value) {
         return moment(String(value)).fromNow()
     }
-}); 
+});
 Vue.filter('capitalize', function (value) {
         return value.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
-}); 
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

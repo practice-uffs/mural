@@ -16,7 +16,7 @@
           </div>
           <div class="col-sm-12 col-md-4">
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#LousaModal">Criar nova lousa</button>
-            <a href="/idlousa">Layout lousa</a>
+            <a href="/lousa">Layout lousa</a>
           </div>
       </div>
       <div class="row d-flex align-items-center pt-5">
