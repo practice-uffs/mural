@@ -10,6 +10,8 @@ use App\Item;
 use App\User;
 use App\Specification;
 
+use Carbon\Carbon;
+
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\CommentResource;
 
@@ -149,6 +151,9 @@ class ItemController extends Controller
             'description' => $request -> text,
             'hidden' => false,
         ]);
+
+        $item = Item::find($parentId);
+        $item->touch();
 
         return response(
             new CommentResource($comment),
