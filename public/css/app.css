@@ -6276,11 +6276,19 @@ label {
 
 /* Style Placeholders */
 
+::-webkit-input-placeholder {
+  color: #d1d1d1;
+}
+
 ::-moz-placeholder {
   color: #d1d1d1;
 }
 
 :-ms-input-placeholder {
+  color: #d1d1d1;
+}
+
+::-ms-input-placeholder {
   color: #d1d1d1;
 }
 
@@ -6692,7 +6700,7 @@ textarea.materialize-textarea + label:after {
   transform-origin: 0 0;
 }
 
-.input-field > input[type]:-webkit-autofill:not(.browser-default):not([type=search]) + label,
+.input-field > input[type]:-webkit-autofill:not(.browser-default) + label,
 .input-field > input[type=date]:not(.browser-default) + label,
 .input-field > input[type=time]:not(.browser-default) + label {
   transform: translateY(-14px) scale(0.8);
