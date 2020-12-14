@@ -1,6 +1,7 @@
 <template>
     <div>
         <h6>Comentários ({{ comments.length }})</h6>
+        <div v-if="comments">
         <div class="form-group p-3 card" v-bind="comment"
             v-for="comment in comments" :key="comment.id">
             <label><strong>{{ comment.user | capitalize }}</strong></label>
@@ -31,7 +32,7 @@
 <script>
 import Swal from 'sweetalert2';
 export default {
-    props: ['user','itemId'],
+    props: ['user','itemId','token'],
     data() {
         return {
             comments: [],
@@ -40,7 +41,11 @@ export default {
     },
     methods: {
         async fetchComments() {
-            let { data } = await window.axios.get(`/api/service/${this.itemId}/comments`);
+            let { data } = await window.axios.get(`/api/service/${this.itemId}/comments`,{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
+            });
             this.comments = data.data;
         },
 
@@ -52,7 +57,11 @@ export default {
             };
             console.log(data);
             try {
-                let response = await window.axios.post(`/api/service/${this.itemId}/comments`,data);
+                let response = await window.axios.post(`/api/service/${this.itemId}/comments`,data,{
+                    headers:{
+                        'Authorization': `Bearer ${this.token.access_token}`
+                    },
+                });
                 this.handleSuccess(response);
             }
             catch(err) {
@@ -77,7 +86,7 @@ export default {
 
                 Toast.fire({
                     icon: 'error',
-                title: 'Falha no envio do Feedback, por favor tente mais tarde!!'
+                title: 'Falha no envio do Comentário, por favor tente mais tarde!!'
                 })
         },
 
@@ -86,7 +95,7 @@ export default {
                 toast: true,
                 position: 'center',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -96,7 +105,7 @@ export default {
 
                 Toast.fire({
                     icon: 'success',
-                title: 'Feedback Enviado com sucesso!!'
+                title: 'Comentário realizado com sucesso!!'
                 }).then(function(){
                     location.reload();
                 })

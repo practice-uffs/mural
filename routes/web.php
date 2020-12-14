@@ -17,17 +17,12 @@ if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
 }
 
-//DEPRECATED
-Route::resource('/items', 'ItemController')->except([
-    'create', 'store'
-    ]);
-
 // Index
 Route::get('/', function(){ return view('index');})->name('index');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
-Route::post('/login', 'Auth\LoginController@auth');
+Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Routes autenticadas

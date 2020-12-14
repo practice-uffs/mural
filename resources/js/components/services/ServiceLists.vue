@@ -69,7 +69,7 @@ import {AUDIOS,VIDEOS,TEXTOS,IMAGENS,EVENTOS,ESTUDIO} from './json/services.json
 
 export default {
     name:'ServiceLists',
-    props:['user'],
+    props:['user','token'],
     components:{
         MyServices,
         Service
@@ -88,6 +88,9 @@ export default {
     methods:{
         async fetchServices() {
             let { data } = await axios.get('/api/services',{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
                 params:{
                     user_id:this.user.id,
                 }

@@ -9,14 +9,14 @@
       <p>{{item.description}}</p>
       <p class="text-right"> <small> última atualização {{item.updated_at | prettyDate}}</small></p>
     <hr>
-    <comment-list :user="user" :item-id="item.id"></comment-list>
+    <comment-list :user="user" :item-id="item.id" :token="token"></comment-list>
   </div>
 </template>
 
 <script>
 export default {
     name:'Comments',
-    props:['user','item'],
+    props:['user','item','token'],
 }
 </script>
 

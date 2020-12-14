@@ -13,7 +13,7 @@
 import Services from './Services'
 export default {
     name:'AdminPage',
-    props:['user'],
+    props:['user','token'],
     components:{
         Services
     },
@@ -25,6 +25,9 @@ export default {
     methods:{
         async fetchServices() {
             let { data } = await axios.get('/api/services',{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
                 params:{
                     user_id:this.user.id,
                 }

@@ -23,20 +23,20 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::post('auth/refresh', 'API\AuthController@refresh');
     Route::post('auth/me', 'API\AuthController@me');
 
-});
     // ENDPOINT FEEDBACK SENSIVE
     Route::apiResource('feedbacks', 'API\FeedbackController')->only([
         'store', 'show', 'update'
     ]);
-
     // ENPOINTS SERVICES
     Route::apiResource('services', 'API\ServiceController')->only([
         'index', 'store', 'show', 'update'
     ]);
+
     Route::apiResource('service', 'API\ItemController');
     Route::get('service/{id}/comments', 'API\ItemController@listComments');
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
     
+});
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
 

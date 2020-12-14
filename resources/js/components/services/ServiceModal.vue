@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <ServiceForm :user="user"/>
+        <ServiceForm :user="user" :token="token"/>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import ServiceForm from './ServiceForm';
 
 export default {
     name:'ServiceModal',
-    props:['service','user'],
+    props:['service','user','token'],
     components:{
       ServiceForm,
     }
