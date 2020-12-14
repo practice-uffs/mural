@@ -118,7 +118,6 @@ export default {
             };
 
             try {
-                alert(`Bearer ${this.token.access_token}`);
                 let response = await window.axios.post('/api/services', data,{
                     headers:{
                         'Authorization': `Bearer ${this.token.access_token}`
