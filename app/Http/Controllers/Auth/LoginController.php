@@ -29,7 +29,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function auth(Request $request)
+    public function login(Request $request)
     {
         $validator = $request->validate([
             'username' => 'required',
@@ -90,8 +90,15 @@ class LoginController extends Controller
 
     public function logout(Request $resquest)
     {
+        Session::forget('token');
         Auth::logout();
         return redirect()->intended('login');
+    }
+
+    public function refresh()
+    {
+        $token = $this->respondWithToken(auth('api')->refresh());
+        return view('index')->with('token',Session::get('token'));
     }
 
     private function getOrCreateUser($data)
