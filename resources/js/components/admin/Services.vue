@@ -23,7 +23,7 @@
         </div>
         <div>
             <p><strong>Data</strong></p>
-            <p>{{service.created_at | formatDate}}</p>
+            <p><small>{{service.created_at | formatDate}}</small></p>
         </div>
         <div>
             <p><strong>ID</strong></p>
