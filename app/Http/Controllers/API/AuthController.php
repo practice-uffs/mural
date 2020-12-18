@@ -23,7 +23,7 @@ class AuthController extends Controller
     {
         // Confere se esse usuário existe na base idUFFS
         $credentials_uffs = [
-            'user'     => $request->input('username'),
+            'user'     => strtolower($request->input('username')),
             'password' => $request->input('password'),
         ];
         $auth = new \CCUFFS\Auth\AuthIdUFFS();
