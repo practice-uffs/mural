@@ -14,6 +14,7 @@
         >
         </reaction-list> -->
 
+        </div>
         <form @submit.prevent="createComment" class="card p-4">
             <h6> Adicionar um Comentários</h6>
             <textarea id="userComment"  name="userComment"
@@ -25,7 +26,6 @@
             >Comentar</button>
         </form>
 
-        </div>
     </div>
 </template>
 
