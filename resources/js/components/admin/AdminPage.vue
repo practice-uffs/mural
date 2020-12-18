@@ -4,7 +4,7 @@
 
     <h2>Serviços</h2>
     <Services
-        v-for="service in services.reverse()" :key="service.id" 
+        v-for="service in services" :key="service.id" 
         v-bind:service="service"/>
 </div>
 </template>
@@ -33,7 +33,7 @@ export default {
                 }
             });
 
-            this.services = data.data;
+            this.services = data.data.reverse();
 
         },
     },
