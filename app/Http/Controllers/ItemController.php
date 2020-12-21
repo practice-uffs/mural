@@ -106,14 +106,15 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
-        return view('pages.item.edit', [
+        $item = Item::find($id);
+        return view('pages.edit', [
             'user' => Auth::user(),
             'item' => $item,
             'categories' => $this->findCategoriesByItemType($item -> type),
             'locations' => Location::all()
-        ]);
+        ])->with('token',Session::get('token'));
     }
 
     /**
@@ -139,14 +140,12 @@ class ItemController extends Controller
         $item->category_id = $request->get('category_id');
         $item->specification_id = $request->get('specification_id');
         $item->status = Item::STATUS_WAITING;
-        $item->type = $request -> type;
         $item->title = $request->get('title');
         $item->description = $request->get('description');
-        $item->hidden = $request -> hidden == 'on' ? false : true;
-        $item->updated_at = Carbon::now();
         $item->github_issue_link = $request->get('github_issue_link');
-
+        
         $item->save();
+        $item->touch();
 
         return redirect('/home')->with('success', 'Item updated!');
     }
