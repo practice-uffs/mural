@@ -1,10 +1,16 @@
 <template>
    <div class="my-service row text-center p-3 m-3
                d-flex justify-content-around align-items-center">
-        <span class="material-icons ">grading</span>
+        <div class="row d-flex justify-content-center">
+            <span class="material-icons col-12">grading</span>
+            <a :href="'/servico/'+service.id+'/edit'"
+                class="p-2"
+            >Editar</a>
+        </div>
         <div class="col-sm-11 col-md-6 text-left">
             <p><strong>{{service.title}}</strong></p>
             <p>{{service.description.substring(0,150)+"..." }}</p>
+            <small><p class="pt-0">Status: {{service.status|status}}</p></small>
         </div>
         <div>
             <p><strong>Categoria</strong></p>

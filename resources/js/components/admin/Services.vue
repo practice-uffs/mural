@@ -1,17 +1,23 @@
 <template>
    <div class="my-service row text-center p-3 m-3
                d-flex justify-content-around align-items-center">
-        <a :href="service.github_issue_link">
-            <img class="github-icon"
-                 :class="{'inactive':!service.github_issue_link}"
-                 :src="'/img/GitHub-Mark-64px.png'"
-                 alt="link para a isssue no github" title="link para a isssue no github"
-            >
-        </a>
+        <div class="row d-flex justify-content-center">
+            <a :href="service.github_issue_link" class="col-12">
+                <img class="github-icon"
+                    :class="{'inactive':!service.github_issue_link}"
+                    :src="'/img/GitHub-Mark-64px.png'"
+                    alt="link para a isssue no github" title="link para a isssue no github"
+                >
+            </a>
+            <a :href="'/servico/'+service.id+'/edit'"
+                class="p-2"
+            >Editar</a>
+        </div>   
         <div class="'col-sm-11 col-md-6 text-left">
             <p><strong>{{service.title}} </strong><small>- atualizadada {{service.updated_at | prettyDate}}</small> </p>
             <p>{{service.description.substring(0,150)+"..." }}</p>
             <p><small>Categoria: {{service.specification_id}}, Localização: {{service.location_id}}</small></p>
+            <p><small>Status: {{service.status|status}}</small></p>
         </div>
         <div>
             <p><strong>Usuario</strong></p>

@@ -67,6 +67,11 @@ Vue.filter('capitalize', function (value) {
         });
 }); 
 
+Vue.filter('status',function(value){
+    if(value == 1) return 'Aguardando';
+    else if(value == 2) return 'Em Progresso';
+    else if(value == 3) return 'Concluído';
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
