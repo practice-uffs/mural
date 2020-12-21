@@ -40,6 +40,7 @@ Vue.component('services-page',require('./components/services/ServicePage.vue').d
 
 // Itens
 Vue.component('item-page',require('./components/items/ItemPage.vue').default);
+Vue.component('edit-page',require('./components/items/EditPage.vue').default);
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
@@ -65,6 +66,7 @@ Vue.filter('capitalize', function (value) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
 }); 
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
