@@ -53,7 +53,7 @@ export default {
             let data = {
             "user_id": this.user.id,
             "user": this.user.name,
-            "text": this.userComment,
+            "text": "#cliente " + this.userComment,
             };
             console.log(data);
             try {

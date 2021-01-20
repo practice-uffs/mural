@@ -17,41 +17,54 @@ use App\Http\Resources\ServiceResource;
 class GithubWebhookController extends Controller
 {
     function issueComment(Request $request){
-        $service = Item::where('github_issue_link', $request->issue['html_url'])->first();
+        $gitReturn = $request->payload;
+        $json = json_decode($gitReturn);
+        $service = Item::where('github_issue_link', $json->issue->html_url)->first();
 
-        // CRIADO UM COMENTÁRIO
-        if($request['action'] == 'created'){
-            $comment = Item::create([
-                'user_id' => $service -> user_id,
-                'parent_id' => $service -> id,
-                'type' => Item::TYPE_COMMENT,
-                'title' => $request->issue['user']['login'],
-                'description' => $request->comment['body'],
-                'hidden' => false,
-                'github_issue_link' => $request->comment['id'],
-            ]);
-    
-            return response(
-                new CommentResource($comment),
-                Response::HTTP_CREATED
-            );
-        }  
-        
-        // EDITANDO UM COMENTÁRIO
-        if($request['action'] == 'edited'){
-            $comment =  Item::where('github_issue_link', $request->comment['id'],)
-                            ->first();
-            $comment->description = $request->comment['body'];
-            $comment->save();
-        }
-
-        // DELETANDO UM COMENTÁRIO
-        if($request['action'] == 'deleted'){
-            $comment =  Item::where('github_issue_link', $request->comment['id'],)
-                            ->first();
-            $comment->description = $request->comment['body'];
-            $comment->delete();
-        }
+        if(str_contains($json->comment->body,"#cliente")){
+            $json->comment->body = str_replace("#cliente","",$json->comment->body);
+            
+            // CRIADO UM COMENTÁRIO
+            if($json->action == 'created'){
+                $comment = Item::create([
+                    'user_id' => $service -> user_id,
+                    'parent_id' => $service -> id,
+                    'type' => Item::TYPE_COMMENT,
+                    'title' => $json->issue->user->login,
+                    'description' => $json->comment->body,
+                    'hidden' => false,
+                    'github_issue_link' => $json->comment->id,
+                    ]);
+                    
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_CREATED
+                    );
+                }  
+                
+                // EDITANDO UM COMENTÁRIO
+                if($json->action == 'edited'){
+                    $comment =  Item::where('github_issue_link', $json->comment->id,)
+                    ->first();
+                    $comment->description = $json->comment->body;
+                    $comment->save();
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_ACCEPTED
+                    );
+                }
+                
+                // DELETANDO UM COMENTÁRIO
+                if($json->action == 'deleted'){
+                    $comment =  Item::where('github_issue_link', $json->comment->id,)
+                    ->first();
+                    $comment->delete();
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_OK
+                    );
+                }
+            }
     }
 
 }
