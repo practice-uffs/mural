@@ -14,7 +14,11 @@ class AuthController extends Controller
         'junior.ramisch',
         'raphael.santos',
         'alessandra.pedrotti',
-        'robison.silva'
+        'robison.silva',
+        'thalia.friedrich',
+        'vinicius.alves',
+        'gessicazanon',
+        'gessicazanon'
     ];
         /**
      * Get a JWT via given credentials.
