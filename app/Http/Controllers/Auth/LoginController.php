@@ -17,7 +17,9 @@ class LoginController extends Controller
     const ADMIN_USERS = [
         'jean.hilger',
         'junior.ramisch',
-        'raphael.santos'
+        'raphael.santos',
+        'alessandra.pedrotti',
+        'robison.silva'
     ];
 
     public function index()

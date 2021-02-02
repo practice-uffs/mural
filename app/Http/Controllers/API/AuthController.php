@@ -12,7 +12,9 @@ class AuthController extends Controller
     const ADMIN_USERS = [
         'jean.hilger',
         'junior.ramisch',
-        'raphael.santos'
+        'raphael.santos',
+        'alessandra.pedrotti',
+        'robison.silva'
     ];
         /**
      * Get a JWT via given credentials.
