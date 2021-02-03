@@ -26,7 +26,7 @@ class ItemController extends Controller
     {
         $items = Item::whereNull('parent_id');
 
-        return ItemResource::collection($items -> paginate());
+        return ItemResource::collection($items -> paginate(10000));
     }
 
     /**
