@@ -23,14 +23,14 @@ class GithubWebhookController extends Controller
 
         if(str_contains($json->comment->body,"#cliente")){
             $json->comment->body = str_replace("#cliente","",$json->comment->body);
-            
+            $user = strcmp($json->comment->user->login,"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";//$json->comment->user->login;
             // CRIADO UM COMENTÁRIO
             if($json->action == 'created'){
                 $comment = Item::create([
                     'user_id' => $service -> user_id,
                     'parent_id' => $service -> id,
                     'type' => Item::TYPE_COMMENT,
-                    'title' => $json->issue->user->login,
+                    'title' => $user,
                     'description' => $json->comment->body,
                     'hidden' => false,
                     'github_issue_link' => $json->comment->id,
