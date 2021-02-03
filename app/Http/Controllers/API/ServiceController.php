@@ -42,7 +42,7 @@ class ServiceController extends Controller
             $items = SELF::getServicesForNormalUser($user -> id);
         }
         
-        return ServiceResource::collection($items -> paginate());
+        return ServiceResource::collection($items -> paginate(10000));
     }
 
     /**
