@@ -23,7 +23,7 @@ class LoginController extends Controller
         'thalia.friedrich',
         'vinicius.alves',
         'gessicazanon',
-        'gessicazanon'
+        'ana.silveira'
     ];
 
     public function index()
