@@ -18,22 +18,22 @@ class GithubWebhookController extends Controller
 {
     function issueComment(Request $request){
         $gitReturn = $request->payload;
-        $json = json_decode($gitReturn);
-        $service = Item::where('github_issue_link', $json->issue->html_url)->first();
-
-        if(str_contains($json->comment->body,"#cliente")){
-            $json->comment->body = str_replace("#cliente","",$json->comment->body);
-            $user = strcmp($json->comment->user->login,"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";//$json->comment->user->login;
+        $json = json_decode($gitReturn,true);
+        
+        $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
+        if(str_contains($json["comment"]["body"],"#cliente")){
+            $json["comment"]["body"] = str_replace("#cliente","",$json["comment"]["body"]);
+            $user = strcmp($json["comment"]["user"]["login"],"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";
             // CRIADO UM COMENTÁRIO
-            if($json->action == 'created'){
+            if($json["action"] == 'created'){
                 $comment = Item::create([
                     'user_id' => $service -> user_id,
                     'parent_id' => $service -> id,
                     'type' => Item::TYPE_COMMENT,
                     'title' => $user,
-                    'description' => $json->comment->body,
+                    'description' => $json["comment"]["body"],
                     'hidden' => false,
-                    'github_issue_link' => $json->comment->id,
+                    'github_issue_link' => $json["comment"]["id"],
                     ]);
                     
                     return response(
@@ -43,10 +43,10 @@ class GithubWebhookController extends Controller
                 }  
                 
                 // EDITANDO UM COMENTÁRIO
-                if($json->action == 'edited'){
-                    $comment =  Item::where('github_issue_link', $json->comment->id,)
+                if($json["action"] == 'edited'){
+                    $comment =  Item::where('github_issue_link', $json["comment"]["id"],)
                     ->first();
-                    $comment->description = $json->comment->body;
+                    $comment->description = $json["comment"]["body"];
                     $comment->save();
                     return response(
                         new CommentResource($comment),
@@ -55,8 +55,8 @@ class GithubWebhookController extends Controller
                 }
                 
                 // DELETANDO UM COMENTÁRIO
-                if($json->action == 'deleted'){
-                    $comment =  Item::where('github_issue_link', $json->comment->id,)
+                if($json["action"] == 'deleted'){
+                    $comment =  Item::where('github_issue_link', $json["comment"]["id"],)
                     ->first();
                     $comment->delete();
                     return response(
