@@ -23,7 +23,7 @@ class FeedbackController extends Controller
             -> whereNull('parent_id')
             -> where('hidden', false);
         
-        return FeedbackResource::collection($items -> paginate());
+        return FeedbackResource::collection($items -> paginate(10000));
     }
 
     /**

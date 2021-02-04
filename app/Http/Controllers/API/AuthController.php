@@ -12,7 +12,13 @@ class AuthController extends Controller
     const ADMIN_USERS = [
         'jean.hilger',
         'junior.ramisch',
-        'raphael.santos'
+        'raphael.santos',
+        'alessandra.pedrotti',
+        'robison.silva',
+        'thalia.friedrich',
+        'vinicius.alves',
+        'gessicazanon',
+        'ana.silveira'
     ];
         /**
      * Get a JWT via given credentials.
@@ -23,7 +29,7 @@ class AuthController extends Controller
     {
         // Confere se esse usuário existe na base idUFFS
         $credentials_uffs = [
-            'user'     => $request->input('username'),
+            'user'     => strtolower($request->input('username')),
             'password' => $request->input('password'),
         ];
         $auth = new \CCUFFS\Auth\AuthIdUFFS();

@@ -4,7 +4,7 @@
 
     <h2>Serviços</h2>
     <Services
-        v-for="service in services.reverse()" :key="service.id" 
+        v-for="service in services" :key="service.id" 
         v-bind:service="service"/>
 </div>
 </template>
@@ -13,7 +13,7 @@
 import Services from './Services'
 export default {
     name:'AdminPage',
-    props:['user'],
+    props:['user','token'],
     components:{
         Services
     },
@@ -25,12 +25,15 @@ export default {
     methods:{
         async fetchServices() {
             let { data } = await axios.get('/api/services',{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
                 params:{
                     user_id:this.user.id,
                 }
             });
 
-            this.services = data.data;
+            this.services = data.data.reverse();
 
         },
     },

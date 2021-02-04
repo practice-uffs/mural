@@ -17,26 +17,21 @@ if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
 }
 
-//DEPRECATED
-Route::resource('/items', 'ItemController')->except([
-    'create', 'store'
-    ]);
-
 // Index
 Route::get('/', function(){ return view('index');})->name('index');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
-Route::post('/login', 'Auth\LoginController@auth');
+Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos','ServiceController@index')->name('services');
-    Route::resource('/servico', 'ItemController')->except(['create', 'store']);
+    Route::resource('/servico', 'ItemController')->except(['create', 'store','update']);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
-    Route::resource('/feedback', 'ItemController')->except(['create', 'store']);
+    Route::resource('/feedback', 'ItemController')->except(['create', 'store','edit','update']);
 
     // Admin
     Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');

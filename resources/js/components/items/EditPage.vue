@@ -1,5 +1,6 @@
 <template>
           <form @submit.prevent="create" class="mb-3">
+            <h2>Edição da solicitação #{{item.id}}</h2>
             <div class="form-group">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" 
@@ -26,23 +27,24 @@
                         :value="categoria.id"
                     >{{categoria.name}}</option>
                 </select>
-                <label for="categoria">Especificação do Serviço</label>
-                <select class="form-control" v-model="specificationId" required >
-                    <option value="" disabled selected>Selecione a especificação do serviço</option>
-                    <option
-                        v-for="specification in select_specifications"
-                        :key="specification.id"
-                        :value="specification.id"
-                    >{{specification.title}}</option>
-                </select>
-                <small>em caso de dúvidas sobre os tipo de seviços do PRACTICE consulte nosso 
-                    <a href="https://practice.uffs.cc/" target="_blank">site</a></small>
+                <div v-if="item.type==2">
+                    <label for="categoria">Especificação do Serviço</label>
+                    <select class="form-control" v-model="specificationId" required >
+                        <option value="" disabled selected>Selecione a especificação do serviço</option>
+                        <option
+                            v-for="specification in select_specifications"
+                            :key="specification.id"
+                            :value="specification.id"
+                        >{{specification.title}}</option>
+                    </select>
+                    <small>em caso de dúvidas sobre os tipo de seviços do PRACTICE consulte nosso 
+                        <a href="https://practice.uffs.cc/" target="_blank">site</a></small>
+                </div> 
             </div> 
             <div class="form-group">
                 <label for="categoria">Localização</label>
-                <select class="form-control" v-model="locationId" required
-                >
-                    <option value="" disabled selected>Selecione uma das Localidades</option>
+                <select class="form-control" v-model="locationId" required>
+                    <option value="" disabled selected>Selecione a Localização da Solicitação</option>
                     <option
                         v-for="localizacao in localizacoes"
                         :key="localizacao.id"
@@ -50,8 +52,27 @@
                     >{{localizacao.name}}</option>
                 </select>
             </div> 
+            <div v-if="user.type=='admin' && item.type==2">
+                <hr>
+                <h4>Dados disponíveis apenas para adminstradores</h4>
+                <div class="form-group">
+                    <label for="github_issue_link">GitHub Issue Link</label>
+                    <input type="text" class="form-control" 
+                        id="github_issue_link" placeholder="GitHub Issue Link"
+                        v-model="github_issue_link" required >
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Status da Solicitação</label>
+                    <select class="form-control" v-model="status" required >
+                        <option value="1">No Aguardo</option>
+                        <option value="2">Em Processo</option>
+                        <option value="3">Concluído</option>
+
+                    </select>
+                </div>
+            </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
@@ -59,10 +80,8 @@
 <script>
 import Swal from 'sweetalert2';
 
-const SERVICE = 2;
-
 export default {
-    props:['user','token'],
+    props:['user','token','item'],
     data(){
         return {
             className:'',
@@ -71,11 +90,13 @@ export default {
             specifications:null,
             select_specifications:null,
 
-            title:'',
-            description:'',
-            locationId:null,
-            categoryId:null,
-            specificationId:null,
+            title:this.item.title,
+            description:this.item.description,
+            locationId:this.item.locationId,
+            categoryId:this.item.categoryId,
+            specificationId:this.item.specificationId,
+            github_issue_link:this.item.github_issue_link,
+            status:this.item.status,
         }
     },
     updated(){
@@ -94,7 +115,7 @@ export default {
         async getCategories(){
             let {data} = await window.axios.get('/api/categories',{
                 params: {
-                    'item_type': SERVICE,
+                    'item_type': this.item.type,
                 }
             });
             this.categorias = data
@@ -109,16 +130,18 @@ export default {
         },
         async create() {          
             let data = {
-                'user_id': this.user.id,
+                'id':this.item.id,
                 'title': this.title,
                 'description': this.description,
                 'location_id': this.locationId,
                 'category_id': this.categoryId,
                 'specification_id': this.specificationId,
+                'github_issue_link':this.github_issue_link,
+                'status':this.status,
             };
 
             try {
-                let response = await window.axios.post('/api/services', data,{
+                let response = await window.axios.put(`/api/services/${this.item.id}`, data,{
                     headers:{
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
@@ -146,7 +169,7 @@ export default {
 
                 Toast.fire({
                     icon: 'error',
-                title: 'Falha na Solicitação do Serviço, por favor tente mais tarde!!'
+                title: 'Falha na Edição do Serviço, por favor tente mais tarde!!'
                 })
         },
 
@@ -165,11 +188,10 @@ export default {
 
                 Toast.fire({
                     icon: 'success',
-                title: 'Serviço Solicitado com sucesso!!'
+                title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
                     location.reload();
                 })
-            this.resetData();
             
         },
 
@@ -183,7 +205,8 @@ export default {
     created() {
         this.getCategories();
         this.getLocations();
-        this.getSpecification();
+        if(this.item.type==2)
+            this.getSpecification();
     },
 }
 </script>
