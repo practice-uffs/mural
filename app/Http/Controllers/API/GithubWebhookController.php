@@ -20,7 +20,12 @@ class GithubWebhookController extends Controller
         $gitReturn = $request->payload;
         $json = json_decode($gitReturn,true);
         
-        $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
+        try{
+            $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
+        } catch(ErrorException $e){
+            return response("Arry está vazia", Responde::HTTP_BAD_REQUEST);
+        }
+        
         if(str_contains($json["comment"]["body"],"#cliente")){
             $json["comment"]["body"] = str_replace("#cliente","",$json["comment"]["body"]);
             $user = strcmp($json["comment"]["user"]["login"],"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";
