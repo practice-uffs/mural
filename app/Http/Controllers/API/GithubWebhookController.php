@@ -27,8 +27,8 @@ class GithubWebhookController extends Controller
             // CRIADO UM COMENTÁRIO
             if($json["action"] == 'created'){
                 $comment = Item::create([
-                    'user_id' => $service -> user_id,
-                    'parent_id' => $service -> id,
+                    'user_id' => $service->user_id,
+                    'parent_id' => $service->id,
                     'type' => Item::TYPE_COMMENT,
                     'title' => $user,
                     'description' => $json["comment"]["body"],
