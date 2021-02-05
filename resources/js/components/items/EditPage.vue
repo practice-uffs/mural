@@ -1,5 +1,6 @@
 <template>
-          <form @submit.prevent="create" class="mb-3">
+    <div class="mb-3 container">
+        <form @submit.prevent="create">
             <h2>Edição da solicitação #{{item.id}}</h2>
             <div class="form-group">
                 <label for="title">Título</label>
@@ -18,7 +19,7 @@
 
             <div class="form-group">
                 <label for="categoria">Tipo de Serviço</label>
-                <select class="form-control" v-model="categoryId" required
+                <select id="category" class="form-control" v-model="categoryId" required
                         @change="filterSpecification">
                     <option value="" disabled selected>Selecione um tipo de serviço</option>
                     <option
@@ -29,7 +30,7 @@
                 </select>
                 <div v-if="item.type==2">
                     <label for="categoria">Especificação do Serviço</label>
-                    <select class="form-control" v-model="specificationId" required >
+                    <select id="specification" class="form-control" v-model="specificationId" required >
                         <option value="" disabled selected>Selecione a especificação do serviço</option>
                         <option
                             v-for="specification in select_specifications"
@@ -43,7 +44,7 @@
             </div> 
             <div class="form-group">
                 <label for="categoria">Localização</label>
-                <select class="form-control" v-model="locationId" required>
+                <select id="localization" class="form-control" v-model="locationId" required>
                     <option value="" disabled selected>Selecione a Localização da Solicitação</option>
                     <option
                         v-for="localizacao in localizacoes"
@@ -59,7 +60,7 @@
                     <label for="github_issue_link">GitHub Issue Link</label>
                     <input type="text" class="form-control" 
                         id="github_issue_link" placeholder="GitHub Issue Link"
-                        v-model="github_issue_link" required >
+                        v-model="github_issue_link">
                 </div>
                 <div class="form-group">
                     <label for="categoria">Status da Solicitação</label>
@@ -76,6 +77,7 @@
                 <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
+    </div>
 </template>
 <script>
 import Swal from 'sweetalert2';
@@ -92,9 +94,9 @@ export default {
 
             title:this.item.title,
             description:this.item.description,
-            locationId:this.item.locationId,
-            categoryId:this.item.categoryId,
-            specificationId:this.item.specificationId,
+            locationId:this.item.location_id,
+            categoryId:this.item.category_id,
+            specificationId:this.item.specification_id,
             github_issue_link:this.item.github_issue_link,
             status:this.item.status,
         }
@@ -127,6 +129,7 @@ export default {
         async getSpecification(){
             let {data} = await window.axios.get('/api/specifications');
             this.specifications = data;
+            this.select_specifications = data;
         },
         async create() {          
             let data = {
@@ -194,7 +197,6 @@ export default {
                 })
             
         },
-
         resetData() {
             this.title = '';
             this.categoryId = '';
@@ -202,11 +204,16 @@ export default {
             this.description = '';
         },
     },
+    mounted(){
+
+    },
     created() {
         this.getCategories();
         this.getLocations();
-        if(this.item.type==2)
+        if(this.item.type==2){
             this.getSpecification();
+        }
+        
     },
 }
 </script>
