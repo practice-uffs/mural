@@ -191,9 +191,9 @@ export default {
 
                 Toast.fire({
                     icon: 'success',
-                title: 'Serviço Editado com sucesso!!'
+                    title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
-                    location.reload();
+                    location.href = '/servicos/';
                 })
             
         },
