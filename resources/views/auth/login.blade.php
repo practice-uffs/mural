@@ -1,4 +1,4 @@
-@extends("layouts.base", ["view_name" => "Login"])
+@extends("layouts.main", ["view_name" => "Login"])
 
 @section('content')
 <div class="m-5 p-5 mx-auto col-4">
