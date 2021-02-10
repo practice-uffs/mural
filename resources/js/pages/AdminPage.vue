@@ -11,33 +11,33 @@
     </div>
     <hr>
 
-        <h2 clas="mt-5">Serviços aguardando aprovação</h2>
-        <Services
-            v-for="service in services" :key="service.id" 
+    <h2 clas="mt-5">Serviços aguardando aprovação</h2>
+    <Services
+        v-for="service in services" :key="service.id" 
+        v-bind:service="service"/>
+
+    <h2 clas="mt-5">Serviços aguardando aprovação</h2>
+    <Services
+        v-for="service in aguardando" :key="service.id" 
+        v-bind:service="service"/>
+
+    <h2 clas="mt-5">Serviços em progresso</h2>
+    <Services
+        v-for="service in progredindo" :key="service.id" 
+        v-bind:service="service"/>
+
+
+    <h2 clas="mt-5">Serviços concluídos</h2>
+    <Services
+        v-for="service in concluido" :key="service.id" 
             v-bind:service="service"/>
 
-        <h2 clas="mt-5">Serviços aguardando aprovação</h2>
-        <Services
-            v-for="service in aguardando" :key="service.id" 
-            v-bind:service="service"/>
-
-        <h2 clas="mt-5">Serviços em progresso</h2>
-        <Services
-            v-for="service in progredindo" :key="service.id" 
-            v-bind:service="service"/>
-
-
-        <h2 clas="mt-5">Serviços concluídos</h2>
-        <Services
-            v-for="service in concluido" :key="service.id" 
-            v-bind:service="service"/>
-    </div>
 </section>
 </template>
 
 <script>
 import Auth from './../service/Auth';
-import Services from '../components/admin/Services'
+import Services from '../components/admin/Services';
 export default {
     name:'AdminPage',
     props:['user','token'],
@@ -69,14 +69,14 @@ export default {
 
             this.services = data.data.reverse();
 
-            this.aguardando = this.services.filter((servico) => {
-                return servico.status === 1;
-            })
-            this.progredindo = this.services.filter((servico) => {
-                return servico.status === 2;
-            })
-            this.concluido = this.services.filter((servico) => {
-                return servico.status === 3;
+            this.services.forEach((servico)=>{
+                if(servico.status === 1){
+                    this.aguardando.push(servico)
+                }else if(servico.status === 2){
+                    this.progredindo.push(servico)
+                }else if(servico.status === 3){
+                    this.concluido.push(servico)
+                }
             })
         },
     },
