@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // ENDPOINT LOGIN
 Route::post('auth/login', 'API\AuthController@login');
 
+Route::get('auth/is_valid', 'API\AuthController@isTokenValid');
 // ROUTES THAT NEED TOKEN AUTHENTICATION
 Route::group(['middleware'=>['apiJwt']],function(){
     //ENDPOINTS AUTHORIZATIONS JWT
