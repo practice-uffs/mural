@@ -32,10 +32,8 @@ Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
 Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
 Vue.component('index-services', require('./components/index/Services.vue').default);
 
-// Feedback
-Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
-
-// Services
+// Pages
+Vue.component('feedback-page',require('./pages/FeedbackPage.vue').default);
 Vue.component('services-page',require('./pages/ServicePage.vue').default);
 
 // Itens
