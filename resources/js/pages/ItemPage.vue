@@ -1,5 +1,5 @@
 <template>
-  <div class="col-8">
+  <section class="col-8">
       <h6>{{item.user}}</h6> 
       <h4>{{item.title}}</h4> 
       <p v-if="item.github_issue_link"><a :href="item.github_issue_link" target="_blank"><small>(issue: #{{issue}}) Acompanhe essa solicitação no GitHub</small></a></p>
@@ -10,7 +10,7 @@
       <p class="text-right"> <small> última atualização {{item.updated_at | prettyDate}}</small></p>
     <hr>
     <comment-list :user="user" :item-id="item.id" :token="token"></comment-list>
-  </div>
+  </section>
 </template>
 
 <script>
