@@ -55,14 +55,14 @@ export default {
             });
 
             this.services = data.data;
-            this.aguardando = this.services.filter((servico) => {
-                return servico.status === 1;
-            })
-            this.progredindo = this.services.filter((servico) => {
-                return servico.status === 2;
-            })
-            this.concluido = this.services.filter((servico) => {
-                return servico.status === 3;
+            this.services.forEach((servico)=>{
+                if(servico.status === 1){
+                    this.aguardando.push(servico)
+                }else if(servico.status === 2){
+                    this.progredindo.push(servico)
+                }else if(servico.status === 3){
+                    this.concluido.push(servico)
+                }
             })
         },
     },
