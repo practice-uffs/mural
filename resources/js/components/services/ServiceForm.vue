@@ -57,12 +57,13 @@
         </form>
 </template>
 <script>
+import Auth from './../../service/Auth';
 import Swal from 'sweetalert2';
 
 const SERVICE = 2;
 
 export default {
-    props:['user','token'],
+    props:['user','token','specificationId'],
     data(){
         return {
             className:'',
@@ -75,11 +76,17 @@ export default {
             description:'',
             locationId:null,
             categoryId:null,
-            specificationId:null,
+            // specificationId:null,
         }
     },
     updated(){
         this.RemoveSelectWrapper();
+    },    
+    watch:{
+      specificationId(newValue, oldValue){
+        console.log('New',newValue);
+        console.log('Old',oldValue);
+      }
     },
     methods:{
         RemoveSelectWrapper(){
@@ -107,7 +114,8 @@ export default {
             let {data} = await window.axios.get('/api/specifications');
             this.specifications = data;
         },
-        async create() {          
+        async create() {    
+            Auth.check(this.token);      
             let data = {
                 'user_id': this.user.id,
                 'title': this.title,

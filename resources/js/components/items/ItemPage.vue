@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Auth from './../../service/Auth';
 export default {
     name:'Comments',
     props:['user','item','token'],
@@ -21,6 +22,9 @@ export default {
       return {
         issue: this.item.github_issue_link.split('/').pop(),
       }
+    },
+    mounted(){
+      Auth.check(this.token);
     },
 }
 </script>

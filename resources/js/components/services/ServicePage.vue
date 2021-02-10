@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Auth from './../../service/Auth';
 import ServiceLists from './ServiceLists';
 import ServiceModal from './ServiceModal';
 
@@ -31,6 +32,9 @@ export default {
         return {
             img:'/img/undraw.co/User_flow.png',
         }
+    },
+    mounted(){
+        Auth.check(this.token);
     },
 }
 </script>

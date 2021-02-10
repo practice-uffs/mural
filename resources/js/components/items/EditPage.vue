@@ -80,6 +80,7 @@
     </div>
 </template>
 <script>
+import Auth from './../../service/Auth';
 import Swal from 'sweetalert2';
 
 export default {
@@ -103,6 +104,9 @@ export default {
     },
     updated(){
         this.RemoveSelectWrapper();
+    },
+    mounted(){
+      Auth.check(this.token);
     },
     methods:{
         RemoveSelectWrapper(){
@@ -131,7 +135,8 @@ export default {
             this.specifications = data;
             this.select_specifications = data;
         },
-        async create() {          
+        async create() {     
+            Auth.check(this.token);
             let data = {
                 'id':this.item.id,
                 'title': this.title,
@@ -203,9 +208,6 @@ export default {
             this.locationId = '';
             this.description = '';
         },
-    },
-    mounted(){
-
     },
     created() {
         this.getCategories();
