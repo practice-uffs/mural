@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Auth from './../service/Auth';
-import FeedbackList from '../components/feedbacks/FeedbackList';
-import FeedbackModal from '../components/feedbacks/FeedbackModal';
+import Auth from './../../service/Auth';
+import FeedbackList from './FeedbackList';
+import FeedbackModal from './FeedbackModal';
 
 export default {
     name:"feedbacks",

@@ -28,8 +28,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/lousas','LousaController@index')->name('lousas');
-    Route::get('/servicos/acompanhar','ServiceController@acompanhar')->name('servicos/acompanhar');
-    Route::get('/servicos/solicitar','ServiceController@solicitar')->name('servicos/solicitar');
+    Route::get('/servicos','ServiceController@index')->name('services');
     Route::resource('/servico', 'ItemController')->except(['create', 'store','update']);
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
     Route::resource('/feedback', 'ItemController')->except(['create', 'store','edit','update']);
