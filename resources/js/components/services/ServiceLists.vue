@@ -1,6 +1,11 @@
 <template>
   <div>
     <div  class="justify-content-center" >
+        <h3>Meus Serviços Solicitados</h3>
+        <MyServices
+                v-for="service in services" :key="service.id" 
+                v-bind:service="service"/>
+
         <h3>Audio</h3>
         <div class="row">
             <Service class="justify-content-center
@@ -80,6 +85,24 @@ export default {
             estudio: ESTUDIO,
         }
     },
+    methods:{
+        async fetchServices() {
+            let { data } = await axios.get('/api/services',{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
+                params:{
+                    user_id:this.user.id,
+                }
+            });
+
+            this.services = data.data;
+
+        },
+    },
+    created() {
+        this.fetchServices();
+    }
 }
 </script>
 

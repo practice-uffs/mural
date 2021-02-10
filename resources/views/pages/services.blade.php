@@ -1,6 +1,7 @@
 @extends('layouts.base')
 @section('content')
 <section class="my-5 container">
-    <lousas-page :user="{{Auth()->user()}}"></lousas-page>
+    <services-page :user="{{Auth()->user()}}" :token="{{$token}}"></services-page>
 </section>
 @endsection
+
