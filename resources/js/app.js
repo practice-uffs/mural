@@ -38,9 +38,7 @@ Vue.component('services-page',require('./pages/ServicePage.vue').default);
 Vue.component('item-page',require('./pages/ItemPage.vue').default);
 Vue.component('edit-page',require('./pages/EditPage.vue').default);
 Vue.component('admin-page',require('./pages/AdminPage.vue').default);
-
-// Lousa
-Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
+Vue.component('lousas-page',require('./pages/LousaPage.vue').default);
 
 // Filtros
 Vue.filter('formatDate', function(value) {
