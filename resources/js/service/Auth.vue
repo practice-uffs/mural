@@ -10,7 +10,6 @@ export default {
             },
         })
         if(response.data.valid == false){
-            alert('Sessão expirada')
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops...',

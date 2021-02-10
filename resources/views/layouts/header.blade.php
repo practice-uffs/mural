@@ -13,8 +13,8 @@
           @if(Auth::check())
           <li><a class="nav-link scrollto @if (request()->routeIs('index')) active @endif" href="{{ route('index') }}">Inicial</a></li>
           <li><a class="nav-link scrollto @if (request()->routeIs('feedbacks')) active @endif" href="{{ route('feedbacks') }}">Ideias</a></li>
-          <li><a class="nav-link scrollto @if (request()->routeIs('services')) active @endif" href="{{ route('services') }}">Acompanhar serviços</a></li>
-          <li><a class="nav-link scrollto @if (request()->routeIs('services')) active @endif" href="{{ route('services') }}">Solicitar serviço</a></li>
+          <li><a class="nav-link scrollto @if (request()->routeIs('servicos/acompanhar')) active @endif" href="{{ route('servicos/acompanhar') }}">Acompanhar serviços</a></li>
+          <li><a class="nav-link scrollto @if (request()->routeIs('servicos/solicitar')) active @endif" href="{{ route('servicos/solicitar') }}">Solicitar serviço</a></li>
             @if(Auth()->user()->type == "admin")
               <li><a class="nav-link scrollto @if (request()->routeIs('admin')) active @endif" href="{{ route('admin') }}">Admin</a></li>
             @endif
