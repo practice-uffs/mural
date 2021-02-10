@@ -1,36 +1,32 @@
 <template>
     <section>
-    <div class="row d-flex align-items-center">
-        <div class="col-sm-12 col-md-8 text-right">
-            <h2>Serviços</h2>
-            <p>Temos um conjunto muito variado de serviços que podem ser utilizados pela comunidade acadêmica. Precisa de algo? Nós podemos ajudar!</p>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ServiceModal">Solicitar Serviço</button>
+        <div class="row d-flex align-items-center">
+            <div class="col-sm-12 col-md-7 text-right">
+                <h2>Serviços</h2>
+                <p>Acompanhe aqui seus serviços solicitados</p>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <img class="img-service" :src="img" alt="">
+            </div>
         </div>
-        <div class="col-sm-12 col-md-4">
-            <img class="img-service" :src="img" alt="">
-        </div>
-    </div>
-    <hr>
-    <ServiceLists :user="user" :token="token" />
-    <ServiceModal :user="user" :token="token" />
+        <hr>
+        <MyServiceLists :user="user" :token="token" />
     </section>
 </template>
 
 <script>
 import Auth from './../service/Auth';
-import ServiceLists from '../components/servicos/ServiceLists';
-import ServiceModal from '../components/servicos/ServiceModal';
+import MyServiceLists from '../components/servicos/MyServiceLists';
 
 export default {
     name:"services",
     components:{
-        ServiceLists,
-        ServiceModal,
+        MyServiceLists,
     },
     props:['user','token'],
     data(){
         return {
-            img:'/img/undraw.co/User_flow.png',
+            img:'/img/undraw.co/acompanhar.png',
         }
     },
     mounted(){
