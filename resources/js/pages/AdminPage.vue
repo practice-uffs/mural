@@ -11,7 +11,7 @@
     </div>
     <hr>
 
-    <div v-if="!!aguardando.length">
+    <div v-if="!aguardando.length">
         <h2 clas="mt-5">Serviços aguardando aprovação</h2>
         <Services
             v-for="service in aguardando" :key="service.id" 
@@ -21,7 +21,7 @@
         <h3 class="mt-5">Não há serviços solicitados em aprovação no momento</h3>
     </div>
 
-    <div v-if="!!progredindo.length">
+    <div v-if="!progredindo.length">
         <h2 clas="mt-5">Serviços em progresso</h2>
         <Services
             v-for="service in progredindo" :key="service.id" 
@@ -31,7 +31,7 @@
         <h3 class="mt-5">Não há serviços solicitados em progresso no momento</h3>
     </div>
 
-    <div v-if="!!concluido.length">
+    <div v-if="!concluido.length">
         <h2 clas="mt-5">Serviços concluídos</h2>
         <Services
             v-for="service in concluido" :key="service.id" 
