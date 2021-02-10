@@ -78,23 +78,26 @@ export default {
                 params:{
                     user_id:this.user.id,
                 }
-            });
+            }).then(
+                
+            );
 
             this.services = data.data.reverse();
-
-            this.aguardando = this.services.filter((servico) => {
-                return servico.status === 1;
-            })
-            this.progredindo = this.services.filter((servico) => {
-                return servico.status === 2;
-            })
-            this.concluido = this.services.filter((servico) => {
-                return servico.status === 3;
-            })
         },
     },
     created() {
         this.fetchServices();
+    },
+    updated(){
+        this.aguardando = this.services.filter((servico) => {
+            return servico.status === 1;
+        })
+        this.progredindo = this.services.filter((servico) => {
+            return servico.status === 2;
+        })
+        this.concluido = this.services.filter((servico) => {
+            return servico.status === 3;
+        })
     }
 }
 </script>
