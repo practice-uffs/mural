@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Auth from './../../service/Auth';
-import Services from './Services'
+import Auth from './../service/Auth';
+import Services from '../components/admin/Services'
 export default {
     name:'AdminPage',
     props:['user','token'],

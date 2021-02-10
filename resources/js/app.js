@@ -37,12 +37,10 @@ Vue.component('feedback-page',require('./pages/FeedbackPage.vue').default);
 Vue.component('services-page',require('./pages/ServicePage.vue').default);
 Vue.component('item-page',require('./pages/ItemPage.vue').default);
 Vue.component('edit-page',require('./pages/EditPage.vue').default);
+Vue.component('admin-page',require('./pages/AdminPage.vue').default);
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
-
-// Admin
-Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
 
 // Filtros
 Vue.filter('formatDate', function(value) {
