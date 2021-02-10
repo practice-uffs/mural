@@ -36,7 +36,7 @@ Vue.component('index-services', require('./components/index/Services.vue').defau
 Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
 
 // Services
-Vue.component('services-page',require('./components/services/ServicePage.vue').default);
+Vue.component('services-page',require('./pages/ServicePage.vue').default);
 
 // Itens
 Vue.component('item-page',require('./components/items/ItemPage.vue').default);

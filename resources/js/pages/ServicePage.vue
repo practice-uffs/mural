@@ -2,7 +2,7 @@
     <section>
     <div class="row d-flex align-items-center">
         <div class="col-sm-12 col-md-8 text-right">
-            <h2>Serviços </h2>
+            <h2>Serviços</h2>
             <p>Temos um conjunto muito variado de serviços que podem ser utilizados pela comunidade acadêmica. Precisa de algo? Nós podemos ajudar!</p>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ServiceModal">Solicitar Serviço</button>
         </div>
@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Auth from './../../service/Auth';
-import ServiceLists from './ServiceLists';
-import ServiceModal from './ServiceModal';
+import Auth from './../service/Auth';
+import ServiceLists from '../components/services/ServiceLists';
+import ServiceModal from '../components/services/ServiceModal';
 
 export default {
     name:"services",
