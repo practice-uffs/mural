@@ -35,10 +35,8 @@ Vue.component('index-services', require('./components/index/Services.vue').defau
 // Pages
 Vue.component('feedback-page',require('./pages/FeedbackPage.vue').default);
 Vue.component('services-page',require('./pages/ServicePage.vue').default);
-
-// Itens
-Vue.component('item-page',require('./components/items/ItemPage.vue').default);
-Vue.component('edit-page',require('./components/items/EditPage.vue').default);
+Vue.component('item-page',require('./pages/ItemPage.vue').default);
+Vue.component('edit-page',require('./pages/EditPage.vue').default);
 
 // Lousa
 Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);

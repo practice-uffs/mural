@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Auth from './../../service/Auth';
+import Auth from '../service/Auth';
 export default {
     name:'Comments',
     props:['user','item','token'],

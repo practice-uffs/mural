@@ -80,7 +80,7 @@
     </div>
 </template>
 <script>
-import Auth from './../../service/Auth';
+import Auth from '../service/Auth';
 import Swal from 'sweetalert2';
 
 export default {
