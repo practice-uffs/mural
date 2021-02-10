@@ -11,6 +11,11 @@
     </div>
     <hr>
 
+        <h2 clas="mt-5">Serviços aguardando aprovação</h2>
+        <Services
+            v-for="service in services" :key="service.id" 
+            v-bind:service="service"/>
+
     <div v-if="!aguardando.length">
         <h2 clas="mt-5">Serviços aguardando aprovação</h2>
         <Services
