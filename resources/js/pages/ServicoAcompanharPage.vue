@@ -18,8 +18,8 @@
 
 <script>
 import Auth from './../service/Auth';
-import ServiceLists from '../components/services/ServiceLists';
-import ServiceModal from '../components/services/ServiceModal';
+import ServiceLists from '../components/servicos/ServiceLists';
+import ServiceModal from '../components/servicos/ServiceModal';
 
 export default {
     name:"services",

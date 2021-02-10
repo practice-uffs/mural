@@ -34,7 +34,8 @@ Vue.component('index-services', require('./components/index/Services.vue').defau
 
 // Pages
 Vue.component('feedback-page',require('./pages/FeedbackPage.vue').default);
-Vue.component('services-page',require('./pages/ServicePage.vue').default);
+Vue.component('servicos-solicitar-page',require('./pages/ServicoSolicitarPage.vue').default);
+Vue.component('servicos-acompanhar-page',require('./pages/ServicoAcompanharPage.vue').default);
 Vue.component('item-page',require('./pages/ItemPage.vue').default);
 Vue.component('edit-page',require('./pages/EditPage.vue').default);
 Vue.component('admin-page',require('./pages/AdminPage.vue').default);
