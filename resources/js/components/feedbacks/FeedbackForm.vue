@@ -45,6 +45,7 @@
         </form>
 </template>
 <script>
+import Auth from './../../service/Auth';
 import Swal from 'sweetalert2';
 
 const FEEDBACK = 1;
@@ -84,7 +85,8 @@ export default {
             let {data} = await window.axios.get('/api/locations');
             this.localizacoes = data;
         },
-        async create() {          
+        async create() {   
+            Auth.check(this.token);       
             let data = {
                 'user_id': this.user.id,
                 'title': this.title,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
+use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -75,6 +76,19 @@ class AuthController extends Controller
         return $this->respondWithToken(auth('api')->refresh());
     }
     
+    public function isTokenValid(Request $request){
+        $token = $request['token'];
+
+        $tokenParts = explode('.', $token);
+        $header = base64_decode($tokenParts[0]);
+        $payload = base64_decode($tokenParts[1]);
+        $signatureProvided = $tokenParts[2];
+
+        $expiration = Carbon::createFromTimestamp(json_decode($payload)->exp);
+        $tokenExpired = (Carbon::now()->diffInSeconds($expiration, false) > 0);
+
+        return response()->json(['valid'=> $tokenExpired]);
+    }
         /**
      * Get the token array structure.
      *

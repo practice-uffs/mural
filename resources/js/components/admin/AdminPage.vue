@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Auth from './../../service/Auth';
 import Services from './Services'
 export default {
     name:'AdminPage',
@@ -21,6 +22,9 @@ export default {
         return {
             services:[],
         }
+    },
+    mounted(){
+      Auth.check(this.token);
     },
     methods:{
         async fetchServices() {

@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Auth from './../../service/Auth';
 import FeedbackList from './FeedbackList';
 import FeedbackModal from './FeedbackModal';
 
@@ -31,6 +32,9 @@ export default {
         return {
             img:'/img/undraw.co/Collaboration.png',
         }
+    },
+    mounted(){
+      Auth.check(this.token);
     },
 }
 </script>
