@@ -1,34 +1,21 @@
 <template>
   <div>
     <div  class="justify-content-center" >
-        <div v-if="!!aguardando.length">
-            <h3 class="mt-5">Serviços solicitados aguardando aprovação</h3>
-            <MyServices
-                    v-for="service in aguardando" :key="service.id" 
-                    v-bind:service="service"/>
-        </div>
-        <div v-else>
-            <h3 class="mt-5">Não há serviços solicitados e concluídos no momento</h3>
-        </div>
+        <h3 class="mt-5">Serviços solicitados aguardando aprovação</h3>
+        <MyServices
+                v-for="service in aguardando" :key="service.id" 
+                v-bind:service="service"/>
 
-        <div v-if="!!progredindo.length ">
         <h3 class="mt-5">Serviços solicitados em progresso</h3>
         <MyServices
                 v-for="service in progredindo" :key="service.id" 
                 v-bind:service="service"/>
-        </div>
-        <div v-else>
-            <h3 class="mt-5">Não há serviços solicitados e concluídos no momento</h3>
-        </div>
-        <div v-if="!!concluido.length">
-            <h3 class="mt-5">Serviços Solicitados Concluídos</h3>
-            <MyServices
-                v-for="service in conluido" :key="service.id" 
-                v-bind:service="service"/>
-        </div>
-        <div v-else>
-            <h3 class="mt-5">Não há serviços solicitados e concluídos no momento</h3>
-        </div>
+
+
+        <h3 class="mt-5">Serviços Solicitados Concluídos</h3>
+        <MyServices
+            v-for="service in conluido" :key="service.id" 
+            v-bind:service="service"/>
     </div>
   </div>
 </template>
