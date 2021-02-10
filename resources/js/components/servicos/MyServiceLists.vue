@@ -3,6 +3,10 @@
     <div  class="justify-content-center" >
         <h3 class="mt-5">Serviços solicitados aguardando aprovação</h3>
         <MyServices
+                v-for="service in services" :key="service.id" 
+                v-bind:service="service"/>
+
+        <MyServices
                 v-for="service in aguardando" :key="service.id" 
                 v-bind:service="service"/>
 

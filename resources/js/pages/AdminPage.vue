@@ -16,34 +16,21 @@
             v-for="service in services" :key="service.id" 
             v-bind:service="service"/>
 
-    <div v-if="!aguardando.length">
         <h2 clas="mt-5">Serviços aguardando aprovação</h2>
         <Services
             v-for="service in aguardando" :key="service.id" 
             v-bind:service="service"/>
-    </div>
-    <div v-else>
-        <h3 class="mt-5">Não há serviços solicitados em aprovação no momento</h3>
-    </div>
 
-    <div v-if="!progredindo.length">
         <h2 clas="mt-5">Serviços em progresso</h2>
         <Services
             v-for="service in progredindo" :key="service.id" 
             v-bind:service="service"/>
-    </div>
-    <div v-else>
-        <h3 class="mt-5">Não há serviços solicitados em progresso no momento</h3>
-    </div>
 
-    <div v-if="!concluido.length">
+
         <h2 clas="mt-5">Serviços concluídos</h2>
         <Services
             v-for="service in concluido" :key="service.id" 
             v-bind:service="service"/>
-    </div>
-    <div v-else>
-        <h3 class="mt-5">Não há serviços solicitados e concluídos no momento</h3>
     </div>
 </section>
 </template>
@@ -78,27 +65,24 @@ export default {
                 params:{
                     user_id:this.user.id,
                 }
-            }).then(
-                
-            );
+            });
 
             this.services = data.data.reverse();
+
+            this.aguardando = this.services.filter((servico) => {
+                return servico.status === 1;
+            })
+            this.progredindo = this.services.filter((servico) => {
+                return servico.status === 2;
+            })
+            this.concluido = this.services.filter((servico) => {
+                return servico.status === 3;
+            })
         },
     },
     created() {
         this.fetchServices();
     },
-    updated(){
-        this.aguardando = this.services.filter((servico) => {
-            return servico.status === 1;
-        })
-        this.progredindo = this.services.filter((servico) => {
-            return servico.status === 2;
-        })
-        this.concluido = this.services.filter((servico) => {
-            return servico.status === 3;
-        })
-    }
 }
 </script>
 
