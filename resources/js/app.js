@@ -32,21 +32,14 @@ Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
 Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
 Vue.component('index-services', require('./components/index/Services.vue').default);
 
-// Feedback
-Vue.component('feedback-page',require('./components/feedbacks/FeedbackPage.vue').default);
-
-// Services
-Vue.component('services-page',require('./components/services/ServicePage.vue').default);
-
-// Itens
-Vue.component('item-page',require('./components/items/ItemPage.vue').default);
-Vue.component('edit-page',require('./components/items/EditPage.vue').default);
-
-// Lousa
-Vue.component('lousas-page',require('./components/lousas/LousaPage.vue').default);
-
-// Admin
-Vue.component('admin-page',require('./components/admin/AdminPage.vue').default);
+// Pages
+Vue.component('feedback-page',require('./pages/FeedbackPage.vue').default);
+Vue.component('servicos-solicitar-page',require('./pages/ServicoSolicitarPage.vue').default);
+Vue.component('servicos-acompanhar-page',require('./pages/ServicoAcompanharPage.vue').default);
+Vue.component('item-page',require('./pages/ItemPage.vue').default);
+Vue.component('edit-page',require('./pages/EditPage.vue').default);
+Vue.component('admin-page',require('./pages/AdminPage.vue').default);
+Vue.component('lousas-page',require('./pages/LousaPage.vue').default);
 
 // Filtros
 Vue.filter('formatDate', function(value) {

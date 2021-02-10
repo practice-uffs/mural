@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3 container">
+    <section class="mb-3 container">
         <form @submit.prevent="create">
             <h2>Edição da solicitação #{{item.id}}</h2>
             <div class="form-group">
@@ -77,10 +77,10 @@
                 <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
-    </div>
+    </section>
 </template>
 <script>
-import Auth from './../../service/Auth';
+import Auth from '../service/Auth';
 import Swal from 'sweetalert2';
 
 export default {
