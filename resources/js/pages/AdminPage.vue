@@ -65,6 +65,7 @@ export default {
 
 
             data.data.reverse().forEach((servico)=>{
+                console.log(servico);
                 if(servico.status === 1){
                     this.aguardados.push(servico)
                 }else if(servico.status === 2){
