@@ -1,25 +1,21 @@
 <template>
   <div>
     <div  class="justify-content-center" >
-        <h3 class="mt-5">Serviços solicitados aguardando aprovação</h3>
-        <MyServices
-                v-for="service in services" :key="service.id" 
-                v-bind:service="service"/>
+    <h2 clas="mt-5">Serviços solicitados aguardando aprovação</h2>
+    <MyServices
+        v-for="aguardado in aguardados" :key="aguardado.id" 
+        v-bind:service="aguardado"/>
 
-        <MyServices
-                v-for="service in aguardando" :key="service.id" 
-                v-bind:service="service"/>
+    <h2 clas="mt-5">Serviços solicitados em progresso</h2>
+    <MyServices
+        v-for="progredido in progredidos" :key="progredido.id" 
+        v-bind:service="progredido"/>
 
-        <h3 class="mt-5">Serviços solicitados em progresso</h3>
-        <MyServices
-                v-for="service in progredindo" :key="service.id" 
-                v-bind:service="service"/>
+    <h2 clas="mt-5">Serviços solicitados concluídos</h2>
+    <MyServices
+        v-for="concluido in concluidos" :key="concluido.id" 
+            v-bind:service="concluido"/>
 
-
-        <h3 class="mt-5">Serviços Solicitados Concluídos</h3>
-        <MyServices
-            v-for="service in conluido" :key="service.id" 
-            v-bind:service="service"/>
     </div>
   </div>
 </template>
@@ -37,10 +33,9 @@ export default {
     },
     data(){
         return {
-            services:[],
-            aguardando: [],
-            progredindo: [],
-            concluido: [],
+            aguardados: [],
+            progredidos: [],
+            concluidos: [],
         }
     },
     methods:{
@@ -53,17 +48,16 @@ export default {
                     user_id:this.user.id,
                 }
             });
-
-            this.services = data.data;
-            this.services.forEach((servico)=>{
-                if(servico.status === 1){
-                    this.aguardando.push(servico)
-                }else if(servico.status === 2){
-                    this.progredindo.push(servico)
-                }else if(servico.status === 3){
-                    this.concluido.push(servico)
+            let servicos = data.data.reverse()
+            for(var i=0; i < servicos.length; i++){
+                if(servicos[i].status == 1){
+                    this.aguardados.push(servicos[i])
+                }else if(servicos[i].status == 2){
+                    this.progredidos.push(servicos[i])
+                }else if(servicos[i].status == 3){
+                    this.concluidos.push(servicos[i])
                 }
-            })
+            }
         },
     },
     created() {

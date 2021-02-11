@@ -10,20 +10,17 @@
         </div>
     </div>
     <hr>
-    {{aguardados}}
+
     <h2 clas="mt-5">Serviços aguardando aprovação</h2>
     <Services
         v-for="aguardado in aguardados" :key="aguardado.id" 
         v-bind:service="aguardado"/>
 
-    {{progredidos}}
     <h2 clas="mt-5">Serviços em progresso</h2>
     <Services
         v-for="progredido in progredidos" :key="progredido.id" 
         v-bind:service="progredido"/>
 
-
-    {{concluidos}}
     <h2 clas="mt-5">Serviços concluídos</h2>
     <Services
         v-for="concluido in concluidos" :key="concluido.id" 
@@ -64,9 +61,7 @@ export default {
             });
 
             let servicos = data.data.reverse()
-            console.log(servicos.length)
             for(var i=0; i < servicos.length; i++){
-                console.log(servicos[i])
                 if(servicos[i].status == 1){
                     this.aguardados.push(servicos[i])
                 }else if(servicos[i].status == 2){
