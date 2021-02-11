@@ -13,24 +13,19 @@
 
     <h2 clas="mt-5">Serviços aguardando aprovação</h2>
     <Services
-        v-for="service in services" :key="service.id" 
-        v-bind:service="service"/>
-
-    <h2 clas="mt-5">Serviços aguardando aprovação</h2>
-    <Services
-        v-for="service in aguardando" :key="service.id" 
-        v-bind:service="service"/>
+        v-for="aguardado in aguardados" :key="aguardado.id" 
+        v-bind:service="aguardado"/>
 
     <h2 clas="mt-5">Serviços em progresso</h2>
     <Services
-        v-for="service in progredindo" :key="service.id" 
-        v-bind:service="service"/>
+        v-for="progredido in progredidos" :key="progredido.id" 
+        v-bind:service="progredido"/>
 
 
     <h2 clas="mt-5">Serviços concluídos</h2>
     <Services
-        v-for="service in concluido" :key="service.id" 
-            v-bind:service="service"/>
+        v-for="concluido in concluidos" :key="concluido.id" 
+            v-bind:service="concluido"/>
 
 </section>
 </template>
@@ -46,10 +41,9 @@ export default {
     },
     data(){
         return {
-            services:[],
-            aguardando: [],
-            progredindo: [],
-            concluido: [],
+            aguardados: [],
+            progredidos: [],
+            concluidos: [],
             img:'/img/undraw.co/admin.png',
         }
     },
@@ -67,15 +61,14 @@ export default {
                 }
             });
 
-            this.services = data.data.reverse();
 
-            this.services.forEach((servico)=>{
+            data.data.reverse().forEach((servico)=>{
                 if(servico.status === 1){
-                    this.aguardando.push(servico)
+                    this.aguardados.push(servico)
                 }else if(servico.status === 2){
-                    this.progredindo.push(servico)
+                    this.progredidos.push(servico)
                 }else if(servico.status === 3){
-                    this.concluido.push(servico)
+                    this.concluidos.push(servico)
                 }
             })
         },
