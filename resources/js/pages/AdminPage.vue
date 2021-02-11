@@ -64,27 +64,28 @@ export default {
             });
 
             let servicos = data.data.reverse()
-            console.log(servicos.length)
-            for(var i=0; i < servicos.length; i++){
-                if(servicos[i].status === 1){
-                    this.aguardados.push(servicos[i])
-                }else if(servicos[i].status === 2){
-                    this.progredidos.push(servicos[i])
-                }else if(servicos[i].status === 3){
-                    this.concluidos.push(servicos[i])
-                }
-            }
-
-            // servicos.forEach((servico)=>{
-            //     console.log(servico);
-            //     if(servico.status === 1){
-            //         this.aguardados.push(servico)
-            //     }else if(servico.status === 2){
-            //         this.progredidos.push(servico)
-            //     }else if(servico.status === 3){
-            //         this.concluidos.push(servico)
+            // console.log(servicos.length)
+            // for(var i=0; i < servicos.length; i++){
+            //     console.log(servicos[i])
+            //     if(servicos[i].status == 1){
+            //         this.aguardados.push(servicos[i])
+            //     }else if(servicos[i].status == 2){
+            //         this.progredidos.push(servicos[i])
+            //     }else if(servicos[i].status == 3){
+            //         this.concluidos.push(servicos[i])
             //     }
-            // })
+            // }
+
+            servicos.forEach((servico)=>{
+                console.log(servico);
+                if(servico.status == 1){
+                    this.aguardados.push(servico)
+                }else if(servico.status == 2){
+                    this.progredidos.push(servico)
+                }else if(servico.status == 3){
+                    this.concluidos.push(servico)
+                }
+            })
         },
     },
     created() {
