@@ -1,7 +1,6 @@
 <template>
-   <div class="my-service row text-center p-3 m-3
-               d-flex justify-content-around align-items-center">
-        <div class="row d-flex justify-content-center">
+   <div class="my-service  text-center">
+        <div class="row">
             <a :href="service.github_issue_link" class="col-12">
                 <img class="github-icon"
                     :class="{'inactive':!service.github_issue_link}"
@@ -13,7 +12,7 @@
                 class="p-2"
             >Editar</a>
         </div>   
-        <div class="'col-sm-11 col-md-6 text-left">
+        <div class="col-sm-11 col-md-5 text-start">
             <p><strong>{{service.title}} </strong><small>- atualizadada {{service.updated_at | prettyDate}}</small> </p>
             <p>{{service.description.substring(0,150)+"..." }}</p>
             <p><small>Categoria: {{service.specification_id}}, Localização: {{service.location_id}}</small></p>
@@ -36,8 +35,7 @@
             <p>{{service.id}}</p>
         </div>
         <a :href="'/servico/'+service.id" 
-           class="row col-sm-12 col-md-1 
-                  justify-content-center ">
+           class="col-sm-12 col-md-1">
             <span class="material-icons">insert_comment</span>
             <p><small>Acompanhar</small></p>
         </a>
@@ -52,12 +50,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .my-service{
-    -webkit-box-shadow: 0px 0px 4px -1px #636363;
-    -moz-box-shadow: 0px 0px 4px -1px #636363;
-    box-shadow: 0px 0px 4px -1px #636363;
     background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
 }
 .my-service:hover{
     background-color: #ededed;
