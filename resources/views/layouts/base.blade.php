@@ -17,9 +17,7 @@
           <!-- material icons-->
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 
-          <!-- boortstrap -->
-          {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
-        <!-- CSS only -->
+          <!-- Bootstrap 5.0 CDN-->
           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
           <!-- Google Fonts -->
@@ -31,7 +29,6 @@
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-
  
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -63,8 +60,9 @@
         <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
 
-        
+        <!-- BoOtstrap 5.0 JS CDN-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
         <!-- JavaScript Bundle with Popper -->
 
          <!-- Template Main JS File -->
