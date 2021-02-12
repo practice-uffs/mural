@@ -1,7 +1,7 @@
 <template>
     <section>
       <div class="row d-flex align-items-center">
-          <div class="col-sm-12 col-md-8 text-right">
+          <div class="col-sm-12 col-md-8 text-end">
             <h2>Lousa virtual </h2>
             <p>A lousa virtual permite que você faça interações online de uma forma fácil, criativa e com bastante interação.</p>
           </div>
@@ -11,7 +11,7 @@
       </div>
       <hr>
       <div class="row d-flex align-items-center">
-          <div class="col-sm-12 col-md-8 text-right">
+          <div class="col-sm-12 col-md-8 text-end">
             <p><strong>Quer seu próprio espaço de interação?</strong></p>
           </div>
           <div class="col-sm-12 col-md-4">

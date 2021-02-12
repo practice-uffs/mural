@@ -1,7 +1,7 @@
 <template>
 <div class="card m-1" >
 <a class="card-link" :href="'/feedback/'+feedback.id">
-  <div class="card-body text-left">
+  <div class="card-body text-start">
     <h5 class="card-title">{{feedback.title}}</h5>
     <p class="card-subtitle mb-2 text-muted"><small>{{feedback.user}} - {{feedback.created_at | formatDate}}</small></p>
     <p class="card-text">{{feedback.description}}</p>

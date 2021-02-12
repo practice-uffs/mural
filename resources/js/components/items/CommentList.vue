@@ -6,7 +6,7 @@
             v-for="comment in comments" :key="comment.id">
             <label><strong>{{ comment.user | capitalize }}</strong></label>
             <p>{{comment.text}}</p>
-            <small class="text-right" >{{comment.date | prettyDate}}</small>
+            <small class="text-end" >{{comment.date | prettyDate}}</small>
         </div>
         <!-- <reaction-list
             :user-id="userId"

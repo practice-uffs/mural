@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="row d-flex align-items-center">
-        <div class="col-sm-12 col-md-7 text-right">
+        <div class="col-sm-12 col-md-7 text-end">
             <h1>Gerenciamento de Serviços Solicitados</h1>
             <p>Acompanhe aqui os serviços solicitados pelo clientes do PRACTICE</p>
         </div>
