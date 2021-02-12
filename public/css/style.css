@@ -800,7 +800,9 @@ section {
   margin-left: 5px;
   font-size: 18px;
 }
-
+.services .service-box:hover a{
+  color: rgb(206, 206, 206);
+}
 .services .service-box.blue {
   border-bottom: 3px solid #2db6fa;
 }
@@ -833,6 +835,22 @@ section {
 
 .services .service-box.orange:hover {
   background: #f68c09;
+}
+.services .service-box.yellow {
+  border-bottom: 3px solid #ffaf00;
+}
+
+.services .service-box.yellow .icon {
+  color: #ffaf00;
+  background: #fde3c4;
+}
+
+.services .service-box.yellow .read-more {
+  color: #ffaf00;
+}
+
+.services .service-box.yellow:hover {
+  background: #ffaf00;
 }
 
 .services .service-box.green {
