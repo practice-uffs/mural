@@ -20,7 +20,7 @@ export default {
     props:['user','item','token'],
     data(){
       return {
-        issue: this.item.github_issue_link.split('/').pop(),
+        issue: this.item.github_issue_link ? this.item.github_issue_link.split('/').pop():null,
       }
     },
     mounted(){
@@ -29,6 +29,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

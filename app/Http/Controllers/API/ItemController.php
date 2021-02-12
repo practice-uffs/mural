@@ -154,14 +154,15 @@ class ItemController extends Controller
                 'body' => $request -> text
                 ]);
         } else{
-            $comment = Item::create([
-                'user_id' => $request -> user_id,
-                'parent_id' => $parentId,
-                'type' => Item::TYPE_COMMENT,
-                'title' => User::find($request -> user_id) -> name,
-                'description' => $request -> text,
-                'hidden' => false,
-            ]);
+                $request->text = str_replace("#cliente","",$request->text);
+                $comment = Item::create([
+                    'user_id' => $request -> user_id,
+                    'parent_id' => $parentId,
+                    'type' => Item::TYPE_COMMENT,
+                    'title' => User::find($request -> user_id) -> name,
+                    'description' => $request -> text,
+                    'hidden' => false,
+                ]);
         }
         $item->touch();
         return response(

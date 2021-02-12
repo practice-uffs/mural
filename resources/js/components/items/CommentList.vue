@@ -55,14 +55,23 @@ export default {
             "user": this.user.name,
             "text": "#cliente " + this.userComment,
             };
-            console.log(data);
             try {
                 let response = await window.axios.post(`/api/service/${this.itemId}/comments`,data,{
                     headers:{
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
                 });
-                this.handleSuccess(response);
+                console.log(response.data);
+                if(response.data != 201){
+                    this.handleError(JSON.stringify(response.data));
+                }else{
+                    this.handleSuccess();
+                    data.id = data.id?(this.comments[this.comments.length-1].id) + 2:0;
+                    data.date = new Date().toISOString()
+                    data.text = data.text.replace("#cliente","")
+                    this.comments.push(data);
+                    this.userComment="";
+                }
             }
             catch(err) {
                 this.handleError(err);
@@ -70,13 +79,11 @@ export default {
         },
 
         handleError(err){
-            let data = err.response.data;
-            console.log(data);
             const Toast = Swal.mixin({
                     toast: true,
                     position: 'center',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 4000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -86,11 +93,11 @@ export default {
 
                 Toast.fire({
                     icon: 'error',
-                title: 'Falha no envio do Comentário, por favor tente mais tarde!!'
+                    title: `Falha no envio do Comentário,\n${err}\n por favor tente mais tarde!!`,
                 })
         },
 
-        handleSuccess(response){
+        handleSuccess(){
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'center',
@@ -105,11 +112,8 @@ export default {
 
                 Toast.fire({
                     icon: 'success',
-                title: 'Comentário realizado com sucesso!!'
-                }).then(function(){
-                    location.reload();
+                    title: 'Comentário realizado com sucesso!!'
                 })
-            this.resetData();
             
         },
     },
@@ -120,3 +124,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.card{
+    margin: 15px;
+}
+</style>
