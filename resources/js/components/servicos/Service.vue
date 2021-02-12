@@ -1,25 +1,22 @@
 <template>
-  <div class="card-service row p-3">
-      <img class="col-sm-12 col-md-5 align-items-center
-                  img-tumb"
-          :src="service.img" alt="" />
-      <div class="col-sm-12 col-md-7">
-        <h4>{{service.title}}</h4>
-        <p class="text-justify">{{service.description}}</p>
-        <div class="row pl-3 p-1"> 
-          <button class="btn btn-info" data-toggle="modal" data-target="#ServiceModal">Solicitar</button> 
-          <p class="align-items-center m-2 ">Prazo: {{service.deadline}} días(úteis)</p>
-        </div>
-        <strong v-if="service.example" ><p>Examplo: <a :href="service.example">{{service.example}}</a></p></strong>
+    <div class="col-lg-4 col-md-6" data-aos-delay="700">
+        
+      <div class="service-box " :class="color">
+        <i class="icon" :class="icon"></i>
+        <h3>{{service.title}}</h3>
+        <p>{{service.description}}</p>
+        <small><strong v-if="service.example" ><p>Examplo: <a :href="service.example">{{service.example}}</a></p></strong></small>
+        <small><p><b>Prazo:</b> {{service.deadline}} días(úteis)</p></small>
+        <a href="#" class="read-more"><span>Solicitar</span> <i class="bi bi-arrow-right"></i></a>
       </div>
-  </div>
+    </div>
 </template>
 
 <script>
 
 export default {
     name:'Service',
-    props:['service']
+    props:['service','color','icon']
 }
 </script>
 
