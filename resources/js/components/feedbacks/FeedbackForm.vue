@@ -39,7 +39,7 @@
                 </select>
             </div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
@@ -65,14 +65,7 @@ export default {
             hidden:false,
         }
     },
-    updated(){
-        this.RemoveSelectWrapper();
-    },
     methods:{
-        RemoveSelectWrapper(){
-            $('.select-dropdown').remove();
-            $('.caret').remove();
-        },
         async getCategories(){
             let {data} = await window.axios.get('/api/categories',{
                 params: {

@@ -4,7 +4,7 @@
             <div class="col-sm-12 col-md-7 text-end">
                 <h2>Serviços</h2>
                 <p>Temos um conjunto muito variado de serviços que podem ser utilizados pela comunidade acadêmica. Precisa de algo? Nós podemos ajudar!</p>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ServiceModal">Solicitar Serviço</button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ServiceModal">Solicitar Serviço</button>
             </div>
             <div class="col-sm-12 col-md-5">
                 <img class="img-service" :src="img" alt="">
