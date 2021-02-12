@@ -7,7 +7,7 @@
          <small v-if="item.specification_id">:{{item.specification_id.title}}</small>, 
          <small>Localização: {{item.location_id}}</small></p>
       <p>{{item.description}}</p>
-      <p class="text-right"> <small> última atualização {{item.updated_at | prettyDate}}</small></p>
+      <p class="text-end"> <small> última atualização {{item.updated_at | prettyDate}}</small></p>
     <hr>
     <comment-list :user="user" :item-id="item.id" :token="token"></comment-list>
   </section>

@@ -62,6 +62,13 @@
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <div class="col text-center text-tiny" style="font-size: 0.8em; color: #bfbfbf;">
+          As imagens utilizadas nesse site tem como fonte <a href="https://undraw.co/" rel="nofollow" target="_blank">undraw.co/</a><br>
+            Created by
+              <a href="https://twitter.com/ninaLimpi" rel="nofollow" target="_blank" style="color: #bfbfbf;">Katerina Limpitsouni</a>,
+            Code / Design by
+              <a href="https://twitter.com/anges244" rel="nofollow" target="_blank" style="color: #bfbfbf;">Aggelos Gesoulis</a>.
+        </div>
       </div>
     </div>
   </footer><!-- End Footer -->

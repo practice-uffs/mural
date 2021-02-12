@@ -51,7 +51,7 @@
                 </select>
             </div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
@@ -63,7 +63,7 @@ import Swal from 'sweetalert2';
 const SERVICE = 2;
 
 export default {
-    props:['user','token','specificationId'],
+    props:['user','token'],
     data(){
         return {
             className:'',
@@ -76,23 +76,12 @@ export default {
             description:'',
             locationId:null,
             categoryId:null,
-            // specificationId:null,
+            specificationId:null,
         }
     },
     updated(){
-        this.RemoveSelectWrapper();
     },    
-    watch:{
-      specificationId(newValue, oldValue){
-        console.log('New',newValue);
-        console.log('Old',oldValue);
-      }
-    },
     methods:{
-        RemoveSelectWrapper(){
-            $('.select-dropdown').remove();
-            $('.caret').remove();
-        },
         filterSpecification(){
             this.select_specifications = this.specifications.filter(function(specification){
                 return specification.category_id == event.target.value;

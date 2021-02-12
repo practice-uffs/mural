@@ -1,13 +1,12 @@
 <template>
-   <div class="my-service row text-center p-3 m-3
-               d-flex justify-content-around align-items-center">
-        <div class="row d-flex justify-content-center">
+   <div class="my-service text-center">
+        <div>
             <span class="material-icons col-12">grading</span>
             <a :href="'/servico/'+service.id+'/edit'"
                 class="p-2"
             >Editar</a>
         </div>
-        <div class="col-sm-11 col-md-6 text-left">
+        <div class="col-sm-11 col-md-6 text-start">
             <p><strong>{{service.title}}</strong></p>
             <p>{{service.description.substring(0,150)+"..." }}</p>
             <small><p class="pt-0">Status: {{service.status|status}}</p></small>
@@ -24,12 +23,13 @@
             <p><strong>ID</strong></p>
             <p>{{service.id}}</p>
         </div>
-        <a :href="'/servico/'+service.id" 
-           class="row col-sm-12 col-md-1 
-                  justify-content-center ">
-            <span class="material-icons">insert_comment</span>
-            <p>Acompanhar</p>
-        </a>
+        <div>
+            <a :href="'/servico/'+service.id" 
+            class="text-center col-sm-12 col-md-2">
+                <span class="material-icons">insert_comment</span>
+                <p>Acompanhar</p>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -41,12 +41,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .my-service{
-    -webkit-box-shadow: 0px 0px 4px -1px #636363;
-    -moz-box-shadow: 0px 0px 4px -1px #636363;
-    box-shadow: 0px 0px 4px -1px #636363;
     background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
 }
 .my-service:hover{
     background-color: #ededed;

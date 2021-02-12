@@ -21,13 +21,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Vue.component('reaction-list', require('./components/items/ReactionList.vue').default);
 Vue.component('comment-list', require('./components/items/CommentList.vue').default);
 
-// Layout
-Vue.component('header-component', require('./components/layouts/HeaderComponent.vue').default);
-Vue.component('footer-component', require('./components/layouts/FooterComponent.vue').default);
-Vue.component('menu-component', require('./components/layouts/MenuComponent.vue').default);
-Vue.component('banner', require('./components/layouts/Banner.vue').default);
-Vue.component('nuvens', require('./components/layouts/Nuvens.vue').default);
-
 // Index
 Vue.component('index-feedbacks', require('./components/index/Feedbacks.vue').default);
 Vue.component('index-services', require('./components/index/Services.vue').default);
