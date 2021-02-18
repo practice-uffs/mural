@@ -71,7 +71,7 @@
                 <div class="row gy-4">
                     <header class="section-header">
                         <h2>Serviços</h2>
-                        <p>Imagens</p>
+                        <p>Mídia</p>
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
