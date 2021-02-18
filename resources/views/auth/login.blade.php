@@ -1,12 +1,18 @@
-@extends("layouts.base", ["view_name" => "Login"])
+@extends("layouts.base-raw", ["view_name" => "Login"])
 
 @section('content')
-<div class="m-5 p-5 mx-auto col-4">
-    
-    <form class="form-signin text-center " action="" method="post" >
+<div class="login container row mx-auto my-5 pt-5" >
+    <!-- For Demo Purpose -->
+    <div class="login-img col-md-5 pr-lg-5 mb-5 mb-md-0 mt-5">
+        <img src="assets/img/undow.co/login.svg" alt="" class="img-fluid">
+        <h1>Conecte-se ao PRACTICE <b>Mural</b></h1>
+        <p class="font-italic text-muted mb-0">Utilize do seu idUFFS para conectar-se e aproveitar tudo que nossa plataforma oferece</p>
+    </div>
+
+    <form class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post" >
         @csrf
-        <img class="mb-4" src="https://practice.uffs.cc/images/logo.png" alt="" width="272" >
-        <h1 class="h3 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
+        <a href="/"><img class="mb-5" src="https://practice.uffs.cc/images/logo.png" alt="" width="272" ></a>
+        <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
         @if ($errors->any()) 
             <div class="alert-error">
                 @foreach ($errors->all() as $error)
@@ -15,17 +21,46 @@
             </div>
         @endif
 
-        <label for="inputEmail" class="sr-only">idUFFS</label>
-        <input type="text" id="inputEmail" placeholder="idUFFS" required="" autofocus=""
-               name="username" value="{{ old('username') }}"
-               class="form-control validate @error('username') is-invalid @enderror card__input" >
+        
+        <!-- idUFFS -->
+        {{-- <label for="inputEmail" class="sr-only">idUFFS</label> --}}
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="bi bi-person text-muted"></i>
+                </span>
+            </div>
+            <input type="text" id="inputEmail" placeholder="idUFFS" required="" autofocus=""
+                name="username" value="{{ old('username') }}" placeholder="idUFFS"
+                class="form-control validate @error('username') is-invalid @enderror card__input" >
+            
+        </div>
+        <!-- Password -->
+        {{-- <label for="inputPassword" class="sr-only">Senha</label> --}}
+        <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="bi bi-lock-fill text-muted"></i>
+                </span>
+            </div>
+            <input type="password" id="inputPassword" name="password"  placeholder="Senha" required="" placeholder="Senha"
+                   class="form-control @error('password') is-invalid @enderror validate card__input"
+                   autocomplete="current-password">
+        </div>
 
-        <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" name="password"  placeholder="Senha" required=""
-               class="form-control @error('password') is-invalid @enderror validate card__input"
-               autocomplete="current-password">
-
-        <button class="btn btn-lg btn-warning btn-block mt-5" type="submit">Entrar</button>
-      </form>
+        <button class="btn btn-lg btn-block btn-warning col-12" type="submit">ENTRAR</button>
+        <!-- Divider Text -->
+        <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <div class="border-bottom w-100 mr-5"></div>
+        </div>
+        <nav class="login-help-links text-center mx-auto" role="navigation">
+            <a href="https://id.uffs.edu.br/id/XUI/?realm=/#forgotUsername/">Não sabe seu IdUFFS?</a>
+            <div>|</div>
+            <a href="https://id.uffs.edu.br/id/XUI/?realm=/#passwordReset/">Esqueceu a Senha?</a>
+            <div>|</div>
+            <a href="https://ati.uffs.edu.br/public.pl?CategoryID=17">Ajuda</a>
+        </nav>
+    </form>
 </div>
 @endsection
