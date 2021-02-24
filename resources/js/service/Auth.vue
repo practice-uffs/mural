@@ -15,8 +15,9 @@ export default {
                 title: 'Oops...',
                 text: 'Esta sessão foi expirada, por favor faça o login novamente',
                 confirmButtonColor:'#f9a93c'
+            }).then(()=>{
+                location.replace('/logout')
             });
-            location.replace('/logout')
         }
     }
 }

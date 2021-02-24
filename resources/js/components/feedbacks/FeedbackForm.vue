@@ -1,21 +1,20 @@
 <template>
           <form @submit.prevent="create" class="mb-3">
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" 
-                       id="title" placeholder="Título"
+                       id="title" placeholder="Ex.: Jogos digitais em aula"
                        v-model="title" required>
-                <span class="helper-text">Ex.: Jogos digitais em aula</span>
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label for="description">Descrição</label>
                 <textarea type="text" class="form-control" 
-                       id="description" placeholder="Descrição"
+                       id="description" placeholder="Deixe aqui sua opinião, sugestão ou feedback de algum serviço solicitado"
                        v-model="description" required>
                 </textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label for="categoria">Categoria</label>
                 <select class="form-control" v-model="categoryId" required>
                     <option value="" disabled selected>Selecione uma categoria</option>
@@ -26,7 +25,7 @@
                     >{{categoria.name}}</option>
                 </select>
             </div> 
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label for="categoria">Localização</label>
                 <select class="form-control" v-model="locationId" required
                 >
@@ -39,8 +38,8 @@
                 </select>
             </div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-outline-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
 </template>

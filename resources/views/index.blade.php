@@ -11,11 +11,11 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Uma ponte entre você e a construção de uma universidade melhor</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="/servicos/solicitar" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Solicitar serviço</span>
                   <i class="bi bi-arrow-right-circle"></i>
               </a>
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="/feedbacks" class="btn-get-outline scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Ideias</span>
                   <i class="bi bi-lightbulb"></i>
               </a>
@@ -173,56 +173,72 @@
         <div class="row gy-4">
 
           <div class="col-lg-4 col-md-6" data-aos-delay="200">
-            <div class="service-box blue">
+            <div class="service-box red">
               <i class="ri-discuss-line icon"></i>
-              <h3>Nesciunt Mete</h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Áudio</h3>
+              <p>Faixas de áudio com objetivo de anunciar e/ou divulgar algo, fazr uma chamada ou
+                 áudios com a possibilidade de trilha e efeitos sonoros mais elaborados e composição de diferentes áudios, 
+                 como entrevistas e/ou leitura de livros.
+              </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos-delay="300">
             <div class="service-box orange">
               <i class="ri-discuss-line icon"></i>
-              <h3>Eosle Commodi</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Vídeo</h3>
+              <p>Há diversos serviços de vídeo podendo ser: 
+                 Vídeo Aula Simples com apenas o interlocutor em plano principal,
+                 Hand Drawn uma nimação ilustrando a explicação da fala do narrador ou o próprio narrador escrevendo em tempo real.
+                 Vídeo Tutorial explicativo ensinando passo a passo da utilização de uma ferramenta e/ou software, 
+                 entre outros.
+                </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos-delay="400">
-            <div class="service-box green">
+            <div class="service-box yellow">
               <i class="ri-discuss-line icon"></i>
-              <h3>Ledo Markt</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Texto</h3>
+              <p>
+                Visando a tramissão de conteúdo os serviços de texto incluem a produção de: cartilhas, manuais, panfletos e cartazes.
+              </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos-delay="500">
-            <div class="service-box red">
+            <div class="service-box green">
               <i class="ri-discuss-line icon"></i>
-              <h3>Asperiores Commodi</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Imagem</h3>
+              <p>
+                Precisnado de uma identidade visual, podemos providenciar com nossos pacotes criando logotipo, símbolo, paletas de cores, padronagem outros itens a mais.
+              </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos-delay="600">
-            <div class="service-box purple">
+            <div class="service-box blue">
               <i class="ri-discuss-line icon"></i>
-              <h3>Velit Doloremque.</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Mídia</h3>
+              <p>
+                Precisando de auxilio para a realização de eventos vituais com lives e interação do público, podemos fornecer as ferramentas e suporte para que seja isso seja possível.
+              </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos-delay="700">
-            <div class="service-box pink">
+            <div class="service-box purple">
               <i class="ri-discuss-line icon"></i>
-              <h3>Dolori Architecto</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Estúdio</h3>
+              <p>
+                Temos um estúdio equipado com uma infraestrutura que possa te ajudar a realização das suas produções de vídeos.
+              </p>
+              <a href="/servicos/solicitar" class="read-more"><span>Saiba mais</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
