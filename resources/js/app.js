@@ -57,6 +57,7 @@ Vue.filter('status',function(value){
     if(value == 1) return 'Aguardando';
     else if(value == 2) return 'Em Progresso';
     else if(value == 3) return 'Concluído';
+    else if(value == 4) return 'Recusado';
 });
 
 /**

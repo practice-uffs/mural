@@ -68,6 +68,7 @@
                         <option value="1">No Aguardo</option>
                         <option value="2">Em Processo</option>
                         <option value="3">Concluído</option>
+                        <option value="4">Recusado</option>
 
                     </select>
                 </div>
@@ -102,17 +103,10 @@ export default {
             status:this.item.status,
         }
     },
-    updated(){
-        this.RemoveSelectWrapper();
-    },
     mounted(){
       Auth.check(this.token);
     },
     methods:{
-        RemoveSelectWrapper(){
-            $('.select-dropdown').remove();
-            $('.caret').remove();
-        },
         filterSpecification(){
             this.select_specifications = this.specifications.filter(function(specification){
                 return specification.category_id == event.target.value;
@@ -198,7 +192,7 @@ export default {
                     icon: 'success',
                     title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
-                    location.href = '/servicos/';
+                    location.href = '/servicos/acompanhar';
                 })
             
         },

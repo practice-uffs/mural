@@ -1,5 +1,5 @@
 <template>
-   <div class="my-service  text-center">
+   <div class="my-service  text-center my-2">
         <div class="row">
             <a :href="service.github_issue_link" class="col-12">
                 <img class="github-icon"

@@ -13,6 +13,7 @@ class Item extends Model
     const STATUS_WAITING      = 1;
     const STATUS_PROGRESSING  = 2;
     const STATUS_CONCLUDED    = 3;
+    const STATUS_REFUSED      = 4;
 
     /**
      * The model's default values for attributes.
