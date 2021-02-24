@@ -23,7 +23,6 @@
             <li class="dropdown mx-4">
                 <a href="#">
                     <span class="px-2">{{ Auth()->user()->username }}</span>
-                    <img src="{{ asset('img/avatars/avatar-' . (auth()->user()->id % 4 + 1) . '.png') }}" width="32" height="32" class="rounded-circle">
                     <i class="bi bi-chevron-down"></i>
                 </a>
                 <ul class="mx-4">
