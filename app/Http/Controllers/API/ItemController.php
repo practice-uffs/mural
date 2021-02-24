@@ -141,17 +141,19 @@ class ItemController extends Controller
      * @param  int $parentId
      * @return \Illuminate\Http\Response
      */
-    public function storeComment(Request $request, $parentId)
-    {    
+    public function storeComment(Request $request, $parentId){   
+        
+        $POST_GIT = false;
+
         $item = Item::find($parentId);
-        if($item->github_issue_link){
+        if($item->github_issue_link && $POST_GIT){
             $repo = getenv("GIT_REPO");
             $issue = explode('/',$item->github_issue_link);
             $issue = end($issue);
 
             $response = Http::withToken(getenv("GIT_TOKEN"))
-            ->post("{$repo}/issues/{$issue}/comments", [
-                'body' => $request -> text
+                ->post("{$repo}/issues/{$issue}/comments", [
+                    'body' => $request -> text
                 ]);
         } else{
                 $request->text = str_replace("#cliente","",$request->text);
