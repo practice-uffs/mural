@@ -1,20 +1,25 @@
 <template>
   <div>
     <div  class="justify-content-center" >
-    <h2 clas="mt-5">Serviços solicitados aguardando aprovação</h2>
+    <h2 class="my-3">Serviços solicitados aguardando aprovação</h2>
     <MyServices
         v-for="aguardado in aguardados" :key="aguardado.id" 
         v-bind:service="aguardado"/>
 
-    <h2 clas="mt-5">Serviços solicitados em progresso</h2>
+    <h2 class="my-3">Serviços solicitados em progresso</h2>
     <MyServices
         v-for="progredido in progredidos" :key="progredido.id" 
         v-bind:service="progredido"/>
 
-    <h2 clas="mt-5">Serviços solicitados concluídos</h2>
+    <h2 class="my-3">Serviços solicitados concluídos</h2>
     <MyServices
         v-for="concluido in concluidos" :key="concluido.id" 
             v-bind:service="concluido"/>
+
+    <h2 class="my-3">Serviços solicitados Recusados</h2>
+    <MyServices
+        v-for="recusado in recusados" :key="recusado.id" 
+            v-bind:service="recusado"/>
 
     </div>
   </div>
@@ -36,6 +41,7 @@ export default {
             aguardados: [],
             progredidos: [],
             concluidos: [],
+            recusados:[],
         }
     },
     methods:{
@@ -56,7 +62,10 @@ export default {
                     this.progredidos.push(servicos[i])
                 }else if(servicos[i].status == 3){
                     this.concluidos.push(servicos[i])
+                }else if(servicos[i].status == 4){
+                    this.recusados.push(servicos[i])
                 }
+                
             }
         },
     },

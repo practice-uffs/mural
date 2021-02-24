@@ -25,50 +25,17 @@
           <!-- Google Fonts -->
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         
-          <!-- Vendor CSS Files -->
-          <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
- 
+
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/style.css') }}" rel="stylesheet">
           <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-        
-          <!-- =======================================================
-          * Template Name: FlexStart - v1.0.0
-          * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-          * Author: BootstrapMade.com
-          * License: https://bootstrapmade.com/license/
-          ======================================================== -->
-    </head>
-    <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
 
-        
+    </head>
+    <body >
         <div id="app">
             @yield('content')
         </div>
-
-        
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-        
-        <!-- Vendor JS Files -->
-        <script src="{{ asset('vendor/aos/aos.js') }}"></script>
-        <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-        <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
-        <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-
-        <!-- BoOtstrap 5.0 JS CDN-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        
-        <!-- JavaScript Bundle with Popper -->
-
-         <!-- Template Main JS File -->
-        <script src="{{asset('js/main.js')}}"></script> 
-        
-        <!-- Vue JS File -->
-        <script src="{{ asset('js/app.js') }}"></script>
     </body>
+    <script src="{{ asset('js/login.js') }}"></script>
 </html>

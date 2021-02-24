@@ -1,5 +1,5 @@
 <template>
-   <div class="my-service text-center">
+   <div class="my-service text-center my-2">
         <div>
             <span class="material-icons col-12">grading</span>
             <a :href="'/servico/'+service.id+'/edit'"
