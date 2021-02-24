@@ -9,7 +9,7 @@
         <p class="font-italic text-muted mb-0">Utilize do seu idUFFS para conectar-se e aproveitar tudo que nossa plataforma oferece</p>
     </div>
 
-    <form class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post" >
+    <form id="login-form" class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post" >
         @csrf
         <a href="/"><img class="mb-5" src="https://practice.uffs.cc/images/logo.png" alt="" width="272" ></a>
         <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
@@ -23,7 +23,6 @@
 
         
         <!-- idUFFS -->
-        {{-- <label for="inputEmail" class="sr-only">idUFFS</label> --}}
         <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -36,7 +35,6 @@
             
         </div>
         <!-- Password -->
-        {{-- <label for="inputPassword" class="sr-only">Senha</label> --}}
         <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -48,7 +46,12 @@
                    autocomplete="current-password">
         </div>
 
-        <button class="btn btn-lg btn-block btn-warning col-12" type="submit">ENTRAR</button>
+        <button id="btn-submit" class="btn btn-lg btn-block btn-warning col-12" type="submit">ENTRAR</button>
+        <button id="btn-loading" class="btn btn-lg btn-block btn-warning col-12" type="button" disabled>
+            <span class="spinner-border spinner-border-md" role="status" aria-hidden="true"></span>
+            Entrando...
+          </button>
+
         <!-- Divider Text -->
         <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
             <div class="border-bottom w-100 ml-5"></div>
