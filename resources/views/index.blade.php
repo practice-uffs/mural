@@ -11,11 +11,11 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Uma ponte entre você e a construção de uma universidade melhor</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="/servicos/solicitar" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Solicitar serviço</span>
                   <i class="bi bi-arrow-right-circle"></i>
               </a>
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="/feedbacks" class="btn-get-outline scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Ideias</span>
                   <i class="bi bi-lightbulb"></i>
               </a>
