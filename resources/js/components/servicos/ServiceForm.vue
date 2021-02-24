@@ -51,8 +51,8 @@
                 </select>
             </div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-outline-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
             </div>
         </form>
 </template>
