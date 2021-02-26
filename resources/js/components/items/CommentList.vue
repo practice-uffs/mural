@@ -61,14 +61,13 @@ export default {
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
                 });
-                console.log(response.data);
                 if(response.data != 201){
                     this.handleError(JSON.stringify(response.data));
                 }else{
                     this.handleSuccess();
                     data.id = data.id?(this.comments[this.comments.length-1].id) + 2:0;
                     data.date = new Date().toISOString()
-                    data.text = data.text.replace("#cliente","")
+                    data.text = data.text.replaceAll("#cliente","")
                     this.comments.push(data);
                     this.userComment="";
                 }
