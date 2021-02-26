@@ -59,6 +59,12 @@ Vue.filter('status',function(value){
     else if(value == 3) return 'Concluído';
     else if(value == 4) return 'Recusado';
 });
+Vue.filter('status_class',function(value){
+    if(value == 1) return 'aguardando';
+    else if(value == 2) return 'progresso';
+    else if(value == 3) return 'concluido';
+    else if(value == 4) return 'recusado';
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
