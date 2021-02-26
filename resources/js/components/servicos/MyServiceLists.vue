@@ -2,24 +2,32 @@
   <div>
     <div  class="justify-content-center" >
     <h2 class="my-3">Serviços solicitados aguardando aprovação</h2>
-    <MyServices
-        v-for="aguardado in aguardados" :key="aguardado.id" 
-        v-bind:service="aguardado"/>
+    <div class="row container">
+        <MyServices
+            v-for="aguardado in aguardados" :key="aguardado.id" 
+            v-bind:service="aguardado"/>
+    </div>
 
     <h2 class="my-3">Serviços solicitados em progresso</h2>
-    <MyServices
-        v-for="progredido in progredidos" :key="progredido.id" 
-        v-bind:service="progredido"/>
+    <div class="row container">
+        <MyServices
+            v-for="progredido in progredidos" :key="progredido.id" 
+            v-bind:service="progredido"/>
+    </div>
 
     <h2 class="my-3">Serviços solicitados concluídos</h2>
-    <MyServices
-        v-for="concluido in concluidos" :key="concluido.id" 
-            v-bind:service="concluido"/>
+    <div class="row container">
+        <MyServices
+            v-for="concluido in concluidos" :key="concluido.id" 
+                v-bind:service="concluido"/>
+    </div>
 
     <h2 class="my-3">Serviços solicitados Recusados</h2>
-    <MyServices
-        v-for="recusado in recusados" :key="recusado.id" 
-            v-bind:service="recusado"/>
+    <div class="row container">
+        <MyServices
+            v-for="recusado in recusados" :key="recusado.id" 
+                v-bind:service="recusado"/>
+    </div>
 
     </div>
   </div>
