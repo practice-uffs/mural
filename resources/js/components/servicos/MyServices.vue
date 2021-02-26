@@ -23,7 +23,7 @@
                 </tbody>
             </table>
 
-            <div class="col-12 row">
+            <div class="col-12 mt-3 row">
                 <div class="col-sm-6">
                     <span class="material-icons col-12">grading</span>
                     <a :href="'/servico/'+service.id+'/edit'"
