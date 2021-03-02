@@ -27,8 +27,8 @@
           <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
  
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -56,16 +56,15 @@
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>
         <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-        <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
         
         <!-- BoOtstrap 5.0 JS CDN-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-        <!-- Template Main JS File -->
-        <script src="{{asset('js/main.js')}}"></script> 
         
+        <!-- Template Main JS File -->
         <!-- Vue JS File -->
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
+    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('js/main.js')}}"></script> 
     <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
 </html>
