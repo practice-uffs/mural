@@ -6,7 +6,7 @@
     <header class="section-header">
       <h2>Testemunhos</h2>
       <p>O que dizem sobre nós e nosso trabalho</p>
-    </header>
+    </he"ader>
 
     <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
       <div class="swiper-wrapper">
