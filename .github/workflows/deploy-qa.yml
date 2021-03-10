@@ -13,7 +13,7 @@ jobs:
     name: Deploy to QA
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Prepare deploy server
       uses: appleboy/ssh-action@master
       with:
@@ -22,9 +22,9 @@ jobs:
         password: ${{ secrets.QA_PASSWORD }}
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
+          git reset --hard
           git pull
           ${{ env.COMPOSER_BIN }} install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
           ${{ env.PHP_BIN }} artisan migrate
-          ${{ env.PHP_BIN }} artisan db:seed
           npm install
           npm run production

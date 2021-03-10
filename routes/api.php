@@ -13,31 +13,43 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// ENDPOINT LOGIN
+Route::post('auth/login', 'API\AuthController@login');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('auth/is_valid', 'API\AuthController@isTokenValid');
+// ROUTES THAT NEED TOKEN AUTHENTICATION
+Route::group(['middleware'=>['apiJwt']],function(){
+    //ENDPOINTS AUTHORIZATIONS JWT
+    Route::post('auth/logout', 'API\AuthController@logout');
+    Route::post('auth/refresh', 'API\AuthController@refresh');
+    Route::post('auth/me', 'API\AuthController@me');
+
+    // ENDPOINT FEEDBACK SENSIVE
+    Route::apiResource('feedbacks', 'API\FeedbackController')->only([
+        'store', 'show', 'update'
+    ]);
+    // ENPOINTS SERVICES
+    Route::apiResource('services', 'API\ServiceController')->only([
+        'index', 'store', 'show', 'update'
+    ]);
+
+    Route::apiResource('service', 'API\ItemController');
+    Route::get('service/{id}/comments', 'API\ItemController@listComments');
+    Route::post('service/{id}/comments', 'API\ItemController@storeComment');
+    
 });
+    // ENPOINT LOUSAS
+    Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
 
-Route::apiResource('items', 'API\ItemController');
-    Route::get('items/{id}/comments', 'API\ItemController@listComments');
-    Route::post('items/{id}/comments', 'API\ItemController@storeComment');
+// ENDPOINTS FEEDBACK NOT SENSIVE
+Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
 
-Route::apiResource('services', 'API\ServiceController')->only([
-    'index', 'store', 'show', 'update'
-]);
-   
-Route::apiResource('feedbacks', 'API\FeedbackController')->only([
-    'index', 'store', 'show', 'update'
-]);
-
+// ENPOINT RESOURCES
 Route::apiResource('reactions', 'API\ReactionController');
-
-Route::apiResource('categories', 'API\CategoryController')->only([
-    'index'
-]);
-
-Route::apiResource('locations', 'API\LocationController')->only([
-    'index'
-]);
-
+Route::apiResource('categories', 'API\CategoryController')->only(['index']);
+Route::apiResource('locations', 'API\LocationController')->only(['index']);
 Route::apiResource('documents', 'API\DocumentController');
+Route::apiResource('specifications', 'API\SpecificationController')->only(['index']);
+
+// ENDPOINTS GITHUB WEBHOOK
+Route::post('webhook/github/comment/index.php', 'API\GithubWebhookController@issueComment');

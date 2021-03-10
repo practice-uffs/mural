@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Specification extends Model
 {
     protected $fillable = [
-        'content'
+        'img',
+        'title',
+        'description',
+        'deadline',
+        'example',
+        'category_id'
     ];
 
     public function item()

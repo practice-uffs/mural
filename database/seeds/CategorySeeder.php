@@ -36,12 +36,32 @@ class CategorySeeder extends Seeder
 
         // categories for service
         DB::table('categories')->insert([
-            'name' => 'Nova Funcionalidade',
+            'name' => 'Audio',
             'item_type' => Item::TYPE_SERVICE
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Modificação',
+            'name' => 'Vídeo',
+            'item_type' => Item::TYPE_SERVICE
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Texto',
+            'item_type' => Item::TYPE_SERVICE
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Imagem',
+            'item_type' => Item::TYPE_SERVICE
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Evento',
+            'item_type' => Item::TYPE_SERVICE
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Estúdio',
             'item_type' => Item::TYPE_SERVICE
         ]);
     }

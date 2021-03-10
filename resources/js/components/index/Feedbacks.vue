@@ -1,14 +1,15 @@
 <template>
 <div class="mt-5 text-center bg-blue py-3">     
     <h2 >Feedbacks</h2>
-    <p>Veja as opniões dos nossos clientes</p>
+    <p>Veja as opiniões dos nossos clientes</p>
     <div id="carouselExampleControls" class="carousel slide m-5" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" v-bind:key="feedback.id"  v-for="(feedback,idx) in feedbacks"  v-bind:class="{'active':idx === 0}">
                 <div clas="p-5">
                     <h3 class="card-title">{{feedback.title}}</h3>
                     <p class="card-text">{{feedback.description}}</p>
-                    <small>{{feedback.user.name}} - {{ feedback.created_at | formatDate }} </small>
+                    <p><small>{{feedback.user}} - {{ feedback.created_at | formatDate }} </small></p>
+                    <p><small>{{feedback.location_id}} </small></p>
                 </div>
             </div>
         </div>
@@ -25,13 +26,7 @@
 </template>
 
 <script>
-import moment from 'moment';
 
-Vue.filter('formatDate', function(value) {
-    if (value) {
-        return moment(String(value)).format('MM/DD/YYYY')
-    }
-});
 export default {
     name:"feedbacks",
     data(){
@@ -43,7 +38,7 @@ export default {
         async fetchFeedbacks() {
             let { data } = await axios.get('/api/feedbacks?limit=5');
 
-            this.feedbacks = data.data;
+            this.feedbacks = data.data.filter(fb => fb.category_id == "Crítica");
         },
     },
     created() {

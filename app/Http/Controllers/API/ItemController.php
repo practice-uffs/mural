@@ -5,11 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
 
 use App\Item;
 use App\User;
 use App\Specification;
 
+use Carbon\Carbon;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\CommentResource;
 
@@ -24,7 +26,7 @@ class ItemController extends Controller
     {
         $items = Item::whereNull('parent_id');
 
-        return ItemResource::collection($items -> paginate());
+        return ItemResource::collection($items -> paginate(10000));
     }
 
     /**
@@ -39,10 +41,11 @@ class ItemController extends Controller
             'user_id' => $request -> user_id,
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
+            'status' => Item::STATUS_WAITING,
             'type' => $request -> type,
             'title' => $request -> title,
             'description' => $request -> description,
+            'github_issue_link' => $request -> github_issue_link,
             'hidden' => $request -> hidden,
         ];
 
@@ -90,10 +93,11 @@ class ItemController extends Controller
         $item -> update([
             'location_id' => $request -> location_id,
             'category_id' => $request -> category_id,
-            'status' => Item::STATUS_ACTIVE,
+            'status' => Item::STATUS_WAITING,
             'type' => Item::TYPE_IDEA,
             'title' => $request -> title,
             'description' => $request -> description,
+            'github_issue_link' => $request -> github_issue_link,
             'hidden' => $request -> hidden == 'on',
         ]);
 
@@ -128,7 +132,7 @@ class ItemController extends Controller
     {
         $comments = Item::where('parent_id', $parentId);
 
-        return CommentResource::collection($comments -> paginate());
+        return CommentResource::collection($comments -> paginate(10000));
     }
 
     /**
@@ -137,19 +141,33 @@ class ItemController extends Controller
      * @param  int $parentId
      * @return \Illuminate\Http\Response
      */
-    public function storeComment(Request $request, $parentId)
-    {
-        $comment = Item::create([
-            'user_id' => $request -> user_id,
-            'parent_id' => $parentId,
-            'type' => Item::TYPE_COMMENT,
-            'title' => User::find($request -> user_id) -> name,
-            'description' => $request -> text,
-            'hidden' => false,
-        ]);
+    public function storeComment(Request $request, $parentId){   
+        
+        $POST_GIT = false;
 
+        $item = Item::find($parentId);
+        if($item->github_issue_link && $POST_GIT){
+            $repo = getenv("GIT_REPO");
+            $issue = explode('/',$item->github_issue_link);
+            $issue = end($issue);
+
+            $response = Http::withToken(getenv("GIT_TOKEN"))
+                ->post("{$repo}/issues/{$issue}/comments", [
+                    'body' => $request -> text
+                ]);
+        } else{
+                $request->text = str_replace("#cliente","",$request->text);
+                $comment = Item::create([
+                    'user_id' => $request -> user_id,
+                    'parent_id' => $parentId,
+                    'type' => Item::TYPE_COMMENT,
+                    'title' => User::find($request -> user_id) -> name,
+                    'description' => $request -> text,
+                    'hidden' => false,
+                ]);
+        }
+        $item->touch();
         return response(
-            new CommentResource($comment),
             Response::HTTP_CREATED
         );
     }

@@ -1,23 +1,70 @@
 @extends('layouts.base')
 @section('content')
-<section class="my-5">
 
-    <section class="container">
-        <h1 class="text-center m-3 mb-5">Weeb Feedback</h1>
-        <h2 class="text-center m-2">Uma ponte entre  Voccê e a construção de uma Universidade Melhor!</h2>
-        <p>O Weeb feedback é a platafroma oficial do projeto <a href="https://practice.uffs.cc/"><strong>Practice</strong></a> para que os nosso clientes possam solicitar e acompanhar serviços, 
-            além de poder dar sugestões de melhorias podendo assim, fazer parte do crescimento do projeto e fazer parte do crescimento e inovação da <a href="https://www.uffs.edu.br/"><strong>UFFS</strong></a>, crescimento e inovação que refletem em toda sua comunidade interna e externa.</p>
-        <P> A missão do projeto <a href="https://practice.uffs.cc/"><strong>Practice</strong></a> é empoderar tecnologicamente pessoas para que a tecnologia seja ajuda, não barreira. Focando na habilidade pedagógica e tecnológica tanto de servidores quanto estudantes. 
-            Tudo isso através de soluções tecnológicas para aprimorar o ambiente acadêmico de ensino e aprendizagem, contando sempre com a comunidade da <a href="https://www.uffs.edu.br/"><strong>UFFS</strong></a>.
-        </P>
-    </section>
+<!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
 
-    <nuvens qnt="3"></nuvens>
-    
-    <index-services></index-services>
-    
-    <index-feedbacks></index-feedbacks>
-    
-</section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Central de Serviços e Ideias</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Uma ponte entre você e a construção de uma universidade melhor</h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="/servicos/solicitar" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Solicitar serviço</span>
+                  <i class="bi bi-arrow-right-circle"></i>
+              </a>
+              <a href="/feedbacks" class="btn-get-outline scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Ideias</span>
+                  <i class="bi bi-lightbulb"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{{ asset('assets/img/hero-img.png') }}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos-delay="200">
+            <div class="content">
+              <h3>Boas-vindas!</h3>
+              <h2>Central de solicitação de serviços do PRACTICE e um local de discussão de ideias</h2>
+              <p>
+                Essa é a plataforma oficial do programa onde a comunidade acadêmica pode solicitar e acompanhar serviços. Além disso, você pode dar sugestões de melhorias e ideias, fazendo parte do crescimento do programa e inovação da <a href="https://www.uffs.edu.br/"><strong>UFFS</strong></a>.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="https://practice.uffs.cc" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Conheça o PRACTICE</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{{ asset('img/hero/estudio-practice.jpg') }}" class="img-fluid" alt="">
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+    @include('components.valores')
+    @include('components.contador')
+    @include('components.servicos')
+    @include('components.testemunho')   
+  </main><!-- End #main -->
+  @include('components.newsletter')
 @endsection
-

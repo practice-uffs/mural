@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Session;
 use App\User;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,14 @@ class LoginController extends Controller
 
     const ADMIN_USERS = [
         'jean.hilger',
-        'junior.ramisch'
+        'junior.ramisch',
+        'raphael.santos',
+        'alessandra.pedrotti',
+        'robison.silva',
+        'thalia.friedrich',
+        'vinicius.alves',
+        'gessicazanon',
+        'ana.silveira'
     ];
 
     public function index()
@@ -27,7 +35,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function auth(Request $request)
+    public function login(Request $request)
     {
         $validator = $request->validate([
             'username' => 'required',
@@ -35,30 +43,68 @@ class LoginController extends Controller
         ]);
 
         $credentials = [
-            'user'     => $request->input('username'),
+            'user'     => strtolower($request->input('username')),
             'password' => $request->input('password'),
         ];
 
         $auth = new \CCUFFS\Auth\AuthIdUFFS();
         $userData = $auth->login($credentials);
-
+        
         if (!$userData) {
             return redirect()
-                ->route('login')
-                ->withErrors([
-                    'credential' => 'Login inválido, tente novamente.'
+            ->route('login')
+            ->withErrors([
+                'credential' => 'Login ou Senha inválidos, por favor verifique os dados e tente novamente.'
                 ]);
-        }
-        $user = $this->getOrCreateUser($userData);
+        }else{                
+            $credentials = [
+                'username' => $userData->username,
+                'password' => $userData->pessoa_id,
+            ];
+            if (! $token = auth('api')->attempt($credentials)) {
 
-        Auth::login($user);
-        return redirect()->route('index');
+                $userData->password = bcrypt($userData->pessoa_id);
+                $user = $this->getOrCreateUser($userData);
+
+                if (! $token = auth('api')->attempt($credentials)) {
+                    return redirect()->route('login')
+                    ->withErrors(['credential' => 'Usuário não autorizado']);
+                }
+                $token = $this->respondWithToken($token);
+                Session::put('token',$token);
+                Auth::login($user);
+                return view('index')->with('token',Session::get('token'));
+            }
+            $userData->password = bcrypt($userData->pessoa_id);
+            $user = $this->getOrCreateUser($userData);
+            $token = $this->respondWithToken($token);
+            Session::put('token',$token);
+            Auth::login($user);
+            return view('index')->with('token',Session::get('token'));
+        }
+    }
+
+
+    protected function respondWithToken($token)
+    {
+        return json_encode([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60 * 8
+        ]);
     }
 
     public function logout(Request $resquest)
     {
+        Session::forget('token');
         Auth::logout();
         return redirect()->intended('login');
+    }
+
+    public function refresh()
+    {
+        $token = $this->respondWithToken(auth('api')->refresh());
+        return view('index')->with('token',Session::get('token'));
     }
 
     private function getOrCreateUser($data)
@@ -66,6 +112,7 @@ class LoginController extends Controller
         $user = User::where('uid', $data->uid)->first();
         $data = [
             'username' => $data->username,
+            'password' => $data->password,
             'email' => $data->email,
             'uid' => $data->uid,
             'name' => $data->name,

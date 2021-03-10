@@ -42,7 +42,7 @@ class ServiceController extends Controller
             $items = SELF::getServicesForNormalUser($user -> id);
         }
         
-        return ServiceResource::collection($items -> paginate());
+        return ServiceResource::collection($items -> paginate(10000));
     }
 
     /**
@@ -57,19 +57,14 @@ class ServiceController extends Controller
             'user_id' => 'required',
             'location_id' => 'required',
             'category_id' => 'required',
+            'specification_id' => 'required',
             'title' => 'required',
             'description' => 'required'
         ]);
         
-        $data['hidden'] = true;
+        $data['hidden'] = false;
         $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
-
-        $specification = Specification::create([
-            'content' => json_encode($request -> specification)
-        ]);
-
-        $data['specification_id'] = $specification -> id;
+        $data['status'] = Item::STATUS_WAITING;
 
         $item = Item::create($data);
 
@@ -103,35 +98,25 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'user_id' => 'required',
             'location_id' => 'required',
             'category_id' => 'required',
             'title' => 'required',
+            'specification_id' => 'required',
             'description' => 'required'
         ]);
 
-        $data['hidden'] = true;
-        $data['type'] = Item::TYPE_SERVICE;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $item = Item::find($id);
 
-        $service = Item::find($id);
-        $specification = Specification::find($service->specification_id);
-
-        try {
-            $specification->update([
-                'content' => json_encode($request -> specification)
-            ]);
-            
-            $service->update($data);
-
-            return response(
-                new ServiceResource($service),
-                Response::HTTP_OK
-            );
-
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        $item->location_id = $request->get('location_id');
+        $item->category_id = $request->get('category_id');
+        $item->specification_id = $request->get('specification_id');
+        $item->status = $request->get('status');
+        $item->title = $request->get('title');
+        $item->description = $request->get('description');
+        $item->github_issue_link = $request->get('github_issue_link');
+        
+        $item->save();
+        $item->touch();
     }
 
     /**

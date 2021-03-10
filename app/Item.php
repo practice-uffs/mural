@@ -10,8 +10,10 @@ class Item extends Model
     const TYPE_SERVICE    = 2;
     const TYPE_COMMENT    = 3;
 
-    const STATUS_ACTIVE   = 1;
-    const STATUS_REMOVED  = 2;
+    const STATUS_WAITING      = 1;
+    const STATUS_PROGRESSING  = 2;
+    const STATUS_CONCLUDED    = 3;
+    const STATUS_REFUSED      = 4;
 
     /**
      * The model's default values for attributes.
@@ -20,7 +22,7 @@ class Item extends Model
      */
     protected $attributes = [
         'type'   => Item::TYPE_FEEDBACK,
-        'status' => Item::STATUS_ACTIVE,
+        'status' => Item::STATUS_WAITING,
         'hidden' => false,
     ];
 
@@ -34,6 +36,7 @@ class Item extends Model
         'type',
         'title',
         'description',
+        'github_issue_link',
         'hidden'
     ];
 

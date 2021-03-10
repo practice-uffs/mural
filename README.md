@@ -93,9 +93,14 @@ Feita as alterações no `.env` execute o seguinte comando para a criação dos 
 php artisan migrate
 ```
 
-Por fim execute o comando abaixo para a geração da chave de autenticação da aplicação:
+Na sequencia execute o comando abaixo para a geração da chave de autenticação da aplicação:
 ```
 php artisan key:generate
+```
+
+Por fim execute o comendo abaixo para ferar o token de autenticação JWT para a API
+```
+php artisan jwt:secret
 ```
 
 #### Rodando o projeto
@@ -111,6 +116,10 @@ e por fim inicie o servidor do Laravel:
 php artisan serve
 ```
 Após isso a aplicação estará rodando na porta 8000 e poderá ser acessada em [localhost:8000](http://localhost:8000).
+
+### Documentação da API
+
+A documentação dos endpoints da API estão disponíveis [aqui](https://documenter.getpostman.com/view/11057697/TVetbmFy)
 
 ## Contribua
 

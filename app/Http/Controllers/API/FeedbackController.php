@@ -23,7 +23,7 @@ class FeedbackController extends Controller
             -> whereNull('parent_id')
             -> where('hidden', false);
         
-        return FeedbackResource::collection($items -> paginate());
+        return FeedbackResource::collection($items -> paginate(10000));
     }
 
     /**
@@ -44,7 +44,7 @@ class FeedbackController extends Controller
         ]);
 
         $data['type'] = Item::TYPE_FEEDBACK;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $data['status'] = Item::STATUS_WAITING;
 
         $item = Item::create($data);
 
@@ -87,7 +87,7 @@ class FeedbackController extends Controller
         ]);
 
         $data['type'] = Item::TYPE_FEEDBACK;
-        $data['status'] = Item::STATUS_ACTIVE;
+        $data['status'] = Item::STATUS_WAITING;
 
         $feedback = Item::find($id);
 

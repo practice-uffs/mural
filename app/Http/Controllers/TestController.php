@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Session;
 use App\Member;
 use App\Project;
 
@@ -20,6 +21,6 @@ class TestController extends Controller
         return view('test.autocomplete', [
             'user' => Auth::user(),
             'project' => null
-        ]);
+        ])->with('token',Session::get('token'));
     }
 }
