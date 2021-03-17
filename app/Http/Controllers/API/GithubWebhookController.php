@@ -33,7 +33,7 @@ class GithubWebhookController extends Controller
             $json["comment"]["body"] = str_replace("#cliente","",$json["comment"]["body"]);
             $user = strcmp($json["comment"]["user"]["login"],"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";
             // CRIADO UM COMENTÁRIO
-            return response(json_encode([$json["comment"]["body"],$user]), 200);
+            // return response(json_encode([$json["comment"]["body"],$user]), 200); ok
             if($json["action"] == 'created'){
                 $comment = Item::create([
                     'user_id' => $service->user_id,
@@ -45,8 +45,9 @@ class GithubWebhookController extends Controller
                     'github_issue_link' => $json["comment"]["id"],
                     ]);
                     
+                    $comment->save();
                     return response(
-                        new CommentResource($comment),
+                        // new CommentResource($comment),
                         Response::HTTP_CREATED
                     );
                 }  
