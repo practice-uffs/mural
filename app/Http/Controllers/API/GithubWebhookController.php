@@ -20,7 +20,7 @@ class GithubWebhookController extends Controller
         $gitReturn = $request->payload;
         $json = json_decode($gitReturn,true);
 
-        return response(json_encode($json["issue"]["html_url"]), 200);
+        // return response(json_encode($json["issue"]["html_url"]), 200);
         
         try{
             $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
