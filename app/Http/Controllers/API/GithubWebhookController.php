@@ -20,10 +20,11 @@ class GithubWebhookController extends Controller
         $gitReturn = $request->payload;
         $json = json_decode($gitReturn,true);
 
+        return response(json_encode($json["issue"]["html_url"]), 200);
         
         try{
             $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
-            return response(json_encode($json["issue"]["html_url"]), 200);
+            return response(json_encode($service->user_id), 200);
         } catch(ErrorException $e){
             return response("Array está vazia", Responde::HTTP_BAD_REQUEST);
         }
