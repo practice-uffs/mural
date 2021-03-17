@@ -143,7 +143,7 @@ class ItemController extends Controller
      */
     public function storeComment(Request $request, $parentId){   
         
-        $POST_GIT = false;
+        $POST_GIT = true;
 
         $item = Item::find($parentId);
         if($item->github_issue_link && $POST_GIT){
