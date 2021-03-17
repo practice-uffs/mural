@@ -20,11 +20,11 @@ class GithubWebhookController extends Controller
         $gitReturn = $request->payload;
         $json = json_decode($gitReturn,true);
 
-        // return response(json_encode($json["issue"]["html_url"]), 200);
+        // return response(json_encode($json["issue"]["html_url"]), 200); ok
         
         try{
             $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
-            return response(json_encode($service->user_id), 200);
+            // return response(json_encode($service->user_id), 200); ok
         } catch(ErrorException $e){
             return response("Array está vazia", Responde::HTTP_BAD_REQUEST);
         }
@@ -33,6 +33,7 @@ class GithubWebhookController extends Controller
             $json["comment"]["body"] = str_replace("#cliente","",$json["comment"]["body"]);
             $user = strcmp($json["comment"]["user"]["login"],"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";
             // CRIADO UM COMENTÁRIO
+            return response(json_encode([$json["comment"]["body"],$user]), 200);
             if($json["action"] == 'created'){
                 $comment = Item::create([
                     'user_id' => $service->user_id,
