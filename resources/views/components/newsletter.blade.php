@@ -9,8 +9,8 @@
           <div class="col-lg-6">
             <form action="{{ route('subscribers.store') }}" method="post">
               @csrf
-              <input type="email" name="email">
-              <input type="submit" value="Subscribe">
+              <input type="email" name="email" placeholder="Ex. fulano@email.com">
+              <input type="submit" value="Inscrever">
             </form>
           </div>
         </div>
