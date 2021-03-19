@@ -7,8 +7,10 @@
             <p>Fique por dentro de todas as novidades do programa e dos projetos que estamos trabalhando</p>
           </div>
           <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form action="{{ route('subscribers.store') }}" method="post">
+              @csrf
+              <input type="email" name="email">
+              <input type="submit" value="Subscribe">
             </form>
           </div>
         </div>

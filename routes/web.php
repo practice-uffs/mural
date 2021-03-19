@@ -18,7 +18,7 @@ if (App::environment('local')) {
 }
 
 // Index
-Route::get('/', function(){ return view('index');})->name('index');
+Route::get('/', function(){ return view('index');})->name('home');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
