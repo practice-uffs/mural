@@ -34,7 +34,7 @@
             <i class="bi bi-file-earmark-person" style="color: #15be56;"></i>
             <div>
               <span data-purecounter-start="0" data-purecounter-end="52" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Entidades + Entidades Visuais</p>
+              <p>Entidades + Identidades Visuais</p>
             </div>
           </div>
         </div>
