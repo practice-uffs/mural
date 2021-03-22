@@ -261,25 +261,3 @@
   });
 
 })();
-
-var form_newsletter = document.getElementById('form-newsletter')
-form_newsletter.addEventListener('submit',(event)=>{
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'center',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-    })
-
-    Toast.fire({
-        icon: 'success',
-        title: 'Serviço Editado com sucesso!!'
-    }).then(function(){
-      event.target;
-  })
-})

@@ -29,7 +29,6 @@
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/swiper/dist/sweetalert2.min.css') }} rel="stylesheet" >
  
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -54,7 +53,6 @@
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         
         <!-- Vendor JS Files -->
-        <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>
         <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
         <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
