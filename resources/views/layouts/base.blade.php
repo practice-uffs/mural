@@ -18,7 +18,7 @@
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 
           <!-- Bootstrap 5.0 CDN-->
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+          <link href="{{ asset('vendor/bootstrap-5.0.0/css/bootstrap.min.css') }}" rel="stylesheet">
 
           <!-- Google Fonts -->
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -29,6 +29,7 @@
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+          <link href="{{ asset('vendor/swiper/dist/sweetalert2.min.css') }} rel="stylesheet" >
  
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -58,7 +59,7 @@
         <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
         
         <!-- BoOtstrap 5.0 JS CDN-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
         
         <!-- Template Main JS File -->
         <!-- Vue JS File -->
