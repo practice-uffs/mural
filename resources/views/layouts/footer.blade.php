@@ -44,7 +44,8 @@
     </div>
 
     <div class="container">
-      <div class="copyright">
+      <div id="version" class="text-center text-muted pt-5 pb-0">
+        <small>Versão 1.0.1</small>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
