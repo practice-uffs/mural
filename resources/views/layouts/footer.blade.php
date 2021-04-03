@@ -33,9 +33,9 @@
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contato</h4>
             <p>
-              <strong>Email:</strong> practice@uffs.edu.br<br>
+              <strong>E-mail:</strong> practice@uffs.edu.br<br>
               <strong>Atuações:</strong> <br>
-              Campus Erechim, Cerro Largo, Passo fundo, Chapecó, Realeza e Laranjeiras do Sul.<br>
+              Campus Erechim, Cerro Largo, Passo Fundo, Chapecó, Realeza e Laranjeiras do Sul.<br>
             </p>
           </div>
 
