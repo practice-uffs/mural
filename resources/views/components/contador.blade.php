@@ -4,7 +4,7 @@
 
       <header class="section-header">
         <h2>ALGUMAS DE NOSSAS ESTATÍSTICAS</h2>
-        <h2>onde já produzimos cerca de</h2>
+        <p>Onde já produzimos cerca de</p>
       </header>
 
       <div class="row gy-4">
