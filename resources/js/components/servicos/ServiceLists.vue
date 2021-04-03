@@ -21,7 +21,7 @@
                 <div class="row gy-4">
                     <header class="section-header">
                         <h2>Serviços</h2>
-                        <p>Vídeos</p>
+                        <p>Vídeo</p>
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
@@ -39,9 +39,8 @@
                         <p>Texto</p>
                     </header>
                     <div class="text-justify mb-5 m-3 px-5">
-                        <p><strong>Obs:</strong> As solicitações dos serviços de texto precisam conter: Autor(es), Título e Subtítulo, Imagens e gráficos com indicações de ordem que serão apresentadas no texto,
-                            Referências bibliográficas utilizadas já dentro das normas ABNT; Caso seja necessário, licenças de direitos autorais das imagens utilizadas </p>
-                        <p><strong>Orientações bem estabelecidas de design:</strong> Imagens em boa resolução, Referências de onde as imagens foram retiradas, Imagens salvas em formato JPE </p>
+                        <p><strong>As solicitações dos serviços de texto precisam conter:</strong> autor(es), título e subtítulo, imagens e gráficos com indicação da ordem que serão apresentadas no texto, referências bibliográficas utilizadas (dentro das normas ABNT) e, caso seja necessário, licenças de direitos autorais das imagens utilizadas.</p>
+                        <p><strong>Orientações bem estabelecidas de design:</strong> imagens em boa resolução, referências de onde as imagens foram retiradas e imagens salvas em formato JPEG. </p>
                     </div>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
@@ -56,7 +55,7 @@
                 <div class="row gy-4">
                     <header class="section-header">
                         <h2>Serviços</h2>
-                        <p>Imagens</p>
+                        <p>Imagem</p>
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "

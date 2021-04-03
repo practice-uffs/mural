@@ -36,9 +36,7 @@
                         :value="specification.id"
                     >{{specification.title}}</option>
                 </select>
-                <small><span class="helper-text text-muted">em caso de dúvidas sobre os tipo de seviços do 
-                                                            PRACTICE consulte nosso 
-                                                            <a href="https://practice.uffs.cc/" target="_blank">site</a>
+                <small><span class="helper-text text-muted">Em caso de dúvidas sobre os tipos de serviços do PRACTICE, consulte nosso <a href="https://practice.uffs.cc/" target="_blank">site</a>.
                 </span></small>
             </div> 
             <div class="form-group my-3">
