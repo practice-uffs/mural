@@ -13,7 +13,7 @@
               <a href="https://github.com/practiceuffs" class="github"><i class="bi bi-github bx bxl-github"></i></a>
               <a href="https://www.youtube.com/channel/UCu3jAl8MTMPkaxb3u0_xESw" class="youtube"><i class="bi bi-youtube"></i></a>
               <a href="https://twitter.com/PracticeUFFS" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.facebook.com/practiceuffs" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.facebook.com/Practice-UFFS-104348284683285" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="https://www.linkedin.com/company/practiceuffs" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
             </div>
           </div>
