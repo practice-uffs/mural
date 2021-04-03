@@ -8,7 +8,7 @@
         <small><strong v-if="service.example" ><p>Exemplo: <a :href="service.example">{{service.example}}</a></p></strong></small>
         <small>
           <p v-if="service.deadline">
-            <b>Prazo:</b> {{service.deadline}} dias(úteis)
+            <b>Prazo:</b> {{service.deadline}} dias úteis
           </p>
           <p v-else>
             <b>Prazo: Variável</b> 
