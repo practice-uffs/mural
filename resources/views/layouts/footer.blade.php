@@ -9,7 +9,7 @@
             </a>
             <p>O Programa de Ampliação e Consolidação de Tecnologias e Inovação no Contexto Educacional (PRACTICE) objetiva estruturar ambientes e capacitar agentes educacionais para a produção e mediação de conteúdos por meio de tecnologias.</p>
             <div class="social-links mt-3">
-              <a href="https://www.instagram.com/practiceuffs/" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
+              <a href="https://www.instagram.com/practice-uffs/" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
               <a href="https://github.com/practiceuffs" class="github"><i class="bi bi-github bx bxl-github"></i></a>
               <a href="https://www.youtube.com/channel/UCu3jAl8MTMPkaxb3u0_xESw" class="youtube"><i class="bi bi-youtube"></i></a>
               <a href="https://twitter.com/PracticeUFFS" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -18,25 +18,15 @@
             </div>
           </div>
 
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
 
           <div class="col-lg-2 col-6 footer-links">
             <h4>Divulgação</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-audio-e-video.pdf">Serviços de áudio</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-conteudo.pdf">Serviços de conteúdo</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-Estudio.pdf">Serviços de estúdio</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-eventos-online.pdf">Serviços de eventos online</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos.pdf">Visão geral</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-audio-e-video.pdf" target="_blank">Serviços de áudio</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-conteudo.pdf" target="_blank">Serviços de conteúdo</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-Estudio.pdf" target="_blank">Serviços de estúdio</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-eventos-online.pdf" target="_blank">Serviços de eventos online</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos.pdf" target="_blank">Visão geral</a></li>
             </ul>
           </div>
           
