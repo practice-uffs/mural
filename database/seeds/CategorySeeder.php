@@ -36,7 +36,7 @@ class CategorySeeder extends Seeder
 
         // categories for service
         DB::table('categories')->insert([
-            'name' => 'Audio',
+            'name' => 'Áudio',
             'item_type' => Item::TYPE_SERVICE
         ]);
 
