@@ -11,15 +11,30 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     const ADMIN_USERS = [
+        'alessandra.pedrotti',
+        'ana.silveira',
+        'andrew.silva',
+        'amanda.bisognin',
+        'brenda.reis',
+        'cleisson.raimundi',
+        'estela.boas',
+        'gessicazanon',
+        'isabeli.reik',
         'jean.hilger',
         'junior.ramisch',
+        'luiz.dameda',
+        'luiza.tonial',
+        'mariaeduarda.santos',
+        'matheus.negrao',
+        'milena.pastorini',
+        'morgana.oliveira',
+        'pedro.maximowski',
         'raphael.santos',
-        'alessandra.pedrotti',
         'robison.silva',
+        'taynara.christmann',
         'thalia.friedrich',
         'vinicius.alves',
-        'gessicazanon',
-        'ana.silveira'
+        'vinicius.reis',
     ];
         /**
      * Get a JWT via given credentials.

@@ -190,6 +190,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Mydnic\Subscribers\SubscribersServiceProvider::class,
 
         /*
          * Application Service Providers...
