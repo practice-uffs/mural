@@ -3,7 +3,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-sm-12 col-md-7 text-end">
                 <h2>Serviços</h2>
-                <p>Acompanhe aqui seus serviços solicitados</p>
+                <p>Acompanhe aqui suas solicitações</p>
             </div>
             <div class="col-sm-12 col-md-5">
                 <img class="img-service" :src="img" alt="">

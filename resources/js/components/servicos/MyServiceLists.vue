@@ -22,7 +22,7 @@
                 v-bind:service="concluido"/>
     </div>
 
-    <h2 class="my-3">Serviços solicitados Recusados</h2>
+    <h2 class="my-3">Serviços solicitados recusados</h2>
     <div class="row container">
         <MyServices
             v-for="recusado in recusados" :key="recusado.id" 

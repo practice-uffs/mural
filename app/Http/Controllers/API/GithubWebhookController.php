@@ -23,7 +23,7 @@ class GithubWebhookController extends Controller
         try{
             $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
         } catch(ErrorException $e){
-            return response("Arry está vazia", Responde::HTTP_BAD_REQUEST);
+            return response("Array está vazia", Responde::HTTP_BAD_REQUEST);
         }
         
         if(str_contains($json["comment"]["body"],"#cliente")){
