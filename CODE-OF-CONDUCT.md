@@ -43,5 +43,5 @@ Este Código de Conduta é adaptado do [Contributor Covenant (versão 1.4)](http
 
 # Versão
 
-* **1.0.1** - 2019-10-13: revisões de e-mails.
+* **1.0.2** - 2019-10-13: revisões de e-mails.
 * **1.0.0** - 2019-09-17: primeiro texto.
