@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "html5-qrcode": "^2.0.3",
         "materialize-css": "^1.0.0",
         "moment": "^2.29.1",
         "sweetalert2": "^10.9.0"
