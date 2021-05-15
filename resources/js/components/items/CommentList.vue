@@ -5,7 +5,7 @@
         <div class="form-group p-3 card" v-bind="comment"
             v-for="comment in comments" :key="comment.id">
             <label><strong>{{ comment.user | capitalize }}</strong></label>
-            <p>{{comment.text}}</p>
+            <p style="white-space:pre-wrap">{{comment.text}}</p>
             <small class="text-end" >{{comment.date | prettyDate}}</small>
         </div>
         <!-- <reaction-list
