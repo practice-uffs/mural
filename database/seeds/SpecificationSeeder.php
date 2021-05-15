@@ -18,6 +18,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 5,
+            'available' => true,
         ]);
 
         DB::table('specifications')->insert([
@@ -27,6 +28,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 5,
+            'available' => true,
         ]);
 
         DB::table('specifications')->insert([
@@ -36,6 +38,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 5,
+            'available' => true,
         ]);
 
         DB::table('specifications')->insert([
@@ -45,7 +48,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'draw.png',
@@ -54,7 +57,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => 'https://www.youtube.com/watch?v=kcft5B1c-JE&feature=youtu.be',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'img_composition.png',
@@ -63,7 +66,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'call.png',
@@ -72,7 +75,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => 'https://www.youtube.com/watch?v=KxjHA3gxcAM',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'slides.png',
@@ -81,7 +84,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'tutorial.png',
@@ -90,7 +93,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'vid_composition.png',
@@ -99,7 +102,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'animating.png',
@@ -108,7 +111,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'online_ad.png',
@@ -117,7 +120,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'alert.png',
@@ -126,7 +129,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 6,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'cartilha.png',
@@ -135,7 +138,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 7,
-        ]);
+            'available' => false,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'manual.png',
@@ -144,7 +147,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 7,
-        ]);
+            'available' => false,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'panfleto.png',
@@ -153,7 +156,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 7,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'cartaz.png',
@@ -162,7 +165,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 7,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'pack_simples.png',
@@ -171,7 +174,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 15,
             'example' => '',
             'category_id' => 8,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'pack_completo.png',
@@ -180,7 +183,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 15,
             'example' => '',
             'category_id' => 8,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'event.png',
@@ -189,7 +192,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 9,
-        ]);
+            'available' => true,            ]);
 
         DB::table('specifications')->insert([
             'img' => 'estudio.png',
@@ -198,6 +201,7 @@ class SpecificationSeeder extends Seeder
             'deadline' => 7,
             'example' => '',
             'category_id' => 10,
+            'available' => false,
         ]);
 
     }
