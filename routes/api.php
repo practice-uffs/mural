@@ -36,7 +36,7 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::apiResource('service', 'API\ItemController');
     Route::get('service/{id}/comments', 'API\ItemController@listComments');
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
-    
+    Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');    
 });
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
