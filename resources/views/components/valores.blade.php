@@ -5,7 +5,7 @@
   
           <header class="section-header">
             <h2>Nossos valores</h2>
-            <p>Pilares que nos norteiam</p>
+            <p>Pilares que norteiam nosso trabalho</p>
           </header>
   
           <div class="row">
@@ -22,7 +22,7 @@
               <div class="box" data-aos-delay="400">
                 <img src="{{ asset('assets/img/values-2.png') }}" class="img-fluid" alt="">
                 <h3>Comunidade</h3>
-                <p>Não estamos sós, focamos na habilidade pedagógica e tecnológica tanto de servidores quanto estudantes.</p>
+                <p>Não estamos sós, focamos na habilidade pedagógica e tecnológica, tanto de servidores quanto de estudantes.</p>
               </div>
             </div>
   

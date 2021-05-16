@@ -16,7 +16,7 @@
         "cross-env": "^7.0.2",
         "jquery": "^3.5.1",
         "laravel-mix": "^5.0.9",
-        "lodash": "^4.17.20",
+        "lodash": "^4.17.21",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.29.0",
@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "html5-qrcode": "^2.0.3",
         "materialize-css": "^1.0.0",
         "moment": "^2.29.1",
         "sweetalert2": "^10.9.0"

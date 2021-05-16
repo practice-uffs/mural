@@ -12,7 +12,8 @@ class Specification extends Model
         'description',
         'deadline',
         'example',
-        'category_id'
+        'category_id',
+        'available'
     ];
 
     public function item()

@@ -3,7 +3,7 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="{{ route('index') }}" class="logo d-flex align-items-center">
+      <a href="{{ route('home') }}" class="logo d-flex align-items-center">
         <img src="{{ asset('img/logo-practice.png') }}" alt="">
         <span>Mural</span>
       </a>
@@ -11,7 +11,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           @if(Auth::check())
-          <li><a class="nav-link scrollto @if (request()->routeIs('index')) active @endif" href="{{ route('index') }}">Inicial</a></li>
+          <li><a class="nav-link scrollto @if (request()->routeIs('home')) active @endif" href="{{ route('home') }}">Inicial</a></li>
           <li><a class="nav-link scrollto @if (request()->routeIs('feedbacks')) active @endif" href="{{ route('feedbacks') }}">Ideias</a></li>
           <li><a class="nav-link scrollto @if (request()->routeIs('servicos/acompanhar')) active @endif" href="{{ route('servicos/acompanhar') }}">Acompanhar serviços</a></li>
           <li><a class="nav-link scrollto @if (request()->routeIs('servicos/solicitar')) active @endif" href="{{ route('servicos/solicitar') }}">Solicitar serviço</a></li>

@@ -2,7 +2,7 @@
           <form @submit.prevent="create" class="mb-3">
             <div class="form-group my-3">
                 <label for="title">Título</label>
-                <input type="text" class="form-control" 
+                <input type="text" class="form-control"
                        id="title" placeholder="Exemplo: Audio para exercício da aula de Espanhol I"
                        v-model="title" required>
             </div>
@@ -12,7 +12,7 @@
                        id="description" placeholder="Exemplo: O audio será feito a partir de um texto, onde terão diversos personagens e as falas serão gravadas separadamente e depois devem ser juntados em um audio só, seguindo o roteiro."
                        v-model="description" required>
                 </textarea>
-                <small><span class="helper-text text-muted">Inclua na descrição o máximo de informações descritivas possíveis 
+                <small><span class="helper-text text-muted">Inclua na descrição o máximo de informações descritivas possíveis
                                                             sobre a sua solicitação.</span></small>
             </div>
 
@@ -28,19 +28,20 @@
                     >{{categoria.name}}</option>
                 </select>
                 <label for="categoria">Especificação do Serviço</label>
-                <select class="form-control" v-model="specificationId" required >
+                <select class="form-control" v-model="specificationId" required>
                     <option value="" disabled selected>Selecione a especificação do serviço</option>
+
                     <option
                         v-for="specification in select_specifications"
+                        v-show="specification.available"
                         :key="specification.id"
                         :value="specification.id"
-                    >{{specification.title}}</option>
+                    >{{specification.title}}
+                    </option>
                 </select>
-                <small><span class="helper-text text-muted">em caso de dúvidas sobre os tipo de seviços do 
-                                                            PRACTICE consulte nosso 
-                                                            <a href="https://practice.uffs.cc/" target="_blank">site</a>
+                <small><span class="helper-text text-muted">Em caso de dúvidas sobre os tipos de serviços do PRACTICE, consulte nosso <a href="https://practice.uffs.cc/" target="_blank">site</a>.
                 </span></small>
-            </div> 
+            </div>
             <div class="form-group my-3">
                 <label for="categoria">Localização</label>
                 <select class="form-control" v-model="locationId" required
@@ -52,7 +53,7 @@
                         :value="localizacao.id"
                     >{{localizacao.name}}</option>
                 </select>
-            </div> 
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-outline-warning d-flex align-items-center ">Enviar <span class="material-icons">send </span> </button>
@@ -83,7 +84,7 @@ export default {
         }
     },
     updated(){
-    },    
+    },
     methods:{
         filterSpecification(){
             this.select_specifications = this.specifications.filter(function(specification){
@@ -106,8 +107,8 @@ export default {
             let {data} = await window.axios.get('/api/specifications');
             this.specifications = data;
         },
-        async create() {    
-            Auth.check(this.token);      
+        async create() {
+            Auth.check(this.token);
             let data = {
                 'user_id': this.user.id,
                 'title': this.title,
@@ -170,7 +171,7 @@ export default {
                     location.reload();
                 })
             this.resetData();
-            
+
         },
 
         resetData() {

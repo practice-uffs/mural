@@ -10,7 +10,7 @@
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
-                            v-for="service in audios" :key="service.id" 
+                            v-for="service in audios" :key="service.id"
                             v-bind:service="service" color="red"  icon="ri-discuss-line"/>
                 </div>
             </div>
@@ -21,11 +21,11 @@
                 <div class="row gy-4">
                     <header class="section-header">
                         <h2>Serviços</h2>
-                        <p>Vídeos</p>
+                        <p>Vídeo</p>
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
-                            v-for="service in videos" :key="service.id" 
+                            v-for="service in videos" :key="service.id"
                             v-bind:service="service" color="orange"  icon="ri-discuss-line"/>
                 </div>
             </div>
@@ -39,13 +39,13 @@
                         <p>Texto</p>
                     </header>
                     <div class="text-justify mb-5 m-3 px-5">
-                        <p><strong>Obs:</strong> As solicitações dos serviços de texto precisam conter: Autor(es), Título e Subtítulo, Imagens e gráficos com indicações de ordem que serão apresentadas no texto,
-                            Referências bibliográficas utilizadas já dentro das normas ABNT; Caso seja necessário, licenças de direitos autorais das imagens utilizadas </p>
-                        <p><strong>Orientações bem estabelecidas de design:</strong> Imagens em boa resolução, Referências de onde as imagens foram retiradas, Imagens salvas em formato JPE </p>
+                        <p><strong>As solicitações dos serviços de texto precisam conter:</strong> autor(es), título e subtítulo, imagens e gráficos com indicação da ordem que serão apresentadas no texto, referências bibliográficas utilizadas (dentro das normas ABNT) e, caso seja necessário, licenças de direitos autorais das imagens utilizadas.</p>
+                        <p><strong>Orientações bem estabelecidas de design:</strong> imagens em boa resolução, referências de onde as imagens foram retiradas e imagens salvas em formato JPEG. </p>
                     </div>
-                    <Service class="justify-content-center
-                                    col-sm-12 col-md-6 "
-                        v-for="service in textos" :key="service.id" 
+                        <Service class="justify-content-center
+                                    col-sm-12 col-md-6"
+
+                        v-for="service in textos" :key="service.id"
                         v-bind:service="service" color="yellow"  icon="ri-discuss-line"/>
                 </div>
             </div>
@@ -56,11 +56,11 @@
                 <div class="row gy-4">
                     <header class="section-header">
                         <h2>Serviços</h2>
-                        <p>Imagens</p>
+                        <p>Imagem</p>
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
-                        v-for="service in imagens" :key="service.id" 
+                        v-for="service in imagens" :key="service.id"
                         v-bind:service="service" color="green"  icon="ri-discuss-line"/>
                 </div>
             </div>
@@ -74,8 +74,8 @@
                         <p>Mídia</p>
                     </header>
                     <Service class="justify-content-center
-                                    col-sm-12 col-md-6 "
-                        v-for="service in eventos" :key="service.id" 
+                                    col-sm-12 col-md-6"
+                        v-for="service in eventos" :key="service.id"
                         v-bind:service="service" color="blue"  icon="ri-discuss-line"/>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     </header>
                     <Service class="justify-content-center
                                     col-sm-12 col-md-6 "
-                        v-for="service in estudio" :key="service.id" 
+                        v-for="service in estudio" :key="service.id"
                         v-bind:service="service" color="purple"  icon="ri-discuss-line"/>
                </div>
             </div>

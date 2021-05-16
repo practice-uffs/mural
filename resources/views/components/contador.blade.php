@@ -3,8 +3,8 @@
     <div class="container" data-aos="fade-up">
 
       <header class="section-header">
-        <h2>Algumas de nossas estatísticas</h2>
-        <h2>onde já produzimos cerca de</h2>
+        <h2>ALGUMAS DE NOSSAS ESTATÍSTICAS</h2>
+        <p>Onde já produzimos cerca de</p>
       </header>
 
       <div class="row gy-4">
@@ -34,7 +34,7 @@
             <i class="bi bi-file-earmark-person" style="color: #15be56;"></i>
             <div>
               <span data-purecounter-start="0" data-purecounter-end="52" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Entidades + Entidades Visuais</p>
+              <p>Entidades + Identidades Visuais</p>
             </div>
           </div>
         </div>
