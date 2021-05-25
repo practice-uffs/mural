@@ -74,7 +74,7 @@ class ServiceController extends Controller
         $email = new stdClass();
         $email->content = 'emails.ServicoSolicitado';
         $email->subject = 'Nova Solicitação';
-        $mail = new Email($user,$email);
+        $mail = new Email($user,$email,$item);
         $mail->build();
             
         return response(
