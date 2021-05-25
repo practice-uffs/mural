@@ -103,6 +103,11 @@ Por fim execute o comendo abaixo para ferar o token de autenticação JWT para a
 php artisan jwt:secret
 ```
 
+O comando abaixo só pode ser rodado uma vez, caso contrário vai duplicar os dados:
+```
+php artisan db:seed
+```
+
 #### Rodando o projeto
 
 Finalmente, após seguido os passos anteriores, gere os recursos JavaScript e CSS:

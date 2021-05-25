@@ -4,6 +4,7 @@
         <div v-if="comments">
         <div class="form-group p-3 card" v-bind="comment"
             v-for="comment in comments" :key="comment.id">
+
             <div class="d-flex justify-content-between">
                 <label><strong>{{ comment.user | capitalize }}</strong></label>
                 <div class="dropdown" v-if="user.id == comment.user_id">
@@ -16,6 +17,10 @@
                 </div>
             </div>
             <p>{{comment.text}}</p>
+
+            <label><strong>{{ comment.user | capitalize }}</strong></label>
+            <p style="white-space:pre-wrap">{{comment.text}}</p>
+
             <small class="text-end" >{{comment.date | prettyDate}}</small>
         </div>
         <!-- <reaction-list
