@@ -32,7 +32,7 @@ class Email extends Mailable
      */
     public function build()
     {
-        Mail::send($this->email->content,[],function($msg) {
+        Mail::send($this->email->content,['user'=>$this->user],function($msg) {
             $msg->from(env('MAIL_FROM_ADDRESS',''), env('MAIL_FROM_NAME',''));
             $msg->to($this->user->email, $this->user->email);
             $msg->subject($this->email->subject);
