@@ -168,7 +168,19 @@ class ItemController extends Controller
         }
         $item->touch();
         return response(
+            $comment,
             Response::HTTP_CREATED
+        );
+    }
+
+    public function destroyComment($parentId, $commentId)
+    {
+        $comment = Item::find($commentId);
+        $comment->delete();    
+       
+        return response(
+            null,
+            Response::HTTP_NO_CONTENT
         );
     }
 }
