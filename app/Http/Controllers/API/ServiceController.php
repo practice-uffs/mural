@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\User;
+use stdClass;
+use App\Mail\Email;
 use App\Specification;
 
 use App\Http\Resources\ServiceResource;
@@ -68,6 +70,13 @@ class ServiceController extends Controller
 
         $item = Item::create($data);
 
+        $user = User::find($request->user_id);
+        $email = new stdClass();
+        $email->content = 'emails.ServicoSolicitado';
+        $email->subject = 'Nova Solicitação';
+        $mail = new Email($user,$email);
+        $mail->build();
+            
         return response(
             new ServiceResource($item),
             Response::HTTP_CREATED
