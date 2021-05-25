@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Http;
 use App\Item;
 use App\User;
 use App\Specification;
+use stdClass;
+use App\Mail\Email;
 
 use Carbon\Carbon;
 use App\Http\Resources\ItemResource;
@@ -167,6 +169,16 @@ class ItemController extends Controller
                 ]);
         }
         $item->touch();
+
+        if($item->type==Item::TYPE_SERVICE){
+            $user = User::find($item->user_id);
+            $email = new stdClass();
+            $email->content = 'emails.NovoComentario';
+            $email->subject = 'Nova Solicitação';
+            $mail = new Email($user,$email,$item);
+            $mail->build();
+        }
+
         return response(
             Response::HTTP_CREATED
         );
