@@ -155,26 +155,26 @@ class ItemController extends Controller
 
             $response = Http::withToken(getenv("GIT_TOKEN"))
                 ->post("{$repo}/issues/{$issue}/comments", [
-                    'body' => $request -> text
+                    'body' => $request->text
                 ]);
         } else{
                 $request->text = str_replace("#cliente","",$request->text);
                 $comment = Item::create([
-                    'user_id' => $request -> user_id,
+                    'user_id' => $request->user_id,
                     'parent_id' => $parentId,
                     'type' => Item::TYPE_COMMENT,
-                    'title' => User::find($request -> user_id) -> name,
-                    'description' => $request -> text,
+                    'title' => User::find($request->user_id)->name,
+                    'description' => $request->text,
                     'hidden' => false,
                 ]);
         }
         $item->touch();
 
-        if($item->type==Item::TYPE_SERVICE){
+        if($item->type==Item::TYPE_SERVICE && $item->user_id != $request->user_id){
             $user = User::find($item->user_id);
             $email = new stdClass();
             $email->content = 'emails.NovoComentario';
-            $email->subject = 'Nova Solicitação';
+            $email->subject = 'Novo comentário na solicitação';
             $mail = new Email($user,$email,$item);
             $mail->build();
         }
