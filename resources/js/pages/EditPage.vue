@@ -4,14 +4,14 @@
             <h2>Edição da solicitação #{{item.id}}</h2>
             <div class="form-group">
                 <label for="title">Título</label>
-                <input type="text" class="form-control" 
+                <input type="text" class="form-control"
                        id="title" placeholder="Título"
                        v-model="title" required>
                 <span class="helper-text">Ex.: Jogos digitais em aula</span>
             </div>
             <div class="form-group">
                 <label for="description">Descrição</label>
-                <textarea type="text" class="form-control" 
+                <textarea type="text" class="form-control"
                        id="description" placeholder="Descrição"
                        v-model="description" required>
                 </textarea>
@@ -38,10 +38,10 @@
                             :value="specification.id"
                         >{{specification.title}}</option>
                     </select>
-                    <small>em caso de dúvidas sobre os tipo de seviços do PRACTICE consulte nosso 
+                    <small>em caso de dúvidas sobre os tipo de seviços do PRACTICE consulte nosso
                         <a href="https://practice.uffs.cc/" target="_blank">site</a></small>
-                </div> 
-            </div> 
+                </div>
+            </div>
             <div class="form-group">
                 <label for="categoria">Localização</label>
                 <select id="localization" class="form-control" v-model="locationId" required>
@@ -52,13 +52,13 @@
                         :value="localizacao.id"
                     >{{localizacao.name}}</option>
                 </select>
-            </div> 
+            </div>
             <div v-if="user.type=='admin' && item.type==2">
                 <hr>
                 <h4>Dados disponíveis apenas para adminstradores</h4>
                 <div class="form-group">
                     <label for="github_issue_link">GitHub Issue Link</label>
-                    <input type="text" class="form-control" 
+                    <input type="text" class="form-control"
                         id="github_issue_link" placeholder="GitHub Issue Link"
                         v-model="github_issue_link">
                 </div>
@@ -129,7 +129,7 @@ export default {
             this.specifications = data;
             this.select_specifications = data;
         },
-        async create() {     
+        async create() {
             Auth.check(this.token);
             let data = {
                 'id':this.item.id,
@@ -192,9 +192,9 @@ export default {
                     icon: 'success',
                     title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
-                    location.href = '/servicos/acompanhar';
+                    location.href = '/admin';
                 })
-            
+
         },
         resetData() {
             this.title = '';
@@ -209,7 +209,7 @@ export default {
         if(this.item.type==2){
             this.getSpecification();
         }
-        
+
     },
 }
 </script>
