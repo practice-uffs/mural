@@ -1,6 +1,6 @@
 <template>
           <form @submit.prevent="create" class="mb-3">
-            <div class="form-group my-3">
+            <div class="form-group my-3 is-invalid">
                 <label for="title">Título</label>
                 <input type="text" class="form-control"
                        id="title" placeholder="Exemplo: Audio para exercício da aula de Espanhol I"
@@ -15,7 +15,14 @@
                 <small><span class="helper-text text-muted">Inclua na descrição o máximo de informações descritivas possíveis
                                                             sobre a sua solicitação.</span></small>
             </div>
-
+            <div class="form-group">
+                <label for="delivery_date">Data de Entrega</label>
+                <input type="date" class="form-control"
+                       id="delivery_date" style="width:auto;" v-model="delivery_date" :min="min_date">
+                <small><span class="helper-text text-muted">
+                    Prazo mínimo de 10 dias.
+                </span></small>
+            </div>
             <div class="form-group my-3">
                 <label for="categoria">Tipo de Serviço</label>
                 <select class="form-control mb-2" v-model="categoryId" required
@@ -81,6 +88,8 @@ export default {
             locationId:null,
             categoryId:null,
             specificationId:null,
+            min_date: null,
+            delivery_date: null,
         }
     },
     updated(){
@@ -116,19 +125,48 @@ export default {
                 'location_id': this.locationId,
                 'category_id': this.categoryId,
                 'specification_id': this.specificationId,
+                'delivery_date': this.delivery_date,
             };
 
-            try {
-                let response = await window.axios.post('/api/services', data,{
-                    headers:{
-                        'Authorization': `Bearer ${this.token.access_token}`
-                    },
-                });
-                this.handleSuccess(response);
+            if(this.checkDeliveryDate()){
+                try {
+                    let response = await window.axios.post('/api/services', data,{
+                        headers:{
+                            'Authorization': `Bearer ${this.token.access_token}`
+                        },
+                    });
+                    this.handleSuccess(response);
+                }
+                catch(err) {
+                    this.handleError(err);
+                }
             }
-            catch(err) {
-                this.handleError(err);
+            else{
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'error',
+                title: 'Selecione uma Data de Entrega válida!!'
+                })
             }
+        },
+        checkDeliveryDate(){
+            if(new Date(this.delivery_date) < new Date(this.min_date)){
+                console.log("é menor");
+
+                return false;
+            }
+            return true;
         },
         handleError(err){
             let data = err.response.data;
@@ -185,6 +223,7 @@ export default {
         this.getCategories();
         this.getLocations();
         this.getSpecification();
+        this.min_date = new Date(new Date().setDate(new Date().getDate() + 10)).toISOString("yyyy-mm-dd").substring(0, 10);
     },
 }
 </script>
