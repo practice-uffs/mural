@@ -192,7 +192,7 @@ export default {
                     icon: 'success',
                     title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
-                    location.href = '/admin';
+                    location.href = document.referrer;
                 })
 
         },
