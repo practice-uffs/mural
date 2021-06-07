@@ -36,6 +36,7 @@ class Item extends Model
         'type',
         'title',
         'description',
+        'delivery_date',
         'github_issue_link',
         'hidden'
     ];
@@ -79,13 +80,13 @@ class Item extends Model
     {
         $reactionsAmount = Array();
         $reactions = $this->find($this->id)->reactions->groupBy('text');
-        
+
         $reactionNames = $reactions->keys();
 
         foreach($reactionNames as $reactionName) {
             $reactionsAmount[$reactionName] = $reactions[$reactionName]->count();
         }
-        
+
         return $reactionsAmount;
     }
 

@@ -217,6 +217,7 @@ export default {
             this.categoryId = '';
             this.locationId = '';
             this.description = '';
+            this.delivery_date = '';
         },
     },
     created() {
