@@ -1,11 +1,12 @@
 <template>
   <section class="col-8">
-      <h6>{{item.user}}</h6> 
-      <h4>{{item.title}}</h4> 
+      <h6>{{item.user}}</h6>
+      <h4>{{item.title}}</h4>
       <p v-if="item.github_issue_link"><a :href="item.github_issue_link" target="_blank"><small>(issue: #{{issue}}) Acompanhe essa solicitação no GitHub</small></a></p>
       <p><small>Categoria: {{item.category_id}}</small>
-         <small v-if="item.specification_id">:{{item.specification_id.title}}</small>, 
-         <small>Localização: {{item.location_id}}</small></p>
+         <small v-if="item.specification_id">- {{item.specification_id.title}}</small> <i>|</i>
+         <small>Localização: {{item.location_id}}</small> <i v-if="item.delivery_date">|</i>
+         <small v-if="item.delivery_date">Data de Entrega: {{item.delivery_date | formatDate}}</small></p>
       <p>{{item.description}}</p>
       <p class="text-end"> <small> última atualização {{item.updated_at | prettyDate}}</small></p>
     <hr>

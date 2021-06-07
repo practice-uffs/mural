@@ -32,6 +32,7 @@ class ServiceResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'github_issue_link' => $this->github_issue_link,
+            'delivery_date' => $this->delivery_date,
         ];
     }
 }
