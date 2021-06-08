@@ -1,6 +1,14 @@
 <template>
     <div class="p-1 col-sm-12 col-md-4">
         <div class="my-service text-center " :class="service.status|status_class">
+            <div class="d-flex justify-content-end col-12">
+                <span v-if="!service.github_issue_link && service.status == 4" 
+                    class="status-tag recusado">{{service.status | status_tag}}</span>
+                <span v-if="!service.github_issue_link && service.status != 4"
+                    class="status-tag aguardando">{{1 | status_tag}}</span>
+                <span v-if="service.github_issue_link" class="status-tag"
+                    :class="service.status|status_class">{{service.status | status_tag}}</span>
+            </div>
             <div class="col-sm-12 text-start">
                 <p><strong>{{service.title}}</strong></p>
                 <p>{{service.description.substring(0,150)+"..." }}</p>
@@ -49,7 +57,6 @@
 export default {
     name:'MyServices',
     props:['service'],
-
 }
 </script>
 
@@ -108,4 +115,23 @@ a, a:hover, a:visited, a:active{
     transition: 0.3s;
 }
 
+.status-tag {
+    border-radius: 30px;
+    width: fit-content;
+    font-size: .9rem;
+    padding: 3px 8px;
+    color: #fff;
+}
+.status-tag.aguardando {
+    background-color: #ff660098;
+}
+.status-tag.progresso {
+    background-color: #0066ff98;
+}
+.status-tag.concluido {
+    background-color: #009933;
+}
+.status-tag.recusado {
+    background-color: #ff000098;
+}
 </style>

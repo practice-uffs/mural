@@ -65,6 +65,12 @@ Vue.filter('status_class',function(value){
     else if(value == 3) return 'concluido';
     else if(value == 4) return 'recusado';
 });
+Vue.filter('status_tag', function (value) {
+    if (value === 1) return 'Em análise';
+    else if (value === 2) return 'Em produção';
+    else if (value === 3) return 'Entregue';
+    else if (value === 4) return 'Recusado';
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
