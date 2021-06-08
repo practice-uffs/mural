@@ -60,7 +60,7 @@ class ServiceController extends Controller
             'specification_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'delivery_date' => 'nullable'
+            'delivery_date' => 'required'
         ]);
 
         $data['hidden'] = false;
@@ -104,7 +104,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'specification_id' => 'required',
             'description' => 'required',
-            'delivery_date' => 'nullable'
+            'delivery_date' => 'required'
         ]);
 
         $item = Item::find($id);

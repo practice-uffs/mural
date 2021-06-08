@@ -5,7 +5,7 @@
             <div class="w-100">
                 <div class="col-sm-12 p-3 text-start w-100">
                     <p class="title mb-1"><strong>{{service.title}}</strong></p>
-                    <p>{{service.description.substring(0,150)}} <i v-if="service.description.length > 150">...</i></p>
+                    <p>{{service.description.substring(0,150)}}<i v-if="service.description.length > 150">...</i></p>
                     <p class="text-muted"><small>Solicitado por: {{service.user}}</small></p>
                 </div>
 
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="col-12 text-end text-muted p-3 d-flex justify-content-between align-items-center">
-                    <a :href="service.github_issue_link">
+                    <a :href="service.github_issue_link" target="_blank">
                         <img class="github-icon"
                             :class="{'inactive':!service.github_issue_link}"
                             :src="'/img/GitHub-Mark-64px.png'"

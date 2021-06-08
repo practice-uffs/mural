@@ -1,6 +1,6 @@
 <template>
           <form @submit.prevent="create" class="mb-3">
-            <div class="form-group my-3 is-invalid">
+            <div class="form-group my-3">
                 <label for="title">Título</label>
                 <input type="text" class="form-control"
                        id="title" placeholder="Exemplo: Audio para exercício da aula de Espanhol I"
@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="delivery_date">Data de Entrega</label>
                 <input type="date" class="form-control"
-                       id="delivery_date" style="width:auto;" v-model="delivery_date" :min="min_date">
+                       id="delivery_date" style="width:auto;" v-model="delivery_date" :min="min_date" required>
                 <small><span class="helper-text text-muted">
                     Prazo mínimo de 10 dias.
                 </span></small>
@@ -161,9 +161,7 @@ export default {
             }
         },
         checkDeliveryDate(){
-            if(new Date(this.delivery_date) < new Date(this.min_date)){
-                console.log("é menor");
-
+            if(new Date(this.delivery_date) < new Date(this.min_date) || !this.delivery_date){
                 return false;
             }
             return true;

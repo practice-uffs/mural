@@ -5,7 +5,7 @@
             <div class="w-100">
                 <div class="col-sm-12 p-3 text-start w-100">
                     <p class="title mb-1"><strong>{{service.title}}</strong></p>
-                    <p>{{service.description.substring(0,150)}} <i v-if="service.description.length > 150">...</i></p>
+                    <p>{{service.description.substring(0,150)}}<i v-if="service.description.length > 150">...</i></p>
                 </div>
 
                 <div class="p-1 w-100">
