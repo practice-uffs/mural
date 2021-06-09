@@ -48,9 +48,8 @@
                     </a>
                 </div>
             </div>
-
             <div class="col-12 text-end text-muted "> 
-                <small><i class="bi bi-alarm"></i> última atualização {{service.updated_at | prettyDate}}</small>
+                <small><i class="bi bi-alarm"></i> última atualização {{service.updated_at | prettyDate}}<br><div v-if="comments[comments.length -1]"> realizada por {{comments[comments.length -1].user | capitalize}} </div></small>
             </div>
 
         </div>
@@ -61,8 +60,26 @@
 <script>
 export default {
     name:'Services',
-    props:['service'],
-
+    props:['service','token'],  
+    data() {
+        return {
+            comments: [],
+            userComment: '',
+        }
+    },
+    methods: {
+        async fetchComments() {
+            let { data } = await window.axios.get(`/api/service/${this.service.id}/comments`,{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
+            });
+            this.comments = data.data;
+        },
+    },
+    created() {
+        this.fetchComments();
+    },
 }
 </script>
 
