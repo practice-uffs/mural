@@ -29,10 +29,10 @@
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/tailwind/tailwind.css') }}" rel="stylesheet">
  
           <!-- Template Main CSS File -->
-          <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/theme.css') }}" rel="stylesheet">          
         
           <!-- =======================================================
           * Template Name: FlexStart - v1.0.0

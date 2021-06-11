@@ -27,7 +27,7 @@
         
 
           <!-- Template Main CSS File -->
-          <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
           <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
     </head>
