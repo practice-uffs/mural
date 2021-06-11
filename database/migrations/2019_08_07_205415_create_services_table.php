@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpecificationsTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateSpecificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('specifications', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('img')->nullable();
-            $table->text('title')->nullable();
+            $table->text('name')->nullable();
             $table->text('description')->nullable();
             $table->integer('deadline')->nullable();
             $table->text('example')->nullable();
             $table->boolean('available')->nullable();
+            $table->boolean('active');
             $table->timestamps();
 
-            $table->foreignId('category_id')->nullable();
-
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id');
         });
     }
 
@@ -36,6 +35,6 @@ class CreateSpecificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specifications');
+        Schema::dropIfExists('services');
     }
 }

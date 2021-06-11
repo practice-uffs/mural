@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWhiteboardsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateWhiteboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('whiteboards', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('hash');
-            $table->string('name');
-            $table->foreignId('user_id');
-            $table->text('data');
+            $table->text('content');
+            $table->string('type')->nullable();
+            $table->string('type_data')->nullable();
+            $table->boolean('hidden')->default(false);
             $table->timestamps();
 
-            $table->index('user_id');
-
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id');
+            $table->foreignId('order_id');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateWhiteboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whiteboards');
+        Schema::dropIfExists('comments');
     }
 }
