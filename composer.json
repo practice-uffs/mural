@@ -23,6 +23,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
+        "livewire/livewire": "^2.4",
         "mydnic/laravel-subscribers": "^1.7",
         "paragonie/paseto": "^1.0.3",
         "symfony/yaml": "^5.1",

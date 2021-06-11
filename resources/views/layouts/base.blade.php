@@ -40,6 +40,7 @@
           * Author: BootstrapMade.com
           * License: https://bootstrapmade.com/license/
           ======================================================== -->
+          @livewireStyles
     </head>
     <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
         
@@ -64,6 +65,7 @@
         <!-- Template Main JS File -->
         <!-- Vue JS File -->
         <script src="{{ asset('js/app.js') }}"></script>
+        @livewireScripts
     </body>
     <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('js/main.js')}}"></script> 
