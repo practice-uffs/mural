@@ -21,7 +21,7 @@ class CreateServicesTable extends Migration
             $table->integer('deadline')->nullable();
             $table->text('example')->nullable();
             $table->boolean('available')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(true);
             $table->timestamps();
 
             $table->foreignId('category_id');

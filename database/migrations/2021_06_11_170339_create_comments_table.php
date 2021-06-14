@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('content');
             $table->string('type')->nullable();
-            $table->string('type_data')->nullable();
+            $table->string('data')->nullable();
             $table->boolean('hidden')->default(false);
             $table->timestamps();
 

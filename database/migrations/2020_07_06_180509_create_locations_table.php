@@ -18,6 +18,7 @@ class CreateLocationsTable extends Migration
             $table->string('name', 250);
             $table->string('slug', 60)->unique();
             $table->text('description')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
