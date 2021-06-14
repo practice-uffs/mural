@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->text('img')->nullable();
             $table->text('name')->nullable();
             $table->text('description')->nullable();
-            $table->integer('deadline')->nullable();
+            $table->integer('work_days')->nullable();
             $table->text('example')->nullable();
             $table->boolean('available')->nullable();
             $table->boolean('active')->default(true);

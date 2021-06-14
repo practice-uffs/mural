@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('status')->index();
+            $table->string('status')->index()->nullable();
             $table->string('title');
             $table->text('description');
             $table->string('data')->nullable();
             $table->text('github_issue_link')->unique()->nullable();
-            $table->date('requested_due_date');
+            $table->date('requested_due_date')->nullable();
             $table->boolean('closed')->default(true);
             $table->timestamps();
 
