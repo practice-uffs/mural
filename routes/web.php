@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\App;
 */
 if (App::environment('local')) {
     Route::get('/test', 'TestController@index');
+    Route::get('/order', [OrderController::class, 'index']);
 }
 
 // Index
