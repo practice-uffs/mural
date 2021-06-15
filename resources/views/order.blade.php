@@ -24,5 +24,8 @@
     </div>
   </section><!-- End Hero -->
 
-  @livewire('order.collection')
+    @livewire('crud.main', [
+        'model' => 'App\Model\Order',
+        'show_create_panel' => true
+    ])
 @endsection
