@@ -5,37 +5,46 @@ namespace App\Http\Livewire\Crud;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
+/**
+ * 
+ */
 class Main extends Component
 {
+    public static string $modelCrudPropertyName = 'crud';
+
     public Collection $items;
     public array $data = [];
-    public array $fields = []; // see __constructor
-    public array $editing = [];
+    public array $fields = []; // see mount()
+    public $editing = null;
     
     public bool $show_create_panel = true;
     public bool $show_list = true;
 
-    public string $model = ''; // Ex. '\App\Model\Order'
+    public string $model = ''; // E.g. '\App\Model\Order'
 
-    public function fields()
+    protected function fields()
     {
-        return [
-            'title' => [
-                'label' => 'Título',
-                'placeholder' => 'titleplace',
-                'validation' => 'required|min:5',
-                'column' => true
-            ],
-            'description' => [
-                'label' => 'Descrição',
-                'placeholder' => 'descriptionplace',
-                'column' => true
-            ],
-        ];
+        if (empty($this->model)) {
+            return [];
+        }
+
+        $crudPropertyName = self::$modelCrudPropertyName;
+        $modelCrudInfo = $this->model::$$crudPropertyName;
+
+        if (!is_array($modelCrudInfo)) {
+            return [];
+        }
+
+        if(isset($modelCrudInfo['fields'])) {
+            return $modelCrudInfo['fields'];
+        }
+
+        return [];
     }
 
-    public function __construct()
+    public function mount($model = '')
     {
+        $this->model = $model;
         $this->fields = $this->createPublicFieldsProperty();
     }
 
@@ -56,7 +65,7 @@ class Main extends Component
     protected function createPublicFieldsProperty()
     {
         if (count($this->fields()) == 0) {
-            return;
+            return [];
         }
 
         $fields = [];

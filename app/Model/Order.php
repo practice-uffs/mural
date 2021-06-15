@@ -27,4 +27,25 @@ class Order extends Model
         'location_id',
         'service_id',
     ];
+
+    /**
+     * Meta information about Livewire crud crud
+     *
+     * @var array
+     */
+    public static $crud = [
+        'fields' => [
+            'title' => [
+                'label' => 'Título oi oi',
+                'placeholder' => 'Ex.: meu título lindo',
+                'validation' => 'required|min:5',
+                'list_column' => true
+            ],
+            'description' => [
+                'label' => 'Descrição',
+                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'list_column' => false
+            ],
+        ]
+    ];
 }

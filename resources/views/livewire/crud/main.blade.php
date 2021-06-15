@@ -9,7 +9,9 @@
                 <tr>
                     <th>ID</th>
                     @foreach ($fields as $key => $field)
-                        <th>{{ $field['label'] }}</th>
+                        @unless ($field['list_column'] == false)
+                            <th>{{ $field['label'] }}</th>
+                        @endunless
                     @endforeach
                     <th></th>
                 </tr>
@@ -19,7 +21,9 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     @foreach ($fields as $key => $field)
-                        <td>{{ $item[$field['property']] }}</td>
+                        @unless ($field['list_column'] == false)
+                            <td>{{ $item[$field['property']] }}</td>
+                        @endunless
                     @endforeach
                     <td>
                         <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> | 
