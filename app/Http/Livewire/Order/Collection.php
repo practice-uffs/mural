@@ -9,19 +9,57 @@ class Collection extends Component
 {
     public $items;
     public $data = [];
+    public $fields = []; // see __constructor
     public $show_change_modal = false;
 
-    public $fields = [
-        'title' => 'hi',
-        'description' => 'ds'
-    ];
-
-    public function rules()
+    public function fields()
     {
         return [
-            'data.title' => 'required|min:5',
-            'data.description' => 'required'
+            'title' => [
+                'label' => 'Título',
+                'placeholder' => 'titleplace',
+                'validation' => 'required|min:5'
+            ],
+            'description' => [
+                'label' => 'Descrição',
+                'placeholder' => 'descriptionplace'
+            ],
         ];
+    }
+
+    public function __construct()
+    {
+        $this->fields = $this->createPublicFieldsProperty();
+    }
+
+    protected function rules()
+    {
+        $rules = [];
+
+        foreach ($this->fields() as $key => $info) {
+            if (isset($info['validation'])) {
+                $key = 'data.' . $key;
+                $rules[$key] = $info['validation'];
+            }
+        }
+
+        return $rules;
+    }
+
+    protected function createPublicFieldsProperty()
+    {
+        if (count($this->fields()) == 0) {
+            return;
+        }
+
+        $fields = [];
+
+        foreach($this->fields() as $expectedKey => $info) {
+            $key = 'data.' . $expectedKey;
+            $fields[$key] = $info;
+        }
+
+        return $fields;
     }
 
     public function render()

@@ -1,11 +1,9 @@
 <div>
-    <input type="hidden" wire:model="selected_id">
-    
     @foreach ($fields as $key => $field)
         <div class="form-group">
-            <label for="{{ $key }}">Enter Name</label>
-            <input wire:model="data.{{ $key }}" type="text" name="{{ $key }}" placeholder="Name" class="form-control input-sm" />
-            @error('data.title') <span class="error">{{ $message }}</span> @enderror
+            <label for="{{ $key }}">{{ $field['label'] }}</label>
+            <input wire:model="{{ $key }}" type="text" name="{{ $key }}" placeholder="{{ $field['placeholder'] }}" class="form-control input-sm" />
+            @error($key) <span class="error">{{ $message }}</span> @enderror
         </div>
     @endforeach
 
