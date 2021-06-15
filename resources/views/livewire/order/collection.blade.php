@@ -14,9 +14,9 @@
     @endif
 
     @if($updateMode)
-        @include('livewire.update')
+        @include('livewire.order.update')
     @else
-        @include('livewire.create')
+        @include('livewire.order.create')
     @endif
 
     <table class="table table-striped" style="margin-top:20px;">

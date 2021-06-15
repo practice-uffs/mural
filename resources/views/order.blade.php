@@ -24,5 +24,5 @@
     </div>
   </section><!-- End Hero -->
 
-  @livewire('order')
+  @livewire('order.collection')
 @endsection
