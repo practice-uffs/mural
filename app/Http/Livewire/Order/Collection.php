@@ -9,7 +9,6 @@ class Collection extends Component
 {
     public $items;
     public $data = [];
-    public $selected_id;
     public $show_change_modal = false;
 
     public $fields = [
@@ -17,10 +16,13 @@ class Collection extends Component
         'description' => 'ds'
     ];
 
-    protected $rules = [
-        'data.title' => 'required|min:5',
-        'data.description' => 'required'
-    ];
+    public function rules()
+    {
+        return [
+            'data.title' => 'required|min:5',
+            'data.description' => 'required'
+        ];
+    }
 
     public function render()
     {
@@ -37,10 +39,10 @@ class Collection extends Component
     {
         $this->validate();
 
-        Order::create([
-            'title' => $this->data['title'],
-            'description' => $this->data['description']
-        ]);
+        $values = collect($this->data)->toArray();
+        unset($values['id']);
+
+        Order::create($this->data);
 
         $this->resetInput();
     }
@@ -52,36 +54,36 @@ class Collection extends Component
 
     public function edit($id)
     {
-        $record = Order::findOrFail($id);
-
-        $this->selected_id = $id;
-        $this->data['title'] = $record->title;
-        $this->data['description'] = $record->description;
-        
+        $this->data = Order::findOrFail($id)->toArray();
         $this->showChangeModal(true);
     }
 
-    public function update($id)
+    public function update($id = '')
     {
         $this->validate();
 
-        if ($this->selected_id) {
-            $record = Order::find($this->selected_id);
-            $record->update([
-                'title' => $this->data['title'],
-                'description' => $this->data['description']
-            ]);
+        $id = empty($id) ? @$this->data['id'] : $id;
 
-            $this->resetInput();
-            $this->showChangeModal(false);
+        if (!$id) {
+            // TODO: fail?
+            return;
         }
+
+        $id = $this->data['id'];
+        $item = Order::findOrFail($id);
+        $item->update($this->data);
+
+        $this->resetInput();
+        $this->showChangeModal(false);
     }
 
     public function destroy($id)
     {
-        if ($id) {
-            $record = Order::where('id', $id);
-            $record->delete();
+        if (!$id) {
+            return;
         }
+
+        $item = Order::findOrFail($id);
+        $item->delete();        
     }
 }

@@ -13,8 +13,6 @@
         </div>
     @endif
 
-    @include('livewire.order.change')
-
     @if ($show_change_modal)
         @include('livewire.order.change')
     @endif
@@ -29,7 +27,7 @@
 
         @foreach($items as $item)
             <tr>
-                <td>{{$loop->index + 1}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->description}}</td>
                 <td>
