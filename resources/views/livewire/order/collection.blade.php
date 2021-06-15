@@ -13,10 +13,10 @@
         </div>
     @endif
 
-    @if($updateMode)
-        @include('livewire.order.update')
-    @else
-        @include('livewire.order.create')
+    @include('livewire.order.change')
+
+    @if ($show_change_modal)
+        @include('livewire.order.change')
     @endif
 
     <table class="table table-striped" style="margin-top:20px;">
@@ -27,14 +27,14 @@
             <td>ACTION</td>
         </tr>
 
-        @foreach($data as $row)
+        @foreach($items as $item)
             <tr>
                 <td>{{$loop->index + 1}}</td>
-                <td>{{$row->title}}</td>
-                <td>{{$row->description}}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->description}}</td>
                 <td>
-                    <button wire:click="edit({{$row->id}})" class="btn btn-sm btn-outline-danger py-0">Edit</button> | 
-                    <button wire:click="destroy({{$row->id}})" class="btn btn-sm btn-outline-danger py-0">Delete</button>
+                    <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline-danger py-0">Edit</button> | 
+                    <button wire:click="destroy({{$item->id}})" class="btn btn-sm btn-outline-danger py-0">Delete</button>
                 </td>
             </tr>
         @endforeach
