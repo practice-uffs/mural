@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" data-theme="light">
     <head>
         <meta charset="utf-8">
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,8 +31,8 @@
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
  
           <!-- Template Main CSS File -->
-          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
           <link href="{{ asset('css/theme.css') }}" rel="stylesheet">          
+          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
           <!-- =======================================================
           * Template Name: FlexStart - v1.0.0
@@ -42,11 +42,11 @@
           ======================================================== -->
           @livewireStyles
     </head>
-    <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+    <body data-bs-spy="scroll" data-bs-target="#navbar">
         
         @include('layouts.header')
         
-        <div id="app">
+        <div class="pt-16">
             @yield('content')
         </div>
         

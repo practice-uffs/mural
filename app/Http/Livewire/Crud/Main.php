@@ -2,20 +2,20 @@
 
 namespace App\Http\Livewire\Crud;
 
-use App\Model\Order;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class Main extends Component
 {
-    public $items;
-    public $data = [];
-    public $fields = []; // see __constructor
-    public $editing = [];
+    public Collection $items;
+    public array $data = [];
+    public array $fields = []; // see __constructor
+    public array $editing = [];
     
-    public $show_create_panel = false;
+    public bool $show_create_panel = true;
+    public bool $show_list = true;
 
-    public $model = '';
-
+    public string $model = ''; // Ex. '\App\Model\Order'
 
     public function fields()
     {
