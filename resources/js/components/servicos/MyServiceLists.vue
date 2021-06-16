@@ -19,14 +19,14 @@
     <div class="row container">
         <MyServices
             v-for="concluido in concluidos" :key="concluido.id"
-                v-bind:service="concluido"/>
+            v-bind:service="concluido"/>
     </div>
 
     <h2 class="my-3">Serviços solicitados recusados</h2>
     <div class="row container">
         <MyServices
             v-for="recusado in recusados" :key="recusado.id"
-                v-bind:service="recusado"/>
+            v-bind:service="recusado"/>
     </div>
 
     </div>

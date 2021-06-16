@@ -1,20 +1,37 @@
 <template>
     <div>
-        <h6>Comentários ({{ comments.length }})</h6>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h6>Comentários ({{ comments.length }})</h6>
+            </div>
+            
+            <div v-if="comments[comments.length -1]">
+                <small>última atualização {{comments[comments.length -1].date | prettyDate}} realizada por {{comments[comments.length -1].user | capitalize}}</small>
+            </div>
+        </div>
         <div v-if="comments">
-        <div class="form-group p-3 card" v-bind="comment"
-            v-for="comment in comments" :key="comment.id">
-            <label><strong>{{ comment.user | capitalize }}</strong></label>
-            <p>{{comment.text}}</p>
-            <small class="text-end" >{{comment.date | prettyDate}}</small>
+            <div class="form-group p-3 card" v-bind="comment"
+                v-for="comment in comments" :key="comment.id">
+                <div class="d-flex justify-content-between">
+                    <label><strong>{{ comment.user | capitalize }}</strong></label>
+                    <div class="dropdown" v-if="user.id == comment.user_id">
+                        <button class="btn btn-sm" type="button" :id="'dropdownMenuButton-'+comment.id" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ri-more-2-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton-'+comment.id">
+                            <a class="dropdown-item" @click="deleteComment(comment.id)">Excluir</a>
+                        </ul>
+                    </div>
+                </div>
+                <p style="white-space:pre-wrap">{{comment.text}}</p>
+                <small class="text-end" >{{comment.date | prettyDate}}</small>
+            </div>
         </div>
         <!-- <reaction-list
             :user-id="userId"
             :item-id="comment.id"
         >
         </reaction-list> -->
-
-        </div>
         <form @submit.prevent="createComment" class="card p-4">
             <h6> Adicionar um Comentários</h6>
             <textarea id="userComment"  name="userComment"
@@ -61,11 +78,11 @@ export default {
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
                 });
-                if(response.data != 201){
-                    this.handleError(JSON.stringify(response.data));
+                if(response.status != 201){
+                    this.handleError("Falha no envio do Comentário", JSON.stringify(response.data));
                 }else{
-                    this.handleSuccess();
-                    data.id = data.id?(this.comments[this.comments.length-1].id) + 2:0;
+                    this.handleSuccess("realizado");
+                    data.id = data.id?(this.comments[this.comments.length-1].id) + 2:response.data.id;
                     data.date = new Date().toISOString()
                     data.text = data.text.replaceAll("#cliente","")
                     this.comments.push(data);
@@ -73,11 +90,32 @@ export default {
                 }
             }
             catch(err) {
-                this.handleError(err);
+                this.handleError("Falha no envio do Comentário", err);
             }
         },
 
-        handleError(err){
+        async deleteComment(commentId){
+            try {
+                let response = await window.axios.delete(`/api/service/${this.itemId}/comments/${commentId}`, {
+                    headers:{
+                        'Authorization': `Bearer ${this.token.access_token}`
+                    }, 
+                });
+                
+                if(response.status != 204){
+                    this.handleError("Falha na exclusão do Comentário", JSON.stringify(response.data));
+                } else {
+                    this.handleSuccess("excluido");
+                    this.comments = this.comments.filter((comment) =>{
+                        return comment.id != commentId;
+                    });                
+                }
+            } catch(err) {
+                this.handleError("Falha na exclusão do Comentário", JSON.stringify(response.data));
+            }
+        },
+
+        handleError(msg, err){
             const Toast = Swal.mixin({
                     toast: true,
                     position: 'center',
@@ -92,11 +130,11 @@ export default {
 
                 Toast.fire({
                     icon: 'error',
-                    title: `Falha no envio do Comentário,\n${err}\n por favor tente mais tarde!!`,
+                    title: `${msg},\n${err}\n por favor tente mais tarde!!`,
                 })
         },
 
-        handleSuccess(){
+        handleSuccess(action){
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'center',
@@ -111,7 +149,7 @@ export default {
 
                 Toast.fire({
                     icon: 'success',
-                    title: 'Comentário realizado com sucesso!!'
+                    title: `Comentário ${action} com sucesso!!`
                 })
             
         },

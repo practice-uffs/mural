@@ -12,6 +12,7 @@ class AuthController extends Controller
 {
     const ADMIN_USERS = [
         'alessandra.pedrotti',
+        'alisson.peloso',
         'ana.silveira',
         'andrew.silva',
         'amanda.bisognin',
@@ -19,6 +20,7 @@ class AuthController extends Controller
         'cleisson.raimundi',
         'estela.boas',
         'gessicazanon',
+        'guilherme.graeff',
         'isabeli.reik',
         'jean.hilger',
         'junior.ramisch',
@@ -31,6 +33,7 @@ class AuthController extends Controller
         'pedro.maximowski',
         'raphael.santos',
         'robison.silva',
+        'stefani.meneghetti',
         'taynara.christmann',
         'thalia.friedrich',
         'vinicius.alves',
