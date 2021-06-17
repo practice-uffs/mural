@@ -27,7 +27,17 @@
                         <td>{{$item->id}}</td>
                         @foreach ($fields as $key => $field)
                             @unless ($field['list_column'] == false)
-                                <td>{{ $item[$field['property']] }}</td>
+                                <td>
+                                    @switch(@$field['type'])
+                                    @case('boolean')
+                                        <div class="badge @if ($item[$field['property']]) badge-accent @endif badge-outline">
+                                            @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
+                                        </div>
+                                        @break
+                                    @default
+                                        {{ $item[$field['property']] }}
+                                    @endswitch
+                                </td>
                             @endunless
                         @endforeach
                         <td>
