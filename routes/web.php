@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -30,6 +32,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/inicial', [HomeController::class, 'index'])->name('home');
     Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos/acompanhar','ServiceController@acompanhar')->name('servicos/acompanhar');
     Route::get('/servicos/solicitar','ServiceController@solicitar')->name('servicos/solicitar');
@@ -39,4 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Admin
     Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
+    
+    // TODO: adicionar para check.admin
+    Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.places');
 });

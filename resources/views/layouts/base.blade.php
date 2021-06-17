@@ -46,7 +46,7 @@
         
         @include('layouts.header')
         
-        <div class="pt-16">
+        <div class="pt-16 container-lg">
             @yield('content')
         </div>
         
