@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Crud;
 
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 /**
  * 
  */
 class Main extends Component
 {
+    use WithFileUploads;
+
     public static string $modelTypeString = 'model:';
     public static string $modelCrudPropertyName = 'crud';
 
@@ -17,7 +20,8 @@ class Main extends Component
     public array $data = [];
     public array $fields = []; // see mount()
     public $editing = null;
-    
+    public $file;
+
     public bool $show_create_panel = true;
     public bool $show_list = true;
 
@@ -189,6 +193,7 @@ class Main extends Component
         unset($values['id']);
 
         $this->model::create($this->data);
+        $this->file->store('photos');
 
         $this->resetInput();
     }

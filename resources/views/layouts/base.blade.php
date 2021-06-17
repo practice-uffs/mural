@@ -63,8 +63,9 @@
         <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
         
         <!-- Template Main JS File -->
-        <!-- Vue JS File -->
         <script src="{{ asset('js/app.js') }}"></script>
+
+        @yield('scripts')
         @livewireScripts
     </body>
     <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
