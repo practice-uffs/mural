@@ -15,11 +15,11 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('img')->nullable();
             $table->text('name')->nullable();
             $table->text('description')->nullable();
+            $table->text('img')->nullable();
             $table->integer('work_days')->nullable();
-            $table->text('example')->nullable();
+            $table->text('notice')->nullable();
             $table->boolean('is_available')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

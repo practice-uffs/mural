@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +45,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
     
     // TODO: adicionar para check.admin
-    Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.places');
+    Route::get('/gerenciar/servicos', [ServiceController::class, 'index'])->name('admin.service');
+    Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
 });

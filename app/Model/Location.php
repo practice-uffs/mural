@@ -39,24 +39,28 @@ class Location extends Model
         'fields' => [
             'name' => [
                 'label' => 'Nome',
-                'placeholder' => 'Ex.: meu título lindo',
+                'placeholder' => 'Ex.: Campus Chapecó',
                 'validation' => 'required|min:5',
                 'list_column' => true
             ],
             'slug' => [
                 'label' => 'slug',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'placeholder' => 'Ex.: CH',
                 'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'placeholder' => 'Ex.: uma breve descrição desse local',
                 'list_column' => true
             ],
             'is_active' => [
                 'type' => 'boolean',
-                'label' => 'is_active',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'value_as_text' => [
+                    'Inativo',
+                    'Ativo',
+                ],
+                'label' => 'Ativo',
+                'placeholder' => 'Se esse local deve aparecer em nossos formulários.',
                 'list_column' => true
             ],            
         ]

@@ -18,7 +18,8 @@
                             <!-- <a href="{{ route('admin') }}" class="nav-link @if (Route::is('admin')) active @endif" >Admin</a>-->
                             <div tabindex="0" class="m-1 btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div> 
                             <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                                <li><a href="{{ route('admin.places') }}">Lugares</a></li> 
+                                <li><a href="{{ route('admin.service') }}">Serviços</a></li> 
+                                <li><a href="{{ route('admin.location') }}">Locais</a></li> 
                             </ul>
                         </li>
                     {{--@endif--}}
