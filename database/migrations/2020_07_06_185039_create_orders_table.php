@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('data')->nullable();
             $table->text('github_issue_link')->unique()->nullable();
             $table->date('requested_due_date')->nullable();
-            $table->boolean('closed')->default(true);
+            $table->boolean('is_closed')->default(true);
             $table->timestamps();
 
             $table->foreignId('user_id');

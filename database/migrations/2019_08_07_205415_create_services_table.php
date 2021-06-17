@@ -20,8 +20,8 @@ class CreateServicesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('work_days')->nullable();
             $table->text('example')->nullable();
-            $table->boolean('available')->nullable();
-            $table->boolean('active')->default(true);
+            $table->boolean('is_available')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
 
             $table->foreignId('category_id');

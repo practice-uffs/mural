@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text('content');
             $table->string('type')->nullable();
             $table->string('data')->nullable();
-            $table->boolean('hidden')->default(false);
+            $table->boolean('is_hidden')->default(false);
             $table->timestamps();
 
             $table->foreignId('user_id');
