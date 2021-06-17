@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Model;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'notice',
+        'is_active'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    /**
+     * Meta information about Livewire crud crud
+     *
+     * @var array
+     */
+    public static $crud = [
+        'fields' => [
+            'name' => [
+                'label' => 'Nome',
+                'placeholder' => 'Ex.: Evento',
+                'validation' => 'required',
+                'list_column' => true
+            ],
+            'slug' => [
+                'label' => 'Abreviação (sem acentos ou espaços)',
+                'placeholder' => 'Ex.: evento',
+                'list_column' => true
+            ],
+            'description' => [
+                'label' => 'Descrição',
+                'placeholder' => 'Ex.: uma breve descrição dessa categoria',
+                'list_column' => true
+            ],
+            'notice' => [
+                'label' => 'Aviso',
+                'placeholder' => 'Ex.: Há muitas solicitações de serviço nessa categoria, o tempo de resposta pode ser mais longo.',
+                'list_column' => false
+            ],
+            'is_active' => [
+                'type' => 'boolean',
+                'value_as_text' => [
+                    'Inativa',
+                    'Ativa',
+                ],
+                'label' => 'Ativa',
+                'placeholder' => 'Se essa categoria deve aparecer em nossos formulários.',
+                'list_column' => true
+            ],            
+        ]
+    ];
+}

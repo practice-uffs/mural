@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\HomeController;
@@ -34,7 +35,6 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/inicial', [HomeController::class, 'index'])->name('home');
-    Route::get('/lousas','LousaController@index')->name('lousas');
     Route::get('/servicos/acompanhar','ServiceController@acompanhar')->name('servicos/acompanhar');
     Route::get('/servicos/solicitar','ServiceController@solicitar')->name('servicos/solicitar');
     Route::resource('/servico', 'ItemController')->except(['create', 'store','update']);
@@ -47,4 +47,5 @@ Route::group(['middleware' => ['auth']], function () {
     // TODO: adicionar para check.admin
     Route::get('/gerenciar/servicos', [ServiceController::class, 'index'])->name('admin.service');
     Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
+    Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
 });

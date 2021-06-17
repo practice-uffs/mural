@@ -46,7 +46,7 @@ class Service extends Model
             'category_id' => [
                 'label' => 'Categoria',
                 'validation' => 'required',
-                'type' => 'model:\App\Model\Location',
+                'type' => 'model:\App\Model\Category',
                 'list_column' => true
             ],
             'name' => [
@@ -61,8 +61,8 @@ class Service extends Model
                 'list_column' => true
             ],
             'work_days' => [
-                'label' => 'Dias úteis estimados para concluir essa tabela',
-                'placeholder' => 'Ex.: uma breve descrição desse local',
+                'label' => 'Dias úteis',
+                'placeholder' => 'Ex.: 10',
                 'list_column' => true
             ],            
             'notice' => [
@@ -76,7 +76,7 @@ class Service extends Model
                     'Indisponível',
                     'Disponível',
                 ],
-                'label' => 'Disponibilidade',
+                'label' => 'Disponível',
                 'placeholder' => 'Se esse serviço está disponível para solicitação de clientes.',
                 'list_column' => true
             ],
