@@ -27,7 +27,7 @@ class CreateItemsTable extends Migration
             $table->string('title', 200)->default('');
             $table->text('description')->nullable();
             $table->boolean('hidden')->default(false);
-            $table->text('github_issue_link')->nullable();
+            $table->text('github_issue_link')->nullable()->index();
             $table->timestamps();
 
             $table->index('user_id');
