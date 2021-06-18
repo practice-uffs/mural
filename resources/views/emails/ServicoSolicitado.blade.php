@@ -1,0 +1,2 @@
+Olá {{$user->name ?? 'Cliente Practice'}}! 
+Informo que nossa equipe tem até 48h para responder a sua solicitação. Peço que fique atento, pois após receber essa resposta você terá 72h úteis para retornar a solicitação e responder, caso contrário a mesma será finalizada
