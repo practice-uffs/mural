@@ -85,8 +85,26 @@
 <script>
 export default {
     name:'Services',
-    props:['service'],
-
+    props:['service','token'],  
+    data() {
+        return {
+            comments: [],
+            userComment: '',
+        }
+    },
+    methods: {
+        async fetchComments() {
+            let { data } = await window.axios.get(`/api/service/${this.service.id}/comments`,{
+                headers:{
+                    'Authorization': `Bearer ${this.token.access_token}`
+                },
+            });
+            this.comments = data.data;
+        },
+    },
+    created() {
+        this.fetchComments();
+    },
 }
 </script>
 

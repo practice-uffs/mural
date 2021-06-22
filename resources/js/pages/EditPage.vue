@@ -229,7 +229,7 @@ export default {
                     icon: 'success',
                     title: 'Serviço Editado com sucesso!!'
                 }).then(function(){
-                    location.href = '/servicos/acompanhar';
+                    location.href = document.referrer;
                 })
 
         },
