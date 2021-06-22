@@ -37,11 +37,11 @@ class ServiceController extends Controller
 
         if ($user -> isAdmin()) {
             $items = SELF::getServicesForAdminUser();
-        
+
         } else {
             $items = SELF::getServicesForNormalUser($user -> id);
         }
-        
+
         return ServiceResource::collection($items -> paginate(10000));
     }
 
@@ -59,9 +59,10 @@ class ServiceController extends Controller
             'category_id' => 'required',
             'specification_id' => 'required',
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'delivery_date' => 'required'
         ]);
-        
+
         $data['hidden'] = false;
         $data['type'] = Item::TYPE_SERVICE;
         $data['status'] = Item::STATUS_WAITING;
@@ -102,7 +103,8 @@ class ServiceController extends Controller
             'category_id' => 'required',
             'title' => 'required',
             'specification_id' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'delivery_date' => 'required'
         ]);
 
         $item = Item::find($id);
@@ -114,7 +116,8 @@ class ServiceController extends Controller
         $item->title = $request->get('title');
         $item->description = $request->get('description');
         $item->github_issue_link = $request->get('github_issue_link');
-        
+        $item->delivery_date = $request->get('delivery_date');
+
         $item->save();
         $item->touch();
     }

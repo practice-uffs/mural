@@ -31,24 +31,70 @@
                 </tbody>
             </table>
 
-            <div class="col-12 mt-3 row">
-                <div class="col-sm-6">
-                    <span class="material-icons col-12">grading</span>
-                    <a :href="'/servico/'+service.id+'/edit'"
-                        class="p-2"
-                    >Editar</a>
+            <div class="w-100">
+                <div class="col-sm-12 p-3 text-start w-100">
+                    <p class="title mb-1"><strong>{{service.title}}</strong></p>
+                    <p>{{service.description.substring(0,150)}}<i v-if="service.description.length > 150">...</i></p>
                 </div>
-                <div class="col-sm-6">
-                    <a :href="'/servico/'+service.id">
-                        <span class="material-icons">insert_comment</span>
-                        <p>Acompanhar</p>
-                    </a>
+
+                <div class="p-1 w-100">
+                    <div class="col-12 mb-2 d-flex justify-center align-items-stretch flex-wrap">
+                        <div class="d-flex flex-column justify-content-center item_box">
+                            <div class="p-2">
+                                <b>Id</b>
+                            </div>
+                            <div class="p-2">
+                                {{service.id}}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center item_box">
+                            <div class="p-2">
+                                <b>Categoria</b>
+                            </div>
+                            <div class="p-2">
+                                {{service.specification_id}}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center item_box">
+                            <div class="p-2">
+                                <b>Data</b>
+                            </div>
+                            <div class="p-2">
+                                {{service.created_at | formatDate}}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center item_box" v-if="service.delivery_date">
+                            <div class="p-2">
+                                <b>Data de Entrega</b>
+                            </div>
+                            <div class="p-2">
+                                {{service.delivery_date | formatDate}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-12 text-end text-muted "> 
-                <small><i class="bi bi-alarm"></i> última atualização {{service.updated_at | prettyDate}}</small>
+            <div class="w-100">
+                <div class="d-flex flex-row justify-content-center w-100 p-2">
+                    <div class="col-sm-6">
+                        <a :href="'/servico/'+service.id+'/edit'">
+                        <span class="material-icons col-12">grading</span>
+                        Editar</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a :href="'/servico/'+service.id">
+                            <span class="material-icons">insert_comment</span>
+                            <p>Acompanhar</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 text-end text-muted p-2">
+                    <small><i class="bi bi-alarm"></i> última atualização {{service.updated_at | prettyDate}}</small>
+                </div>
             </div>
+
         </div>
    </div>
 </template>
@@ -65,15 +111,16 @@ export default {
     background-color: #f0f0f0;
     border-left: 5px solid;
     border-radius: 8px;
-    padding: 30px;
+    padding: 0px, 30px;
     height: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
+    word-wrap: break-word;
 }
 .my-service:hover{
     background-color: #ededed;
@@ -114,6 +161,15 @@ a, a:hover, a:visited, a:active{
     border-color: #ff0000;
     transition: 0.3s;
 }
+.item_box{
+    flex: 1;
+    min-width: 30%;
+    min-height: 100px;
+    border: 1px solid rgba(68, 68, 68, 0.25);
+    border-radius: 8px;
+    margin: 5px;
+    word-wrap: break-word;
+}
 
 .status-tag {
     border-radius: 30px;
@@ -135,3 +191,4 @@ a, a:hover, a:visited, a:active{
     background-color: #ff000098;
 }
 </style>
+
