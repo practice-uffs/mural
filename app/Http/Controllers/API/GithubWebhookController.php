@@ -2,118 +2,74 @@
 
 namespace App\Http\Controllers\API;
 
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use App\Item;
+use App\User;
+use App\Specification;
+
+use App\Http\Resources\ItemResource;
+use App\Http\Resources\CommentResource;
+use App\Http\Resources\ServiceResource;
 
 class GithubWebhookController extends Controller
 {
-    /**
-     * Validate an incoming github webhook
-     *
-     * @param string $token Our known token that we've defined
-     * @param \Illuminate\Http\Request $request
-     *
-     * @throws \BadRequestHttpException, \UnauthorizedException
-     * @return void
-     */
-    protected function assertValidGithubWebhook($token, Request $request)
-    {
-        if (($signature = $request->headers->get('X-Hub-Signature')) == null) {
-            throw new \Exception('Signature header not set');
-        }
-
-        $signatureParts = explode('=', $signature);
-
-        if (count($signatureParts) != 2) {
-            throw new \Exception('Signature has invalid format');
-        }
-
-        $knownSignature = hash_hmac('sha1', $request->getContent(), $token);
-
-        if (! hash_equals($knownSignature, $signatureParts[1])) {
-            throw new \Exception('Could not verify request signature ' . $signatureParts[1]);
-        }
-    }
-
-    protected function readPayloadAsJson(Request $request)
-    {
-        $payload = $request->getContent();
-        $json = json_decode($payload, true);
-
-        if ($json == null) {
-            throw new \Exception('Unable to parse payload');
-        }
-
-        return $json;
-    }    
-
-    /**
-     * Entry point to our webhook handler
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return mixed
-     */
-    public function index(Request $request)
-    {
-        $secret = config('webhooks.github_webhook_secret');
+    function issueComment(Request $request){
+        $gitReturn = $request->payload;
+        $json = json_decode($gitReturn,true);
         
-        $this->assertValidGithubWebhook($secret, $request);
-
-        $event = $request->headers->get('X-GitHub-Event');        
-        $payload = $this->readPayloadAsJson($request);
-
-        if ($event == 'issue_comment') {
-            return $this->issueComment($payload);
-        }
-    }
-
-    protected function issueComment(array $payload) {
-        $action = $payload['action'];
-        $body = $payload['comment']['body'];
-
-        $clientMention = config('app.github_issue_client_mention');
-
-        if ($clientMention == null || !str_contains($body, $clientMention)) {
-            return response('Nothing interesting in this comment', 200);
+        try{
+            $service = Item::where('github_issue_link', $json["issue"]["html_url"])->first();
+        } catch(ErrorException $e){
+            return response("Array está vazia", Responde::HTTP_BAD_REQUEST);
         }
         
-        $body = str_replace($clientMention, '', $body);
-        $item = Item::where('github_issue_link', $payload['issue']['html_url'])->firstOrFail();
-
-        if ($action == 'created') {
-            $botUsername = config('app.github_bot_username');            
-            $user = $payload['comment']['user']['login'] == $botUsername ? 'Meu comentário': 'Equipe Practice';            
-            
-            $comment = Item::create([
-                'user_id' => 3, // TODO: usar um usuário default do sistema para postar?
-                'parent_id' => $item->id,
-                'type' => Item::TYPE_COMMENT,
-                'title' => $user,
-                'description' => $body,
-                'hidden' => false,
-                'github_issue_link' => $payload['comment']['id'],
-            ]);
-               
-            return response('Comment created', 201);
-        }  
-            
-        if ($action == 'edited'){
-            $comment = Item::where('github_issue_link', $payload['comment']['id'])->firstOrFail();
-            $comment->description = $body;
-            $comment->save();
-
-            return response('', 200);
-        }
-        
-        if ($action == 'deleted'){
-            $comment = Item::findOrFail('github_issue_link', $payload['comment']['id']);
-            $comment->delete();
-            return response('', 200);
-        }
-
-        return response('No action performed', 200);
+        if(str_contains($json["comment"]["body"],"#cliente")){
+            $json["comment"]["body"] = str_replace("#cliente","",$json["comment"]["body"]);
+            $user = strcmp($json["comment"]["user"]["login"],"PracticeUFFSBot") == 0? "Meu comentário":"Equipe Practice";
+            // CRIADO UM COMENTÁRIO
+            if($json["action"] == 'created'){
+                $comment = Item::create([
+                    'user_id' => $service->user_id,
+                    'parent_id' => $service->id,
+                    'type' => Item::TYPE_COMMENT,
+                    'title' => $user,
+                    'description' => $json["comment"]["body"],
+                    'hidden' => false,
+                    'github_issue_link' => $json["comment"]["id"],
+                    ]);
+                    
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_CREATED
+                    );
+                }  
+                
+                // EDITANDO UM COMENTÁRIO
+                if($json["action"] == 'edited'){
+                    $comment =  Item::where('github_issue_link', $json["comment"]["id"],)
+                    ->first();
+                    $comment->description = $json["comment"]["body"];
+                    $comment->save();
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_ACCEPTED
+                    );
+                }
+                
+                // DELETANDO UM COMENTÁRIO
+                if($json["action"] == 'deleted'){
+                    $comment =  Item::where('github_issue_link', $json["comment"]["id"],)
+                    ->first();
+                    $comment->delete();
+                    return response(
+                        new CommentResource($comment),
+                        Response::HTTP_OK
+                    );
+                }
+            }
     }
+
 }

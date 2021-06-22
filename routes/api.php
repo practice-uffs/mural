@@ -52,4 +52,4 @@ Route::apiResource('documents', 'API\DocumentController');
 Route::apiResource('specifications', 'API\SpecificationController')->only(['index']);
 
 // ENDPOINTS GITHUB WEBHOOK
-Route::post('webhook/github/index.php', 'API\GithubWebhookController@index');
+Route::post('webhook/github/comment', 'API\GithubWebhookController@issueComment');

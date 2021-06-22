@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\User;
-use stdClass;
-use App\Mail\Email;
 use App\Specification;
 
 use App\Http\Resources\ServiceResource;
@@ -71,13 +69,6 @@ class ServiceController extends Controller
 
         $item = Item::create($data);
 
-        $user = User::find($request->user_id);
-        $email = new stdClass();
-        $email->content = 'emails.ServicoSolicitado';
-        $email->subject = 'Nova Solicitação';
-        $mail = new Email($user,$email,$item);
-        $mail->build();
-            
         return response(
             new ServiceResource($item),
             Response::HTTP_CREATED
@@ -118,11 +109,6 @@ class ServiceController extends Controller
 
         $item = Item::find($id);
 
-        $DidChangeStatus = false;
-        if($item->status != $request->get('status')){
-            $DidChangeStatus = true;
-        }
-
         $item->location_id = $request->get('location_id');
         $item->category_id = $request->get('category_id');
         $item->specification_id = $request->get('specification_id');
@@ -134,15 +120,6 @@ class ServiceController extends Controller
 
         $item->save();
         $item->touch();
-
-        if($DidChangeStatus){
-            $user = User::find($item->user_id);
-            $email = new stdClass();
-            $email->content = 'emails.MudadoStatus';
-            $email->subject = 'Alteração de Status da Solicitação';
-            $mail = new Email($user,$email,$item);
-            $mail->build();
-        }
     }
 
     /**

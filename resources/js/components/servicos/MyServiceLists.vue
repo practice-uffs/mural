@@ -4,29 +4,29 @@
     <h2 class="my-3">Serviços solicitados aguardando aprovação</h2>
     <div class="row container">
         <MyServices
-            v-for="aguardado in aguardados" :key="aguardado.id"
+            v-for="aguardado in aguardados" :key="aguardado.id" 
             v-bind:service="aguardado"/>
     </div>
 
     <h2 class="my-3">Serviços solicitados em progresso</h2>
     <div class="row container">
         <MyServices
-            v-for="progredido in progredidos" :key="progredido.id"
+            v-for="progredido in progredidos" :key="progredido.id" 
             v-bind:service="progredido"/>
     </div>
 
     <h2 class="my-3">Serviços solicitados concluídos</h2>
     <div class="row container">
         <MyServices
-            v-for="concluido in concluidos" :key="concluido.id"
-            v-bind:service="concluido"/>
+            v-for="concluido in concluidos" :key="concluido.id" 
+                v-bind:service="concluido"/>
     </div>
 
     <h2 class="my-3">Serviços solicitados recusados</h2>
     <div class="row container">
         <MyServices
-            v-for="recusado in recusados" :key="recusado.id"
-            v-bind:service="recusado"/>
+            v-for="recusado in recusados" :key="recusado.id" 
+                v-bind:service="recusado"/>
     </div>
 
     </div>
@@ -64,16 +64,16 @@ export default {
             });
             let servicos = data.data.reverse()
             for(var i=0; i < servicos.length; i++){
-                if(servicos[i].status == 1 && servicos[i].user_id == this.user.id){
+                if(servicos[i].status == 1){
                     this.aguardados.push(servicos[i])
-                }else if(servicos[i].status == 2 && servicos[i].user_id == this.user.id){
+                }else if(servicos[i].status == 2){
                     this.progredidos.push(servicos[i])
-                }else if(servicos[i].status == 3 && servicos[i].user_id == this.user.id){
+                }else if(servicos[i].status == 3){
                     this.concluidos.push(servicos[i])
-                }else if(servicos[i].status == 4 && servicos[i].user_id == this.user.id){
+                }else if(servicos[i].status == 4){
                     this.recusados.push(servicos[i])
                 }
-
+                
             }
         },
     },
