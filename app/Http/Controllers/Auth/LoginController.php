@@ -26,6 +26,7 @@ class LoginController extends Controller
         'isabeli.reik',
         'jean.hilger',
         'junior.ramisch',
+        'lcaimi',
         'luiz.dameda',
         'luiza.tonial',
         'mariaeduarda.santos',
