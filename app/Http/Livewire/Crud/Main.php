@@ -27,6 +27,7 @@ class Main extends Component
     public bool $show_list = true;
 
     public string $model = ''; // E.g. '\App\Model\Order'
+    public array $include_create = []; // Fields to include in create operations    
 
     protected function modelCrudInfo() :array
     {
@@ -180,7 +181,7 @@ class Main extends Component
             if(is_a($item, UploadedFile::class)) {
                 // This field is a uploaded file. We need to store it
                 // in a place and save the path.
-                $path = $item->store(self::$fileUploadBucket);
+                $path = $this->storeUploadedFile($item);
                 return $path;
             } else {
                 return $item;
@@ -188,6 +189,15 @@ class Main extends Component
         })->toArray();
 
         return $values;
+    }
+
+    protected function storeUploadedFile($file) {
+        $path = $file->store(self::$fileUploadBucket);
+        return $path;
+    }
+
+    protected function prepareValuesForCreate(array $values) {
+        return array_merge($values, $this->include_create);
     }
 
     public function render()
@@ -209,6 +219,8 @@ class Main extends Component
         // Remove any defined 'id' to ensure an insert is
         // performed instead of an update 
         unset($values['id']);
+
+        $values = $this->prepareValuesForCreate($values);
 
         $this->model::create($values);
         $this->resetInput();
