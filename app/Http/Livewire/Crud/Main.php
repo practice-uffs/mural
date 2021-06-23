@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Crud;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -28,6 +29,38 @@ class Main extends Component
 
     public string $model = ''; // E.g. '\App\Model\Order'
     public array $include_create = []; // Fields to include in create operations    
+    public array $include_update = []; // Fields to include in update operations
+
+    /**
+     * 
+     * 
+     * @param array $modelCrudInfo
+     * 
+     * @return array
+     */
+    protected function prepareModelCrudInfo(array $modelCrudInfo) :array
+    {
+        return $modelCrudInfo;
+    }
+
+    /**
+     * @param array $values
+     * 
+     * @return [type]
+     */
+    protected function prepareValuesForCreate(array $values) {
+        return array_merge($values, $this->include_create);
+    }
+
+    /**
+     * @param array $values
+     * @param Model $item
+     * 
+     * @return [type]
+     */
+    protected function prepareValuesForUpdate(array $values, Model $item) {
+        return array_merge($values, $this->include_update);
+    }
 
     protected function modelCrudInfo() :array
     {
@@ -42,10 +75,10 @@ class Main extends Component
             return [];
         }
 
-        return $modelCrudInfo;
+        return $this->prepareModelCrudInfo($modelCrudInfo);
     }
 
-    protected function fields()
+    protected function fields() :array
     {
         $modelCrudInfo = $this->modelCrudInfo();
 
@@ -196,10 +229,6 @@ class Main extends Component
         return $path;
     }
 
-    protected function prepareValuesForCreate(array $values) {
-        return array_merge($values, $this->include_create);
-    }
-
     public function render()
     {
         $this->items = $this->model::all();
@@ -268,6 +297,7 @@ class Main extends Component
         $item = $this->model::findOrFail($id);
         
         $values = $this->getDataForInsertOrUpdate();
+        $values = $this->prepareValuesForUpdate($values, $item);
         $item->update($values);
 
         $this->resetInput();
