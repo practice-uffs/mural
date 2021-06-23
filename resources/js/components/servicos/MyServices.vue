@@ -1,7 +1,7 @@
 <template>
     <div class="p-1 col-sm-12 col-md-4">
         <div class="my-service text-center " :class="service.status|status_class">
-            <div class="d-flex justify-content-end col-12">
+            <div class="d-flex justify-content-end col-12 pt-3 pr-3">
                 <span v-if="!service.github_issue_link && service.status == 4"
                     class="status-tag recusado">{{service.status | status_tag}}</span>
                 <span v-if="!service.github_issue_link && service.status != 4"
