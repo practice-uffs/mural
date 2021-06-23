@@ -26,6 +26,33 @@
                     <a href="#" class="label-text-alt"></a> 
                 </label>
                 @break
+            @case('file')
+                <label class="label">
+                    <span class="label-text">{{ $field['label'] }}</span> 
+                    <a href="#" class="label-text-alt"></a>
+                </label>
+                <div
+                    wire:ignore
+                    x-data="{pond: null}"
+                    x-init="
+                        pond = FilePond.create($refs.input);
+                        pond.setOptions({
+                            allowMultiple: true,
+                            labelIdle:'{{ @$field['placeholder'] }}',
+                            labelFileProcessingComplete: 'Upload finalizado',
+                            server: {
+                                process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
+                                    @this.upload('{{ $key }}', file, load, error, progress)
+                                },
+                                revert: (filename, load) => {
+                                    @this.removeUpload('{{ $key }}', filename, load)
+                                },
+                            },
+                        });
+                ">
+                    <input type="file" name="{{ $key }}" x-ref="input">
+                </div>
+                @break
             @default
                 <label for="{{ $key }}" class="label">
                     <span class="label-text">{{ $field['label'] }}</span>
@@ -40,28 +67,6 @@
                 </label>
             @enderror
         @endforeach
-
-        <div
-            wire:ignore
-            x-data="{pond: null}"
-            x-init="
-                pond = FilePond.create($refs.input);
-                pond.setOptions({
-                    allowMultiple: true,
-                    labelIdle:'Veuillez sélectionner un fichier',
-                    labelFileProcessingComplete: 'Upload terminé',
-                    server: {
-                        process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-                            @this.upload('file', file, load, error, progress)
-                        },
-                        revert: (filename, load) => {
-                            @this.removeUpload('file', filename, load)
-                        },
-                    },
-                });
-        ">
-            <input type="file" name="file" x-ref="input">
-        </div>
     </div>
 
     @if (isset($data['id']) && !isset($create))

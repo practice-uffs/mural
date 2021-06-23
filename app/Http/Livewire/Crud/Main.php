@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Crud;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\UploadedFile;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,12 +16,12 @@ class Main extends Component
 
     public static string $modelTypeString = 'model:';
     public static string $modelCrudPropertyName = 'crud';
+    public static string $fileUploadBucket = 'crud_uploads';
 
     public Collection $items;
     public array $data = [];
     public array $fields = []; // see mount()
     public $editing = null;
-    public $file;
 
     public bool $show_create_panel = true;
     public bool $show_list = true;
@@ -174,6 +175,21 @@ class Main extends Component
         return $fields;
     }
 
+    protected function getDataForInsertOrUpdate() {
+        $values = collect($this->data)->map(function($item) {
+            if(is_a($item, UploadedFile::class)) {
+                // This field is a uploaded file. We need to store it
+                // in a place and save the path.
+                $path = $item->store(self::$fileUploadBucket);
+                return $path;
+            } else {
+                return $item;
+            }
+        })->toArray();
+
+        return $values;
+    }
+
     public function render()
     {
         $this->items = $this->model::all();
@@ -188,13 +204,13 @@ class Main extends Component
     public function store()
     {
         $this->validate();
-
-        $values = collect($this->data)->toArray();
+        $values = $this->getDataForInsertOrUpdate();
+        
+        // Remove any defined 'id' to ensure an insert is
+        // performed instead of an update 
         unset($values['id']);
 
-        $this->model::create($this->data);
-        $this->file->store('photos');
-
+        $this->model::create($values);
         $this->resetInput();
     }
 
@@ -238,7 +254,9 @@ class Main extends Component
 
         $id = $this->data['id'];
         $item = $this->model::findOrFail($id);
-        $item->update($this->data);
+        
+        $values = $this->getDataForInsertOrUpdate();
+        $item->update($values);
 
         $this->resetInput();
         $this->hideInlineEdit();
