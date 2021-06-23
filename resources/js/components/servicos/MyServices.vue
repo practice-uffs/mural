@@ -2,34 +2,13 @@
     <div class="p-1 col-sm-12 col-md-4">
         <div class="my-service text-center " :class="service.status|status_class">
             <div class="d-flex justify-content-end col-12">
-                <span v-if="!service.github_issue_link && service.status == 4" 
+                <span v-if="!service.github_issue_link && service.status == 4"
                     class="status-tag recusado">{{service.status | status_tag}}</span>
                 <span v-if="!service.github_issue_link && service.status != 4"
                     class="status-tag aguardando">{{1 | status_tag}}</span>
                 <span v-if="service.github_issue_link" class="status-tag"
                     :class="service.status|status_class">{{service.status | status_tag}}</span>
             </div>
-            <div class="col-sm-12 text-start">
-                <p><strong>{{service.title}}</strong></p>
-                <p>{{service.description.substring(0,150)+"..." }}</p>
-            </div>
-
-            <table class="col-12 mb-2">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    <th>Data</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{service.id}}</td>
-                    <td>{{service.specification_id}}</td>
-                    <td>{{service.created_at | formatDate}}</td>
-                </tr>
-                </tbody>
-            </table>
 
             <div class="w-100">
                 <div class="col-sm-12 p-3 text-start w-100">
