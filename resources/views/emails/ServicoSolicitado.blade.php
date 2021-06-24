@@ -12,7 +12,7 @@
             <div style="background-color: rgb(255, 255, 255);
                     width: 100%;
                     border-radius: 10px;">
-            <table>
+            <table style="width: 100%;">
                 <tr style="text-align: center;">
                 <th style="width: 100%"><img style="margin-top:40px;width: 225px;height: 225px;" src="{{ $message->embed('assets\img\practice\logo-icon.png') }}"></th>
                 </tr>
@@ -25,10 +25,10 @@
                                 text-align: center;
                                 color: rgb(38, 70, 83);
                                 font-size: 1.5em;">Olá {{$user->name ?? 'Cliente Practice'}},</p>  
-                        <table>
+                        <table style="width:100%">
                         <tr>
                             <th style="width: 7.5%;"></th>
-                            <th >
+                            <th style="width: 85%;">
                             <p style=" padding: 0;
                                     margin: 0;
                                     border: 0; 
@@ -70,14 +70,12 @@
                     
                     </th>   
                 </tr>
+                <tr>
+                        <th>
+                            <img style="padding: 0;margin: 0;border: 0; width:100%;" src="{{ $message->embed('assets\img\practice\barra.png') }}">
+                        </th>                  
+                    </tr>
             </table>    
-            <div style="width:100%;">
-                <img style="padding: 0;
-                        margin: 0;
-                        border: 0; 
-                        width:100%;" 
-                        src="{{ $message->embed('assets\img\practice\barra.png') }}">
-            </div>
             </div>
         </th>
         <th style="width: 5%;"></th>
