@@ -14,29 +14,25 @@
     <h2 class="mt-5">Serviços aguardando aprovação</h2>
     <div class="row container">
         <Services
-            v-for="aguardado in aguardados" :service="aguardado.id" :token="token"
-            v-bind:service="aguardado"/>
+            v-for="aguardado in aguardados" :key="aguardado.id" v-bind:token="token" v-bind:service="aguardado"/>
     </div>
 
     <h2 class="mt-5">Serviços em progresso</h2>
     <div class="row container">
         <Services
-            v-for="progredido in progredidos" :service="progredido.id" :token="token"
-            v-bind:service="progredido"/>
+            v-for="progredido in progredidos" :key="progredido.id" v-bind:token="token" v-bind:service="progredido"/>
     </div>
 
     <h2 class="mt-5">Serviços concluídos</h2>
     <div class="row container">
         <Services
-            v-for="concluido in concluidos" :service="concluido.id" :token="token"
-                v-bind:service="concluido"/>
+            v-for="concluido in concluidos" :key="concluido.id" v-bind:token="token" v-bind:service="concluido"/>
     </div>
 
     <h2 class="mt-5">Serviços recusados</h2>
     <div class="row container">
         <Services
-            v-for="recusado in recusados" :service="recusado.id" :token="token"
-                v-bind:service="recusado"/>
+            v-for="recusado in recusados" :key="recusado.id" v-bind:token="token" v-bind:service="recusado"/>
     </div>
 
 </section>
