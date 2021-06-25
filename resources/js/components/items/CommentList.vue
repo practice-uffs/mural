@@ -33,7 +33,7 @@
         >
         </reaction-list> -->
         <form @submit.prevent="createComment" class="card p-4">
-            <h6> Adicionar um Comentários</h6>
+            <h6> Adicionar Comentário</h6>
             <textarea id="userComment"  name="userComment"
                 class="form-control" v-model="userComment"
                 rows="4">
@@ -78,7 +78,7 @@ export default {
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
                 });
-                if(response.status != 201){
+                if(response.status >= 400 && response.status <= 499){
                     this.handleError("Falha no envio do Comentário", JSON.stringify(response.data));
                 }else{
                     this.handleSuccess("realizado");

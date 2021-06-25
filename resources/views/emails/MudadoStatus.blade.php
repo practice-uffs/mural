@@ -14,7 +14,7 @@
                     border-radius: 10px;">
                 <table style="width: 100%;">
                     <tr style="text-align: center;">
-                    <th style="width: 100%"><img style="margin-top:40px;width: 225px;height: 225px;" src="{{ $message->embed('assets\img\practice\logo-icon.png') }}"></th>
+                    <th style="width: 100%"><img style="margin-top:40px;width: 225px;height: 225px;" src="https://cdn.uffs.cc/practice/website/assets-email/logo-icon.png"></th>
                     </tr>
                     <tr >
                         <th style="width: 100%;text-align: center">
@@ -79,17 +79,17 @@
                     <tr style="text-align: center;">
                         <th>
                             <div style="margin-top: 50px;">
-                                <a target="_blank" href="https://www.facebook.com/practice.uffs/"><img title="Facebook" src="{{ $message->embed('assets\img\practice\facebook.png') }}" alt="Facebook" width="64" height="64" style="border:0;outline:none;"></a>
-                                <a target="_blank" href="https://github.com/orgs/practice-uffs"><img title="Github" src="{{ $message->embed('assets\img\practice\github.png') }}" alt="Youtube" width="64" height="64" style="border:0;outline:none;"></a>   
-                                <a target="_blank" href="https://www.instagram.com/practiceuffs/"><img title="Instagram" src="{{ $message->embed('assets\img\practice\instagram.png') }}" alt="Instagram" width="64" height="64" style="border:0;outline:none;"></a>
-                                <a target="_blank" href="https://twitter.com/PracticeUffs"><img title="Twitter" src="{{ $message->embed('assets\img\practice\twitter.png') }}" alt="Instagram" width="64" height="64" style="border:0;outline:none;"></a>
-                                <a target="_blank" href="https://www.youtube.com/channel/UCJZQqcpp1Zzd3eFZhpdzq9Q"><img title="Youtube" src="{{ $message->embed('assets\img\practice\youtube.png') }}" alt="Youtube" width="64" height="64" style="border:0;outline:none;"></a> 
+                                <a target="_blank" href="https://www.facebook.com/practice.uffs/"><img title="Facebook" src="https://cdn.uffs.cc/practice/website/assets-email/facebook.png" alt="Facebook" width="64" height="64" style="border:0;outline:none;"></a>
+                                <a target="_blank" href="https://github.com/orgs/practice-uffs"><img title="Github" src="https://cdn.uffs.cc/practice/website/assets-email/github.png" alt="Youtube" width="64" height="64" style="border:0;outline:none;"></a>   
+                                <a target="_blank" href="https://www.instagram.com/practiceuffs/"><img title="Instagram" src="https://cdn.uffs.cc/practice/website/assets-email/instagram.png" alt="Instagram" width="64" height="64" style="border:0;outline:none;"></a>
+                                <a target="_blank" href="https://twitter.com/PracticeUffs"><img title="Twitter" src="https://cdn.uffs.cc/practice/website/assets-email/twitter.png" alt="Instagram" width="64" height="64" style="border:0;outline:none;"></a>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCJZQqcpp1Zzd3eFZhpdzq9Q"><img title="Youtube" src="https://cdn.uffs.cc/practice/website/assets-email/youtube.png" alt="Youtube" width="64" height="64" style="border:0;outline:none;"></a> 
                             </div>
                         </th>   
                     </tr>
                     <tr>
                         <th>
-                            <img style="padding: 0;margin: 0;border: 0; width:100%;" src="{{ $message->embed('assets\img\practice\barra.png') }}">
+                            <img style="padding: 0;margin: 0;border: 0; width:100%;" src="https://cdn.uffs.cc/practice/website/assets-email/barra.png">
                         </th>                  
                     </tr>
                 </table>    
