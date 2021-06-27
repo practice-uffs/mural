@@ -13,7 +13,8 @@
                 @livewire('order.create', [
                     'model' => 'App\Model\Order',
                     'include_create' => [
-                        'user_id' => auth()->id()
+                        'user_id' => auth()->id(),
+                        'service_id' => $service->id
                     ]
                 ])
             </div>
