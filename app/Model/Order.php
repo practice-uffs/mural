@@ -60,4 +60,36 @@ class Order extends Model
             ],
         ]
     ];
+
+    /**
+     * Get all of the post's comments.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
+     * Get the user associated with the order.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withTimestamps();
+    }
+
+    /**
+     * Get the location associated with the order.
+     */
+    public function location()
+    {
+        return $this->hasOne(Location::class);
+    }
+
+    /**
+     * Get the service associated with the order.
+     */
+    public function service()
+    {
+        return $this->hasOne(Service::class);
+    }    
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 use App\Item;
-use App\User;
+use App\Model\User;
 use App\Specification;
 
 use App\Http\Resources\ServiceResource;

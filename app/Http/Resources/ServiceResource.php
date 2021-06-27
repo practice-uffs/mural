@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-use App\User;
+use App\Model\User;
 use App\Location;
 use App\Category;
 use App\Specification;

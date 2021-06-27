@@ -22,7 +22,8 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
 
             $table->foreignId('user_id');
-            $table->foreignId('order_id');
+            $table->unsignedBigInteger('commentable_id');
+            $table->string('commentable_type');
         });
     }
 

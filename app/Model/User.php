@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Model\Order;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -25,7 +24,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function isAdmin() {
-        return $this -> type == SELF::ADMIN;
+        return $this->type == SELF::ADMIN;
     }
 
     // JWT Subct methods
@@ -48,4 +47,20 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Get all of the user's comments.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
+     * Get all of the user's orders
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }    
 }
