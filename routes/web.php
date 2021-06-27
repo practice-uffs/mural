@@ -35,10 +35,12 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Routes autenticadas
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/inicial', [HomeController::class, 'index'])->name('home');
+    
     Route::get('/servicos/solicitar', [ServiceController::class, 'index'])->name('services');
     Route::get('/servicos/solicitar/{service}', [OrderController::class, 'create'])->name('order.create');
     Route::get('/servicos/acompanhar', [OrderController::class, 'index'])->name('order.list');
-    Route::resource('/servico', 'ItemController')->except(['create', 'store','update']);
+    Route::get('/servico/{order}', [OrderController::class, 'show'])->name('order.show');
+    
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
     Route::resource('/feedback', 'ItemController')->except(['create', 'store','edit','update']);
 
