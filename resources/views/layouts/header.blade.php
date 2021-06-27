@@ -10,8 +10,8 @@
                 @auth
                     <li><a href="{{ route('home') }}" class="nav-link @if (Route::is('home')) active @endif" >Inicial</a></li>
                     <li><a href="{{ route('feedbacks') }}" class="nav-link @if (Route::is('feedbacks')) active @endif">Ideias</a></li>
-                    <li><a href="{{ route('servicos/acompanhar') }}"class="nav-link @if (Route::is('servicos/acompanhar')) active @endif">Acompanhar serviços</a></li>
-                    <li><a href="{{ route('servicos/solicitar') }}" class="nav-link @if (Route::is('servicos/solicitar')) active @endif">Solicitar serviço</a></li>
+                    <li><a href="{{ route('order.list') }}"class="nav-link @if (Route::is('order.list')) active @endif">Acompanhar serviços</a></li>
+                    <li><a href="{{ route('services') }}" class="nav-link @if (Route::is(['services', 'order.create'])) active @endif">Solicitar serviço</a></li>
 
                     {{--@if(Auth()->user()->type == "admin")--}}
                         <li class="dropdown">

@@ -46,6 +46,18 @@ class Order extends Model
                 'placeholder' => 'Ex.: descrição de alguma coisa',
                 'list_column' => false
             ],
+            'location_id' => [
+                'type' => 'model:App\Model\Location',
+                'label' => 'Local',
+                'placeholder' => '',
+                'list_column' => false
+            ],  
+            'github_issue_link' => [
+                'type' => 'file',
+                'label' => 'File',
+                'placeholder' => 'Clique aqui ou arreste um arquivo para essa área para fazer upload',
+                'list_column' => false
+            ],
         ]
     ];
 }

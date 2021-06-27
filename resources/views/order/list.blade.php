@@ -4,14 +4,17 @@
 <section>
     <div class="container">
         <header class="section-header">
-            <h2>Nossos valores</h2>
-            <p>Pilares que norteiam nosso trabalho</p>
+            <h2>Suas solicitações</h2>
+            <p>Acompanhe seus pedidos</p>
         </header>
 
         <div class="row">
             <div class="col-10 offset-1">
                 @livewire('crud.main', [
-                    'model' => 'App\Model\Order'
+                    'model' => 'App\Model\Order',
+                    'include_create' => [
+                        'user_id' => auth()->id()
+                    ]
                 ])
             </div>
         </div>
