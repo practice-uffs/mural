@@ -10,6 +10,16 @@ class Order extends Model
     use HasFactory;
 
     /**
+     * Eager load the following always
+     */
+    protected $with = [
+        'user',
+        'location',
+        'service',
+        'comments.user'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -49,6 +59,7 @@ class Order extends Model
             'location_id' => [
                 'type' => 'model:App\Model\Location',
                 'label' => 'Local',
+                'validation' => 'required',
                 'placeholder' => '',
                 'list_column' => false
             ],  
@@ -74,7 +85,7 @@ class Order extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -82,7 +93,7 @@ class Order extends Model
      */
     public function location()
     {
-        return $this->hasOne(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
     /**
@@ -90,6 +101,6 @@ class Order extends Model
      */
     public function service()
     {
-        return $this->hasOne(Service::class);
+        return $this->belongsTo(Service::class);
     }    
 }

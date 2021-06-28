@@ -92,4 +92,12 @@ class Service extends Model
             ],  
         ]
     ];
+
+    /**
+     * Get the category associated with the service.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

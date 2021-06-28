@@ -18,10 +18,7 @@
                 ])
 
                 @livewire('comments', [
-                    'model' => 'App\Model\Order',
-                    'include_create' => [
-                        'user_id' => auth()->id()
-                    ]
+                    'commentable' => $order,
                 ])
             </div>
 

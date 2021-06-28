@@ -32,4 +32,12 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * Get the ower of this comment
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
