@@ -14,20 +14,14 @@
           <!-- Favicons -->
           <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-          <!-- material icons-->
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-
-          <!-- Bootstrap 5.0 CDN-->
-          <link href="{{ asset('vendor/bootstrap-5.0.0/css/bootstrap.min.css') }}" rel="stylesheet">
-
           <!-- Google Fonts -->
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         
           <!-- Vendor CSS Files -->
+          <link href="{{ asset('vendor/bootstrap-5.0.0/css/bootstrap.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-          <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
           <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
  
           <!-- Template Main CSS File -->
@@ -42,8 +36,7 @@
           ======================================================== -->
           @livewireStyles
     </head>
-    <body data-bs-spy="scroll" data-bs-target="#navbar">
-        
+    <body>
         @include('layouts.header')
         
         <div class="pt-16 container-lg">
@@ -56,17 +49,15 @@
         
         <!-- Vendor JS Files -->
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>
-        <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-        
-        <!-- BoOtstrap 5.0 JS CDN-->
         <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
         
+        @livewireScripts
+
         <!-- Template Main JS File -->
         <script src="{{ asset('js/app.js') }}"></script>
-
+        
+        <!-- Page scripts -->
         @yield('scripts')
-        @livewireScripts
     </body>
     <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('js/main.js')}}"></script> 
