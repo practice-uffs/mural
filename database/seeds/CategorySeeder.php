@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Item;
+use App\Model\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -13,56 +14,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        // categories for feedback
-        DB::table('categories')->insert([
-            'name' => 'Ideia',
-            'item_type' => Item::TYPE_FEEDBACK
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Sugestão',
-            'item_type' => Item::TYPE_FEEDBACK
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Crítica',
-            'item_type' => Item::TYPE_FEEDBACK
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Reclamação',
-            'item_type' => Item::TYPE_FEEDBACK
-        ]);
-
-        // categories for service
-        DB::table('categories')->insert([
-            'name' => 'Áudio',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Vídeo',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Texto',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Imagem',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Evento',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Estúdio',
-            'item_type' => Item::TYPE_SERVICE
-        ]);
+        // TODO: categories for feedback (Ideia, Sugestão, Crítica, Reclamação)
+        Category::create(['name' => 'Áudio', 'slug' => 'audio']);
+        Category::create(['name' => 'Vídeo', 'slug' => 'video']);
+        Category::create(['name' => 'Texto', 'slug' => 'texto']);
+        Category::create(['name' => 'Imagem', 'slug' => 'imagem']);
+        Category::create(['name' => 'Evento', 'slug' => 'evento']);
+        Category::create(['name' => 'Estúdio', 'slug' => 'estudio']);
     }
 }

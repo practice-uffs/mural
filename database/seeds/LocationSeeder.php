@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Location;
 use Illuminate\Database\Seeder;
 
 class LocationSeeder extends Seeder
@@ -11,28 +12,12 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('locations')->insert([
-            'name' => 'Campus Cerro Largo',
-        ]);
-
-        DB::table('locations')->insert([
-            'name' => 'Campus Chapecó',
-        ]);
-
-        DB::table('locations')->insert([
-            'name' => 'Campus Erechim',
-        ]);
-
-        DB::table('locations')->insert([
-            'name' => 'Campus Laranjeiras do Sul',
-        ]);
-
-        DB::table('locations')->insert([
-            'name' => 'Campus Passo Fundo',
-        ]);
-
-        DB::table('locations')->insert([
-            'name' => 'Campus Realeza',
-        ]);
+        Location::create(['name' => 'Cerro Largo (campus)', 'slug' => 'CL']);
+        Location::create(['name' => 'Chapecó (campus)', 'slug' => 'CH']);
+        Location::create(['name' => 'Erechim (campus)', 'slug' => 'ER']);
+        Location::create(['name' => 'Laranjeiras do Sul (campus)', 'slug' => 'LS']);
+        Location::create(['name' => 'Passo Fundo (campus)', 'slug' => 'PF']);
+        Location::create(['name' => 'Realeza (campus)', 'slug' => 'RE']);
+        Location::create(['name' => 'Reitoria', 'slug' => 'reitoria']);
     }
 }
