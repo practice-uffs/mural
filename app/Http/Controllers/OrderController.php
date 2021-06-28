@@ -15,7 +15,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.list');
+        $orders = auth()->user()->orders;
+        $orders->load('service.category');
+
+        return view('order.list', [
+            'orders' => $orders
+        ]);
     }
 
     /**
