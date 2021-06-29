@@ -28,6 +28,9 @@
           <link href="{{ asset('css/theme.css') }}" rel="stylesheet">          
           <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
+          <!-- Page styles -->
+          @yield('styles')
+
           <!-- =======================================================
           * Template Name: FlexStart - v1.0.0
           * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
@@ -38,11 +41,13 @@
     </head>
     <body>
         @include('layouts.header')
-        
+        @yield('wideTopContent')
+
         <div class="pt-16 container-lg">
             @yield('content')
         </div>
         
+        @yield('wideBottomContent')        
         @include('layouts.footer')
         
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -50,16 +55,16 @@
         <!-- Vendor JS Files -->
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
+        <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
         
         @livewireScripts
 
         <!-- Template Main JS File -->
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/main.js')}}"></script> 
         
         <!-- Page scripts -->
         @yield('scripts')
     </body>
-    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('js/main.js')}}"></script> 
-    <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
 </html>

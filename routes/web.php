@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ if (App::environment('local')) {
 // Index
 Route::view('/', 'index')->name('home');
 Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter.subscribed');
+Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas');
 
 // Auth
 Route::get('/login', 'Auth\LoginController@index')->name('login');
