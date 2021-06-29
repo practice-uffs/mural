@@ -42,6 +42,14 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $order->load([
+            'service',
+            'service.category',
+            'user',
+            'comments',
+            'comments.user'
+        ]);
+
         return view('order.show', [
             'order' => $order
         ]);

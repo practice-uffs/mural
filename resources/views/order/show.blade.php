@@ -10,25 +10,11 @@
 
         <div class="row">
             <div class="col-9">
-                @livewire('order.show', [
-                    'model' => 'App\Model\Order',
-                    'include_create' => [
-                        'user_id' => auth()->id()
-                    ]
-                ])
-
-                @livewire('comments', [
-                    'commentable' => $order,
-                ])
+                @livewire('order.show', ['order' => $order])
+                @livewire('comments', ['commentable' => $order])
             </div>
-
             <div class="col-3">
-                @livewire('order.status', [
-                    'model' => 'App\Model\Order',
-                    'include_create' => [
-                        'user_id' => auth()->id()
-                    ]
-                ])
+                @livewire('order.status', ['order' => $order])
             </div>
         </div>
     </div>

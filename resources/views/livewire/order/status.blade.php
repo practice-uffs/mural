@@ -1,8 +1,9 @@
 <div class="text-gray-600 body-font overflow-hidden">
     <div class="p-4 w-full">
         <div class="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
-            <span
-                class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+            <span class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
+                SITUAÇÃO
+            </span>
             <h2 class="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
             <h1 class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                 <span>$38</span>
