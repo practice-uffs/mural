@@ -19,6 +19,9 @@ class Category extends Model
         'slug',
         'description',
         'notice',
+        'img_url',
+        'icon_svg_path',
+        'color',
         'is_active'
     ];
 

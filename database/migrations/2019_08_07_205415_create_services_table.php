@@ -17,9 +17,11 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->text('name')->nullable();
             $table->text('description')->nullable();
-            $table->text('img')->nullable();
             $table->integer('work_days')->nullable();
             $table->text('notice')->nullable();
+            $table->text('img_url')->nullable();
+            $table->text('icon_svg_path')->nullable();
+            $table->text('color')->nullable();
             $table->boolean('is_available')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

@@ -18,9 +18,11 @@ class Service extends Model
         'category_id',
         'name',
         'description',
-        'img',
-        'work_days',
         'notice',
+        'img_url',
+        'icon_svg_path',
+        'color',
+        'work_days',
         'is_available',
         'is_active',
     ];

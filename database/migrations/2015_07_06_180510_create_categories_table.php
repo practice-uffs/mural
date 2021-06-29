@@ -19,6 +19,9 @@ class CreateCategoriesTable extends Migration
             $table->string('slug', 60)->unique();
             $table->text('description')->nullable();
             $table->string('notice')->nullable();
+            $table->text('img_url')->nullable();
+            $table->text('icon_svg_path')->nullable();
+            $table->text('color')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
