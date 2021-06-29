@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="flex justify-between">
-                                    <a href="" class="btn btn-primary my-2">Solicitar</a>
+                                    <a href="{{ route('order.create', [$service->id]) }}" class="btn btn-primary my-2">Solicitar</a>
                                 </div>
                             </div>
                         </div>

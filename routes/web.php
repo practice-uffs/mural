@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ServiceController;
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
     
     // TODO: adicionar para check.admin
+    Route::get('/gerenciar/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders');
     Route::get('/gerenciar/servicos', [AdminServiceController::class, 'index'])->name('admin.service');
     Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
     Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
