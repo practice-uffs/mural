@@ -1,37 +1,39 @@
 <template>
     <div>
-        <h6>Comentários ({{ comments.length }})</h6>
-        <div v-if="comments">
-        <div class="form-group p-3 card" v-bind="comment"
-            v-for="comment in comments" :key="comment.id">
-
-            <div class="d-flex justify-content-between">
-                <label><strong>{{ comment.user | capitalize }}</strong></label>
-                <div class="dropdown" v-if="user.id == comment.user_id">
-                    <button class="btn btn-sm" type="button" :id="'dropdownMenuButton-'+comment.id" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="ri-more-2-fill"></i>
-                    </button>
-                    <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton-'+comment.id">
-                        <a class="dropdown-item" @click="deleteComment(comment.id)">Excluir</a>
-                    </ul>
-                </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h6>Comentários ({{ comments.length }})</h6>
             </div>
-            <p>{{comment.text}}</p>
 
-            <label><strong>{{ comment.user | capitalize }}</strong></label>
-            <p style="white-space:pre-wrap">{{comment.text}}</p>
-
-            <small class="text-end" >{{comment.date | prettyDate}}</small>
+            <div v-if="comments[comments.length -1]">
+                <small>última atualização {{comments[comments.length -1].date | prettyDate}} realizada por {{comments[comments.length -1].user | capitalize}}</small>
+            </div>
+        </div>
+        <div v-if="comments">
+            <div class="form-group p-3 card" v-bind="comment"
+                v-for="comment in comments" :key="comment.id">
+                <div class="d-flex justify-content-between">
+                    <label><strong>{{ comment.user | capitalize }}</strong></label>
+                    <div class="dropdown" v-if="user.id == comment.user_id">
+                        <button class="btn btn-sm" type="button" :id="'dropdownMenuButton-'+comment.id" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ri-more-2-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton-'+comment.id">
+                            <a class="dropdown-item" @click="deleteComment(comment.id)">Excluir</a>
+                        </ul>
+                    </div>
+                </div>
+                <p style="white-space:pre-wrap">{{comment.text}}</p>
+                <small class="text-end" >{{comment.date | prettyDate}}</small>
+            </div>
         </div>
         <!-- <reaction-list
             :user-id="userId"
             :item-id="comment.id"
         >
         </reaction-list> -->
-
-        </div>
         <form @submit.prevent="createComment" class="card p-4">
-            <h6> Adicionar um Comentários</h6>
+            <h6> Adicionar Comentário</h6>
             <textarea id="userComment"  name="userComment"
                 class="form-control" v-model="userComment"
                 rows="4">
@@ -76,7 +78,7 @@ export default {
                         'Authorization': `Bearer ${this.token.access_token}`
                     },
                 });
-                if(response.status != 201){
+                if(response.status >= 400 && response.status <= 499){
                     this.handleError("Falha no envio do Comentário", JSON.stringify(response.data));
                 }else{
                     this.handleSuccess("realizado");
