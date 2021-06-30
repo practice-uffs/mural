@@ -43,3 +43,32 @@
         </div>
     </div>
 </div>
+
+<div class="mb-4 w-full">
+    <h3 class="pb-3 mb-4 text-lg font-semibold text-gray-700 border-b-2 border-gray-100 inline-flex items-center w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+        </svg>
+        Arquivos
+    </h3>
+
+    <div class="space-y-4">
+        <h4 class="text-md font-semibold text-gray-500 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+            </svg>
+            Criados pela equipe do programa (para você)
+        </h4>
+        <iframe src="https://drive.google.com/embeddedfolderview?id=1s5JcDHMzf_TJxFMU7k1H6oQVemesK7ec#list" class="w-full border-none"></iframe>
+    </div>
+
+    <div class="space-y-4">
+        <h4 class="text-md font-semibold text-gray-500 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+            Enviados por você
+        </h4>
+        <iframe src="https://drive.google.com/embeddedfolderview?id=1s5JcDHMzf_TJxFMU7k1H6oQVemesK7ec#list" class="w-full border-none"></iframe>
+    </div>
+</div>
