@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +37,18 @@ class Order extends Model
         'user_id',
         'location_id',
         'service_id',
+    ];
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'data' => AsArrayObject::class,
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:h-i d/m/Y',
     ];
 
     /**
@@ -102,5 +115,45 @@ class Order extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
-    }    
+    }
+    
+    /**
+     * Obtém informações sobre a situação do pedido para mostrar para o usuário,
+     * utilizando como base os campos de status, link para github, etc. 
+     * As informações retornadas estão em texto "amigável" que pode ser mostrado
+     * para o usuário final.
+     * 
+     * @return stdClass objeto com os campos `text`, `explanation`, `color`.
+     */
+    public function situation() {
+        if (empty($this->github_issue_link)) {
+            return (object) [
+                'text' => 'Aguardando análise',
+                'explanation' => 'Ainda não começamos a trabalhar nessa solicitação. Ela está na fila aguardando análise de viabilidade.',
+                'color' => 'yellow-600',
+            ];
+        }
+
+        if ($this->closed) {
+            return (object) [
+                'text' => 'Cancelado',
+                'explanation' => 'O pedido foi cancelado por solicitação do autor ou porque ele é inviável dentro das possibilidades da equipe.',
+                'color' => 'red-600',
+            ];
+        }
+
+        if (!empty($this->github_issue_link)) {
+            return (object) [
+                'text' => 'Em andamento',
+                'explanation' => 'O pedido está na fila de trabalho para ser realizado. Quando chegar sua vez, ele será conduzido.',
+                'color' => 'green-600',
+            ];
+        }
+
+        return (object) [
+            'text' => 'Incerto',
+            'explanation' => 'Há muitas indefinições sobre o pedido. Por favor, fale com alguém da equipe.',
+            'color' => 'blue-600',
+        ];
+    }
 }
