@@ -9,7 +9,8 @@
             <ul>
                 @auth
                     <li><a href="{{ route('home') }}" class="nav-link @if (Route::is('home')) active @endif" >Inicial</a></li>
-                    <li><a href="{{ route('feedbacks') }}" class="nav-link @if (Route::is('feedbacks')) active @endif">Ideias</a></li>
+                    <li><a href="{{ route('ideas') }}" class="nav-link @if (Route::is('ideas')) active @endif">Ideias</a></li>
+                    <li><a href="{{ route('feedbacks') }}" class="nav-link @if (Route::is('feedbacks')) active @endif">Feedbacks</a></li>
                     <li><a href="{{ route('order.list') }}"class="nav-link @if (Route::is('order.list')) active @endif">Acompanhar serviços</a></li>
                     <li><a href="{{ route('services') }}" class="nav-link @if (Route::is(['services', 'order.create'])) active @endif">Solicitar serviço</a></li>
 
@@ -44,7 +45,8 @@
                 @endauth
                 
                 @guest
-                    <li><a class="getstarted" href="{{ route('login') }}">Entrar <i class="bi bi-box-arrow-in-right"></i></a></li>
+                    <li><a href="{{ route('ideas') }}" class="nav-link @if (Route::is('ideas')) active @endif">Ideias</a></li>
+                    <li><a href="{{ route('login') }}" class="getstarted">Entrar <i class="bi bi-box-arrow-in-right"></i></a></li>
                 @endguest
             </ul>
         </nav>
