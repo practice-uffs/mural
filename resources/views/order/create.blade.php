@@ -12,6 +12,7 @@
             <div class="col-10 offset-1">
                 @livewire('order.create', [
                     'model' => 'App\Model\Order',
+                    'service' => $service,
                     'include_create' => [
                         'user_id' => auth()->id(),
                         'service_id' => $service->id
