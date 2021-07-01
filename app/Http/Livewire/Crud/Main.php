@@ -35,6 +35,18 @@ class Main extends Component
     /**
      * 
      * 
+     * @param array $data
+     * 
+     * @return array
+     */
+    protected function prepareModelData(array $data) :array
+    {
+        return $data;
+    }
+
+    /**
+     * 
+     * 
      * @param array $modelCrudInfo
      * 
      * @return array
@@ -280,6 +292,7 @@ class Main extends Component
     public function edit($id)
     {
         $this->data = $this->model::findOrFail($id)->toArray();
+        $this->data = $this->prepareModelData($this->data);
         $this->showInlineEdit($id);
     }
 

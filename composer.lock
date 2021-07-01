@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "231614109cd9497884f13cb418807066",
+    "content-hash": "d133a1547b5adde4a4d5a9493093c167",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -175,6 +175,58 @@
                 "issues": "https://github.com/ccuffs/auth-iduffs/issues"
             },
             "time": "2020-12-21T20:25:15+00:00"
+        },
+        {
+            "name": "ccuffs/poll-from-text",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ccuffs/poll-from-text.git",
+                "reference": "cc66c1e53b4ce6db68da76e7a5619c0f56ca8e39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ccuffs/poll-from-text/zipball/cc66c1e53b4ce6db68da76e7a5619c0f56ca8e39",
+                "reference": "cc66c1e53b4ce6db68da76e7a5619c0f56ca8e39",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "pestphp/pest": "^0.3.12",
+                "phpunit/phpunit": "9.3.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CCUFFS\\Text\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fernando Bevilacqua",
+                    "email": "fernando.bevilacqua@uffs.edu.br",
+                    "homepage": "https://fernandobevilacqua.com"
+                }
+            ],
+            "description": "Convenient package to create polls (questionnaires) from pure text minimally organized in lines.",
+            "keywords": [
+                "form",
+                "nlp",
+                "poll",
+                "questionnaire",
+                "survey"
+            ],
+            "support": {
+                "issues": "https://github.com/ccuffs/poll-from-text/issues",
+                "source": "https://github.com/ccuffs/poll-from-text/tree/v1.0.1"
+            },
+            "time": "2021-06-23T11:04:02+00:00"
         },
         {
             "name": "composer/ca-bundle",

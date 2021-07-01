@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col-12">
-                @livewire('crud.main', [
+                @livewire('admin.service', [
                     'model' => 'App\Model\Service'
                 ])
             </div>

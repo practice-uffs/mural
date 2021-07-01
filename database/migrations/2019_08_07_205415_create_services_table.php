@@ -19,6 +19,7 @@ class CreateServicesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('work_days')->nullable();
             $table->text('notice')->nullable();
+            $table->text('poll')->nullable();
             $table->text('img_url')->nullable();
             $table->text('icon_svg_path')->nullable();
             $table->text('color')->nullable();

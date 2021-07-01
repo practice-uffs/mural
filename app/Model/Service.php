@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,7 @@ class Service extends Model
         'name',
         'description',
         'notice',
+        'poll',
         'img_url',
         'icon_svg_path',
         'color',
@@ -33,6 +35,7 @@ class Service extends Model
      * @var array
      */
     protected $casts = [
+        'poll' => AsArrayObject::class,        
         'work_days' => 'int',
         'is_available' => 'boolean',
         'is_active' => 'boolean',
@@ -60,7 +63,7 @@ class Service extends Model
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
-                'list_column' => true
+                'list_column' => false
             ],
             'work_days' => [
                 'label' => 'Dias úteis',
@@ -71,7 +74,12 @@ class Service extends Model
                 'label' => 'Aviso',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
                 'list_column' => false
-            ],   
+            ], 
+            'poll' => [
+                'label' => 'Perguntas adicionais',
+                'type' => 'poll',
+                'list_column' => false
+            ],
             'is_available' => [
                 'type' => 'boolean',
                 'value_as_text' => [

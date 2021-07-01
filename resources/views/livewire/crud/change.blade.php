@@ -53,6 +53,32 @@
                     <input type="file" name="{{ $key }}" x-ref="input">
                 </div>
                 @break
+            @case('poll')
+                <div class="flex w-full">
+                    <div class="w-1/2">
+                        <label for="{{ $key }}" class="label">
+                            <span class="label-text">{{ $field['label'] }}</span>
+                        </label>
+                        <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-40 w-full @error($key) textarea-error @enderror"></textarea>
+                    </div>
+                    <div class="w-1/2">
+                        <label class="label">
+                            <span class="label-text">Visualização</span>
+                        </label>
+                        <div x-data="{ content: null }" x-init="{ content: @entangle('data.poll') }" class="w-full p-2 bg-gray-200 h-40 overflow-scroll">
+                            <div x-on:blur="content = $event.target.innerHTML">
+                                {!! $poll_view !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @break
+            @case('textarea')
+                <label for="{{ $key }}" class="label">
+                    <span class="label-text">{{ $field['label'] }}</span>
+                </label>
+                <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-24 @error($key) textarea-error @enderror"></textarea>
+                @break
             @default
                 <label for="{{ $key }}" class="label">
                     <span class="label-text">{{ $field['label'] }}</span>
