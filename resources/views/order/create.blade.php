@@ -5,7 +5,7 @@
     <div class="container">
         <header class="section-header">
             <h2>Solicitação de serviço</h2>
-            <p>Tipo do serviço aqui</p>
+            <p>{{ $service->name }}</p>
         </header>
 
         <div class="row">
@@ -13,6 +13,7 @@
                 @livewire('order.create', [
                     'model' => 'App\Model\Order',
                     'service' => $service,
+                    'show_list' => false,
                     'include_create' => [
                         'user_id' => auth()->id(),
                         'service_id' => $service->id

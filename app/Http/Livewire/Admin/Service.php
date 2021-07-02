@@ -18,7 +18,20 @@ class Service extends \App\Http\Livewire\Crud\Main
      */
     protected function prepareModelData(array $data) :array
     {
+        if (empty($data['poll'])) {
+            return $data;
+        }
+
+        // Se existem campos extra para esse serviço, eles estarão
+        // descritos como um texto (uma listagem de perguntas linha a linha).
+        // Vamos pegar esse tal texto e colocar no campo "poll" do serviço
+        // para que o usuário possa editar o texto.
         $data['poll'] = $data['poll']['user_description'];
+
+        // Colocamos no campo de visualização do questionário o "render"
+        // do texto de perguntas do usuário.
+        $this->poll_view = ''; // TODO: colocar o campo aqui.
+
         return $data;
     }
 

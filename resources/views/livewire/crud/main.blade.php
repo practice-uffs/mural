@@ -14,9 +14,9 @@
                     <tr>
                         <th>ID</th>
                         @foreach ($fields as $key => $field)
-                            @unless ($field['list_column'] == false)
+                            @if (@$field['list_column'])
                                 <th>{{ $field['label'] }}</th>
-                            @endunless
+                            @endif
                         @endforeach
                         <th></th>
                     </tr>
@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         @foreach ($fields as $key => $field)
-                            @unless ($field['list_column'] == false)
+                            @if (@$field['list_column'])
                                 <td>
                                     @switch(@$field['type'])
                                     @case('boolean')
@@ -38,7 +38,7 @@
                                         {{ $item[$field['property']] }}
                                     @endswitch
                                 </td>
-                            @endunless
+                            @endif
                         @endforeach
                         <td>
                             <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> | 
