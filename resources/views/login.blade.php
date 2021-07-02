@@ -2,16 +2,17 @@
 
 @section('content')
 <div class="login container row mx-auto my-5 pt-5" >
-    <!-- For Demo Purpose -->
     <div class="login-img col-md-5 pr-lg-5 mb-5 mb-md-0 mt-5">
         <img src="assets/img/undow.co/login.svg" alt="" class="img-fluid">
         <h1>Conecte-se ao PRACTICE <b>Mural</b></h1>
-        <p class="font-italic text-muted mb-0">Utilize do seu idUFFS para conectar-se e aproveitar tudo que nossa plataforma oferece</p>
+        <p class="font-italic text-muted mb-0">Utilize seu idUFFS para conectar-se e aproveitar tudo que nossa plataforma oferece.</p>
     </div>
 
-    <form id="login-form" class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post" >
+    <form id="loginForm" class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post" >
         @csrf
-        <a href="/"><img class="mb-5" src="https://practice.uffs.cc/images/logo.png" alt="" width="272" ></a>
+        <a href="{{ route('index') }}">
+            <img class="mb-5" src="{{ asset('img/logo-practice.png') }}" alt="Logo do Practice" width="272" >
+        </a>
         <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
         @if ($errors->any()) 
             <div class="alert-error">
@@ -20,7 +21,6 @@
                 @endforeach
             </div>
         @endif
-
         
         <!-- idUFFS -->
         <div class="input-group col-lg-6 mb-4">
@@ -29,7 +29,7 @@
                     <i class="bi bi-person text-muted"></i>
                 </span>
             </div>
-            <input type="text" id="inputEmail" placeholder="idUFFS" required="" autofocus=""
+            <input type="text" placeholder="idUFFS" required="" autofocus=""
                 name="username" value="{{ old('username') }}" placeholder="idUFFS"
                 class="form-control validate @error('username') is-invalid @enderror card__input" >
             
@@ -41,16 +41,12 @@
                     <i class="bi bi-lock-fill text-muted"></i>
                 </span>
             </div>
-            <input type="password" id="inputPassword" name="password"  placeholder="Senha" required="" placeholder="Senha"
+            <input type="password" name="password" placeholder="Senha" required="" placeholder="Senha"
                    class="form-control @error('password') is-invalid @enderror validate card__input"
                    autocomplete="current-password">
         </div>
 
-        <button id="btn-submit" class="btn btn-lg btn-block btn-warning col-12" type="submit">ENTRAR</button>
-        <button id="btn-loading" class="btn btn-lg btn-block btn-warning col-12" type="button" disabled>
-            <span class="spinner-border spinner-border-md" role="status" aria-hidden="true"></span>
-            Entrando...
-          </button>
+        <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary col-12" onclick="el = document.getElementById('btn-submit'); el.innerHTML = '<i class=\'bi bi-arrow-repeat\'></i>'; el.disabled = true; el.innerHTML = '<div class=\'spinner-border\'></div> Aguarde'; document.forms.loginForm.submit();">ENTRAR</button>
 
         <!-- Divider Text -->
         <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">

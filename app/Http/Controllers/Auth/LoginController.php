@@ -14,48 +14,18 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    const ADMIN_USERS = [
-        'alessandra.pedrotti',
-        'alisson.peloso',
-        'ana.silveira',
-        'andrew.silva',
-        'amanda.bisognin',
-        'brenda.reis',
-        'cleisson.raimundi',
-        'estela.boas',
-        'gessicazanon',
-        'guilherme.graeff',
-        'isabeli.reik',
-        'jean.hilger',
-        'junior.ramisch',
-        'luiz.dameda',
-        'luiza.tonial',
-        'mariaeduarda.santos',
-        'matheus.negrao',
-        'milena.pastorini',
-        'morgana.oliveira',
-        'pedro.maximowski',
-        'raphael.santos',
-        'robison.silva',
-        'stefani.meneghetti',
-        'taynara.christmann',
-        'thalia.friedrich',
-        'vinicius.alves',
-        'vinicius.reis',
-    ];
-
     public function index()
     {
         if (Auth::check()) {
             return redirect()->route('home');
         }
 
-        return view('auth.login');
+        return view('login');
     }
 
     public function login(Request $request)
     {
-        $validator = $request->validate([
+        $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
@@ -69,39 +39,39 @@ class LoginController extends Controller
         $userData = $auth->login($credentials);
         
         if (!$userData) {
-            return redirect()
-            ->route('login')
-            ->withErrors([
-                'credential' => 'Login ou Senha inválidos, por favor verifique os dados e tente novamente.'
-                ]);
-        }else{                
-            $credentials = [
-                'username' => $userData->username,
-                'password' => $userData->pessoa_id,
-            ];
-            if (! $token = auth('api')->attempt($credentials)) {
-
-                $userData->password = bcrypt($userData->pessoa_id);
-                $user = $this->getOrCreateUser($userData);
-
-                if (! $token = auth('api')->attempt($credentials)) {
-                    return redirect()->route('login')
-                    ->withErrors(['credential' => 'Usuário não autorizado']);
-                }
-                $token = $this->respondWithToken($token);
-                Session::put('token',$token);
-                Auth::login($user);
-                return view('index')->with('token',Session::get('token'));
-            }
-            $userData->password = bcrypt($userData->pessoa_id);
-            $user = $this->getOrCreateUser($userData);
-            $token = $this->respondWithToken($token);
-            Session::put('token',$token);
-            Auth::login($user);
-            return view('index')->with('token',Session::get('token'));
+            return redirect()->route('login')->withErrors([
+                'credential' => 'Login ou senha inválidos, por favor verifique os dados e tente novamente.'
+            ]);
         }
+
+        $credentials = [
+            'username' => $userData->username,
+            'password' => $userData->pessoa_id,
+        ];
+
+        if (! $token = auth('api')->attempt($credentials)) {
+            $user = $this->getLocalUserFromUserData($userData);
+
+            if (! $token = auth('api')->attempt($credentials)) {
+                return redirect()->route('login')->withErrors(['credential' => 'Usuário não autorizado']);
+            }
+        }
+
+        $user = $this->getLocalUserFromUserData($userData);
+        $token = $this->respondWithToken($token);
+        Session::put('token',$token);
+        Auth::login($user);
+        
+        return view('index')->with('token', Session::get('token'));
     }
 
+    protected function getLocalUserFromUserData($userData)
+    {
+        $userData->password = bcrypt($userData->pessoa_id);
+        $user = $this->getOrCreateUser($userData);
+
+        return $user;
+    }
 
     protected function respondWithToken($token)
     {
@@ -136,13 +106,6 @@ class LoginController extends Controller
             'name' => $data->name,
             'cpf' => $data->cpf
         ];
-
-        if (in_array($data['username'], SELF::ADMIN_USERS)) {
-            $data['type'] = User::ADMIN;
-        
-        } else {
-            $data['type'] = User::NORMAL;
-        }
 
         if ($user) {
             $user->update($data);
