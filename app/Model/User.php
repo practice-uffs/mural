@@ -20,7 +20,14 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'uid',  'cpf', 'type'
+        'id',
+        'name',
+        'email',
+        'password',
+        'username',
+        'uid',
+        'cpf',
+        'type'
     ];
 
     public function isAdmin() {

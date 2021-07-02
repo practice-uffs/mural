@@ -17,6 +17,12 @@ class Create extends \App\Http\Livewire\Crud\Main
      */
     protected function prepareModelCrudInfo(array $modelCrudInfo) :array
     {
+        if (empty($this->service->poll)) {
+            // Não há campos extras para uma solicitação desse tipo de serviço,
+            // então não precisamos fazer nada de especial na criação do pedido.
+            return $modelCrudInfo;
+        }
+
         // Obtem as informações de campos extra que esse pedido deve conter
         // de acordo com as especificações do serviço.
         $poll = $this->service->poll;
