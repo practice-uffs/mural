@@ -14,8 +14,6 @@
           <!-- Favicons -->
           <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-          <!-- material icons-->
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
           <!-- bootstrapicon -->
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -24,7 +22,6 @@
 
           <!-- Google Fonts -->
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        
 
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
@@ -35,8 +32,7 @@
         <div id="app">
             @yield('content')
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        @livewireScripts        
+        @livewireScripts
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
-    <script src="{{ asset('js/login.js') }}"></script>
 </html>
