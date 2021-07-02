@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\GithubWebhookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 // ENDPOINT LOGIN
 Route::post('auth/login', 'API\AuthController@login');
-
 Route::get('auth/is_valid', 'API\AuthController@isTokenValid');
+
 // ROUTES THAT NEED TOKEN AUTHENTICATION
 Route::group(['middleware'=>['apiJwt']],function(){
     //ENDPOINTS AUTHORIZATIONS JWT
@@ -38,18 +38,13 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
     Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');    
 });
-    // ENPOINT LOUSAS
-    Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
 
 // ENDPOINTS FEEDBACK NOT SENSIVE
 Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
 
 // ENPOINT RESOURCES
-Route::apiResource('reactions', 'API\ReactionController');
 Route::apiResource('categories', 'API\CategoryController')->only(['index']);
 Route::apiResource('locations', 'API\LocationController')->only(['index']);
-Route::apiResource('documents', 'API\DocumentController');
-Route::apiResource('specifications', 'API\SpecificationController')->only(['index']);
 
 // ENDPOINTS GITHUB WEBHOOK
-Route::post('webhook/github/comment', 'API\GithubWebhookController@issueComment');
+Route::post('webhook/github/index.php', [GithubWebhookController::class, 'index']);

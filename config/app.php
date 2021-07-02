@@ -55,6 +55,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Integração com o github
+    |--------------------------------------------------------------------------
+    |
+    | Configurações relacionadas à integração com o Github.
+    |
+    */
+
+   'github_issue_client_mention' => '@cliente',
+   'github_bot_username' => 'PracticeUFFSBot',
+   'github_user_uid_comments' => 'practice',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
