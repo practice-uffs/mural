@@ -30,6 +30,41 @@ class User extends Authenticatable implements JWTSubject
         'type'
     ];
 
+    /**
+     * Meta information about Livewire crud crud
+     *
+     * @var array
+     */
+    public static $crud = [
+        'fields' => [
+            'name' => [
+                'label' => 'Nome',
+                'validation' => 'required',
+                'list_column' => true
+            ],
+            'email' => [
+                'label' => 'E-mail',
+                'validation' => 'required',                
+                'list_column' => true
+            ],  
+            'username' => [
+                'label' => 'Username',
+                'validation' => 'required',                
+                'list_column' => true
+            ],
+            'type' => [
+                'label' => 'Privilégio',
+                'type' => 'select',
+                'validation' => 'required',
+                'options' => [
+                    self::ADMIN => 'Administrador',
+                    self::NORMAL => 'Normal (cliente)',
+                ],
+                'list_column' => true
+            ],
+        ]
+    ];
+
     public function isAdmin() {
         return $this->type == SELF::ADMIN;
     }

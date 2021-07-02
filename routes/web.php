@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
@@ -56,4 +57,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/gerenciar/servicos', [AdminServiceController::class, 'index'])->name('admin.service');
     Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
     Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
+    Route::get('/gerenciar/usuarios', [UserController::class, 'index'])->name('admin.user');
 });

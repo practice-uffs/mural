@@ -15,14 +15,16 @@
                     <li><a href="{{ route('services') }}" class="nav-link @if (Route::is(['services', 'order.create'])) active @endif">Solicitar serviço</a></li>
 
                     {{--@if(Auth()->user()->type == "admin")--}}
-                        <li class="dropdown">
-                            <!-- <a href="{{ route('admin') }}" class="nav-link @if (Route::is('admin')) active @endif" >Admin</a>-->
-                            <div tabindex="0" class="m-1 btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div> 
+                        <li class="dropdown ml-3">
+                            <div tabindex="0" class="btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div>
                             <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
                                 <li><a href="{{ route('admin.orders') }}">Pedidos</a></li> 
+                                <li><hr /></li> 
                                 <li><a href="{{ route('admin.service') }}">Serviços</a></li> 
                                 <li><a href="{{ route('admin.category') }}">Categorias</a></li> 
                                 <li><a href="{{ route('admin.location') }}">Locais</a></li> 
+                                <li><hr /></li> 
+                                <li><a href="{{ route('admin.user') }}">Usuários</a></li> 
                             </ul>
                         </li>
                     {{--@endif--}}
