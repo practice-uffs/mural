@@ -20,6 +20,9 @@ class CreateOrdersTable extends Migration
             $table->text('description');
             $table->string('data')->nullable();
             $table->text('github_issue_link')->unique()->nullable();
+            $table->text('google_drive_in_folder_link')->nullable();
+            $table->text('google_drive_out_folder_link')->nullable();
+            $table->text('google_drive_folder_link')->nullable();
             $table->date('requested_due_date')->nullable();
             $table->boolean('is_closed')->default(true);
             $table->timestamps();
