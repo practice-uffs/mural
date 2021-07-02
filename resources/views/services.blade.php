@@ -1,13 +1,22 @@
 @extends('layouts.base')
 @section('content')
 
+<section id="hero" class="hero hero-slim d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 hero-img">
+                <img src="{{ asset('img/undraw.co/select_option.svg') }}" class="w-64 h-auto" alt="">
+            </div>
+            <div class="col-8 d-flex flex-column justify-content-center">
+                <h1>Serviços disponíveis</h1>
+                <h2>Temos uma carga variada de serviços. O que podemos fazer por você?</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section>
     <div class="container">
-        <header class="section-header">
-            <h2>Serviços disponíveis</h2>
-            <p>O que podemos fazer por você?</p>
-        </header>
-
         @forelse ($items as $item)
         <!-- category info -->
         <div class="row pb-4">
@@ -67,14 +76,14 @@
                             </div>
                         </div>
                         @empty
-                        Nenhum serviço
+                            Nenhum serviço
                         @endforelse
                     </div>
                 </div>
             </div>
         </div>
         @empty
-        Nenhuma categoria
+            Nenhuma categoria
         @endforelse
     </div>
     @endsection

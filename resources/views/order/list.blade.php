@@ -1,11 +1,24 @@
 @extends('layouts.base')
 @section('content')
 
-<section>
+<section id="hero" class="hero hero-slim d-flex align-items-center">
     <div class="container">
+        <div class="row">
+            <div class="col-4 hero-img">
+                <img src="{{ asset('img/undraw.co/connected.svg') }}" class="w-64 h-auto" alt="">
+            </div>
+            <div class="col-8 d-flex flex-column justify-content-center">
+                <h1>Minhas solicitações</h1>
+                <h2>Acompanhe seus pedidos.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    @if (count($orders) > 0)
         <header class="section-header">
-            <h2>Minhas solicitações</h2>
-            <p>Acompanhe seus pedidos</p>
+            <h2>Lista de pedidos</h2>
         </header>
 
         <div class="row">
@@ -22,7 +35,7 @@
                         </tr>
                     </thead>                
                     <tbody>
-                        @forelse ($orders as $order)
+                        @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }}</td>
                                 <td>
@@ -52,12 +65,29 @@
                                     <a href="{{ route('order.show', [$order->id]) }}" class="btn btn-primary">Ver detalhes</a>
                                 </th>
                             </tr>
-                        @empty                            
-                            <p></p>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
-    @endsection
+    @else
+        <div class="row">
+            <div class="col-12">
+                <section class="text-gray-600">
+                    <div class="px-5 py-14 mx-auto">
+                        <div class="flex items-center lg:w-3/5 mx-auto pb-10 mb-10 sm:flex-row flex-col">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div class="flex-grow sm:text-left mt-6 sm:mt-0">
+                                <h2 class="text-gray-900 text-lg title-font font-semibold mb-2">Você não fez pedidos ainda</h2>
+                                <p class="leading-relaxed text-base">Temos uma equipe multidisciplinar muito disposta a ajudar! Dê uma olhada nos <a href="{{ route('services') }}">serviços disponíveis</a> e conheça mais como poder auxiliar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    @endif
+</div>
+@endsection

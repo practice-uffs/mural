@@ -10,4 +10,5 @@
 
         @livewire('admin.orders')
     </div>
-    @endsection
+</section>
+@endsection

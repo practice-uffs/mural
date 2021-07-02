@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-5 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                <img src="{{ asset('assets/img/features-3.png') }}" class="w-96 h-auto" alt="">
+                <img src="{{ asset('img/undraw.co/feedback.svg') }}" class="w-96 h-auto" alt="">
             </div>
             <div class="col-7 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Queremos seu feedback</h1>

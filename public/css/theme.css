@@ -19,12 +19,12 @@ body {
 
 a {
   color: #4154f1;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover {
   color: #717ff5;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -428,7 +428,12 @@ section {
 }
 
 .hero-slim {
-    height: 60vh;
+    height: 50vh;
+}
+
+section.hero-slim {
+    height: 50vh;
+    padding-bottom: 10px;
 }
 
 .hero h1 {
