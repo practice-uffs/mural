@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Github;
+use App\Services\GoogleDrive;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(Github::class, function($app) {
+            return new Github(config('github'));
+        });
+
+        $this->app->singleton(GoogleDrive::class, function($app) {
+            return new GoogleDrive(config('google.drive'));
+        });
     }
 
     /**

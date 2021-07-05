@@ -1,3 +1,5 @@
+/config/google/*
+!/config/google/.gitkeep
 /node_modules
 /public/hot
 /public/storage
