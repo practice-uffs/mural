@@ -109,7 +109,7 @@ class LoginController extends Controller
         return json_encode([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() 60 * 24 * 60 // minutos * horas * dias = 2 meses
+            'expires_in' => auth('api')->factory()->getTTL() * 60 * 24 * 60 // minutos * horas * dias = 2 meses
         ]);
     }
 
