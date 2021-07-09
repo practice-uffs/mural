@@ -38,7 +38,9 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
     Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');
 
-    Route::post('user/channels', 'API\ChannelsController@store');
+    Route::post('user/{id}/channels', 'API\ChannelsController@store');
+    Route::patch('user/{id}/channels', 'API\ChannelsController@update');
+    Route::delete('user/{id}/channels', 'API\ChannelsController@destroy');
 });
     // ENPOINT LOUSAS
     Route::apiResource('lousas', 'API\LousaController')->only(['index']);

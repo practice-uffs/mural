@@ -15,8 +15,8 @@ class CreateChannelsTable extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id');
-            $table->text('fcm_token')->nullable();
+            $table->foreignId('user_id')->unique();
+            $table->text('fcm_token');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
