@@ -41,6 +41,10 @@
                                         @endif
                                     </div>
                                     @break
+                                @case('select')
+                                    <!-- {{ $value = $item[$field['property']]; }} -->
+                                    {{ $field['options']->first(function($val) use ($value) { return $val['id'] == $value; })['text'] }}
+                                    @break
                                 @default
                                     {{ $item[$field['property']] }}
                                 @endswitch
