@@ -1,5 +1,5 @@
 <div>
-    @if ($show_create_panel)
+    @if ($show_create_panel && !$editing)
         @include('livewire.crud.change', ['create' => true])
     @endif
 
@@ -14,9 +14,10 @@
                     <tr>
                         <th>ID</th>
                         @foreach ($fields as $key => $field)
-                            @if (@$field['list_column'])
-                                <th>{{ $field['label'] }}</th>
+                            @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
+                                @continue
                             @endif
+                            <th>{{ $field['label'] }}</th>
                         @endforeach
                         <th></th>
                     </tr>
@@ -26,19 +27,24 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         @foreach ($fields as $key => $field)
-                            @if (@$field['list_column'])
-                                <td>
-                                    @switch(@$field['type'])
-                                    @case('boolean')
-                                        <div class="badge @if ($item[$field['property']]) badge-accent @endif badge-outline">
-                                            @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
-                                        </div>
-                                        @break
-                                    @default
-                                        {{ $item[$field['property']] }}
-                                    @endswitch
-                                </td>
+                            @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
+                                @continue
                             @endif
+                            <td>
+                                @switch(@$field['type'])
+                                @case('boolean')
+                                    <div class="badge @if ($item[$field['property']]) badge-accent @endif badge-outline">
+                                        @if (isset($field['value_as_text']))
+                                            @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
+                                        @else
+                                            {{ $item[$field['property']] ? 'Sim' : 'Não' }}
+                                        @endif
+                                    </div>
+                                    @break
+                                @default
+                                    {{ $item[$field['property']] }}
+                                @endswitch
+                            </td>
                         @endforeach
                         <td>
                             <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> | 

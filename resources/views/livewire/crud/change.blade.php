@@ -6,6 +6,10 @@
     @if (!$finished)
         <div class="form-control mb-4 pb-4">
             @foreach ($fields as $key => $field)
+                @if (isset($field['show']) && ( ($editing && !Str::contains($field['show'], 'edit')) || (!$editing && !Str::contains($field['show'], 'create'))))
+                    @continue
+                @endif
+
                 @switch(@$field['type'])
                 @case('boolean')
                     <label class="cursor-pointer label flex">
@@ -97,7 +101,7 @@
             @endforeach
         </div>
 
-        @if (isset($data['id']) && !isset($create))
+        @if (isset($data['id']) || $editing)
             <button wire:click="update()" class="btn btn-primary float-right">Salvar</button>
             <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
         @else

@@ -207,7 +207,9 @@ class Main extends Component
             $fields[$key] = $info;
             $fields[$key]['property'] = $expectedKey;
 
-            if (!isset($info['type'])) {
+            $hasType = isset($info['type']);
+
+            if (!$hasType) {
                 continue;
             }
 

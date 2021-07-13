@@ -54,8 +54,7 @@ class Feedback extends Model
                 ],
                 'label' => 'Tipo',
                 'placeholder' => 'Ex.: meu título lindo',
-                'validation' => 'required|in:critic,comment,suggestion,compliment',
-                'list_column' => true
+                'validation' => 'required|in:critic,comment,suggestion,compliment'
             ],
             'service_id' => [
                 'type' => 'model:App\Model\Service',
@@ -76,6 +75,7 @@ class Feedback extends Model
                 'type' => 'boolean',
                 'label' => 'Visível',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
+                'show' => 'edit,list'
             ]            
         ]
     ];
