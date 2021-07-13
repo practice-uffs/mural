@@ -23,9 +23,11 @@ class Main extends Component
     public array $data = [];
     public array $fields = []; // see mount()
     public $editing = null;
+    public $finished = false;
 
     public bool $show_create_panel = true;
     public bool $show_list = true;
+    public bool $show_success = true;
 
     public string $model = ''; // E.g. '\App\Model\Order'
     public string $view_name = 'livewire.crud.main';
@@ -265,12 +267,14 @@ class Main extends Component
         $values = $this->prepareValuesForCreate($values);
 
         $this->model::create($values);
+        
         $this->resetInput();
+        $this->finished(true);
     }
 
-    public function showCreatePanel($value)
+    public function finished($value)
     {
-        $this->show_create_panel = $value;
+        $this->finished = $value;
     }
 
     public function hideInlineEdit()
