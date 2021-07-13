@@ -218,7 +218,7 @@ class Main extends Component
                 $fields[$key]['options'] = $this->fillOptionsForModelType($info['type']);
             }
 
-            if ($info['type'] == 'select') {
+            if ($info['type'] == 'select' || $info['type'] == 'radio') {
                 $fields[$key]['options'] = $this->fillOptionsForSelectType($info);
             }
         }

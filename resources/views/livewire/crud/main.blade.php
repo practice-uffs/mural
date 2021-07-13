@@ -42,8 +42,9 @@
                                     </div>
                                     @break
                                 @case('select')
+                                @case('radio')
                                     <!-- {{ $value = $item[$field['property']]; }} -->
-                                    {{ $field['options']->first(function($val) use ($value) { return $val['id'] == $value; })['text'] }}
+                                    {{ collect($field['options'])->first(function($val) use ($value) { return $val['id'] == $value; })['text'] }}
                                     @break
                                 @default
                                     {{ $item[$field['property']] }}

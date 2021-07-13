@@ -32,6 +32,20 @@
                         @endforeach
                     </select> 
                     @break
+                @case('radio')
+                    <span class="label-text">{{ $field['label'] }}</span> 
+                    <div class="flex flex-row mt-2 mb-2">
+                        @foreach ($field['options'] as $info)
+                            <label class="cursor-pointer mr-5">
+                                <div class="inline-block">
+                                    <input wire:model="{{ $key }}" type="radio" checked="checked" class="radio radio-primary" value="{{ $info['id']}}"> 
+                                    <span class="radio-mark mr-1"></span>
+                                </div>
+                                <span class="label-text">{{ $info['text']}}</span> 
+                            </label>
+                        @endforeach
+                    </div>
+                    @break
                 @case('file')
                     <label class="label">
                         <span class="label-text">{{ $field['label'] }}</span> 
