@@ -52,33 +52,30 @@ class Service extends Model
                 'label' => 'Categoria',
                 'validation' => 'required',
                 'type' => 'model:\App\Model\Category',
-                'list_column' => true
             ],
             'name' => [
                 'label' => 'Nome',
                 'placeholder' => 'Ex.: Campus Chapecó',
                 'validation' => 'required|min:5',
-                'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
-                'list_column' => false
+                'show' => 'create,edit',
             ],
             'work_days' => [
                 'label' => 'Dias úteis',
                 'placeholder' => 'Ex.: 10',
-                'list_column' => true
             ],            
             'notice' => [
                 'label' => 'Aviso',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
-                'list_column' => false
+                'show' => 'create,edit',
             ], 
             'poll' => [
                 'label' => 'Perguntas adicionais',
                 'type' => 'poll',
-                'list_column' => false
+                'show' => 'create,edit',
             ],
             'is_available' => [
                 'type' => 'boolean',
@@ -88,7 +85,6 @@ class Service extends Model
                 ],
                 'label' => 'Disponível',
                 'placeholder' => 'Se esse serviço está disponível para solicitação de clientes.',
-                'list_column' => true
             ],
             'is_active' => [
                 'type' => 'boolean',
@@ -98,7 +94,6 @@ class Service extends Model
                 ],
                 'label' => 'Ativo',
                 'placeholder' => 'Se esse serviço deve aparecer em nossos formulários.',
-                'list_column' => true
             ],  
         ]
     ];

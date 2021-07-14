@@ -71,8 +71,20 @@
                                 </div>
 
                                 <div class="flex justify-between">
-                                    <a href="{{ route('order.create', [$service->id]) }}" class="btn btn-primary my-2">Solicitar</a>
+                                    @if ($service->is_available)
+                                        <a href="{{ route('order.create', [$service->id]) }}" class="btn btn-primary my-2">Solicitar</a>
+                                    @else
+                                        <a href="#" class="btn btn-primary my-2" disabled="disabled">Indisponível</a>
+                                    @endif
                                 </div>
+
+                                @if ($service->notice)
+                                    <div class="alert alert-info">
+                                        <div class="flex-1">
+                                            <label class="text-sm">{{ $service->notice }}</label>
+                                        </div>
+                                    </div>
+                                @endif    
                             </div>
                         </div>
                         @empty
