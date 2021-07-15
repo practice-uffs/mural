@@ -32,7 +32,7 @@
                             </p>
                         </div>
                         <div class="h-1 bg-gray-200 rounded overflow-hidden">
-                            <div class="w-24 h-full bg-indigo-500"></div>
+                            <div class="w-24 h-full bg-{{ $item['category']['color'] }}"></div>
                         </div>                        
                     </div>
                 </div>
@@ -46,9 +46,9 @@
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                         @forelse ($item['services'] as $service)
                         <div class="relative bg-white py-6 px-6 rounded-3xl w-96 my-4 shadow-xl">
-                            <div class=" text-white flex items-center absolute rounded-full py-1 px-1 shadow-xl bg-pink-500 left-4 -top-6">
+                            <div class=" text-white flex items-center absolute rounded-full py-1 px-1 shadow-xl bg-{{ $service->color }} left-4 -top-6">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+                                    {!! $service->icon_svg_path !!}
                                 </svg>
                             </div>
                             <div class="mt-12">
@@ -66,7 +66,7 @@
 
                                 <div class="flex justify-between">
                                     <div class="my-2 h-40">
-                                        <p>{{ $service->description }}</p>
+                                        <p>{!! Str::markdown($service->description ? $service->description : '') !!}</p>
                                     </div>
                                 </div>
 
@@ -74,14 +74,21 @@
                                     @if ($service->is_available)
                                         <a href="{{ route('order.create', [$service->id]) }}" class="btn btn-primary my-2">Solicitar</a>
                                     @else
-                                        <a href="#" class="btn btn-primary my-2" disabled="disabled">Indisponível</a>
+                                        <div class="alert alert-warning">
+                                            <div class="flex-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                  </svg>
+                                                <label class="text-sm">Esse serviço está temporariamente indisponível. Nossas desculpas!</label>
+                                            </div>
+                                        </div>
                                     @endif
                                 </div>
 
                                 @if ($service->notice)
                                     <div class="alert alert-info">
                                         <div class="flex-1">
-                                            <label class="text-sm">{{ $service->notice }}</label>
+                                            <label class="text-xs">{{ $service->notice }}</label>
                                         </div>
                                     </div>
                                 @endif    

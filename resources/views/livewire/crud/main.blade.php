@@ -33,7 +33,7 @@
                             <td>
                                 @switch(@$field['type'])
                                 @case('boolean')
-                                    <div class="badge @if ($item[$field['property']]) badge-accent @endif badge-outline">
+                                    <div class="badge @if ($item[$field['property']]) badge-success @else badge-warning @endif text-xs">
                                         @if (isset($field['value_as_text']))
                                             @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
                                         @else

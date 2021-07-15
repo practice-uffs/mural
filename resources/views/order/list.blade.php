@@ -41,8 +41,10 @@
                                 <td>
                                     <div class="flex items-center space-x-3">
                                         <div class="avatar">
-                                            <div class="w-12 h-12 mask mask-squircle">
-                                                <img src="{{ $order->service->img }}" alt="Ícone do serviço">
+                                            <div class="w-10 h-10 mask mask-circle bg-{{ $order->service->category->color }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    {!! $order->service->icon_svg_path !!}
+                                                </svg>
                                             </div>
                                         </div>
                                         <div>
