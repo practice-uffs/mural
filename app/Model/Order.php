@@ -65,25 +65,30 @@ class Order extends Model
                 'label' => 'Título oi oi',
                 'placeholder' => 'Ex.: meu título lindo',
                 'validation' => 'required|min:5',
-                'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
-                'list_column' => false
+                'list_column' => false,
+                'show' => 'create,edit'
             ],
             'location_id' => [
                 'type' => 'model:App\Model\Location',
                 'label' => 'Local',
                 'validation' => 'required',
                 'placeholder' => '',
-                'list_column' => false
-            ],  
+                'show' => 'create,edit'
+            ], 
+            'requested_due_date' => [
+                'type' => 'date',
+                'label' => 'Prazo de entrega sugerido',
+                'placeholder' => 'Ex.: descrição de alguma coisa',
+            ],
             'github_issue_link' => [
                 'type' => 'file',
                 'label' => 'File',
                 'placeholder' => 'Clique aqui ou arreste um arquivo para essa área para fazer upload',
-                'list_column' => false
+                'show' => 'create,edit'
             ],
         ]
     ];

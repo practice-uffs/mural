@@ -72,6 +72,16 @@ class Service extends Model
                 'placeholder' => 'Ex.: uma breve descrição desse local',
                 'show' => 'create,edit',
             ], 
+            'color' => [
+                'label' => 'Cor',
+                'placeholder' => 'Ex.: yellow-500',
+                'show' => 'create,edit',
+            ],             
+            'icon_svg_path' => [
+                'label' => 'Ícone (path SVG)',
+                'placeholder' => 'Ex.: <path>...</path>',
+                'show' => 'create,edit',
+            ],            
             'poll' => [
                 'label' => 'Perguntas adicionais',
                 'type' => 'poll',

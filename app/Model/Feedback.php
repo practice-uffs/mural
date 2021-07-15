@@ -45,7 +45,7 @@ class Feedback extends Model
     public static $crud = [
         'fields' => [
             'type' => [
-                'type' => 'select',
+                'type' => 'radio',
                 'options' => [
                     'critic' => 'Crítica',
                     'comment' => 'Comentário',
@@ -54,7 +54,7 @@ class Feedback extends Model
                 ],
                 'label' => 'Tipo',
                 'placeholder' => 'Ex.: meu título lindo',
-                'validation' => 'required|in:critic,comment,suggestion,compliment'
+                'validation' => 'required|in:critic,comment,suggestion,compliment',
             ],
             'service_id' => [
                 'type' => 'model:App\Model\Service',

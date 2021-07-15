@@ -62,6 +62,11 @@ class Category extends Model
                 'placeholder' => 'Ex.: Há muitas solicitações de serviço nessa categoria, o tempo de resposta pode ser mais longo.',
                 'list_column' => false
             ],
+            'color' => [
+                'label' => 'Cor',
+                'placeholder' => 'Ex.: yellow-500',
+                'show' => 'create,edit'
+            ],
             'is_active' => [
                 'type' => 'boolean',
                 'value_as_text' => [
