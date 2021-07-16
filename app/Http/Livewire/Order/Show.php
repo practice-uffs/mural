@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Order;
 
+use App\Notifications\OrderStarted;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -42,7 +43,7 @@ class Show extends Component
         $this->emit('order:statusChanged');
 
         if ($wasGithubLinkAdded) {
-            // TODO: avisar cliente que tarefa iniciou
+            $this->order->user->notify(new OrderStarted($this->order));
         }
     }
 }
