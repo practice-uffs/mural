@@ -124,6 +124,26 @@ class Order extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function getGoogleDriveInFolderIdAttribute()
+    {
+        if (empty($this->google_drive_in_folder_link)) {
+            return '';
+        }
+
+        $parts = explode('/', $this->google_drive_in_folder_link);
+        return $parts[count($parts) - 1];
+    }
+
+    public function getGoogleDriveOutFolderIdAttribute()
+    {
+        if (empty($this->google_drive_out_folder_link)) {
+            return '';
+        }
+
+        $parts = explode('/', $this->google_drive_out_folder_link);
+        return $parts[count($parts) - 1];
+    }    
     
     /**
      * Obtém informações sobre a situação do pedido para mostrar para o usuário,

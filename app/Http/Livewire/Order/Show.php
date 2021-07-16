@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Order;
 
+use App\Jobs\ProcessGoogleDriveUploads;
 use App\Notifications\OrderStarted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
@@ -49,7 +50,10 @@ class Show extends Component
     }
 
     public function saveFiles() {
-        // TODO: iterar na lista de arquivos e salvar eles em uma pasta da solicitação.
-        Log::debug('Saving files', $this->files);
+        foreach ($this->files as $file) {
+            $file->storeAs('orders/' . $this->order->id, $file->getClientOriginalName());
+        }
+
+        ProcessGoogleDriveUploads::dispatch();
     }
 }

@@ -100,6 +100,7 @@
                 wire:ignore
                 x-data="{pond: null}"
                 x-init="
+                    FilePond.registerPlugin(FilePondPluginImagePreview);
                     pond = FilePond.create($refs.input);
                     pond.setOptions({
                         allowMultiple: true,
@@ -116,6 +117,11 @@
                     });
                     pond.onprocessfiles = () => {
                         @this.saveFiles();
+                        
+                        setTimeout(() => {
+                            const frame = document.getElementById('inFiles');
+                            frame.parentNode.replaceChild(frame.cloneNode(), frame);
+                        }, 10000);
                     }
             ">
                 <input type="file" name="files" x-ref="input">
@@ -126,7 +132,7 @@
                 </svg>
                 Se você fizer upload de arquivos novos, pode levar algum tempo para eles aparecerem na lista abaixo.
             </p>
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1s5JcDHMzf_TJxFMU7k1H6oQVemesK7ec#list" class="w-full border-none"></iframe>
+            <iframe id="inFiles" src="https://drive.google.com/embeddedfolderview?id={{ $order->google_drive_in_folder_id }}#list" class="w-full border-none"></iframe>
         </div>
     </div>
 </div>

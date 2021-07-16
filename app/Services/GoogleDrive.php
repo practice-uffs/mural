@@ -139,6 +139,24 @@ class GoogleDrive
         return $folder;
     }
 
+    public function createFile($name, $content, $parentId = '') {
+        $file = new \Google\Service\Drive\DriveFile();
+
+        $file->setName($name);
+        $info = [
+            'data' => $content,
+            'mimeType' => 'application/octet-stream',
+            'uploadType' => 'multipart'
+        ];
+
+        if(!empty($parentId)) {
+            $file->parents[] = $parentId;
+        }
+        
+        $result = $this->service->files->create($file, $info);
+        return $result;
+    }    
+
     /**
      * Returns an authorized API client.
      * @return Google_Client the authorized client object
