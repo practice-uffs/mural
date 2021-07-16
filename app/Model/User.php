@@ -69,6 +69,17 @@ class User extends Authenticatable implements JWTSubject
         return $this->type == SELF::ADMIN;
     }
 
+
+    /**
+     * Route notifications for the mail channel.
+     *
+     * @return string
+     */
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }    
+
     // JWT Subct methods
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Events\OrderCommented;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
@@ -38,11 +38,13 @@ class Comments extends Component
             'content' => 'required',
         ]);
 
-        $this->commentable->comments()->create([
+        $comment = $this->commentable->comments()->create([
             'user_id' => auth()->id(),
             'content' => $this->content
         ]);
 
+        OrderCommented::dispatch($this->commentable, $comment);
+        
         $this->resetInput();
     }
 }
