@@ -184,11 +184,10 @@ class ItemController extends Controller
                 $mail->build();
 
                 //Envio de push notification
-                if(count(Channels::where('user_id', $user->id)->get()) != 0){
-                    $request_user = User::find($comment->user_id);
-                    $request_user = ucwords(strtolower($request_user->name));
-                    $user->notify(new PushNotification("Novo comentário em ".$item->title, $request_user.":\n\"".trim($comment->description)."\""));
-                }
+                $request_user = User::find($comment->user_id);
+                $request_user = ucwords(strtolower($request_user->name));
+                $user->notify(new PushNotification("Novo comentário em ".$item->title, $request_user.":\n\"".trim($comment->description)."\""));
+
             } catch (\Throwable $th) {
                 //throw $th;
             }
