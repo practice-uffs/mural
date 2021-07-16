@@ -138,15 +138,15 @@ class ServiceController extends Controller
         $item->touch();
 
         if($DidChangeStatus){
-            $user = User::find($item->user_id);
-            $email = new stdClass();
-            $email->content = 'emails.MudadoStatus';
-            $email->subject = 'Alteração de Status da Solicitação';
-            $mail = new Email($user,$email,$item);
-            $mail->build();
+            try {
+                $user = User::find($item->user_id);
+                $email = new stdClass();
+                $email->content = 'emails.MudadoStatus';
+                $email->subject = 'Alteração de Status da Solicitação';
+                $mail = new Email($user,$email,$item);
+                $mail->build();
 
-            //Envio de push notification
-            if(count(Channels::where('user_id', $user->id)->get()) != 0){
+                //Envio de push notification
                 $status = "";
                 if($item->status == 1){
                     $status = "No Aguardo";
@@ -162,9 +162,19 @@ class ServiceController extends Controller
                 }
                 $title = "Alteração de Status da Solicitação";
                 $body = "A solicitação \"".$item->title."\" mudou de status para: ".$status;
+
                 $user->notify(new PushNotification($title, $body));
+                // if(count(Channels::where('user_id', $user->id)->get()) != 0){
+
+                // }
+            } catch (\Throwable $th) {
+                //throw $th;
             }
         }
+
+        return response(
+            Response::HTTP_OK
+        );
     }
 
     /**
