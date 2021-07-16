@@ -53,5 +53,5 @@ return [
     | informações de comentários que chegam do github.
     |
     */
-    'user_uid_comments' => 'practice',
+    'user_uid_comments' => env('GITHUB_USER_UID_COMMENTS', 'practice'),
 ];

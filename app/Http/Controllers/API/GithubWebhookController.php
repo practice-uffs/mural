@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-
+use App\Events\OrderCommented;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Comment;
@@ -92,7 +92,7 @@ class GithubWebhookController extends Controller
     }
 
     protected function getSystemUser() {
-        $systemUser = User::where('uid', config('app.github_user_uid_comments'))->firstOr(function() {
+        $systemUser = User::where('uid', config('github.user_uid_comments'))->firstOr(function() {
             abort(404, 'github_user_uid_comments não configurado corretamente');
         });
 
@@ -116,13 +116,15 @@ class GithubWebhookController extends Controller
         $systemUser = $this->getSystemUser();
 
         if ($action == 'created') {
-            $order->comments()->create([
+            $comment = $order->comments()->create([
                 'content' => $body,
                 'type' => 'github:' . $payload['comment']['id'],
                 'data' => $payload,
                 'is_hidden' => false,
                 'user_id' => $systemUser->id,
             ]);
+
+            OrderCommented::dispatch($order, $comment);
                
             return response('Comment created', 201);
         }  
