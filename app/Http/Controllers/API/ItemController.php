@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 use App\Item;
 use App\User;
+use App\Channels;
 use App\Specification;
 use stdClass;
 use App\Mail\Email;
@@ -16,6 +17,7 @@ use App\Mail\Email;
 use Carbon\Carbon;
 use App\Http\Resources\ItemResource;
 use App\Http\Resources\CommentResource;
+use App\Notifications\PushNotification;
 
 class ItemController extends Controller
 {
@@ -143,8 +145,8 @@ class ItemController extends Controller
      * @param  int $parentId
      * @return \Illuminate\Http\Response
      */
-    public function storeComment(Request $request, $parentId){   
-        
+    public function storeComment(Request $request, $parentId){
+
         $POST_GIT = false;
 
         $item = Item::find($parentId);
@@ -172,11 +174,20 @@ class ItemController extends Controller
 
         if($item->type==Item::TYPE_SERVICE && $item->user_id != $request->user_id){
             $user = User::find($item->user_id);
+
+            //Envio de Email
             $email = new stdClass();
             $email->content = 'emails.NovoComentario';
             $email->subject = 'Novo comentário na solicitação';
             $mail = new Email($user,$email,$item);
             $mail->build();
+
+            //Envio de push notification
+            if(count(Channels::where('user_id', $user->id)->get()) != 0){
+                $request_user = User::find($comment->user_id);
+                $request_user = ucwords(strtolower($request_user->name));
+                $user->notify(new PushNotification("Novo comentário em ".$item->title, $request_user.":\n\"".trim($comment->description)."\""));
+            }
         }
 
         return response(
@@ -187,8 +198,8 @@ class ItemController extends Controller
     public function destroyComment($parentId, $commentId)
     {
         $comment = Item::find($commentId);
-        $comment->delete();    
-       
+        $comment->delete();
+
         return response(
             null,
             Response::HTTP_NO_CONTENT

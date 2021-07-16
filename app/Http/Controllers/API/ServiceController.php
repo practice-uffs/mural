@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\User;
+use App\Channels;
 use App\Specification;
 use stdClass;
 use App\Mail\Email;
 
 use App\Http\Resources\ServiceResource;
+use App\Notifications\PushNotification;
 
 class ServiceController extends Controller
 {
@@ -142,6 +144,26 @@ class ServiceController extends Controller
             $email->subject = 'Alteração de Status da Solicitação';
             $mail = new Email($user,$email,$item);
             $mail->build();
+
+            //Envio de push notification
+            if(count(Channels::where('user_id', $user->id)->get()) != 0){
+                $status = "";
+                if($item->status == 1){
+                    $status = "No Aguardo";
+                }
+                elseif($item->status == 2){
+                    $status = "Em Processo";
+                }
+                elseif($item->status == 3){
+                    $status = "Concluído";
+                }
+                elseif($item->status == 4){
+                    $status = "Recusado";
+                }
+                $title = "Alteração de Status da Solicitação";
+                $body = "A solicitação \"".$item->title."\" mudou de status para: ".$status;
+                $user->notify(new PushNotification($title, $body));
+            }
         }
     }
 
