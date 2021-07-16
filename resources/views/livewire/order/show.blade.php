@@ -107,15 +107,18 @@
                         labelFileProcessingComplete: 'Upload finalizado',
                         server: {
                             process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-                                @this.upload('file', file, load, error, progress)
+                                @this.upload('files', file, load, error, progress)
                             },
                             revert: (filename, load) => {
-                                @this.removeUpload('file', filename, load)
+                                @this.removeUpload('files', filename, load)
                             },
                         },
                     });
+                    pond.onprocessfiles = () => {
+                        @this.saveFiles();
+                    }
             ">
-                <input type="file" name="file" x-ref="input">
+                <input type="file" name="files" x-ref="input">
             </div>
             <p class="text-sm text-gray-400 inline-flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

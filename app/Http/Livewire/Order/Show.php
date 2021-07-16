@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Order;
 
 use App\Notifications\OrderStarted;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,7 +13,7 @@ class Show extends Component
     use WithFileUploads;
 
     public Model $order;
-    public $file;
+    public $files = [];
     public $github_issue_link;
 
     protected $rules = [
@@ -45,5 +46,10 @@ class Show extends Component
         if ($wasGithubLinkAdded) {
             $this->order->user->notify(new OrderStarted($this->order));
         }
+    }
+
+    public function saveFiles() {
+        // TODO: iterar na lista de arquivos e salvar eles em uma pasta da solicitação.
+        Log::debug('Saving files', $this->files);
     }
 }
