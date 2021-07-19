@@ -9,7 +9,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderEvaluationController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 
@@ -24,13 +26,14 @@ use Illuminate\Support\Facades\App;
 |
 */
 if (App::environment('local')) {
-    Route::get('/test', 'TestController@index');
+    Route::get('/test', [TestController::class, 'index']);
 }
 
-// Index
+// Public routes
 Route::view('/', 'index')->name('index');
 Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter.subscribed');
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas');
+Route::get('/avaliar/{orderEvaluation}/{hash}', [OrderEvaluationController::class, 'show'])->name('orderevaluation.show');
 
 // Auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');

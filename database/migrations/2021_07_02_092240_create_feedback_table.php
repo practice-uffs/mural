@@ -24,7 +24,6 @@ class CreateFeedbackTable extends Migration
             $table->timestamps();
 
             $table->foreignId('user_id');
-            $table->foreignId('service_id')->nullable();
         });
     }
 

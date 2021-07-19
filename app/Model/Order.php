@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\OrderEvaluation;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,7 +37,6 @@ class Order extends Model
         'google_drive_out_folder_link',
         'google_drive_folder_link',
         'requested_due_date',
-        'closed',
         'user_id',
         'location_id',
         'service_id',
@@ -115,6 +115,14 @@ class Order extends Model
     public function location()
     {
         return $this->belongsTo(Location::class);
+    }
+
+    /**
+     * Avaliação desse pedido.
+     */
+    public function evaluation()
+    {
+        return $this->hasOne(OrderEvaluation::class, 'order_id');
     }
 
     /**

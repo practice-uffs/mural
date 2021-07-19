@@ -24,7 +24,6 @@ class CreateOrdersTable extends Migration
             $table->text('google_drive_out_folder_link')->nullable();
             $table->text('google_drive_folder_link')->nullable();
             $table->date('requested_due_date')->nullable();
-            $table->boolean('is_closed')->default(true);
             $table->timestamps();
 
             $table->foreignId('user_id');

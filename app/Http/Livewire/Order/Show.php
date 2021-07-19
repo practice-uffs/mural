@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Order;
 
+use App\Events\OrderCompleted;
 use App\Jobs\ProcessGoogleDriveUploads;
 use App\Notifications\OrderStarted;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,14 +16,17 @@ class Show extends Component
     public Model $order;
     public $files = [];
     public $github_issue_link;
+    public $status;
 
     protected $rules = [
         'github_issue_link' => 'present',
+        'status' => 'present|in:,todo,doing,review,completed,closed',
     ];
 
     public function mount()
     {
         $this->github_issue_link = $this->order->github_issue_link;
+        $this->status = $this->order->status;
     }
 
     public function render()
@@ -31,7 +34,7 @@ class Show extends Component
         return view('livewire.order.show');
     }
 
-    public function update()
+    public function save()
     {
         $this->validate();
 
@@ -39,13 +42,18 @@ class Show extends Component
                               !empty($this->github_issue_link);
 
         $this->order->update([
-            'github_issue_link' => $this->github_issue_link
+            'github_issue_link' => $this->github_issue_link,
+            'status' => $this->status,
         ]);
 
         $this->emit('order:statusChanged');
 
         if ($wasGithubLinkAdded) {
             $this->order->user->notify(new OrderStarted($this->order));
+        }
+
+        if ($this->status == 'completed') {
+            OrderCompleted::dispatch($this->order);
         }
     }
 

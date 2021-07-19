@@ -67,7 +67,26 @@
                 <span class="label-text">URL da issue no Github</span>
             </label>
             <input wire:model="github_issue_link" type="text" name="github_issue_link" placeholder="Ex.: https://github.com/practice-uffs/programa/issue/234" class="input input-bordered @error('github_issue_link') input-error @enderror" />
-            <button wire:click="update()" class="btn btn-primary w-20 float-right mt-2">Salvar</button>
+            @error('github_issue_link')
+                <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
+            @enderror            
+
+            <label for="status" class="label">
+                <span class="label-text">Status desse pedido</span>
+            </label>
+            <select wire:model="status" name="status" class="select select-bordered w-full @error('status') select-error @enderror">
+                <option value=""> Em análise (checanco viabilidade)</option> 
+                <option value="todo">Na fila de trabalho (aceitamos o trabalho, mas não começamos)</option> 
+                <option value="doing">Em andamento (estamos trabalhando no pedido)</option> 
+                <option value="review">Em revisão pelo cliente</option> 
+                <option value="completed">Completo (finalizado com entrega)</option> 
+                <option value="closed">Cancelado (finalizado sem entrega)</option> 
+            </select>             
+            @error('status')
+                <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
+            @enderror
+
+            <button wire:click="save()" class="btn btn-primary w-20 float-right mt-2">Salvar</button>
         </div>
     </div>
 
