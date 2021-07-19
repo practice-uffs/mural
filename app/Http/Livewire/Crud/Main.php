@@ -104,12 +104,17 @@ class Main extends Component
         return [];
     }
 
-    public function mount($model = '')
+    public function mount($model = '', $edit = null)
     {
         if (!empty($model)) {
             $this->model = $model;
         }
+
         $this->fields = $this->createPublicFieldsProperty();
+
+        if ($edit != null) {
+            $this->data = $this->prepareModelData($edit->toArray());
+        }
     }
 
     protected function rules()
@@ -297,6 +302,7 @@ class Main extends Component
 
     public function edit($id)
     {
+        $this->finished(false);
         $this->data = $this->model::findOrFail($id)->toArray();
         $this->data = $this->prepareModelData($this->data);
         $this->showInlineEdit($id);
@@ -322,6 +328,7 @@ class Main extends Component
 
         $this->resetInput();
         $this->hideInlineEdit();
+        $this->finished(true);
     }
 
     public function destroy($id)

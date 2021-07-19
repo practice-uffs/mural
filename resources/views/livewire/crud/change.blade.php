@@ -121,7 +121,9 @@
 
         @if (isset($data['id']) || $editing)
             <button wire:click="update()" class="btn btn-primary float-right">Salvar</button>
-            <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
+            @if (!isset($edit))
+                <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
+            @endif
         @else
             <button wire:click="store()" class="btn btn-wide btn-primary">Enviar</button>
         @endif

@@ -1,6 +1,6 @@
 <div>
     @if ($show_create_panel && !$editing)
-        @include('livewire.crud.change', ['create' => true])
+        @include('livewire.crud.change')
     @endif
 
     @if ($show_list)
