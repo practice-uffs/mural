@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Channels extends Model
 {
@@ -13,6 +14,6 @@ class Channels extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne(User::class);
     }
 }

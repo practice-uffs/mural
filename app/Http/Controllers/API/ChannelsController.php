@@ -11,8 +11,8 @@ use SebastianBergmann\Environment\Console;
 
 class ChannelsController extends Controller
 {
-    public function store(Request $request, $id){
-        $request['user_id'] = $id;
+    public function store(Request $request){
+        $request['user_id'] = auth()->id();
 
         $data = $request->validate([
             'user_id' => 'required|unique:channels,user_id',
@@ -27,12 +27,13 @@ class ChannelsController extends Controller
         );
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
         $data = $request->validate([
             'fcm_token' => 'required',
         ]);
+        $id = auth()->id();
 
-        $channels = Channels::where('user_id', $id)->update(['fcm_token' => $data['fcm_token']]);
+        $channels = Channels::where('user_id', $id)->update($data);
 
         return response(
             $channels,
@@ -40,7 +41,8 @@ class ChannelsController extends Controller
         );
     }
 
-    public function destroy($user_id){
+    public function destroy(){
+        $user_id = auth()->id();
         Channels::where('user_id', $user_id)->delete();
 
         return response(
