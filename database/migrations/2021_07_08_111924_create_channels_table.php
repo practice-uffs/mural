@@ -19,7 +19,7 @@ class CreateChannelsTable extends Migration
             $table->text('fcm_token')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
         });
     }
 
