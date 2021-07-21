@@ -147,26 +147,18 @@ class ServiceController extends Controller
                 $mail->build();
 
                 //Envio de push notification
-                $status = "";
-                if($item->status == 1){
-                    $status = "No Aguardo";
-                }
-                elseif($item->status == 2){
-                    $status = "Em Processo";
-                }
-                elseif($item->status == 3){
-                    $status = "Concluído";
-                }
-                elseif($item->status == 4){
-                    $status = "Recusado";
-                }
+                $statuses = [
+                    1 => 'No aguardo',
+                    2 => 'Em processo',
+                    3 => 'Concluído',
+                    4 => 'Recusado'
+                ];
+                $status = isset($statuses[$item->status]) ? $statuses[$item->status] : 'Desconhecido';
+
                 $title = "Alteração de Status da Solicitação";
                 $body = "A solicitação \"".$item->title."\" mudou de status para: ".$status;
 
                 $user->notify(new PushNotification($title, $body));
-                // if(count(Channels::where('user_id', $user->id)->get()) != 0){
-
-                // }
             } catch (\Throwable $th) {
                 //throw $th;
             }

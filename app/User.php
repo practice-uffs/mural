@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Channels;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -52,16 +53,6 @@ class User extends Authenticatable implements JWTSubject
 
     public function channels()
     {
-        return $this->hasOne('App\Channels');
-    }
-
-        /**
-     * Specifies the user's FCM token
-     *
-     * @return string|array
-     */
-    public function routeNotificationForFcm()
-    {
-        return $this->channels->fcm_token;
+        return $this->hasOne(Channels::class);
     }
 }

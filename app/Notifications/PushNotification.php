@@ -18,9 +18,9 @@ class PushNotification extends Notification
 {
     use Queueable;
 
-    var $title;
-    var $body;
-    var $imageURL;
+    protected $title;
+    protected $body;
+    protected $imageURL;
 
 
     /**
