@@ -55,4 +55,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Channels::class);
     }
+
+    /**
+     * Specifies the user's FCM token
+     *
+     * @return string|array
+     */
+    public function routeNotificationForFcm()
+    {
+        return $this->channels->fcm_token;
+    }
 }
