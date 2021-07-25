@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\User;
+use App\Channels;
 use App\Specification;
 use stdClass;
 use App\Mail\Email;
 
 use App\Http\Resources\ServiceResource;
+use App\Notifications\PushNotification;
 
 class ServiceController extends Controller
 {
@@ -136,13 +138,35 @@ class ServiceController extends Controller
         $item->touch();
 
         if($DidChangeStatus){
-            $user = User::find($item->user_id);
-            $email = new stdClass();
-            $email->content = 'emails.MudadoStatus';
-            $email->subject = 'Alteração de Status da Solicitação';
-            $mail = new Email($user,$email,$item);
-            $mail->build();
+            try {
+                $user = User::find($item->user_id);
+                $email = new stdClass();
+                $email->content = 'emails.MudadoStatus';
+                $email->subject = 'Alteração de Status da Solicitação';
+                $mail = new Email($user,$email,$item);
+                $mail->build();
+
+                //Envio de push notification
+                $statuses = [
+                    1 => 'No aguardo',
+                    2 => 'Em processo',
+                    3 => 'Concluído',
+                    4 => 'Recusado'
+                ];
+                $status = isset($statuses[$item->status]) ? $statuses[$item->status] : 'Desconhecido';
+
+                $title = "Alteração de Status da Solicitação";
+                $body = "A solicitação \"".$item->title."\" mudou de status para: ".$status;
+
+                $user->notify(new PushNotification($title, $body));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         }
+
+        return response(
+            Response::HTTP_OK
+        );
     }
 
     /**

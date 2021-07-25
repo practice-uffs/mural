@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Channels as AppChannels;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -53,5 +54,15 @@ class User extends Authenticatable implements JWTSubject
     public function channels()
     {
         return $this->hasOne(Channels::class);
+    }
+
+    /**
+     * Specifies the user's FCM token
+     *
+     * @return string|array
+     */
+    public function routeNotificationForFcm()
+    {
+        return $this->channels->fcm_token;
     }
 }
