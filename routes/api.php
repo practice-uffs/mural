@@ -36,10 +36,14 @@ Route::group(['middleware'=>['apiJwt']],function(){
     Route::apiResource('service', 'API\ItemController');
     Route::get('service/{id}/comments', 'API\ItemController@listComments');
     Route::post('service/{id}/comments', 'API\ItemController@storeComment');
-    Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');    
+    Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');
+
+    Route::post('user/channels', 'API\ChannelsController@store');
+    Route::patch('user/channels', 'API\ChannelsController@update');
+    Route::delete('user/channels', 'API\ChannelsController@destroy');
 });
     // ENPOINT LOUSAS
-    Route::apiResource('lousas', 'API\LousaController')->only(['index']);    
+    Route::apiResource('lousas', 'API\LousaController')->only(['index']);
 
 // ENDPOINTS FEEDBACK NOT SENSIVE
 Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
