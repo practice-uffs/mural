@@ -1,7 +1,15 @@
 <?php
 
+use App\Http\Controllers\API\AuthController as AuthController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\CommentController;
+use App\Http\Controllers\API\FeedbackController;
 use App\Http\Controllers\API\GithubWebhookController;
+use App\Http\Controllers\API\LocationController;
+use App\Http\Controllers\API\OrderController;
+use App\Http\Controllers\API\ServiceController;
 use Illuminate\Support\Facades\Route;
+use Orion\Facades\Orion;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +21,27 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// ENDPOINT LOGIN
-Route::post('auth/login', 'API\AuthController@login');
-Route::get('auth/is_valid', 'API\AuthController@isTokenValid');
 
-// ROUTES THAT NEED TOKEN AUTHENTICATION
-Route::group(['middleware'=>['apiJwt']],function(){
-    //ENDPOINTS AUTHORIZATIONS JWT
-    Route::post('auth/logout', 'API\AuthController@logout');
-    Route::post('auth/refresh', 'API\AuthController@refresh');
-    Route::post('auth/me', 'API\AuthController@me');
+// Autenticação
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::get('auth/is_valid', [AuthController::class, 'isTokenValid']);
 
-    // ENDPOINT FEEDBACK SENSIVE
-    Route::apiResource('feedbacks', 'API\FeedbackController')->only([
-        'store', 'show', 'update'
-    ]);
-    // ENPOINTS SERVICES
-    Route::apiResource('services', 'API\ServiceController')->only([
-        'index', 'store', 'show', 'update'
-    ]);
-
-    Route::apiResource('service', 'API\ItemController');
-    Route::get('service/{id}/comments', 'API\ItemController@listComments');
-    Route::post('service/{id}/comments', 'API\ItemController@storeComment');
-    Route::delete('service/{id}/comments/{commentId}', 'API\ItemController@destroyComment');    
+// Controle de autenticação
+Route::group(['middleware' => 'apiJwt'], function() {
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+    Route::post('auth/refresh', [AuthController::class, 'refresh']);
+    Route::post('auth/me', [AuthController::class, 'me']);
 });
 
-// ENDPOINTS FEEDBACK NOT SENSIVE
-Route::apiResource('feedbacks', 'API\FeedbackController')->only(['index']);
+// Gerência de modelos (serviço, pedido, etc)
+Route::group(['as' => 'api.', 'middleware' => 'api.jwt'], function() {
+    Orion::resource('feedbacks', 'API\FeedbackController');
+    Orion::resource('orders', 'API\OrderController');
+    Orion::resource('categories', 'API\CategoryController');
+    Orion::resource('locations', 'API\LocationController');
+    Orion::resource('services', 'API\ServiceController');
+    Orion::resource('comments', 'API\CommentController');
+});
 
-// ENPOINT RESOURCES
-Route::apiResource('categories', 'API\CategoryController')->only(['index']);
-Route::apiResource('locations', 'API\LocationController')->only(['index']);
-
-// ENDPOINTS GITHUB WEBHOOK
+// Misc (github, etc)
 Route::post('webhook/github/index.php', [GithubWebhookController::class, 'index']);

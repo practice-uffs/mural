@@ -45,22 +45,19 @@ class Category extends Model
                 'label' => 'Nome',
                 'placeholder' => 'Ex.: Evento',
                 'validation' => 'required',
-                'list_column' => true
             ],
             'slug' => [
                 'label' => 'Abreviação (sem acentos ou espaços)',
                 'placeholder' => 'Ex.: evento',
-                'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição dessa categoria',
-                'list_column' => true
             ],
             'notice' => [
                 'label' => 'Aviso',
                 'placeholder' => 'Ex.: Há muitas solicitações de serviço nessa categoria, o tempo de resposta pode ser mais longo.',
-                'list_column' => false
+                'show' => 'create,edit'
             ],
             'color' => [
                 'label' => 'Cor',
@@ -75,7 +72,6 @@ class Category extends Model
                 ],
                 'label' => 'Ativa',
                 'placeholder' => 'Se essa categoria deve aparecer em nossos formulários.',
-                'list_column' => true
             ],            
         ]
     ];
