@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Crud;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -28,11 +29,34 @@ class Main extends Component
     public bool $show_create_panel = true;
     public bool $show_list = true;
     public bool $show_success = true;
+    public array $override = [];
 
     public string $model = ''; // E.g. '\App\Model\Order'
     public string $view_name = 'livewire.crud.main';
     public array $include_create = []; // Fields to include in create operations    
     public array $include_update = []; // Fields to include in update operations
+
+    /**
+     * 
+     */
+    private function applyModelCrudInfoOverride(array & $modelCrudInfo) {
+        if (count($this->override) == 0) {
+            return;
+        }
+
+        $fields = array_keys($modelCrudInfo['fields']);
+
+        foreach($this->override as $field => $props) {
+            if (!in_array($field, $fields)) {
+                throw new \Exception('Cannot override unknown field [' . $field . '] in model ' . $this->model);
+            }
+
+            foreach($props as $key => $value) {
+                $path = 'fields.' . $field . '.' . $key;
+                Arr::set($modelCrudInfo, $path, $value);
+            }
+        }
+    }
 
     /**
      * 
@@ -55,6 +79,7 @@ class Main extends Component
      */
     protected function prepareModelCrudInfo(array $modelCrudInfo) :array
     {
+        $this->applyModelCrudInfoOverride($modelCrudInfo);
         return $modelCrudInfo;
     }
 
