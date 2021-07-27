@@ -19,6 +19,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 1,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />',
+            'color' => 'red-400',            
         ]);
 
         Service::create([
@@ -26,8 +28,10 @@ class ServiceSeeder extends Seeder
             'name' => 'Áudio Expositivo Longo',
             'description' => 'Pode ser feito em 2 modelos: Áudios com até 3 pessoas e uma trilha musical, gravado de forma corrida, com edição simples (apenas cortes necessários), como podcasts simples',
             'work_days' => 7,
-            'category_id' => 2,
+            'category_id' => 1,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />',
+            'color' => 'red-400',
         ]);
 
         Service::create([
@@ -37,6 +41,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 1,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />',
+            'color' => 'red-400',
         ]);
 
         Service::create([
@@ -44,8 +50,10 @@ class ServiceSeeder extends Seeder
             'name' => 'Vídeo Aula Simples',
             'description' => 'Vídeo com apenas o interlocutor em plano principal. Há a possibilidade de serem incluídos outros materiais ao longo do vídeo, como outros vídeos, textos e imagens. Vídeo e materiais enviados pelo solicitante.',
             'work_days' => 7,
-            'category_id' => 6,
+            'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -54,7 +62,9 @@ class ServiceSeeder extends Seeder
             'description' => 'Animação ilustrando a explicação da fala do narrador ou o próprio narrador escrevendo em tempo real, com ou sem segundo vídeo ao lado mostrando o narrador. Os vídeos e/ou instruções devem ser enviadas pelo solicitante. https://www.youtube.com/watch?v=kcft5B1c-JE&feature=youtu.be',
             'work_days' => 7,
             'category_id' => 2,
-            'is_available' => true,
+            'is_available' => false,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -64,6 +74,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -73,6 +85,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -82,6 +96,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -91,6 +107,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -100,6 +118,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -109,6 +129,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -118,6 +140,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -127,6 +151,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 2,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-400',
         ]);
 
         Service::create([
@@ -136,6 +162,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 3,
             'is_available' => false,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+            'color' => 'pink-300',
         ]);
 
         Service::create([
@@ -145,6 +173,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 3,
             'is_available' => false,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+            'color' => 'pink-300',
         ]);
 
         Service::create([
@@ -154,42 +184,52 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 3,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />',
+            'color' => 'pink-300',
         ]);
 
         Service::create([
             'img_url' => 'cartaz.png',
             'name' => 'Cartaz',
-            'description' => 'O cartaz tem por objetivo divulgar algo ou alguém, escrito de forma resumida e direta. Devem ser apresentadas em um cartaz apenas as informações fundamentais do que se pretende divulgar (nome, apresentador e data, se for um evento, por exemplo). Utiliza de linguagem simples e direta e recursos visuais (design e imagens) para chamar atenção do leitor.',
+            'description' => 'Divulgar algo ou alguém, escrito de forma resumida e direta. Utiliza de linguagem simples e direta e recursos visuais (design e imagens) para chamar atenção do leitor.',
             'work_days' => 7,
-            'category_id' => 3,
+            'category_id' => 4,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />',
+            'color' => 'green-400',
         ]);
 
         Service::create([
             'img_url' => 'pack_simples.png',
-            'name' => 'Identidade Visual Simples',
-            'description' => 'Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo e paleta de cores;',
+            'name' => 'Identidade Visual (simples)',
+            'description' => 'O pacote de identidade visual contém elementos a serem utilizados para trazer uma estética visual ao seu conteúdo. Este pacote contém: símbolo, logotipo e paleta de cores.',
             'work_days' => 15,
             'category_id' => 4,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />',
+            'color' => 'green-400',
         ]);
 
         Service::create([
             'img_url' => 'pack_completo.png',
-            'name' => 'Identidade Visual Completa',
-            'description' => 'Está precisando tornar seu conteúdo mais atraente? O pacote de identidade visual contem elementos a serem utilizados para trazer uma estética visual ao seu conteúdo, este pacote contém: símbolo, logotipo, paleta de cores, marca d’água e padronagem',
+            'name' => 'Identidade Visual (complexa)',
+            'description' => 'O pacote de identidade visual complexa contém elementos a serem utilizados para trazer uma estética visual ao seu conteúdo. Este pacote contém: símbolo, logotipo, paleta de cores, marca d’água e padronagem',
             'work_days' => 15,
             'category_id' => 4,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />',
+            'color' => 'green-400',
         ]);
 
         Service::create([
             'img_url' => 'event.png',
             'name' => 'Evento virtual',
-            'description' => 'Suporte para a realização de semanas acadêmicas e eventos virtuais em geral?',
+            'description' => 'Suporte para a realização de eventos virtuais em geral, como lives e semanas acadêmicas.',
             'work_days' => 7,
             'category_id' => 5,
             'is_available' => true,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />',
+            'color' => 'blue-600',
         ]);
 
         Service::create([
@@ -199,7 +239,8 @@ class ServiceSeeder extends Seeder
             'work_days' => 7,
             'category_id' => 6,
             'is_available' => false,
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />',
+            'color' => 'purple-500',
         ]);
-
     }
 }
