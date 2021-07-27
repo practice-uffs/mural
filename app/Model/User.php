@@ -30,6 +30,10 @@ class User extends Authenticatable implements JWTSubject
         'type'
     ];
 
+    protected $hidden = [
+        'password',
+    ];
+
     /**
      * Meta information about Livewire crud crud
      *
