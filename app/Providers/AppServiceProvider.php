@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Github;
 use App\Services\GoogleDrive;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('admin', function($expression = null) {
+            return '<?php if (auth()->check() && auth()->user()->isAdmin()): ?>';
+        });
+
+        Blade::directive('endadmin', function() {
+            return '<?php endif; ?>';
+        });
     }
 }

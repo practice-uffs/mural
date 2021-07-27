@@ -14,7 +14,7 @@
                     <li><a href="{{ route('order.list') }}"class="nav-link @if (Route::is('order.list')) active @endif">Acompanhar serviços</a></li>
                     <li><a href="{{ route('services') }}" class="nav-link @if (Route::is(['services', 'order.create'])) active @endif">Solicitar serviço</a></li>
 
-                    {{--@if(Auth()->user()->type == "admin")--}}
+                    @admin
                         <li class="dropdown ml-3">
                             <div tabindex="0" class="btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div>
                             <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
@@ -27,7 +27,7 @@
                                 <li><a href="{{ route('admin.user') }}">Usuários</a></li> 
                             </ul>
                         </li>
-                    {{--@endif--}}
+                    @endadmin
 
                     <li class="ml-8 mr-2">
                         <span class="font-semibold">{{ Str::title(Auth()->user()->name) }}</span>
@@ -36,7 +36,7 @@
                     <li class="flex-none">
                         <div class="avatar">
                             <div class="rounded-full w-10 h-10 m-1">
-                                <img src="https://i.pravatar.cc/500?img=32">
+                                <img src="https://cc.uffs.edu.br/avatar/iduffs/{{ auth()->user()->uid }}" />
                             </div>
                         </div>
                     </li>

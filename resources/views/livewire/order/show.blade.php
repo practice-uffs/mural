@@ -54,41 +54,43 @@
         </div>
     </div>
 
-    <div class="mb-4 w-full">
-        <h3 class="pb-3 mb-1 text-lg font-semibold text-gray-700 inline-flex items-center w-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            Gerenciamento interno
-        </h3>
-        <div class="form-control mb-4 pb-4">
-            <label for="github_issue_link" class="label">
-                <span class="label-text">URL da issue no Github</span>
-            </label>
-            <input wire:model="github_issue_link" type="text" name="github_issue_link" placeholder="Ex.: https://github.com/practice-uffs/programa/issue/234" class="input input-bordered @error('github_issue_link') input-error @enderror" />
-            @error('github_issue_link')
-                <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
-            @enderror            
+    @admin
+        <div class="mb-4 w-full">
+            <h3 class="pb-3 mb-1 text-lg font-semibold text-gray-700 inline-flex items-center w-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Gerenciamento interno
+            </h3>
+            <div class="form-control mb-4 pb-4">
+                <label for="github_issue_link" class="label">
+                    <span class="label-text">URL da issue no Github</span>
+                </label>
+                <input wire:model="github_issue_link" type="text" name="github_issue_link" placeholder="Ex.: https://github.com/practice-uffs/programa/issue/234" class="input input-bordered @error('github_issue_link') input-error @enderror" />
+                @error('github_issue_link')
+                    <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
+                @enderror            
 
-            <label for="status" class="label">
-                <span class="label-text">Status desse pedido</span>
-            </label>
-            <select wire:model="status" name="status" class="select select-bordered w-full @error('status') select-error @enderror">
-                <option value=""> Em análise (checanco viabilidade)</option> 
-                <option value="todo">Na fila de trabalho (aceitamos o trabalho, mas não começamos)</option> 
-                <option value="doing">Em andamento (estamos trabalhando no pedido)</option> 
-                <option value="review">Em revisão pelo cliente</option> 
-                <option value="completed">Completo (finalizado com entrega)</option> 
-                <option value="closed">Cancelado (finalizado sem entrega)</option> 
-            </select>             
-            @error('status')
-                <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
-            @enderror
+                <label for="status" class="label">
+                    <span class="label-text">Status desse pedido</span>
+                </label>
+                <select wire:model="status" name="status" class="select select-bordered w-full @error('status') select-error @enderror">
+                    <option value=""> Em análise (checanco viabilidade)</option> 
+                    <option value="todo">Na fila de trabalho (aceitamos o trabalho, mas não começamos)</option> 
+                    <option value="doing">Em andamento (estamos trabalhando no pedido)</option> 
+                    <option value="review">Em revisão pelo cliente</option> 
+                    <option value="completed">Completo (finalizado com entrega)</option> 
+                    <option value="closed">Cancelado (finalizado sem entrega)</option> 
+                </select>             
+                @error('status')
+                    <label class="label"><span class="label-text-alt text-red-500">{{ $message }}</span></label>
+                @enderror
 
-            <button wire:click="save()" class="btn btn-primary w-20 float-right mt-2">Salvar</button>
+                <button wire:click="save()" class="btn btn-primary w-20 float-right mt-2">Salvar</button>
+            </div>
         </div>
-    </div>
+    @endadmin
 
     <div class="mb-4 w-full">
         <h3 class="pb-3 mb-4 text-lg font-semibold text-gray-700 border-b-2 border-gray-100 inline-flex items-center w-full">
