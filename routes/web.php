@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderEvaluationController;
 use App\Http\Controllers\ServiceController;
@@ -31,10 +33,12 @@ if (App::environment('local')) {
 }
 
 // Rotas públicas
-Route::view('/', 'index')->name('index');
-Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter.subscribed');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas');
+Route::get('/servicos', [ServiceController::class, 'index'])->name('services');
 Route::get('/avaliar/{orderEvaluation}/{hash}', [OrderEvaluationController::class, 'show'])->name('orderevaluation.show');
+
+Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter.subscribed');
 
 // Autenticação
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -44,11 +48,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Rotas autenticadas
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/inicial', [HomeController::class, 'index'])->name('home');
-    Route::get('/servicos/solicitar', [ServiceController::class, 'index'])->name('services');
     Route::get('/servicos/solicitar/{service}', [OrderController::class, 'create'])->name('order.create');
     Route::get('/servicos/acompanhar', [OrderController::class, 'index'])->name('order.list');
     Route::get('/servico/{order}', [OrderController::class, 'show'])->name('order.show');
-    Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
+    Route::get('/feedbacks', [FeedbackController::class, 'index'])->name('feedbacks');
 
     // Admin
     Route::group(['middleware' => 'check.admin'], function () {

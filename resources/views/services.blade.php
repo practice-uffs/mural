@@ -23,10 +23,10 @@
                 <div class="container px-5 py-4 mx-auto">
                     <div class="flex flex-col">
                         <div class="flex flex-wrap sm:flex-row flex-col py-6">
-                            <h1 class="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">
+                            <h1 id="{{ $item['category']['slug'] }}" class="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">
                                 {{ $item['category']['name'] }}
                             </h1>
-                            <p class="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">
+                            <p class="sm:w-3/5 sm:pl-10 pl-0 text-sm text-gray-400">
                                 {{ $item['category']['description'] }}
                             </p>
                         </div>
@@ -46,7 +46,7 @@
                         @forelse ($item['services'] as $service)
                         <div class="relative bg-white py-6 px-6 rounded-3xl w-96 my-4 shadow-xl">
                             <div class=" text-white flex items-center absolute rounded-full py-1 px-1 shadow-xl bg-{{ $service->color }} left-4 -top-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 p-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $service->icon_svg_path !!}
                                 </svg>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="border-t-2"></div>
 
                                 <div class="flex justify-between">
-                                    <div class="my-2 h-40">
+                                    <div class="my-4 h-40 text-base">
                                         <p>{!! Str::markdown($service->description ? $service->description : '') !!}</p>
                                     </div>
                                 </div>
@@ -73,9 +73,9 @@
                                     @if ($service->is_available)
                                         <a href="{{ route('order.create', [$service->id]) }}" class="btn btn-primary my-2">Solicitar</a>
                                     @else
-                                        <div class="alert alert-warning">
+                                        <div class="alert alert-notice">
                                             <div class="flex-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                     </svg>
                                                 <label class="text-sm">Esse serviço está temporariamente indisponível. Nossas desculpas!</label>

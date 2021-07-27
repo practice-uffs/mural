@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Service;
-use Session;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
