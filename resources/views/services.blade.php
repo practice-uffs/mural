@@ -15,9 +15,8 @@
     </div>
 </section>
 
-<section>
-    <div class="container">
-        @forelse ($items as $item)
+<div class="container">
+    @forelse ($items as $item)
         <!-- category info -->
         <div class="row pb-4">
             <div class="col-12 text-gray-600 body-font">
@@ -78,7 +77,7 @@
                                             <div class="flex-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                  </svg>
+                                                    </svg>
                                                 <label class="text-sm">Esse serviço está temporariamente indisponível. Nossas desculpas!</label>
                                             </div>
                                         </div>
@@ -101,8 +100,9 @@
                 </div>
             </div>
         </div>
-        @empty
-            Nenhuma categoria
-        @endforelse
-    </div>
-    @endsection
+    @empty
+        Nenhuma categoria
+    @endforelse
+</div>
+
+@endsection
