@@ -25,6 +25,7 @@ class Service extends Model
         'icon_svg_path',
         'color',
         'work_days',
+        'eval_days',
         'is_available',
         'is_active',
     ];
@@ -37,6 +38,7 @@ class Service extends Model
     protected $casts = [
         'poll' => AsArrayObject::class,        
         'work_days' => 'int',
+        'eval_days' => 'int',
         'is_available' => 'boolean',
         'is_active' => 'boolean',
     ];
@@ -66,6 +68,10 @@ class Service extends Model
             'work_days' => [
                 'label' => 'Dias úteis',
                 'placeholder' => 'Ex.: 10',
+            ],
+            'eval_days' => [
+                'label' => 'Dias úteis para avaliação',
+                'placeholder' => 'Ex.: 3',
             ],            
             'notice' => [
                 'label' => 'Aviso',
