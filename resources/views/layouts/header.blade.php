@@ -25,6 +25,7 @@
                                 <li><a href="{{ route('admin.location') }}">Locais</a></li> 
                                 <li><hr /></li> 
                                 <li><a href="{{ route('admin.user') }}">Usuários</a></li> 
+                                <li><a href="{{ route('admin.subscriber') }}">Newsletter</a></li>
                             </ul>
                         </li>
                     @endadmin
