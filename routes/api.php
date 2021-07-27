@@ -26,13 +26,6 @@ use Orion\Facades\Orion;
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::get('auth/is_valid', [AuthController::class, 'isTokenValid']);
 
-// Controle de autenticação
-Route::group(['middleware' => 'apiJwt'], function() {
-    Route::post('auth/logout', [AuthController::class, 'logout']);
-    Route::post('auth/refresh', [AuthController::class, 'refresh']);
-    Route::post('auth/me', [AuthController::class, 'me']);
-});
-
 // Gerência de modelos (serviço, pedido, etc)
 Route::group(['as' => 'api.', 'middleware' => 'api.jwt'], function() {
     Orion::resource('feedbacks', 'API\FeedbackController');
@@ -41,6 +34,11 @@ Route::group(['as' => 'api.', 'middleware' => 'api.jwt'], function() {
     Orion::resource('locations', 'API\LocationController');
     Orion::resource('services', 'API\ServiceController');
     Orion::resource('comments', 'API\CommentController');
+
+    // Controle de autenticação
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+    Route::post('auth/refresh', [AuthController::class, 'refresh']);
+    Route::post('auth/me', [AuthController::class, 'me']);
 });
 
 // Misc (github, etc)

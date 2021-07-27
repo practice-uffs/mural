@@ -29,36 +29,32 @@ if (App::environment('local')) {
     Route::get('/test', [TestController::class, 'index']);
 }
 
-// Public routes
+// Rotas públicas
 Route::view('/', 'index')->name('index');
 Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter.subscribed');
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas');
 Route::get('/avaliar/{orderEvaluation}/{hash}', [OrderEvaluationController::class, 'show'])->name('orderevaluation.show');
 
-// Auth
+// Autenticação
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Routes autenticadas
-Route::group(['middleware' => ['auth']], function () {
+// Rotas autenticadas
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/inicial', [HomeController::class, 'index'])->name('home');
-    
     Route::get('/servicos/solicitar', [ServiceController::class, 'index'])->name('services');
     Route::get('/servicos/solicitar/{service}', [OrderController::class, 'create'])->name('order.create');
     Route::get('/servicos/acompanhar', [OrderController::class, 'index'])->name('order.list');
     Route::get('/servico/{order}', [OrderController::class, 'show'])->name('order.show');
-    
     Route::get('/feedbacks', 'FeedbackController@index')->name('feedbacks');
-    Route::resource('/feedback', 'ItemController')->except(['create', 'store','edit','update']);
 
     // Admin
-    Route::get('/admin', 'AdminController@index')->name('admin')->middleware('check.admin');
-    
-    // TODO: adicionar para check.admin
-    Route::get('/gerenciar/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders');
-    Route::get('/gerenciar/servicos', [AdminServiceController::class, 'index'])->name('admin.service');
-    Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
-    Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
-    Route::get('/gerenciar/usuarios', [UserController::class, 'index'])->name('admin.user');
+    Route::group(['middleware' => 'check.admin'], function () {
+        Route::get('/gerenciar/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders');
+        Route::get('/gerenciar/servicos', [AdminServiceController::class, 'index'])->name('admin.service');
+        Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
+        Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
+        Route::get('/gerenciar/usuarios', [UserController::class, 'index'])->name('admin.user');
+    });
 });
