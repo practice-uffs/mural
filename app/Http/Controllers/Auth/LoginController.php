@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Session;
+use App\Events\UserCreated;
 use App\Model\User;
 use App\Http\Controllers\Controller;
 
@@ -44,55 +44,18 @@ class LoginController extends Controller
             ]);
         }
 
-        $credentials = [
-            'username' => $userData->username,
-            'password' => $userData->pessoa_id,
-        ];
-
-        if (! $token = auth('api')->attempt($credentials)) {
-            $user = $this->getLocalUserFromUserData($userData);
-
-            if (! $token = auth('api')->attempt($credentials)) {
-                return redirect()->route('login')->withErrors(['credential' => 'Usuário não autorizado']);
-            }
-        }
-
-        $user = $this->getLocalUserFromUserData($userData);
-        $token = $this->respondWithToken($token);
-        Session::put('token',$token);
-        Auth::login($user);
-        
-        return view('index')->with('token', Session::get('token'));
-    }
-
-    protected function getLocalUserFromUserData($userData)
-    {
         $userData->password = bcrypt($userData->pessoa_id);
         $user = $this->getOrCreateUser($userData);
-
-        return $user;
-    }
-
-    protected function respondWithToken($token)
-    {
-        return json_encode([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60 * 8
-        ]);
+        
+        Auth::login($user);
+        
+        return redirect()->route('home');
     }
 
     public function logout(Request $resquest)
     {
-        Session::forget('token');
         Auth::logout();
         return redirect()->intended('login');
-    }
-
-    public function refresh()
-    {
-        $token = $this->respondWithToken(auth('api')->refresh());
-        return view('index')->with('token',Session::get('token'));
     }
 
     private function getOrCreateUser($data)
@@ -111,6 +74,7 @@ class LoginController extends Controller
             $user->update($data);
         } else {
             $user = User::create($data);
+            UserCreated::dispatch($user);
         }
 
         return $user;
