@@ -57,12 +57,12 @@ class Service extends Model
             ],
             'name' => [
                 'label' => 'Nome',
-                'placeholder' => 'Ex.: Campus Chapecó',
+                'placeholder' => 'Ex.: Edição de vídeo',
                 'validation' => 'required|min:5',
             ],
             'description' => [
                 'label' => 'Descrição',
-                'placeholder' => 'Ex.: uma breve descrição desse local',
+                'placeholder' => 'Ex.: uma breve descrição desse serviço',
                 'show' => 'create,edit',
             ],
             'work_days' => [
@@ -75,7 +75,7 @@ class Service extends Model
             ],            
             'notice' => [
                 'label' => 'Aviso',
-                'placeholder' => 'Ex.: uma breve descrição desse local',
+                'placeholder' => 'Ex.: estamos com muitas demandas desse serviço, pedidos podem demorar.',
                 'show' => 'create,edit',
             ], 
             'color' => [

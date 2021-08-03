@@ -42,15 +42,15 @@ class Idea extends Model
     public static $crud = [
         'fields' => [
             'title' => [
-                'label' => 'Título oi oi',
-                'placeholder' => 'Ex.: meu título lindo',
+                'label' => 'Título',
+                'placeholder' => 'Ex.: Informações sobre telefone, etc.',
                 'validation' => 'required|min:5',
-                'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
+                'type' => 'textarea',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
-                'list_column' => false
+                'show' => 'create,edit'
             ]
         ]
     ];

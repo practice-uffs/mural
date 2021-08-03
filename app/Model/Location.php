@@ -41,17 +41,14 @@ class Location extends Model
                 'label' => 'Nome',
                 'placeholder' => 'Ex.: Campus Chapecó',
                 'validation' => 'required|min:5',
-                'list_column' => true
             ],
             'slug' => [
-                'label' => 'slug',
+                'label' => 'Sigla',
                 'placeholder' => 'Ex.: CH',
-                'list_column' => true
             ],
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
-                'list_column' => true
             ],
             'is_active' => [
                 'type' => 'boolean',
@@ -61,7 +58,6 @@ class Location extends Model
                 ],
                 'label' => 'Ativo',
                 'placeholder' => 'Se esse local deve aparecer em nossos formulários.',
-                'list_column' => true
             ],            
         ]
     ];

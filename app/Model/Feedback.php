@@ -58,12 +58,13 @@ class Feedback extends Model
             'comment' => [
                 'label' => 'Comentário',
                 'type' => 'textarea',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'placeholder' => 'Ex.: descrição de algo que você julga pertinente.',
                 'validation' => 'required|min:5',                
             ],
             'stars' => [
                 'label' => 'Avaliação',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
+                'show' => '',
             ],
             'is_visible' => [
                 'type' => 'boolean',

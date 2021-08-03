@@ -44,17 +44,14 @@ class User extends Authenticatable implements JWTSubject
             'name' => [
                 'label' => 'Nome',
                 'validation' => 'required',
-                'list_column' => true
             ],
             'email' => [
                 'label' => 'E-mail',
                 'validation' => 'required',                
-                'list_column' => true
             ],  
             'username' => [
                 'label' => 'Username',
                 'validation' => 'required',                
-                'list_column' => true
             ],
             'type' => [
                 'label' => 'Privilégio',
@@ -64,7 +61,6 @@ class User extends Authenticatable implements JWTSubject
                     self::ADMIN => 'Administrador',
                     self::NORMAL => 'Normal (cliente)',
                 ],
-                'list_column' => true
             ],
         ]
     ];
