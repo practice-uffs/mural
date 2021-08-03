@@ -247,7 +247,7 @@
     margin-top: -250px;
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 900px;
 }
 
 .idea-stream {
@@ -316,9 +316,9 @@
 }
 
 .x3 {
-	-webkit-animation: animateIdea 50s linear infinite;
-	-moz-animation: animateIdea 50s linear infinite;
-	animation: animateIdea 50s linear infinite;
+	-webkit-animation: animateIdea 60s linear infinite;
+	-moz-animation: animateIdea 60s linear infinite;
+	animation: animateIdea 60s linear infinite;
 	
 	-webkit-transform: scale(0.90);
 	-moz-transform: scale(0.90);
@@ -326,9 +326,9 @@
 }
 
 .x4 {
-	-webkit-animation: animateIdea 30s linear infinite;
-	-moz-animation: animateIdea 30s linear infinite;
-	animation: animateIdea 30s linear infinite;
+	-webkit-animation: animateIdea 55s linear infinite;
+	-moz-animation: animateIdea 55s linear infinite;
+	animation: animateIdea 55s linear infinite;
 	
 	-webkit-transform: scale(0.85);
 	-moz-transform: scale(0.85);
@@ -336,9 +336,9 @@
 }
 
 .x5 {
-	-webkit-animation: animateIdea 45s linear infinite;
-	-moz-animation: animateIdea 45s linear infinite;
-	animation: animateIdea 45s linear infinite;
+	-webkit-animation: animateIdea 50s linear infinite;
+	-moz-animation: animateIdea 50s linear infinite;
+	animation: animateIdea 50s linear infinite;
 	
 	-webkit-transform: scale(0.75);
 	-moz-transform: scale(0.75);
@@ -346,11 +346,41 @@
 }
 
 .x6 {
+	-webkit-animation: animateIdea 45s linear infinite;
+	-moz-animation: animateIdea 45s linear infinite;
+	animation: animateIdea 45s linear infinite;
+	
+	-webkit-transform: scale(0.70);
+	-moz-transform: scale(0.70);
+	transform: scale(0.70);
+}
+
+.x7 {
+	-webkit-animation: animateIdea 100s linear infinite;
+	-moz-animation: animateIdea 100s linear infinite;
+	animation: animateIdea 100s linear infinite;
+	
+	-webkit-transform: scale(0.70);
+	-moz-transform: scale(0.70);
+	transform: scale(0.70);
+}
+
+.x8 {
+	-webkit-animation: animateIdea 120s linear infinite;
+	-moz-animation: animateIdea 120s linear infinite;
+	animation: animateIdea 120s linear infinite;
+	
+	-webkit-transform: scale(0.70);
+	-moz-transform: scale(0.70);
+	transform: scale(0.70);
+}
+
+.x9 {
 	-webkit-animation: animateIdea 145s linear infinite;
 	-moz-animation: animateIdea 145s linear infinite;
 	animation: animateIdea 145s linear infinite;
 	
-	-webkit-transform: scale(0.65);
-	-moz-transform: scale(0.65);
-	transform: scale(0.65);
+	-webkit-transform: scale(0.70);
+	-moz-transform: scale(0.70);
+	transform: scale(0.70);
 }

@@ -9,7 +9,7 @@
             </div>
             <div class="col-7 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Oi, tudo bem?</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Que bom ver você por aqui novamente ❤️</h2>
+                <h2 data-aos="fade-up" data-aos-delay="400">Que bom você está aqui novamente ❤️</h2>
             </div>
         </div>
     </div>

@@ -58,8 +58,8 @@
     @foreach ($groups as $group)
         @foreach ($group as $idea)
             <div class="idea-stream">        
-                <div class="x{{ 1 + $loop->index % 6 }}">
-                    <div class="card w-96 transform {{ Arr::random(['', '-']) }}rotate-{{ Arr::random(['2', '3', '6', '12']) }} shadow-lg compact side bg-base-100 p-2" style="top: {{ rand(10, 700) }}px; left: {{ rand(-1000, 200) }}px">
+                <div class="x{{ rand(1, 9) }}">
+                    <div class="card w-96 transform {{ Arr::random(['', '-']) }}rotate-{{ Arr::random(['2', '3', '6']) }} shadow-lg compact side bg-base-100 p-2" style="top: {{ rand(10, 650) }}px; left: {{ rand(-600, 900) }}px">
                         <div class="flex-row items-center space-x-4 card-body">
                             <div>
                                 <img src="{{ asset('img/ideas/bulb.svg') }}" class="w-14 h-14">
