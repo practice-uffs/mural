@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #444444;
 }
 
@@ -28,7 +28,12 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+h1 b {
+  color: #717ff5; 
+  font-weight: 400;
 }
 
 /*--------------------------------------------------------------
@@ -47,7 +52,7 @@ section {
 .section-header h2 {
   font-size: 13px;
   letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0;
   color: #4154f1;
   text-transform: uppercase;
@@ -58,7 +63,7 @@ section {
   padding: 0;
   font-size: 38px;
   line-height: 42px;
-  font-weight: 700;
+  font-weight: 300;
   color: #012970;
 }
 
@@ -191,7 +196,7 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   color: #012970;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin-top: 3px;
 }
 
@@ -222,9 +227,9 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   color: #013289;
   white-space: nowrap;
   transition: 0.3s;
@@ -439,7 +444,7 @@ section.hero-slim {
 .hero h1 {
   margin: 0;
   font-size: 48px;
-  font-weight: 700;
+  font-weight: 300;
   color: #012970;
 }
 
@@ -447,6 +452,7 @@ section.hero-slim {
   color: #444444;
   margin: 15px 0 0 0;
   font-size: 26px;
+  font-weight: 300;  
 }
 
 .hero .btn-get-started {
@@ -461,7 +467,7 @@ section.hero-slim {
 }
 
 .hero .btn-get-started span {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -488,7 +494,7 @@ section.hero-slim {
 }
 
 .hero .btn-get-outline span {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -587,7 +593,7 @@ section.hero-slim {
 }
 
 .about .btn-read-more span {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -621,9 +627,9 @@ section.hero-slim {
 }
 
 .values .box h3 {
-  font-size: 24px;
+  font-size: 28px;
   color: #012970;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 18px;
 }
 
@@ -644,7 +650,10 @@ section.hero-slim {
 
 .counts .count-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 30px;
   width: 100%;
   background: #fff;
@@ -653,23 +662,28 @@ section.hero-slim {
 
 .counts .count-box i {
   font-size: 42px;
+  width: 100%;
+  margin: 0 auto;
   line-height: 0;
   margin-right: 20px;
+  font-size: 2.5em;
   color: #4154f1;
 }
 
 .counts .count-box span {
-  font-size: 36px;
+  font-size: 5em;
   display: block;
-  font-weight: 600;
+  font-weight: 300;
   color: #0b198f;
 }
 
 .counts .count-box p {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
-  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  font-weight: 200;
+  color: #323b91;
 }
 
 /*--------------------------------------------------------------
@@ -966,374 +980,6 @@ section.hero-slim {
 
 .services .service-box:hover .icon {
   background: #fff;
-}
-
-/*--------------------------------------------------------------
-# Pricing
---------------------------------------------------------------*/
-.pricing .box {
-  padding: 40px 20px;
-  background: #fff;
-  text-align: center;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.pricing .box:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
-}
-
-.pricing h3 {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.pricing .price {
-  font-size: 36px;
-  color: #444444;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-}
-
-.pricing .price sup {
-  font-size: 20px;
-  top: -15px;
-  left: -3px;
-}
-
-.pricing .price span {
-  color: #bababa;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.pricing img {
-  padding: 30px 40px;
-}
-
-.pricing ul {
-  padding: 0;
-  list-style: none;
-  color: #444444;
-  text-align: center;
-  line-height: 26px;
-  font-size: 16px;
-  margin-bottom: 25px;
-}
-
-.pricing ul li {
-  padding-bottom: 10px;
-}
-
-.pricing ul .na {
-  color: #ccc;
-  text-decoration: line-through;
-}
-
-.pricing .btn-buy {
-  display: inline-block;
-  padding: 8px 40px 10px 40px;
-  border-radius: 50px;
-  color: #4154f1;
-  transition: none;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  transition: 0.3s;
-  border: 1px solid #4154f1;
-}
-
-.pricing .btn-buy:hover {
-  background: #4154f1;
-  color: #fff;
-}
-
-.pricing .featured {
-  width: 200px;
-  position: absolute;
-  top: 18px;
-  right: -68px;
-  transform: rotate(45deg);
-  z-index: 1;
-  font-size: 14px;
-  padding: 1px 0 3px 0;
-  background: #4154f1;
-  color: #fff;
-}
-
-/*--------------------------------------------------------------
-# F.A.Q
---------------------------------------------------------------*/
-.faq .accordion-collapse {
-  border: 0;
-}
-
-.faq .accordion-button {
-  padding: 15px 15px 20px 0;
-  font-weight: 600;
-  border: 0;
-  font-size: 18px;
-  color: #444444;
-  text-align: left;
-}
-
-.faq .accordion-button:focus {
-  box-shadow: none;
-}
-
-.faq .accordion-button:not(.collapsed) {
-  background: none;
-  color: #4154f1;
-  border-bottom: 0;
-}
-
-.faq .accordion-body {
-  padding: 0 0 25px 0;
-  border: 0;
-}
-
-/*--------------------------------------------------------------
-# Portfolio
---------------------------------------------------------------*/
-.portfolio #portfolio-flters {
-  padding: 0;
-  margin: 0 auto 25px auto;
-  list-style: none;
-  text-align: center;
-  background: white;
-  border-radius: 50px;
-  padding: 2px 15px;
-}
-
-.portfolio #portfolio-flters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 8px 20px 10px 20px;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1;
-  color: #444444;
-  margin: 0 4px 8px 4px;
-  transition: 0.3s;
-  border-radius: 50px;
-  border: 1px solid #fff;
-}
-
-.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #4154f1;
-  border-color: #4154f1;
-}
-
-.portfolio #portfolio-flters li:last-child {
-  margin-right: 0;
-}
-
-.portfolio .portfolio-wrap {
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.75);
-}
-
-.portfolio .portfolio-wrap::before {
-  content: "";
-  background: rgba(255, 255, 255, 0.75);
-  position: absolute;
-  left: 30px;
-  right: 30px;
-  top: 30px;
-  bottom: 30px;
-  transition: all ease-in-out 0.3s;
-  z-index: 2;
-  opacity: 0;
-}
-
-.portfolio .portfolio-wrap img {
-  transition: 1s;
-}
-
-.portfolio .portfolio-wrap .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  z-index: 3;
-  transition: all ease-in-out 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.portfolio .portfolio-wrap .portfolio-info::before {
-  display: block;
-  content: "";
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  top: 35px;
-  left: 35px;
-  border-top: 3px solid rgba(1, 41, 112, 0.2);
-  border-left: 3px solid rgba(1, 41, 112, 0.2);
-  transition: all 0.5s ease 0s;
-  z-index: 9994;
-}
-
-.portfolio .portfolio-wrap .portfolio-info::after {
-  display: block;
-  content: "";
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  bottom: 35px;
-  right: 35px;
-  border-bottom: 3px solid rgba(1, 41, 112, 0.2);
-  border-right: 3px solid rgba(1, 41, 112, 0.2);
-  transition: all 0.5s ease 0s;
-  z-index: 9994;
-}
-
-.portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 20px;
-  color: #012970;
-  font-weight: 700;
-}
-
-.portfolio .portfolio-wrap .portfolio-info p {
-  color: #012970;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0;
-}
-
-.portfolio .portfolio-wrap .portfolio-links {
-  text-align: center;
-  z-index: 4;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a {
-  color: #fff;
-  background: #4154f1;
-  margin: 10px 2px;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a i {
-  font-size: 24px;
-  line-height: 0;
-}
-
-.portfolio .portfolio-wrap .portfolio-links a:hover {
-  background: #5969f3;
-}
-
-.portfolio .portfolio-wrap:hover img {
-  transform: scale(1.1);
-}
-
-.portfolio .portfolio-wrap:hover::before {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 1;
-}
-
-.portfolio .portfolio-wrap:hover .portfolio-info {
-  opacity: 1;
-}
-
-.portfolio .portfolio-wrap:hover .portfolio-info::before {
-  top: 15px;
-  left: 15px;
-}
-
-.portfolio .portfolio-wrap:hover .portfolio-info::after {
-  bottom: 15px;
-  right: 15px;
-}
-
-/*--------------------------------------------------------------
-# Portfolio Details
---------------------------------------------------------------*/
-.portfolio-details {
-  padding-top: 40px;
-}
-
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #4154f1;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #4154f1;
-}
-
-.portfolio-details .portfolio-info {
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
-}
-
-.portfolio-details .portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.portfolio-details .portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-details .portfolio-info ul li + li {
-  margin-top: 10px;
-}
-
-.portfolio-details .portfolio-description {
-  padding-top: 30px;
-}
-
-.portfolio-details .portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.portfolio-details .portfolio-description p {
-  padding: 0;
 }
 
 /*--------------------------------------------------------------

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4 hero-img">
-                <img src="{{ asset('img/undraw.co/push_notifications.svg') }}" class="w-64 h-auto" alt="">
+                <img src="{{ asset('img/undraw.co/push_notifications.svg') }}" class="w-64 h-auto mx-auto" alt="">
             </div>
             <div class="col-8 d-flex flex-column justify-content-center">
                 <h1>Minhas solicitações</h1>

@@ -11,11 +11,11 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Uma ponte entre você e a construção de uma universidade melhor</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="/servicos/solicitar" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="{{ route('services') }}" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Solicitar serviço</span>
                   <i class="bi bi-arrow-right-circle"></i>
               </a>
-              <a href="/feedbacks" class="btn-get-outline d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="{{ route('ideas') }}" class="btn-get-outline d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Ideias</span>
                   <i class="bi bi-lightbulb"></i>
               </a>
@@ -39,7 +39,7 @@
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos-delay="200">
             <div class="content">
-              <h3>Boas-vindas!</h3>
+              <h3 class="mb-3">Boas-vindas!</h3>
               <h2>Central de solicitação de serviços do PRACTICE e um local de discussão de ideias</h2>
               <p>
                 Essa é a plataforma oficial do programa, onde a comunidade acadêmica pode solicitar e acompanhar serviços. Além disso, você pode dar sugestões de melhorias e ideias, fazendo parte do crescimento do programa e inovação da <a href="https://www.uffs.edu.br/"><strong>UFFS</strong></a>.
@@ -66,5 +66,4 @@
     @include('components.servicos')
     @include('components.testemunho')   
   </main><!-- End #main -->
-  @include('components.newsletter')
 @endsection
