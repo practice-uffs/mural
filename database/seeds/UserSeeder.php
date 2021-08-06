@@ -21,5 +21,15 @@ class UserSeeder extends Seeder
             'cpf' => '000',
             'type' => User::NORMAL
         ]);
+
+        User::create([
+            'name' => 'Fernando Bevilacqua',
+            'email' => 'fernando.bevilacqua@uffs.edu.br',
+            'password' => 'dd',
+            'username' => 'fernando.bevilacqua',
+            'uid' => 'fernando.bevilacqua',
+            'cpf' => '000',
+            'type' => User::ADMIN
+        ]);        
     }
 }
