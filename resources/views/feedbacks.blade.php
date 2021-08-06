@@ -9,7 +9,7 @@
             </div>
             <div class="col-7 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Queremos seu feedback</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Sua opinição é vital para nossa evolução. Faça críticas, elogios e sugestões sobre nosso trabalho. Buscamos o aprimoramento contínuo.</h2>
+                <h2 data-aos="fade-up" data-aos-delay="400">Sua opinição é vital para nossa evolução. Faça críticas, elogios e sugestões sobre nosso trabalho.</h2>
             </div>
         </div>
     </div>
@@ -26,6 +26,7 @@
             <div class="col-10 offset-1">
                 @livewire('crud.main', [
                     'model' => 'App\Model\Feedback',
+                    'show_list' => false,
                     'include_create' => [
                         'user_id' => auth()->id()
                     ]

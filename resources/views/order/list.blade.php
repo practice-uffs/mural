@@ -26,7 +26,6 @@
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Tipo</th>
                             <th>Título</th>
                             <th>Situação</th>
@@ -37,7 +36,6 @@
                     <tbody>
                         @foreach ($orders as $order)
                             <tr>
-                                <td>{{ $order->id }}</td>
                                 <td>
                                     <div class="flex items-center space-x-3">
                                         <div class="avatar">

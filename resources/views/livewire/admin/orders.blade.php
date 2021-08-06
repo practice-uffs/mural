@@ -75,20 +75,20 @@
             <table class="table w-full">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th></th>
                         <th>Título</th>
-                        <th>Descrição</th>
                         <th>Local</th>
                         <th>Datas</th>
                         <th>Comentários</th>
                         <th>Situação</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
                         <tr>
-                            <td>{{ $order['id'] }}</td>
+                            <th>
+                                <a href="{{ route('order.show', [$order['id']]) }}" class="btn btn-primary">Ver</a>
+                            </th>
                             <td>
                                 <div class="flex items-center space-x-3">
                                     <div>
@@ -96,9 +96,6 @@
                                         <div class="text-sm opacity-50">{{ $order['service']['category']['name'] }} > {{ $order['service']['name'] }}</div>
                                     </div>
                                 </div>
-                            </td>
-                            <td>
-                                {{ substr($order['description'], 0, 200) }}
                             </td>
                             <td>
                                 {{ $order['location']['slug'] }}
@@ -121,9 +118,6 @@
                             <td>
                                 <span class="badge badge-outline badge-success badge-md">{{ $order['status'] }}</span>
                             </td>
-                            <th>
-                                <a href="{{ route('order.show', [$order['id']]) }}" class="btn btn-primary">Ver</a>
-                            </th>
                         </tr>
                     @empty
                         <tr><td colspan="6">Nenhum pedido encontrado com os filtros aplicados.</td></tr>

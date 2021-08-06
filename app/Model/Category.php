@@ -53,6 +53,7 @@ class Category extends Model
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição dessa categoria',
+                'show' => 'create,edit'                
             ],
             'notice' => [
                 'label' => 'Aviso',

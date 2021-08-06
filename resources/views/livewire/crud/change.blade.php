@@ -24,7 +24,7 @@
                         <a href="#" class="label-text-alt"></a>
                     </label> 
                     <select wire:model="{{ $key }}" class="select select-bordered w-full @error($key) select-error @enderror">
-                        <option value=""></option> 
+                        <option value=""> -- selecione --</option> 
                         @foreach ($field['options'] as $info)
                             <option value="{{ $info['id']}}">{{ $info['text']}}</option> 
                         @endforeach
@@ -101,7 +101,7 @@
                     <label for="{{ $key }}" class="label">
                         <span class="label-text">{{ $field['label'] }}</span>
                     </label>
-                    <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-24 @error($key) textarea-error @enderror"></textarea>
+                    <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-48 @error($key) textarea-error @enderror"></textarea>
                     @break
                 @default
                     <label for="{{ $key }}" class="label">

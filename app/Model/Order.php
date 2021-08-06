@@ -62,14 +62,15 @@ class Order extends Model
     public static $crud = [
         'fields' => [
             'title' => [
-                'label' => 'Título oi oi',
-                'placeholder' => 'Ex.: meu título lindo',
+                'label' => 'Título',
+                'placeholder' => 'Ex.: Semana Acadêmica de Física',
                 'validation' => 'required|min:5',
             ],
             'description' => [
                 'label' => 'Descrição',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
-                'list_column' => false,
+                'placeholder' => 'Ex.: Preciso de X, Y e Z.',
+                'validation' => 'required|min:10',
+                'type' => 'textarea',
                 'show' => 'create,edit'
             ],
             'location_id' => [
@@ -82,13 +83,6 @@ class Order extends Model
             'requested_due_date' => [
                 'type' => 'date',
                 'label' => 'Prazo de entrega sugerido',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
-            ],
-            'github_issue_link' => [
-                'type' => 'file',
-                'label' => 'File',
-                'placeholder' => 'Clique aqui ou arreste um arquivo para essa área para fazer upload',
-                'show' => 'create,edit'
             ],
         ]
     ];

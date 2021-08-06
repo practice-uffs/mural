@@ -49,6 +49,7 @@ class Location extends Model
             'description' => [
                 'label' => 'Descrição',
                 'placeholder' => 'Ex.: uma breve descrição desse local',
+                'show' => 'create,edit'
             ],
             'is_active' => [
                 'type' => 'boolean',
