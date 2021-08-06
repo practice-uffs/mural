@@ -89,7 +89,10 @@
             <div class="col-8 offset-2">
                 @livewire('crud.main', [
                     'model' => 'App\Model\Idea',
-                    'show_list' => false
+                    'show_list' => false,
+                    'include_create' => [
+                        'user_id' => $user->id,
+                    ]
                 ])
             </div>
         </div>
