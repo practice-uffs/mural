@@ -74,11 +74,17 @@ class ServiceController extends Controller
         $item = Item::create($data);
 
         $user = User::find($request->user_id);
-        $email = new stdClass();
-        $email->content = 'emails.ServicoSolicitado';
-        $email->subject = 'Nova Solicitação';
-        $mail = new Email($user,$email,$item);
-        $mail->build();
+
+        //Envio de E-mail
+        try{
+            $email = new stdClass();
+            $email->content = 'emails.ServicoSolicitado';
+            $email->subject = 'Nova Solicitação';
+            $mail = new Email($user,$email,$item);
+            $mail->build();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
         return response(
             new ServiceResource($item),
@@ -138,14 +144,8 @@ class ServiceController extends Controller
         $item->touch();
 
         if($DidChangeStatus){
-            try {
-                $user = User::find($item->user_id);
-                $email = new stdClass();
-                $email->content = 'emails.MudadoStatus';
-                $email->subject = 'Alteração de Status da Solicitação';
-                $mail = new Email($user,$email,$item);
-                $mail->build();
-
+            $user = User::find($item->user_id);
+            try{
                 //Envio de push notification
                 $statuses = [
                     1 => 'No aguardo',
@@ -159,6 +159,16 @@ class ServiceController extends Controller
                 $body = "A solicitação \"".$item->title."\" mudou de status para: ".$status;
 
                 $user->notify(new PushNotification($title, $body));
+            } catch (\Throwable $th){
+                //throw $th;
+            }
+
+            try {
+                $email = new stdClass();
+                $email->content = 'emails.MudadoStatus';
+                $email->subject = 'Alteração de Status da Solicitação';
+                $mail = new Email($user,$email,$item);
+                $mail->build();
             } catch (\Throwable $th) {
                 //throw $th;
             }

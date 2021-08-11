@@ -175,6 +175,15 @@ class ItemController extends Controller
         if($item->type==Item::TYPE_SERVICE && $item->user_id != $request->user_id){
             $user = User::find($item->user_id);
 
+            try{
+                //Envio de push notification
+                $request_user = User::find($comment->user_id);
+                $request_user = ucwords(strtolower($request_user->name));
+                $user->notify(new PushNotification("Novo comentário em ".$item->title, $request_user.":\n\"".trim($comment->description)."\""));
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+
             try {
                 //Envio de Email
                 $email = new stdClass();
@@ -182,12 +191,6 @@ class ItemController extends Controller
                 $email->subject = 'Novo comentário na solicitação';
                 $mail = new Email($user,$email,$item);
                 $mail->build();
-
-                //Envio de push notification
-                $request_user = User::find($comment->user_id);
-                $request_user = ucwords(strtolower($request_user->name));
-                $user->notify(new PushNotification("Novo comentário em ".$item->title, $request_user.":\n\"".trim($comment->description)."\""));
-
             } catch (\Throwable $th) {
                 //throw $th;
             }
