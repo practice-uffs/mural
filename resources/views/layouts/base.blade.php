@@ -15,7 +15,7 @@
           <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
           <!-- Google Fonts -->
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100,200,300,500,600,700&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
         
           <!-- Vendor CSS Files -->
           <link href="{{ asset('vendor/bootstrap-5.0.0/css/bootstrap.min.css') }}" rel="stylesheet">
