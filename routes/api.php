@@ -42,4 +42,5 @@ Route::group(['as' => 'api.', 'middleware' => 'api.jwt'], function() {
 });
 
 // Misc (github, etc)
-Route::post('webhook/github/index.php', [GithubWebhookController::class, 'index']);
+Route::post('webhook/github', [GithubWebhookController::class, 'index']);
+Route::post('webhook/github/index.php', [GithubWebhookController::class, 'index']); // corrige problema na Dreamhost
