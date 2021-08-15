@@ -28,6 +28,19 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Fix wrong style/mix urls when being served from reverse proxy
+$proxy_url    = env('PROXY_URL');
+$proxy_schema = env('PROXY_SCHEME');
+
+if (!empty($proxy_url)) {
+   URL::forceRootUrl($proxy_url);
+}
+
+if (!empty($proxy_schema)) {
+   URL::forceScheme($proxy_schema);
+}
+
 if (App::environment('local')) {
     Route::get('/test', [TestController::class, 'index']);
 }
