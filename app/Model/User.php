@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\Order;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -99,6 +100,19 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getFirstNameAttribute()
+    {
+        // Using $this->name, which is a string representing a full name, extract only the first name
+        $name = $this->name;
+        $parts = explode(' ', $this->name);
+
+        if (isset($parts[0])) {
+            $name = $parts[0];
+        }
+        
+        return Str::title($name);
     }
 
     /**

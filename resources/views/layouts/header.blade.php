@@ -30,8 +30,9 @@
                         </li>
                     @endadmin
 
-                    <li class="ml-8 mr-2">
-                        <span class="font-semibold">{{ Str::title(Auth()->user()->name) }}</span>
+                    <li class="ml-8 mr-2 text-right">
+                        <p class="font-semibold">{{ auth()->user()->first_name }}</p>
+                        <p class="text-xs font-extralight -mt-1 text-gray-400">{{ auth()->user()->username }}</p>
                     </li>
 
                     <li class="flex-none">
