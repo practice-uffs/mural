@@ -22,7 +22,7 @@ class OrderStarted extends Notification implements ShouldQueue
      */
     public function __construct(Order $order)
     {
-        $this->order = $order->withoutRelations();
+        $this->order = $order;
     }
 
     /**
@@ -45,9 +45,14 @@ class OrderStarted extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Order started The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Sua solicitação foi iniciada! (Practice Mural #' . $this->order->id . ')')
+                    ->greeting('Olá, ' . $this->order->user->first_name)
+                    ->line('A Equipe Practice começou a trabalhar na sua solicitação "*'.$this->order->title.'*" 🚀. Você pode acompanhá-la clicando no botão abaixo:')
+                    ->action('Acessar solicitação no mural', url('/'))
+                    ->line('Se precisar comentar algo (nossas perguntas, suas observações, etc), _sempre_ use o [Mural Practice]('.config('app.url').'), não o e-mail.')
+                    ->line('Avisaremos sobre o andamento do seu pedido.')
+                    ->line("Até mais,")
+                    ->salutation("Equipe Practice ❤️");
     }
 
     /**

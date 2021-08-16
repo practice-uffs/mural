@@ -50,13 +50,8 @@
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
-@lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
-    [
-        'actionText' => $actionText,
-    ]
-) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
+Você recebeu esta mensagem porque fez uma solicitação no [Mural Practice]({{ $actionUrl }}). Para inteagir com nossa equipe, clique no botão "{{ $actionText }}" (acima) ou acesse diretamente: 
+<span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 @endslot
 @endisset
 @endcomponent
