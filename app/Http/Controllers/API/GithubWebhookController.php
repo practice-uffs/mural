@@ -146,10 +146,74 @@ class GithubWebhookController extends Controller
         return response('No action performed', 200);
     }
 
+    protected function findAppOrderLink($body)
+    {
+        $appUrl = config('app.url');
+        $regex = '/((http|https)\:\/\/)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,5}(\/\S*)?/';
+
+        preg_match_all($regex, $body, $matches);
+        $links = $matches[0];
+
+        if ($links == null || count($links) == 0) {
+            return null;
+        }
+
+        foreach($links as $link) {
+            if (stripos($link, $appUrl) !== false) {
+                $orderId = basename($link);
+                return $orderId;
+            }
+        }
+
+        return null;
+    }
+
+    protected function renameIssueWorkingFolderToMatchRepoIssueName($folders, $orderId, $repo, $issue)
+    {
+        if (!isset($folders['folder'])) {
+            return;
+        }
+
+        $folder = $folders['folder'];
+        $folderId = $folder->getId();
+        $name = $repo . '#' . $issue . " (mural/$orderId)";
+
+        $this->drive->rename($folderId, $name);
+    }
+
+    protected function createIssueWorkingFolder(array $payload, $issue, $repo)
+    {
+        $body = $payload['issue']['body'];
+        $orderId = $this->findAppOrderLink($body);
+
+        $order = $orderId != null ? Order::where('id', $orderId)->first() : null;
+
+        if ($order == null) {
+            // A issue criada no github não tem menção a qualquer serviço aqui no mural.
+            // Nesse caso, vamos apenas criar as pastas no drive e informar isso.
+            return $this->drive->createIssueWorkingFolder($issue, $repo);
+        }
+
+        // A issue tem menção a um serviço do mural. Nesse caso, vamos encontrar as informações
+        // de pasta no google drive desse serviço e utilizar elas.
+        $folders = $this->drive->getIssueWorkingFolderStructureByName('mural#' . $orderId);
+
+        if ($folders == null) {
+            // Não achamos a pasta no drive relacionada ao pedido. Vamos criar e deu.
+            return $this->drive->createIssueWorkingFolder($issue, $repo);
+        }
+
+        // Se chegamos até aqui, então temos a pasta do google drive relacionada ao serviço mural.
+        // O único problema é que essa pasta está com o nome do mural, e não do repositório. Vamos
+        // apenas renomear a pasta e retornar ela para uso.
+        $this->renameIssueWorkingFolderToMatchRepoIssueName($folders, $orderId, $repo, $issue);
+        return $folders;
+    }
+
     protected function handleIssueOpened(array $payload, $org, $repo, $issue)
     {
         $comment = '';
-        $folders = $this->drive->createIssueWorkingFolder($issue, $repo);
+        $folders = $this->createIssueWorkingFolder($payload, $issue, $repo);
 
         if($folders != null) {
             $drive_link = isset($folders['folder']) ? $folders['folder']->getWebViewLink() : '';
@@ -166,7 +230,7 @@ class GithubWebhookController extends Controller
         }
 
         $this->github->commentIssue($org, $repo, $issue, $comment);
-        return response('Issue opened and commented.', 200);                
+        return response('Issue opened and commented: ' . $comment, 200);
     }
 
     protected function handleIssuesEvent(array $payload)
