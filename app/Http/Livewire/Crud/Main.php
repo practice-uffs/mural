@@ -60,6 +60,20 @@ class Main extends Component
 
     /**
      * 
+     */
+    protected function modelCreated(Model $model) {
+        
+    }
+
+    /**
+     * 
+     */
+    protected function modelUpdated(Model $model) {
+        
+    }    
+
+    /**
+     * 
      * 
      * @param array $data
      * 
@@ -297,9 +311,9 @@ class Main extends Component
         unset($values['id']);
 
         $values = $this->prepareValuesForCreate($values);
+        $entry = $this->model::create($values);
 
-        $this->model::create($values);
-        
+        $this->modelCreated($entry);
         $this->resetInput();
         $this->finished(true);
     }
@@ -350,6 +364,8 @@ class Main extends Component
         $values = $this->getDataForInsertOrUpdate();
         $values = $this->prepareValuesForUpdate($values, $item);
         $item->update($values);
+
+        $this->modelUpdated($item);
 
         $this->resetInput();
         $this->hideInlineEdit();

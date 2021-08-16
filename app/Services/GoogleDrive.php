@@ -54,6 +54,16 @@ class GoogleDrive
         return $folder;
     }
 
+    public function rename(string $folderOrFileId, $name)
+    {
+        $file = new \Google\Service\Drive\DriveFile();
+        $file->setName($name);
+
+        $updatedFile = $this->service->files->update($folderOrFileId, $file);
+
+        return $updatedFile;
+    }    
+
     public function findIssueWorkingFolders($repo = 'programa')
     {
         $folders = $this->findFoldersWhoseNameContains($repo . '#');
@@ -92,12 +102,12 @@ class GoogleDrive
 
     public function config($key, $defaulValue = null)
     {
-        if(!is_array($this->config) || !isset($this->config['drive'])) {
+        if(!is_array($this->config)) {
             return $defaulValue;
         }
 
-        if(isset($this->config['drive'][$key])) {
-            return $this->config['drive'][$key];
+        if(isset($this->config[$key])) {
+            return $this->config[$key];
         }
 
         return $defaulValue;
