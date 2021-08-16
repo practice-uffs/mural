@@ -100,15 +100,17 @@
             Arquivos
         </h3>
 
-        <div class="space-y-4">
-            <h4 class="text-md font-semibold text-gray-500 inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-                </svg>
-                Criados pela equipe do programa para você
-            </h4>
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1s5JcDHMzf_TJxFMU7k1H6oQVemesK7ec#list" class="w-full border-none"></iframe>
-        </div>
+        @if (!empty($order->google_drive_out_folder_id))
+            <div class="space-y-4">
+                <h4 class="text-md font-semibold text-gray-500 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-gray-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    </svg>
+                    Criados pela equipe do programa para você
+                </h4>
+                <iframe src="https://drive.google.com/embeddedfolderview?id={{ $order->google_drive_out_folder_id }}#list" class="w-full h-64 border-none"></iframe>
+            </div>
+        @endif
 
         <div class="space-y-4">
             <h4 class="text-md font-semibold text-gray-500 inline-flex items-center">
@@ -153,7 +155,7 @@
                 </svg>
                 Se você fizer upload de arquivos novos, pode levar algum tempo para eles aparecerem na lista abaixo.
             </p>
-            <iframe id="inFiles" src="https://drive.google.com/embeddedfolderview?id={{ $order->google_drive_in_folder_id }}#list" class="w-full border-none"></iframe>
+            <iframe id="inFiles" src="https://drive.google.com/embeddedfolderview?id={{ $order->google_drive_in_folder_id }}#list" class="w-full h-64 border-none"></iframe>
         </div>
     </div>
 </div>
