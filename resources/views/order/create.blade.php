@@ -8,6 +8,13 @@
             <p>{{ $service->name }}</p>
         </header>
 
+        <div class="row mb-4">
+            <div class="col-10 offset-1 text-sm text-gray-400">
+                <strong>Descrição:</strong>
+                {!! Str::markdown($service->description ? $service->description : '') !!}
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-10 offset-1">
                 @livewire('order.create', [
