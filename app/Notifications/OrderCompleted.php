@@ -47,9 +47,14 @@ class OrderCompleted extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Order compleated The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Avalie nosso trabalho em sua solicitação (Practice Mural #' . $this->order->id . ')')
+                    ->greeting('Olá, ' . $this->order->user->first_name)
+                    ->line('Por favor, avalie o resultado da sua solicitação "*'.$this->order->title.'*" clicando no botão abaixo:')
+                    ->action('Avaliar resultado', route('orderevaluation.show', $this->evaluation->hash))
+                    ->line('É bem rapidinho, nem 2 minutos (1 minutos se você estiver com pressa 😁)!')
+                    ->line('Sua avaliação é muito importante! Ela ajuda a melhorar nossos serviços.')
+                    ->line("Até mais,")
+                    ->salutation("Equipe Practice ❤️");
     }
 
     /**

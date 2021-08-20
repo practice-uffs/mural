@@ -48,8 +48,8 @@ class OrderStarted extends Notification implements ShouldQueue
                     ->subject('Sua solicitação foi iniciada! (Practice Mural #' . $this->order->id . ')')
                     ->greeting('Olá, ' . $this->order->user->first_name)
                     ->line('A Equipe Practice começou a trabalhar na sua solicitação "*'.$this->order->title.'*" 🚀. Você pode acompanhá-la clicando no botão abaixo:')
-                    ->action('Acessar solicitação no mural', url('/'))
-                    ->line('Se precisar comentar algo (nossas perguntas, suas observações, etc), _sempre_ use o [Mural Practice]('.config('app.url').'), não o e-mail.')
+                    ->action('Acessar solicitação', url('/'))
+                    ->line('Se precisar comentar algo (nossas perguntas, suas observações, etc), _sempre_ use o [Practice Mural]('.config('app.url').'), não o e-mail.')
                     ->line('Avisaremos sobre o andamento do seu pedido.')
                     ->line("Até mais,")
                     ->salutation("Equipe Practice ❤️");

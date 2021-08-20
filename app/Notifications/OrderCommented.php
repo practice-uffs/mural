@@ -47,9 +47,13 @@ class OrderCommented extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Nova movimentação (Practice Mural #' . $this->order->id . ')')
+                    ->greeting('Olá, ' . $this->order->user->first_name)
+                    ->line('Há uma atualizacão sobre sua solicitação "*'.$this->order->title.'*" 🚀. Por favor, clique no botão abaixo para interagir:')
+                    ->action('Ver movimentação', url('/'))
+                    ->line('Não deixe para comentar depois 😉! Sua interação garante que possamos finalizar sua solicitação o mais rápido possível.')
+                    ->line("Até mais,")
+                    ->salutation("Equipe Practice ❤️");
     }
 
     /**

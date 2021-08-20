@@ -50,7 +50,7 @@
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
-Você recebeu esta mensagem porque fez uma solicitação no [Mural Practice]({{ $actionUrl }}). Para inteagir com nossa equipe, clique no botão "{{ $actionText }}" (acima) ou acesse diretamente: 
+Você recebeu esta mensagem porque fez uma interação no [Mural Practice]({{ $actionUrl }}). Para inteagir com nossa equipe, clique no botão "{{ $actionText }}" (acima) ou acesse diretamente: 
 <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 @endslot
 @endisset
