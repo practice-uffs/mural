@@ -10,7 +10,7 @@
 
         <div class="row mb-4">
             <div class="col-10 offset-1 text-sm text-gray-400">
-                <strong>Descrição:</strong>
+                <strong>Resumo do serviço</strong>
                 {!! Str::markdown($service->description ? $service->description : '') !!}
             </div>
         </div>

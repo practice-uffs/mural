@@ -50,6 +50,7 @@
                 
                 @guest
                     <li><a href="{{ route('ideas') }}" class="nav-link @if (Route::is('ideas')) active @endif">Ideias</a></li>
+                    <li><a href="{{ route('services') }}" class="nav-link @if (Route::is(['services', 'order.create'])) active @endif">Solicitar serviço</a></li>
                     <li><a href="{{ route('login') }}" class="getstarted">Entrar <i class="bi bi-box-arrow-in-right"></i></a></li>
                 @endguest
             </ul>
