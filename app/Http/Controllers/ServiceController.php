@@ -15,9 +15,9 @@ class ServiceController extends Controller
     public function index()
     {
         $items = [];
-        $services = Service::all();
+        $services = Service::where('is_active', true)->get();
 
-        foreach(Category::all() as $category) {
+        foreach(Category::where('is_active', true)->get() as $category) {
             $items[] = [
                 'category' => $category,
                 'services' => $services->filter(function($service) use ($category) {

@@ -27,7 +27,7 @@
             <select wire:model="filter.service_id" class="select select-bordered w-full">
                 <option value=""> -- Todos --</option> 
                 @foreach ($services as $service)
-                    <option value="{{ $service['id']}}">{{ $service['category']['name']}} | {{ $service['name'] }}</option> 
+                    <option value="{{ $service['id']}}">@if ($service['category'] != null) {{ $service['category']['name'] }} |@endif {{ $service['name'] }}</option> 
                 @endforeach
             </select> 
             <label class="label">
@@ -93,7 +93,7 @@
                                 <div class="flex items-center space-x-3">
                                     <div>
                                         <div class="font-bold">{{ $order['title'] }}</div>
-                                        <div class="text-sm opacity-50">{{ $order['service']['category']['name'] }} > {{ $order['service']['name'] }}</div>
+                                        <div class="text-sm opacity-50">{{ @$order['service']['category']['name'] }} > {{ $order['service']['name'] }}</div>
                                     </div>
                                 </div>
                             </td>
