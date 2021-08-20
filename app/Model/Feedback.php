@@ -63,6 +63,15 @@ class Feedback extends Model
             ],
             'stars' => [
                 'label' => 'Avaliação',
+                'type' => 'radio',
+                'options' => [
+                    '1' => '😔',
+                    '2' => '😐',
+                    '3' => '🙂',
+                    '4' => '😄',
+                    '5' => '🥰',
+                ],
+                'style' => 'text-4xl',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
                 'show' => '',
             ],

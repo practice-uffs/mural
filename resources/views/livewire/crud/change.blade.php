@@ -39,7 +39,7 @@
                                     <input wire:model="{{ $key }}" type="radio" checked="checked" class="radio radio-primary" value="{{ $info['id']}}"> 
                                     <span class="radio-mark mr-1"></span>
                                 </div>
-                                <span class="label-text">{{ $info['text']}}</span> 
+                                <span class="label-text {{ @$field['style'] }}">{{ $info['text']}}</span> 
                             </label>
                         @endforeach
                     </div>
@@ -101,7 +101,7 @@
                     <label for="{{ $key }}" class="label">
                         <span class="label-text">{{ $field['label'] }}</span>
                     </label>
-                    <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-48 @error($key) textarea-error @enderror"></textarea>
+                    <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-48 mb-2 @error($key) textarea-error @enderror"></textarea>
                     @break
                 @default
                     <label for="{{ $key }}" class="label">

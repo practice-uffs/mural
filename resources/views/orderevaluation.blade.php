@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="w-full flex flex-row items-start mb-3">
                     <span class="inline py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">
-                        {{ $orderEvaluation->order->service->category->name }} &gt;
+                        {{ @$orderEvaluation->order->service->category->name }} &gt;
                         {{ $orderEvaluation->order->service->name }}
                     </span>
                     <span class="text-xs text-gray-400 ml-3">
@@ -35,7 +35,13 @@
                     'model' => 'App\Model\Feedback',
                     'edit' => $orderEvaluation->feedback,
                     'show_list' => false,
+                    'override' => [
+                        'type' => ['show' => ''],
+                        'stars' => ['show' => 'create', 'validation' => 'required'],
+                        'comment' => ['validation' => 'present'],
+                    ],
                     'include_create' => [
+                        'type' => 'comment',
                         'user_id' => auth()->id()
                     ]
                 ])

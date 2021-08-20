@@ -50,7 +50,7 @@ class OrderCommented extends Notification implements ShouldQueue
                     ->subject('Nova movimentação (Practice Mural #' . $this->order->id . ')')
                     ->greeting('Olá, ' . $this->order->user->first_name)
                     ->line('Há uma atualizacão sobre sua solicitação "*'.$this->order->title.'*" 🚀. Por favor, clique no botão abaixo para interagir:')
-                    ->action('Ver movimentação', url('/'))
+                    ->action('Ver movimentação', route('order.show', $this->order))
                     ->line('Não deixe para comentar depois 😉! Sua interação garante que possamos finalizar sua solicitação o mais rápido possível.')
                     ->line("Até mais,")
                     ->salutation("Equipe Practice ❤️");
