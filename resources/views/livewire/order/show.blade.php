@@ -76,7 +76,7 @@
                     <span class="label-text">Status desse pedido</span>
                 </label>
                 <select wire:model="status" name="status" class="select select-bordered w-full @error('status') select-error @enderror">
-                    <option value=""> Em análise (checanco viabilidade)</option> 
+                    <option value=""> Sem análise nossa ainda</option> 
                     <option value="todo">Na fila de trabalho (aceitamos o trabalho, mas não começamos)</option> 
                     <option value="doing">Em andamento (estamos trabalhando no pedido)</option> 
                     <option value="review">Em revisão pelo cliente</option> 

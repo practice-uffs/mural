@@ -24,11 +24,12 @@ class Orders extends Component
         $this->services = Service::with('category')->get()->toArray();
         $this->locations = Location::all()->toArray();
         $this->statuses = [
-            'pending' => 'Aguardando análise',
-            'doing' => 'Em andamento',
-            'closed' => 'Cancelado/fechado',
-            'complete' => 'Finalizado',
             '*' => 'Qualquer',
+            'pending' => 'Aguardando análise',
+            'todo' => 'Na fila (aceitamos, mas não começamos)',
+            'doing' => 'Em andamento',
+            'closed' => 'Cancelado (não entregamos algo)',
+            'completed' => 'Finalizado (entregamos algo)',
         ];
         $this->findOrders();
     }
@@ -36,27 +37,34 @@ class Orders extends Component
     protected function applyCategoryFilter(Builder &$query) {
         $categoryId = @$this->filter['category_id'];
 
-        if (!empty($categoryId)) {
-            $serciceIds = Service::all()->map(function($service) use ($categoryId) {
-                if ($service->category_id == $categoryId) {
-                    return $service->id;
-                }
-            });
-
-            $query->whereIn('service_id', $serciceIds);
+        if (empty($categoryId)) {
+            return;
         }
+
+
+        $serciceIds = Service::all()->map(function($service) use ($categoryId) {
+            if ($service->category_id == $categoryId) {
+                return $service->id;
+            }
+        });
+
+        $query->whereIn('service_id', $serciceIds);
     }
 
     protected function applyServiceFilter(Builder &$query) {
-        if (!empty($this->filter['service_id'])) {
-            $query->where('service_id', $this->filter['service_id']);
+        if (empty($this->filter['service_id'])) {
+            return;
         }
+        
+        $query->where('service_id', $this->filter['service_id']);
     }
 
     protected function applyLocationFilter(Builder &$query) {
-        if (!empty($this->filter['location_id'])) {
-            $query->where('location_id', $this->filter['location_id']);
+        if (empty($this->filter['location_id'])) {
+            return;
         }
+
+        $query->where('location_id', $this->filter['location_id']);
     }
 
     protected function applyStatusFilter(Builder &$query) {
@@ -64,16 +72,19 @@ class Orders extends Component
 
         switch($status) {
         case 'pending': // 'Aguardando análise',
-            $query->whereNull('github_issue_link');
+            $query->whereNull('status');
+            break;
+        case 'todo': // 'Na fila de trabalho (aceitamos, mas não tem issue)',
+            $query->where('status', 'todo');
             break;
         case 'doing': // 'Em andamento',
             $query->whereNotNull('github_issue_link');
             break;
         case 'closed': // 'Cancelado/fechado',
-            $query->where('is_closed', true);
+            $query->where('status', 'closed');
             break;
-        case 'complete': // 'Finalizado',
-            // TODO: implement this
+        case 'completed': // 'Finalizado',
+            $query->where('status', 'completed');
             break;
         default: // 'Qualquer',
         }
