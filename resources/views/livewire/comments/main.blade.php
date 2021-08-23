@@ -18,7 +18,7 @@
                     </div>
                     <div class="flex-1 border rounded-lg px-4 py-3 sm:px-6 sm:py-4 leading-relaxed">
                         <strong>{{ $comment['user']['name'] }}</strong> <span class="text-xs text-gray-400">{{ $comment['created_at'] }}</span>
-                        <p class="text-sm">{!! Str::markdown($comment['content']) !!}</p>
+                        <div class="text-md pt-2">{!! Str::markdown($comment['content']) !!}</div>
                         <div class="mt-4 flex items-center hidden">
                             <div class="flex -space-x-2 mr-2">
                                 <img class="rounded-full w-6 h-6 border border-white"

@@ -113,7 +113,7 @@ class GoogleDrive
         return $defaulValue;
     }
 
-    public function createIssueWorkingFolder($number, $repo = 'programa')
+    public function createIssueWorkingFolder($number, $repo = 'programa', $addFiles = true)
     {
         if(empty($number)) {
             throw new \InvalidArgumentException('Param $number requires a value.');
@@ -131,6 +131,14 @@ class GoogleDrive
         $folder = $this->createFolder($name, $tasks_folder_id);
         $in_folder = $this->createFolder('Entrada', $folder->getId());
         $out_folder = $this->createFolder('Saída', $folder->getId());
+
+        if ($addFiles) {
+            $inFile = file_get_contents(public_path('img/order/in_folder.png'));
+            $outFile = file_get_contents(public_path('img/order/out_folder.png'));
+
+            $this->createFile('Pasta de entrada', $inFile, $in_folder->getId());
+            $this->createFile('Pasta de saída', $outFile, $out_folder->getId());
+        }
 
         return $this->getIssueWorkingFolderStructureByName($name);
     }
