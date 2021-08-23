@@ -1,47 +1,57 @@
 <p align="center">
-    <img width="400" height="200" src=".github/logo.png" title="Logo do projeto"><br />
-    <img src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge" title="Status do projeto">
-    <img src="https://img.shields.io/github/workflow/status/ccuffs/template/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
+    <img width="600" src=".github/logo.png" title="Logo do projeto"><br />
+    <img src="https://img.shields.io/maintenance/yes/2021?style=for-the-badge" title="Status do projeto">
+    <img src="https://img.shields.io/github/workflow/status/practice-uffs/mural/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
 </p>
 
-# Web Feedback
+# Mural
 
-Web Feedback é um sistema cujo principal objetivo é estreitar a comunicação entre a comunidade da UFFS e o programa [Practice](https://practice.uffs.cc/). Esse estreitamento possibilitará que ideias e demandas voltadas para o âmbito da melhoria da educação possam ser publicadas, discutidas, discorridas e desenvolvidas. O Web Feedback irá funcionar como um mural onde qualquer pessoa da comunidade UFFS poderá expor suas ideias, comentários, solicitar serviços, etc, no formato de _post_. A partir desse ***feedback*** o [Practice](https://practice.uffs.cc/) terá facilidade em direcionar o fluxo de desenvolvimento e priorizar projetos.
+O mural é um sistema cujo principal objetivo é estreitar a comunicação entre a comunidade da [Universidade Federal da Fronteira Sul (UFFS)](https://www.uffs.edu.br) e o programa [Practice](https://practice.uffs.edu.br). Esse estreitamento visa que ideias e demandas voltadas à melhoria da educação possam ser publicadas, discutidas, discorridas e desenvolvidas.
 
-## Features
+> **IMPORTANTE:** o Practice Mural está em funcionamento em: [practice.uffs.edu.br/mural](https://practice.uffs.edu.br/mural).
 
-Aqui você pode colocar uma screenshot do produto resultante desse projeto. Descreva também suas features usando uma lista:
+## ✨ Features
 
-* Fácil integração;
-* Poucas dependências;
-* Utiliza um template lindo para organizar o `README`;
-* Possui ótima documentação e testes.
+O mural possui um conjunto considerável de features:
 
-## Começando
+* Autenticação a partir do idUFFS;
+* Categorias de serviços, com campos dinâmicos para cada;
+* Acompanhamento de solicitações;
+* Ingragração com [Github](https://github.com) e [Google Drive](https://drive.google.com);
+
+## 🚀 Começando
 
 ### 1. Dependências
 
-Para executar o projeto, inicialmente será preciso instalar as seguintes dependências:
+Para executar o projeto, você precisa ter o seguinte instalado:
 
+- [Git](https://git-scm.com);
 - [PHP](https://www.php.net/downloads);
 - [Composer](https://getcomposer.org/download/);
-- [MySQL](https://www.mysql.com/downloads/);
 - [NodeJS](https://nodejs.org/en/);
 - [NPM](https://www.npmjs.com/package/npm);
 
+Você precisa de várias extensões PHP instaladas também:
+
+```
+sudo apt install php-cli php-mbstring php-zip php-xml php-curl
+```
+
+O mural, desde sua versão `v2`, exige `php >= 8.0`.
+
 ### 2. Configuração
 
-Feito a instalação das dependências, é necessário obter uma cópia do projeto, para isso faça o `fork` dele através do botão situado no canto superior direito e depois clone-o em sua máquima. Em seguida será preciso configurar a interação entre o projeto e suas dependências.
+Feito a instalação das dependências, é necessário obter uma cópia do projeto. A forma recomendada é clonar o repositório para a sua máquina.
 
-#### Banco de Dados
-
-O SGBD utilizado no projeto é o MySQL sabendo disso acesse seu gerenciador e crie sua base de dados executando o seguinte comando:
+Para isso, rode:
 
 ```
-CREATE DATABASE <nome-do-banco>
+git clone --recurse-submodules https://github.com/practice-uffs/mural && cd mural
 ```
 
-#### PHP
+Isso criará e trocará para a pasta `mural` com o código do projeto.
+
+#### 2.1 PHP
 
 Instale as dependências do PHP usando o comando abaixo:
 
@@ -49,36 +59,23 @@ Instale as dependências do PHP usando o comando abaixo:
 composer install
 ```
 
-#### Pacotes
+#### 2.2 Banco de Dados
 
-Instale os pacotes php necessários para rodar o projeto:
+O banco de dados mais simples para uso é o SQLite. Para criar uma base usando esse SGBD, rode:
+
 ```
-sudo apt install php-cli
-```
-```
-sudo apt install php-mbstring
-```
-```
-sudo apt install php-zip
-```
-```
-sudo apt install php-xml
-```
-```
-sudo apt install php-mysql
-```
-```
-sudo apt install php-curl
+touch database/database.sqlite
 ```
 
-#### Node
+#### 2.3 Node
 
 Instale também as dependências do NodeJS executando:
+
 ```
 npm install
 ```
 
-#### Laravel
+#### 2.4 Laravel
 
 Crie o arquivo `.env` a partir do arquivo `.env.example` gerado automaticamente pelo Laravel:
 
@@ -86,63 +83,80 @@ Crie o arquivo `.env` a partir do arquivo `.env.example` gerado automaticamente 
 cp .env.example .env
 ```
 
-Após isso, no arquivo `.env` altere o valor do campo `DB_DATABASE` para `<nome-do-banco>` criado anteriormente e substitua também o valor dos campos `DB_USERNAME` e `DB_PASSWORD` para seu usuário e senha do banco de dados, respectivamente.
+Criação as tabelas do banco de dados com as migrações esquemas:
 
-Feita as alterações no `.env` execute o seguinte comando para a criação dos esquemas:
 ```
 php artisan migrate
 ```
 
-Na sequencia execute o comando abaixo para a geração da chave de autenticação da aplicação:
-```
-php artisan key:generate
-```
+Rode os seeders (que crias as categorias/serviços padrão):
 
-Por fim execute o comendo abaixo para ferar o token de autenticação JWT para a API
-```
-php artisan jwt:secret
-```
-
-O comando abaixo só pode ser rodado uma vez, caso contrário vai duplicar os dados:
 ```
 php artisan db:seed
 ```
 
-#### Rodando o projeto
+Gere aa chave de autenticação da aplicação:
 
-Finalmente, após seguido os passos anteriores, gere os recursos JavaScript e CSS:
+```
+php artisan key:generate
+```
+
+Por fim gere os recursos JavaScript e CSS:
+
 ```
 npm run dev
 ```
 
-e por fim inicie o servidor do Laravel:
+>*DICA:* enquanto estiver desenvolvendo, rode `npm run watch` para manter os scripts javascript sendo gerados sob demanda quando alterados.
+
+### 3. Utilizacão
+
+#### 3.1 Rodando o projeto
+
+Depois de seguir todos os passos de instalação, inicie o servidor do Laravel:
 
 ```
 php artisan serve
 ```
+
 Após isso a aplicação estará rodando na porta 8000 e poderá ser acessada em [localhost:8000](http://localhost:8000).
 
-### Documentação da API
+#### 3.2 Utilização da API
 
-A documentação dos endpoints da API estão disponíveis [aqui](https://documenter.getpostman.com/view/11057697/TVetbmFy)
+Se você utilizar a API dessa aplicacão, todos endpoints estarão acessivel em `/api`, por exemplo [localhost:8000/api](http://localhost:8000/api). Os endpoints que precisam de uma chave de autenticação devem ser utilizar o seguinte cabeçalho HTTP:
 
-## Contribua
+```
+Authorization: Bearer XXX
+```
 
-Sua ajuda é muito bem-vinda, independente da forma! Confira o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para conhecer todas as formas de contribuir com o projeto. Por exemplo, [sugerir uma nova funcionalidade](https://github.com/ccuffs/template/issues/new?assignees=&labels=&template=feature_request.md&title=), [reportar um problema/bug](https://github.com/ccuffs/template/issues/new?assignees=&labels=bug&template=bug_report.md&title=), [enviar um pull request](https://github.com/ccuffs/hacktoberfest/blob/master/docs/tutorial-pull-request.md), ou simplemente utilizar o projeto e comentar sua experiência.
+onde `XXX` é o valor da sua chave de acesso (api token do Jetstream), por exemplo `c08cbbfd6eefc83ac6d23c4c791277e4`.
+Abaixo está um exemplo de requisição para o endpoint `user` utilizando a chave de acesso acima:
+
+```bash
+curl -H 'Accept: application/json' -H "Authorization: Bearer c08cbbfd6eefc83ac6d23c4c791277e4" http://localhost:8080/api/user
+```
+
+## 🤝 Contribua
+
+Sua ajuda é muito bem-vinda, independente da forma! Confira o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para conhecer todas as formas de contribuir com o projeto. Por exemplo, [sugerir uma nova funcionalidade](https://github.com/practice-uffs/mural/issues/new?assignees=&labels=&template=feature_request.md&title=), [reportar um problema/bug](https://github.com/practice-uffs/mural/issues/new?assignees=&labels=bug&template=bug_report.md&title=), [enviar um pull request](https://github.com/ccuffs/hacktoberfest/blob/master/docs/tutorial-pull-request.md), ou simplemente utilizar o projeto e comentar sua experiência.
 
 Veja o arquivo [ROADMAP.md](ROADMAP.md) para ter uma ideia de como o projeto deve evoluir.
 
 
-## Licença
+## 🎫 Licença
 
-Esse projeto é licenciado nos termos da licença open-source [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/) e está disponível de graça.
+Esse projeto é licenciado nos termos da licença open-source [MIT](https://choosealicense.com/licenses/mit) e está disponível de graça.
 
-## Changelog
+## 🧬 Changelog
 
 Veja todas as alterações desse projeto no arquivo [CHANGELOG.md](CHANGELOG.md).
 
-## Projetos semelhates
+## 🧪 Links úteis
 
 Abaixo está uma lista de links interessantes e projetos similares:
 
-* [Google Keep](https://keep.google.com)
+* [Universidade Federal da Fronteira Sul](https://www.uffs.edu.br)
+* [Programa Practice](https://practice.uffs.cc)
+* [Practice Maker](https://github.com/practice-uffs/maker)
+* [Practice Bot](https://github.com/practice-uffs/bot)
+* [Practice Forms](https://github.com/practice-uffs/forms)
