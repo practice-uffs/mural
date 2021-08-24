@@ -156,29 +156,45 @@ class Order extends Model
      * @return stdClass objeto com os campos `text`, `explanation`, `color`.
      */
     public function situation() {
-        if (empty($this->github_issue_link)) {
-            return (object) [
-                'text' => 'Aguardando análise',
-                'explanation' => 'Ainda não começamos a trabalhar nessa solicitação. Ela está na fila aguardando análise de viabilidade.',
-                'color' => 'yellow-600',
-            ];
-        }
-
-        if ($this->closed) {
-            return (object) [
-                'text' => 'Cancelado',
-                'explanation' => 'O pedido foi cancelado por solicitação do autor ou porque ele é inviável dentro das possibilidades da equipe.',
-                'color' => 'red-600',
-            ];
-        }
-
-        if (!empty($this->github_issue_link)) {
+        if (!empty($this->github_issue_link) || $this->status == 'doing') {
             return (object) [
                 'text' => 'Em andamento',
                 'explanation' => 'O pedido está na fila de trabalho para ser realizado. Quando chegar sua vez, ele será conduzido.',
                 'color' => 'green-600',
             ];
+        }    
+        
+        if ($this->status == 'review') {
+            return (object) [
+                'text' => 'Em revisão',
+                'explanation' => 'Para continuar a execução, o pedido aguarda a revisão de quem solicitou.',
+                'color' => 'pink-500',
+            ];
         }
+
+        if ($this->status == 'completed') {
+            return (object) [
+                'text' => 'Completo',
+                'explanation' => 'O pedido foi realizado, finalizado e entregue.',
+                'color' => 'green-700',
+            ];
+        }        
+
+        if ($this->status == 'closed') {
+            return (object) [
+                'text' => 'Cancelado',
+                'explanation' => 'O pedido foi fechado por vontade de quem solicitou, ou porque ele é inviável dentro das possibilidades da equipe.',
+                'color' => 'red-600',
+            ];
+        }
+
+        if (empty($this->github_issue_link) || $this->status == 'todo') {
+            return (object) [
+                'text' => 'Fila de trabalho',
+                'explanation' => 'A solicitação foi aceita, mas ainda não foi escalonada para execução.',
+                'color' => 'purple-600',
+            ];
+        }        
 
         return (object) [
             'text' => 'Incerto',
