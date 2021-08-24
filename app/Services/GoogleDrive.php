@@ -129,7 +129,7 @@ class GoogleDrive
         $tasks_folder_id = $this->config('tasks_folder_id', '');
         
         $folder = $this->createFolder($name, $tasks_folder_id);
-        $in_folder = $this->createFolder('Entrada', $folder->getId());
+        $in_folder = $this->createFolder('Entrada', $folder->getId(), true);
         $out_folder = $this->createFolder('Saída', $folder->getId());
 
         if ($addFiles) {
@@ -143,7 +143,7 @@ class GoogleDrive
         return $this->getIssueWorkingFolderStructureByName($name);
     }
 
-    public function createFolder($name, $parentId = '') {
+    public function createFolder($name, $parentId = '', $makePublic = false) {
         $folderMeta = new \Google\Service\Drive\DriveFile();
 
         $folderMeta->setName($name);
@@ -154,6 +154,16 @@ class GoogleDrive
         }
         
         $folder = $this->service->files->create($folderMeta);
+
+        if ($makePublic) {
+            $permission = new \Google\Service\Drive\Permission();
+            $permission->setRole('writer');
+            $permission->setType('anyone');
+            $permission->setAllowFileDiscovery(true);
+
+            $this->service->permissions->create($folder->getId(), $permission);
+        }              
+
         return $folder;
     }
 
