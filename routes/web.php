@@ -11,6 +11,8 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Livewire\FilePreviewHandler;
+use App\Http\Controllers\Livewire\FileUploadHandler;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderEvaluationController;
 use App\Http\Controllers\ServiceController;
@@ -76,3 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/gerenciar/newsletter', [SubscriberController::class, 'index'])->name('admin.subscriber');
     });
 });
+
+// Corrige um bug no upload de arquivos no Livewire
+Route::post('/livewire/upload-file', [FileUploadHandler::class, 'handle'])->name('livewire.upload-file')->middleware(config('livewire.middleware_group', ''));
+Route::get('/livewire/preview-file/{filename}', [FilePreviewHandler::class, 'handle'])->name('livewire.preview-file')->middleware(config('livewire.middleware_group', ''));
