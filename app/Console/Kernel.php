@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new ProcessGoogleDriveUploads)->everyMinute();
+        $schedule->job(new ProcessGoogleDriveUploads)->daily()->at('01:00');
     }
 
     /**
