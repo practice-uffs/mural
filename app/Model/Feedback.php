@@ -55,12 +55,6 @@ class Feedback extends Model
                 'placeholder' => 'Ex.: meu título lindo',
                 'validation' => 'required|in:critic,comment,suggestion,compliment',
             ],
-            'comment' => [
-                'label' => 'Comentário',
-                'type' => 'textarea',
-                'placeholder' => 'Ex.: descrição de algo que você julga pertinente.',
-                'validation' => 'required|min:5',                
-            ],
             'stars' => [
                 'label' => 'Avaliação',
                 'type' => 'radio',
@@ -74,6 +68,12 @@ class Feedback extends Model
                 'style' => 'text-4xl',
                 'placeholder' => 'Ex.: descrição de alguma coisa',
                 'show' => '',
+            ],
+            'comment' => [
+                'label' => 'Comentário',
+                'type' => 'textarea',
+                'placeholder' => 'Ex.: descrição de algo que você julga pertinente.',
+                'validation' => 'required|min:5',                
             ],
             'is_visible' => [
                 'type' => 'boolean',
