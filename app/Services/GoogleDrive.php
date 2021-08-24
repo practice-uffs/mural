@@ -130,7 +130,7 @@ class GoogleDrive
         
         $folder = $this->createFolder($name, $tasks_folder_id);
         $in_folder = $this->createFolder('Entrada', $folder->getId(), true);
-        $out_folder = $this->createFolder('Saída', $folder->getId());
+        $out_folder = $this->createFolder('Saída', $folder->getId(), true);
 
         if ($addFiles) {
             $inFile = file_get_contents(public_path('img/order/in_folder.png'));
