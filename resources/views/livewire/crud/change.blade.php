@@ -120,12 +120,12 @@
         </div>
 
         @if (isset($data['id']) || $editing)
-            <button wire:click="update()" class="btn btn-primary float-right">Salvar</button>
+            <button wire:click="update()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn btn-primary float-right">Salvar</button>
             @if (!isset($edit))
                 <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
             @endif
         @else
-            <button wire:click="store()" class="btn btn-wide btn-primary">Enviar</button>
+            <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn btn-wide btn-primary">Enviar</button>
         @endif
     @endif
 </div> 
