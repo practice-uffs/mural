@@ -15,10 +15,19 @@
     </div>
 </section>
 
-<div class="container">
+<div class="container" x-data="{ active: 'all' }">
+    <div class="row text-center mb-8">
+        <div class="col-12">
+            <a href="javascript:void(0)" class="font-semibold m-4" :class="{ 'btn btn-primary btn-outline rounded-full': active === 'all' }">Todos</a>
+            @foreach ($categories as $category)
+                <a href="javascript:void(0)" class="font-semibold m-4" :class="{ 'btn btn-primary btn-outline rounded-full': active === '{{ $category['name'] }}' }" @click.prevent="active = '{{ $category['name'] }}'" >{{ $category['name'] }}</a>
+            @endforeach
+        </div>
+    </div>
+
     @forelse ($items as $item)
         <!-- category info -->
-        <div class="row pb-4">
+        <div class="row pb-4" x-show="active === 'all' || active === '{{ $item['category']['name'] }}'">
             <div class="col-12 text-gray-600 body-font">
                 <div class="container px-5 py-4 mx-auto">
                     <div class="flex flex-col">
@@ -39,10 +48,10 @@
         </div>
 
         <!-- services in category -->
-        <div class="row mb-4">
+        <div class="row mb-4" x-show="active === 'all' || active === '{{ $item['category']['name'] }}'">
             <div class="col-12">
                 <div class="flex items-center justify-center">
-                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                         @forelse ($item['services'] as $service)
                         <div class="relative bg-white py-6 px-6 rounded-3xl w-96 my-4 shadow-xl">
                             <div class=" text-white flex items-center absolute rounded-full py-1 px-1 shadow-xl bg-{{ $service->color }} left-4 -top-6">

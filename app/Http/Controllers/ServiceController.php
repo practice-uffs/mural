@@ -27,7 +27,8 @@ class ServiceController extends Controller
         }
 
         return view('services', [
-            'items' => $items
+            'items' => $items,
+            'categories' => Category::all()
         ]);
     }
 }

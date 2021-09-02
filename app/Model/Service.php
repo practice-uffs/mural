@@ -68,10 +68,12 @@ class Service extends Model
             'work_days' => [
                 'label' => 'Dias úteis',
                 'placeholder' => 'Ex.: 10',
+                'show' => 'create,edit',
             ],
             'eval_days' => [
                 'label' => 'Dias úteis para avaliação',
                 'placeholder' => 'Ex.: 3',
+                'show' => 'create,edit',
             ],            
             'notice' => [
                 'label' => 'Aviso',
