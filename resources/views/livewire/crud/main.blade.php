@@ -9,9 +9,9 @@
                 <h2>Lista de registros existentes</h2>
             </header>
 
-            <table class="table w-full">
+            <table class="table w-full flex flex-row flex-no-wrap overflow-hidden my-5">
                 <thead>
-                    <tr class="">
+                    <tr class="flex flex-col flex-no wrap sm:table-row sm:rounded-none mb-2 sm:mb-0">
                         @foreach ($fields as $key => $field)
                             @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
                                 @continue
@@ -22,9 +22,9 @@
                     </tr>
                 </thead>
 
-                <tbody class="">
+                <tbody class="flex-1 sm:flex-none">
                     @foreach($items as $item)
-                        <tr class="">
+                        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             @foreach ($fields as $key => $field)
                                 @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
                                     @continue
