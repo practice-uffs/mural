@@ -49,13 +49,13 @@ class LoginController extends Controller
         
         Auth::login($user);
         
-        return redirect()->route('home');
+        return redirect()->intended();
     }
 
     public function logout(Request $resquest)
     {
         Auth::logout();
-        return redirect()->intended('login');
+        return redirect()->route('index');
     }
 
     private function getOrCreateUser($data)
