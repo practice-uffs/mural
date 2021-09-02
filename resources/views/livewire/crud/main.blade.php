@@ -5,14 +5,13 @@
 
     @if ($show_list)
         @if(count($items) > 0)
-            <header class="section-header  mt-8">
+            <header class="section-header mt-8">
                 <h2>Lista de registros existentes</h2>
             </header>
 
             <table class="table w-full">
                 <thead>
-                    <tr>
-                        <th>ID</th>
+                    <tr class="">
                         @foreach ($fields as $key => $field)
                             @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
                                 @continue
@@ -23,43 +22,44 @@
                     </tr>
                 </thead>
 
-                @foreach($items as $item)
-                    <tr>
-                        <td>{{$item->id}}</td>
-                        @foreach ($fields as $key => $field)
-                            @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
-                                @continue
-                            @endif
-                            <td>
-                                @switch(@$field['type'])
-                                @case('boolean')
-                                    <div class="badge @if ($item[$field['property']]) badge-success @else badge-warning @endif text-xs">
-                                        @if (isset($field['value_as_text']))
-                                            @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
-                                        @else
-                                            {{ $item[$field['property']] ? 'Sim' : 'Não' }}
-                                        @endif
-                                    </div>
-                                    @break
-                                @case('select')
-                                @case('radio')
-                                    <!-- {{ $value = $item[$field['property']]; }} -->
-                                    {{ @collect($field['options'])->first(function($val) use ($value) { return $val['id'] == $value; })['text'] }}
-                                    @break
-                                @default
-                                    {{ $item[$field['property']] }}
-                                @endswitch
+                <tbody class="">
+                    @foreach($items as $item)
+                        <tr class="">
+                            @foreach ($fields as $key => $field)
+                                @if (isset($field['show']) && !Str::contains($field['show'], 'list'))
+                                    @continue
+                                @endif
+                                <td>
+                                    @switch(@$field['type'])
+                                    @case('boolean')
+                                        <div class="badge @if ($item[$field['property']]) badge-success @else badge-warning @endif text-xs">
+                                            @if (isset($field['value_as_text']))
+                                                @if ($item[$field['property']]) {{ $field['value_as_text'][1] }} @else {{ $field['value_as_text'][0] }} @endif
+                                            @else
+                                                {{ $item[$field['property']] ? 'Sim' : 'Não' }}
+                                            @endif
+                                        </div>
+                                        @break
+                                    @case('select')
+                                    @case('radio')
+                                        <!-- {{ $value = $item[$field['property']]; }} -->
+                                        {{ @collect($field['options'])->first(function($val) use ($value) { return $val['id'] == $value; })['text'] }}
+                                        @break
+                                    @default
+                                        {{ $item[$field['property']] }}
+                                    @endswitch
+                                </td>
+                            @endforeach
+                            <td class="text-right">
+                                <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> | 
+                                <button wire:click="destroy({{$item->id}})" class="btn btn-sm btn-outline py-0">Apagar</button>
                             </td>
-                        @endforeach
-                        <td class="text-right">
-                            <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> | 
-                            <button wire:click="destroy({{$item->id}})" class="btn btn-sm btn-outline py-0">Apagar</button>
-                        </td>
-                    </tr>
-                    @if ($editing == $item->id)
-                        <tr><td colspan="{{ count($fields) + 2 }}">@include('livewire.crud.change')</td></tr>
-                    @endif
-                @endforeach
+                        </tr>
+                        @if ($editing == $item->id)
+                            <tr><td colspan="{{ count($fields) + 2 }}">@include('livewire.crud.change')</td></tr>
+                        @endif
+                    @endforeach
+                </tbody>
             </table>
         @else
             <section class="text-gray-600">
