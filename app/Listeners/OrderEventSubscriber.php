@@ -10,6 +10,7 @@ use App\Model\Feedback;
 use App\Model\OrderEvaluation;
 use App\Notifications\OrderCommented as OrderCommentedNotification;
 use App\Notifications\OrderCompleted as OrderCompletedNotification;
+use App\Notifications\OrderCreated as OrderCreatedNotification;
 use App\Services\GoogleDrive;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -108,6 +109,8 @@ class OrderEventSubscriber
             'google_drive_in_folder_link' => $drive_in_link,
             'google_drive_out_folder_link' => $drive_out_link,
         ]);
+
+        $order->user->notify(new OrderCreatedNotification($order));
     }        
 
     /**

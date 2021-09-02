@@ -49,7 +49,7 @@ class OrderCompleted extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->subject('Avalie nosso trabalho em sua solicitação (Practice Mural #' . $this->order->id . ')')
                     ->greeting('Olá, ' . $this->order->user->first_name)
-                    ->line('Por favor, avalie o resultado da sua solicitação "*'.$this->order->title.'*" clicando no botão abaixo:')
+                    ->line('Por favor, avalie o resultado da sua solicitação *"'.$this->order->title.'"* clicando no botão abaixo:')
                     ->action('Avaliar resultado', route('orderevaluation.show', [
                         'orderEvaluation' => $this->evaluation,
                         'hash' => $this->evaluation->hash
