@@ -48,7 +48,7 @@
                     <label for="{{ $key }}" class="label">
                         <span class="label-text">{{ $field['label'] }}</span>
                     </label>
-                    <input wire:model="{{ $key }}" type="date" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror max-w-md" />
+                    <input wire:model="{{ $key }}" type="date" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror max-w-md" {{ @$field['attr'] }} />
                     @break
                 @case('file')
                     <label class="label">
