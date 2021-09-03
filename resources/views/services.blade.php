@@ -54,6 +54,14 @@
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                         @forelse ($item['services'] as $service)
                         <div class="relative bg-white py-6 px-6 rounded-3xl w-96 my-4 shadow-xl">
+                            @if (!empty($service->order) && $service->order <= 0)
+                                <span class="absolute -top-1 left-24 inline-flex items-center justify-center px-2 py-1 text-md font-bold leading-none text-purple-500 border-2 border-dotted transform rotate-3 border-purple-500 rounded hover:bg-purple-100" title="Recebemos bastante solicitações desse tipo de serviço.">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-purple-700 animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                                    </svg>
+                                    POPULAR
+                                </span>
+                            @endif
                             <div class=" text-white flex items-center absolute rounded-full py-1 px-1 shadow-xl bg-{{ $service->color }} left-4 -top-6">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 p-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $service->icon_svg_path !!}

@@ -15,7 +15,7 @@ class ServiceController extends Controller
     public function index()
     {
         $items = [];
-        $services = Service::where('is_active', true)->get();
+        $services = Service::where('is_active', true)->orderBy('order', 'asc')->get();
 
         foreach(Category::where('is_active', true)->get() as $category) {
             $items[] = [

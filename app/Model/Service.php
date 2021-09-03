@@ -26,6 +26,7 @@ class Service extends Model
         'color',
         'work_days',
         'eval_days',
+        'order',
         'is_available',
         'is_active',
     ];
@@ -80,6 +81,11 @@ class Service extends Model
                 'placeholder' => 'Ex.: estamos com muitas demandas desse serviço, pedidos podem demorar.',
                 'show' => 'create,edit',
             ], 
+            'order' => [
+                'label' => 'Ordem',
+                'placeholder' => 'Ex.: 1',
+                'show' => 'create,edit',
+            ],             
             'color' => [
                 'label' => 'Cor',
                 'placeholder' => 'Ex.: yellow-500',
