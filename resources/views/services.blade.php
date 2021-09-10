@@ -18,16 +18,22 @@
 <div class="container" x-data="{ active: 'all' }">
     <div class="row text-center mb-8">
         <div class="col-12">
-            <a href="javascript:void(0)" class="font-semibold m-4" :class="{ 'btn btn-primary btn-outline rounded-full': active === 'all' }">Todos</a>
+            <a href="javascript:void(0)" class="font-semibold m-2" :class="{ 'btn btn-primary btn-outline rounded-full': active === 'all' }" @click.prevent="active = 'all'">Todos</a>
+            <a href="javascript:void(0)" class="font-semibold m-2" :class="{ 'btn btn-primary btn-outline rounded-full': active === 'popular' }" @click.prevent="active = 'popular'">
+                Populares
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-purple-700 animate-pulse inline-block" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>
+            </a>
             @foreach ($categories as $category)
-                <a href="javascript:void(0)" class="font-semibold m-4" :class="{ 'btn btn-primary btn-outline rounded-full': active === '{{ $category['name'] }}' }" @click.prevent="active = '{{ $category['name'] }}'" >{{ $category['name'] }}</a>
+                <a href="javascript:void(0)" class="font-semibold m-2" :class="{ 'btn btn-primary btn-outline rounded-full': active === '{{ $category['slug'] }}' }" @click.prevent="active = '{{ $category['slug'] }}'" >{{ $category['name'] }}</a>
             @endforeach
         </div>
     </div>
 
     @forelse ($items as $item)
         <!-- category info -->
-        <div class="row pb-4" x-show="active === 'all' || active === '{{ $item['category']['name'] }}'">
+        <div class="row pb-4" x-show="active === 'all' || active === '{{ $item['category']['slug'] }}'">
             <div class="col-12 text-gray-600 body-font">
                 <div class="container px-5 py-4 mx-auto">
                     <div class="flex flex-col">
@@ -48,7 +54,7 @@
         </div>
 
         <!-- services in category -->
-        <div class="row mb-4" x-show="active === 'all' || active === '{{ $item['category']['name'] }}'">
+        <div class="row mb-4" x-show="active === 'all' || active === '{{ $item['category']['slug'] }}'">
             <div class="col-12">
                 <div class="flex items-center justify-center">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
