@@ -191,7 +191,7 @@ class Order extends Model
             ];
         }
 
-        if (empty($this->github_issue_link) || $this->status == 'todo') {
+        if (empty($this->github_issue_link) && $this->status == 'todo') {
             return (object) [
                 'text' => 'Fila de trabalho',
                 'explanation' => 'A solicitação foi aceita, mas ainda não foi escalonada para execução.',
@@ -199,18 +199,11 @@ class Order extends Model
             ];
         }        
 
-        if (empty($this->status)) {
-            return (object) [
-                'text' => 'Aguarda análise',
-                'explanation' => 'Estamos verificando a viabilidade de execução desse pedido.',
-                'color' => 'purple-600',
-            ];
-        }
-
         return (object) [
-            'text' => 'Incerto',
-            'explanation' => 'Há muitas indefinições sobre o pedido. Por favor, fale com alguém da equipe.',
-            'color' => 'blue-600',
+            'text' => 'Aguarda análise',
+            'explanation' => 'Estamos verificando a viabilidade de execução desse pedido.',
+            'color' => 'purple-600',
         ];
+
     }
 }
