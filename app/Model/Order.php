@@ -199,6 +199,14 @@ class Order extends Model
             ];
         }        
 
+        if (empty($this->status)) {
+            return (object) [
+                'text' => 'Aguarda análise',
+                'explanation' => 'Estamos verificando a viabilidade de execução desse pedido.',
+                'color' => 'purple-600',
+            ];
+        }
+
         return (object) [
             'text' => 'Incerto',
             'explanation' => 'Há muitas indefinições sobre o pedido. Por favor, fale com alguém da equipe.',
