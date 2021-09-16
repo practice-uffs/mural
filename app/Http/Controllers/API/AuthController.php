@@ -27,6 +27,7 @@ class AuthController extends Controller
         'luiza.tonial',
         'mariaeduarda.santos',
         'matheus.negrao',
+        'michele.nieradka',
         'milena.pastorini',
         'morgana.oliveira',
         'pedro.maximowski',
