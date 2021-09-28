@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\Idea;
+use App\Models\Idea;
 
 class IdeaSeeder extends Seeder
 {

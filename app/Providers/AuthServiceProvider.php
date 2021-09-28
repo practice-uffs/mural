@@ -3,13 +3,13 @@
 namespace App\Providers;
 
 use App\Http\Livewire\Admin\Service;
-use App\Model\Category;
-use App\Model\Comment;
-use App\Model\Feedback;
-use App\Model\Idea;
-use App\Model\Location;
-use App\Model\Order;
-use App\Model\OrderEvaluation;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Feedback;
+use App\Models\Idea;
+use App\Models\Location;
+use App\Models\Order;
+use App\Models\OrderEvaluation;
 use App\Policies\MustBeOwnerPolicy;
 use App\Policies\OpenViewPolicy;
 use Illuminate\Support\Facades\Gate;

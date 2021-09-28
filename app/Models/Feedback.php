@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

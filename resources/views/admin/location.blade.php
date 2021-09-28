@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12">
                 @livewire('crud.main', [
-                    'model' => 'App\Model\Location'
+                    'model' => 'App\Models\Location'
                 ])
             </div>
         </div>

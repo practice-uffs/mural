@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\Feedback;
+use App\Models\Feedback;
 use Orion\Http\Controllers\Controller;
 
 class FeedbackController extends Controller

@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-10 offset-1">
                 @livewire('crud.main', [
-                    'model' => 'App\Model\Feedback',
+                    'model' => 'App\Models\Feedback',
                     'show_list' => false,
                     'include_create' => [
                         'user_id' => auth()->id()

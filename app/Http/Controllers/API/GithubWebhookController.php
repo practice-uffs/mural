@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Events\OrderCommented;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Comment;
-use App\Model\Order;
-use App\Model\User;
+use App\Models\Comment;
+use App\Models\Order;
+use App\Models\User;
 use App\Services\Github;
 use App\Services\GoogleDrive;
 

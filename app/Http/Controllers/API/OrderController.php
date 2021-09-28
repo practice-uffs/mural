@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\Order;
+use App\Models\Order;
 use Orion\Http\Controllers\Controller;
 
 class OrderController extends Controller

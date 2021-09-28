@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Events\OrderCommented;
-use App\Model\Comment;
+use App\Models\Comment;
 
 class CommentObserver
 {

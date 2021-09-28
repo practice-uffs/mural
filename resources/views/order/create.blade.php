@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-10 offset-1">
                 @livewire('order.create', [
-                    'model' => 'App\Model\Order',
+                    'model' => 'App\Models\Order',
                     'service' => $service,
                     'show_list' => false,
                     'include_create' => [

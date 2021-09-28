@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Category;
+use App\Models\Category;
 
 class IndexController extends Controller
 {

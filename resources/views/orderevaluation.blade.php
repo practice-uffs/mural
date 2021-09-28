@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-12">
                 @livewire('crud.main', [
-                    'model' => 'App\Model\Feedback',
+                    'model' => 'App\Models\Feedback',
                     'edit' => $orderEvaluation->feedback,
                     'show_list' => false,
                     'override' => [

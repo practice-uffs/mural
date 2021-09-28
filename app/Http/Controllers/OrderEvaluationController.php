@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\OrderEvaluation;
+use App\Models\OrderEvaluation;
 
 class OrderEvaluationController extends Controller
 {

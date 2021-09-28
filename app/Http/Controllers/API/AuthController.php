@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\User;
+use App\Models\User;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;

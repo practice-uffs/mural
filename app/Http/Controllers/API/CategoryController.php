@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\Category;
+use App\Models\Category;
 use Orion\Http\Controllers\Controller;
 
 class CategoryController extends Controller

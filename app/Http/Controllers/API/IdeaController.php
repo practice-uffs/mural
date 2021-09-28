@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\Idea;
+use App\Models\Idea;
 use Orion\Http\Controllers\Controller;
 
 class IdeaController extends Controller

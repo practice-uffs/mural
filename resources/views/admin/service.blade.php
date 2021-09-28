@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12">
                 @livewire('admin.service', [
-                    'model' => 'App\Model\Service'
+                    'model' => 'App\Models\Service'
                 ])
             </div>
         </div>

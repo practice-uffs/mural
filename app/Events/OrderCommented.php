@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use App\Model\Comment;
-use App\Model\Order;
+use App\Models\Comment;
+use App\Models\Order;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;

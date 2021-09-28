@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Auth\CredentialManager;
-use App\Model\Comment;
-use App\Model\Order;
+use App\Models\Comment;
+use App\Models\Order;
 use App\Observers\CommentObserver;
 use App\Observers\OrderObserver;
 use App\Services\Github;

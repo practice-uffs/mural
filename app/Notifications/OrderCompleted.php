@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
-use App\Model\Order;
-use App\Model\OrderEvaluation;
+use App\Models\Order;
+use App\Models\OrderEvaluation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;

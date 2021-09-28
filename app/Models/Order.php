@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use App\OrderEvaluation;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
@@ -76,7 +76,7 @@ class Order extends Model
                 'show' => 'create,edit'
             ],
             'location_id' => [
-                'type' => 'model:App\Model\Location',
+                'type' => 'model:App\Models\Location',
                 'label' => 'Local',
                 'validation' => 'required',
                 'placeholder' => '',

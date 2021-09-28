@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Idea;
-use App\Model\User;
+use App\Models\Idea;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

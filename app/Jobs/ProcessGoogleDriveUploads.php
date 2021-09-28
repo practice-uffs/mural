@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Model\Comment;
-use App\Model\Order;
+use App\Models\Comment;
+use App\Models\Order;
 use App\Services\GoogleDrive;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

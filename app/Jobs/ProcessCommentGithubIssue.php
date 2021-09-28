@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Model\Comment;
+use App\Models\Comment;
 use App\Services\Github;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;

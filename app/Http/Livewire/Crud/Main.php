@@ -31,7 +31,7 @@ class Main extends Component
     public bool $show_success = true;
     public array $override = [];
 
-    public string $model = ''; // E.g. '\App\Model\Order'
+    public string $model = ''; // E.g. '\App\Models\Order'
     public string $view_name = 'livewire.crud.main';
     public array $include_create = []; // Fields to include in create operations    
     public array $include_update = []; // Fields to include in update operations

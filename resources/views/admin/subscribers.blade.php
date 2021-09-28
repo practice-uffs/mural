@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-12">
                 @livewire('crud.main', [
-                    'model' => 'App\Model\Subscriber',
+                    'model' => 'App\Models\Subscriber',
                     'show_create_panel' => false
                 ])
             </div>

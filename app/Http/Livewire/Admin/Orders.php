@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Model\Category;
-use App\Model\Location;
-use App\Model\Order;
-use App\Model\Service;
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Order;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 

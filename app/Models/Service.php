@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -54,7 +54,7 @@ class Service extends Model
             'category_id' => [
                 'label' => 'Categoria',
                 'validation' => 'required',
-                'type' => 'model:\App\Model\Category',
+                'type' => 'model:\App\Models\Category',
             ],
             'name' => [
                 'label' => 'Nome',

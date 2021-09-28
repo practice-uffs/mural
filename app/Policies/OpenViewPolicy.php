@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Model\Category;
-use App\Model\User;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class OpenViewPolicy

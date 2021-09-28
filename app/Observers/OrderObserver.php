@@ -5,7 +5,7 @@ namespace App\Observers;
 use App\Events\OrderCommented;
 use App\Events\OrderCompleted;
 use App\Events\OrderCreated;
-use App\Model\Order;
+use App\Models\Order;
 use App\Notifications\OrderNeedsReview;
 use App\Notifications\OrderStarted;
 

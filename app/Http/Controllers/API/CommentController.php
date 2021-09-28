@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Model\Comment;
+use App\Models\Comment;
 use Orion\Http\Controllers\Controller;
 
 class CommentController extends Controller
