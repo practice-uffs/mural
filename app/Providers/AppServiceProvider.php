@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Auth\CredentialManager;
+use App\Model\Comment;
+use App\Model\Order;
+use App\Observers\CommentObserver;
+use App\Observers\OrderObserver;
 use App\Services\Github;
 use App\Services\GoogleDrive;
 use Illuminate\Support\Facades\Blade;
@@ -23,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(GoogleDrive::class, function($app) {
             return new GoogleDrive(config('google.drive'));
         });
+
+        $this->app->singleton(CredentialManager::class, function($app) {
+            return new CredentialManager();
+        });        
     }
 
     /**
@@ -39,5 +48,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endadmin', function() {
             return '<?php endif; ?>';
         });
+
+        Order::observe(OrderObserver::class);
+        Comment::observe(CommentObserver::class);
     }
 }

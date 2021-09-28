@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Observers;
+
+use App\Events\OrderCommented;
+use App\Model\Comment;
+
+class CommentObserver
+{
+    /**
+     * Listen to the Comment created event.
+     *
+     * @param  \App\Comment  $comment
+     * @return void
+     */
+    public function created(Comment $comment)
+    {
+        OrderCommented::dispatch($comment->order, $comment);
+    }
+
+}

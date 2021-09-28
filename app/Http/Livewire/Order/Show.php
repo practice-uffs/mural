@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire\Order;
 
-use App\Events\OrderCompleted;
 use App\Jobs\ProcessGoogleDriveUploads;
-use App\Notifications\OrderStarted;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -38,23 +36,12 @@ class Show extends Component
     {
         $this->validate();
 
-        $wasGithubLinkAdded = empty($this->order->github_issue_link) &&
-                              !empty($this->github_issue_link);
-
         $this->order->update([
             'github_issue_link' => $this->github_issue_link,
             'status' => $this->status,
         ]);
 
         $this->emit('order:statusChanged');
-
-        if ($wasGithubLinkAdded) {
-            $this->order->user->notify(new OrderStarted($this->order));
-        }
-
-        if ($this->status == 'completed') {
-            OrderCompleted::dispatch($this->order);
-        }
     }
 
     public function saveFiles() {

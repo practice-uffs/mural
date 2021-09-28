@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Order;
 
-use App\Events\OrderCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class Create extends \App\Http\Livewire\Crud\Main
@@ -11,13 +10,10 @@ class Create extends \App\Http\Livewire\Crud\Main
 
     protected function modelCreated(Model $model)
     {
-        // Dispara um evento informando que um pedido foi criado.
-        OrderCreated::dispatch($model);
     }
 
     protected function modelUpdated(Model $model)
     {
-        
     }
 
     /**
