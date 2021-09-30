@@ -55,7 +55,7 @@
                                     {{ $order->title }}
                                 </td>
                                 <td>
-                                    <span class="badge badge-outline badge-success badge-md">{{ $order->status }}</span>
+                                    <span class="badge badge-outline badge-info badge-md">{{ $order->situation()->text }}</span>
                                 </td>
                                 <td>
                                     <div>{{ $order->created_at }}</div>
