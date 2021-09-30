@@ -41,12 +41,12 @@
                                         <div class="avatar">
                                             <div class="w-10 h-10 mask mask-circle bg-{{ @$order->service->category->color }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    {!! $order->service->icon_svg_path !!}
+                                                    {!! @$order->service->icon_svg_path !!}
                                                 </svg>
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="font-bold">{{ $order->service->name }}</div>
+                                            <div class="font-bold">{{ @$order->service->name }}</div>
                                             <div class="text-sm opacity-50">{{ @$order->service->category->name }}</div>
                                         </div>
                                     </div>

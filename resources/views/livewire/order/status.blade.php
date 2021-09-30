@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    @if ($order->service->notice)
+    @if (@$order->service->notice)
         <div class="p-4 w-full">
             <div class="alert alert-warning flex flex-col text-center">
                 <p class="animate-bounce">
@@ -25,7 +25,7 @@
                     <p class="font-semibold text-md">Atenção</p>
                 </p>
                 <div class="mt-2">
-                    <label class="text-xs">{{ $order->service->notice }}</label>
+                    <label class="text-xs">{{ @$order->service->notice }}</label>
                 </div>
               </div>
         </div>

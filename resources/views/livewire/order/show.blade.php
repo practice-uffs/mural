@@ -2,7 +2,7 @@
     <div class="text-gray-600 body-font overflow-hidden mb-12">
         <div class="flex flex-wrap">
             <div class="w-full flex flex-col items-start">
-                <span class="inline py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{{ @$order->service->category->name }} > {{ $order->service->name }}</span>
+                <span class="inline py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{{ @$order->service->category->name }} > {{ @$order->service->name }}</span>
                 <h2 class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
                     {{ $order->title }}
                 </h2>
