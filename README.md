@@ -95,12 +95,6 @@ Rode os seeders (que crias as categorias/serviços padrão):
 php artisan db:seed
 ```
 
-Gere aa chave de autenticação da aplicação:
-
-```
-php artisan key:generate
-```
-
 Por fim gere os recursos JavaScript e CSS:
 
 ```
@@ -119,17 +113,17 @@ Depois de seguir todos os passos de instalação, inicie o servidor do Laravel:
 php artisan serve
 ```
 
-Após isso a aplicação estará rodando na porta 8000 e poderá ser acessada em [localhost:8000](http://localhost:8000).
+Após isso a aplicação estará rodando na porta `8081` e poderá ser acessada em [localhost:8081](http://localhost:8081).
 
 #### 3.2 Utilização da API
 
-Se você utilizar a API dessa aplicacão, todos endpoints estarão acessivel em `/api`, por exemplo [localhost:8000/api](http://localhost:8000/api). Os endpoints que precisam de uma chave de autenticação devem ser utilizar o seguinte cabeçalho HTTP:
+Se você utilizar a API dessa aplicacão, todos endpoints estarão acessivel em `/api`, por exemplo [localhost:8081/api](http://localhost:8081/api). Os endpoints que precisam de uma chave de autenticação devem ser utilizar o seguinte cabeçalho HTTP:
 
 ```
 Authorization: Bearer XXX
 ```
 
-onde `XXX` é o valor da sua chave de acesso (api token do Jetstream), por exemplo `c08cbbfd6eefc83ac6d23c4c791277e4`.
+onde `XXX` é o valor da sua chave de acesso (passaporte Practice), por exemplo `c08cbbfd6eefc83ac6d23c4c791277e4`.
 Abaixo está um exemplo de requisição para o endpoint `user` utilizando a chave de acesso acima:
 
 ```bash
