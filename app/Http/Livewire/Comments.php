@@ -3,12 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Events\OrderCommented;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
 class Comments extends Component
 {
-    public array $items = [];
+    public Collection $items;
     public string $content;
     public Model $commentable;
 
@@ -29,7 +30,7 @@ class Comments extends Component
         ]);
         
         $this->content = '';
-        $this->items = $this->commentable->comments->toArray();
+        $this->items = $this->commentable->comments;
     }
 
     public function store()

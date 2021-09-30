@@ -17,7 +17,7 @@
                         <img class="rounded-full object-cover w-12 h-12 m-1" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $comment['user']['uid'] }}" alt="" />
                     </div>
                     <div class="flex-1 border rounded-lg px-4 py-3 sm:px-6 sm:py-4 leading-relaxed">
-                        <strong>{{ $comment['user']['name'] }}</strong> <span class="text-xs text-gray-400">{{ $comment['created_at'] }}</span>
+                        <strong>{{ Str::title($comment['user']['name']) }}</strong> <span class="text-xs text-gray-400 ml-3 mr-2"><i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}</span>
                         <div class="text-md pt-2">{!! Str::markdown($comment['content']) !!}</div>
                         <div class="mt-4 flex items-center hidden">
                             <div class="flex -space-x-2 mr-2">
@@ -68,11 +68,10 @@
                         </div>
                         <div class="w-full md:w-full flex items-start md:w-full px-3">
                             <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
-                                <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <p class="text-xs md:text-sm pt-px text-gray-400">Você pode usar markdown para formação.</p>
+                                <p class="text-xs md:text-sm pt-px text-gray-400">
+                                    <i class="bi bi-info-circle"></i>
+                                    Você pode usar <a href="https://docs.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank" class="underline">markdown</a> para formatação.
+                                </p>
                             </div>
                             <div class="-mr-1">
                                 <button wire:click="store()" class="btn btn-primary">Comentar</button>

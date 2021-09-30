@@ -136,8 +136,8 @@ class GoogleDrive
             $inFile = file_get_contents(public_path('img/order/in_folder.png'));
             $outFile = file_get_contents(public_path('img/order/out_folder.png'));
 
-            $this->createFile('Pasta de entrada', $inFile, $in_folder->getId());
-            $this->createFile('Pasta de saída', $outFile, $out_folder->getId());
+            $this->createFile('Clique aqui para saber mais (entrada)', $inFile, $in_folder->getId());
+            $this->createFile('Clique aqui para saber mais (saída)', $outFile, $out_folder->getId());
         }
 
         return $this->getIssueWorkingFolderStructureByName($name);

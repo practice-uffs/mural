@@ -15,7 +15,7 @@ class CommentObserver
      */
     public function created(Comment $comment)
     {
-        OrderCommented::dispatch($comment->order, $comment);
+        OrderCommented::dispatch($comment->commentable, $comment);
     }
 
 }

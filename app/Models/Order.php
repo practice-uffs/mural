@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\OrderEvaluation;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -205,6 +206,15 @@ class Order extends Model
             'explanation' => 'Estamos verificando a viabilidade de execução desse pedido.',
             'color' => 'purple-600',
         ];
+    }
 
+    public function getCreatedAtHumanAttribute(){
+        $diffInDays = $this->created_at->diffInDays(Carbon::now());
+
+        if ($diffInDays > 3) {
+           return $this->created_at->format('d/m/Y (h:i)');
+        }
+        
+        return $this->created_at->diffForHumans();
     }
 }
