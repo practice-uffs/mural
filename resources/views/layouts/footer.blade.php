@@ -43,20 +43,20 @@
                     </h4>
                     <ul>
                         <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
+                                href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos.pdf"
+                                target="_blank">Conheça o Practice</a></li>
+                        <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
                                 href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-audio-e-video.pdf"
                                 target="_blank">Serviços de áudio</a></li>
                         <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
                                 href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-conteudo.pdf"
                                 target="_blank">Serviços de conteúdo</a></li>
                         <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
-                                href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-Estudio.pdf"
-                                target="_blank">Serviços de estúdio</a></li>
-                        <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
                                 href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-eventos-online.pdf"
                                 target="_blank">Serviços de eventos online</a></li>
                         <li class="mb-2"><i class="bi bi-chevron-right"></i> <a
-                                href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos.pdf"
-                                target="_blank">Visão geral</a></li>
+                                href="https://cdn.uffs.cc/practice/website/marketing/PRACTICE-Panfleto-Servicos-de-Estudio.pdf"
+                                target="_blank">Serviços de estúdio</a></li>
                     </ul>
                 </div>
 
@@ -82,12 +82,12 @@
                     </span>
 
                     <span class="inline-flex sm:ml-auto sm:mt-0 justify-center sm:justify-start mb-2">
-                        <a href="https://www.instagram.com/practice-uffs/"><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a>
-                        <a href="https://www.youtube.com/channel/UCu3jAl8MTMPkaxb3u0_xESw" class="ml-2"><i class="bi bi-youtube" style="font-size: 1.5rem;"></i></a>
-                        <a href="https://github.com/practiceuffs" class="ml-2"><i class="bi bi-github" style="font-size: 1.5rem;"></i></a>
-                        <a href="https://twitter.com/PracticeUFFS" class="ml-2"><i class="bi bi-twitter" style="font-size: 1.5rem;"></i></a>
-                        <a href="https://www.facebook.com/Practice-UFFS-104348284683285" class="ml-2"><i class="bi bi-facebook" style="font-size: 1.5rem;"></i></a>
-                        <a href="https://www.linkedin.com/company/practiceuffs" class="ml-2"><i class="bi bi-linkedin bx bxl-linkedin" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://www.instagram.com/practiceuffs/" target="_blank"><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://www.youtube.com/channel/UCu3jAl8MTMPkaxb3u0_xESw" target="_blank" class="ml-2"><i class="bi bi-youtube" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://github.com/practice-uffs" target="_blank" class="ml-2"><i class="bi bi-github" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://twitter.com/PracticeUFFS" target="_blank" class="ml-2"><i class="bi bi-twitter" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://www.facebook.com/Practice-UFFS-104348284683285" target="_blank" class="ml-2"><i class="bi bi-facebook" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://www.linkedin.com/company/practiceuffs"  target="_blank" class="ml-2"><i class="bi bi-linkedin bx bxl-linkedin" style="font-size: 1.5rem;"></i></a>
                     </span>
 
                     <span class="mt-2 block text-xs">
@@ -129,7 +129,7 @@
             </p>
             <p class="text-sm text-gray-400 ml-6 mr-6">|</p>
             <p class="">
-                <a href="https://github.com/practiceuffs" class="ml-2 text-gray-500 text-sm">Esse software é open-source e gratuíto <i class="bi bi-github" style="font-size: 1.1rem;"></i></a>
+                <a href="https://github.com/practice-uffs/mural" class="ml-2 text-gray-500 text-sm">Esse software é open-source e gratuíto <i class="bi bi-github" style="font-size: 1.1rem;"></i></a>
             </p>
         </div>
     </div>
