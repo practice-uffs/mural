@@ -49,7 +49,7 @@ class Idea extends Model
             'description' => [
                 'label' => 'Descrição',
                 'type' => 'textarea',
-                'placeholder' => 'Ex.: descrição de alguma coisa',
+                'placeholder' => 'Ex.: Seria muito interessante se houvesse uma listagem de telefones.',
                 'show' => 'create,edit'
             ]
         ]
