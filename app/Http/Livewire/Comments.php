@@ -6,10 +6,12 @@ use App\Events\OrderCommented;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Comments extends Component
 {
-    public Collection $items;
+    use WithPagination;
+
     public string $content;
     public Model $commentable;
 
@@ -20,7 +22,9 @@ class Comments extends Component
 
     public function render()
     {
-        return view('livewire.comments.main');
+        return view('livewire.comments.main', [
+            'items' => $this->commentable->comments()->paginate(20)
+        ]);
     }
 
     public function resetInput()
@@ -30,7 +34,6 @@ class Comments extends Component
         ]);
         
         $this->content = '';
-        $this->items = $this->commentable->comments;
     }
 
     public function store()

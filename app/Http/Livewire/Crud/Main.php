@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 /**
  * 
@@ -15,12 +16,12 @@ use Livewire\WithFileUploads;
 class Main extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
     public static string $modelTypeString = 'model:';
     public static string $modelCrudPropertyName = 'crud';
     public static string $fileUploadBucket = 'crud_uploads';
 
-    public Collection $items;
     public array $data = [];
     public array $fields = []; // see mount()
     public $editing = null;
@@ -29,6 +30,7 @@ class Main extends Component
     public bool $show_create_panel = true;
     public bool $show_list = true;
     public bool $show_success = true;
+    public int $paginateAmount = 20;
     public array $override = [];
 
     public string $model = ''; // E.g. '\App\Models\Order'
@@ -306,8 +308,9 @@ class Main extends Component
 
     public function render()
     {
-        $this->items = $this->model::all();
-        return view($this->view_name);
+        return view($this->view_name, [
+            'items' => $this->model::paginate($this->paginateAmount)
+        ]);
     }
 
     public function resetInput()

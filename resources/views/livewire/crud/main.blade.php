@@ -9,7 +9,11 @@
                 <h2>Lista de registros existentes</h2>
             </header>
 
-            <table class="table w-full flex flex-row flex-no-wrap overflow-hidden my-5">
+            <div>
+                {{ $items->links() }}
+            </div>
+
+            <table class="table w-full flex flex-row flex-no-wrap overflow-hidden my-4">
                 <thead>
                     <tr class="flex flex-col flex-no wrap sm:table-row sm:rounded-none mb-2 sm:mb-0">
                         @foreach ($fields as $key => $field)
@@ -61,6 +65,10 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <div>
+                {{ $items->links() }}
+            </div>
         @else
             <section class="text-gray-600">
                 <div class="px-5 py-14 mx-auto">

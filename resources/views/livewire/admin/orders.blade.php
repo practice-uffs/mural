@@ -70,6 +70,10 @@
     </div>
 
     <!-- list of elements -->
+    <div class="row mt-4">
+        <div class="col-12">{!! $orders->links() !!}</div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <table class="table w-full flex flex-row flex-no-wrap overflow-hidden my-5">
@@ -132,6 +136,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">{!! $orders->links() !!}</div>
     </div>
 </div>
 

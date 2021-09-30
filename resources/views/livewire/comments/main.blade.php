@@ -54,6 +54,10 @@
         @endforelse
     </div>
 
+    <div class="w-full pt-2 mb-1">
+        {{ $items->links() }}
+    </div>
+
     <div class="w-full pt-4 mb-6">
         <hr class="text-gray-400" />
     </div>

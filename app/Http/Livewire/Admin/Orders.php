@@ -12,10 +12,11 @@ use Livewire\Component;
 
 class Orders extends Component
 {
-    public Collection $orders;
+    protected $orders;
     public Collection $categories;
     public Collection $services;
     public Collection $locations;
+    public int $paginationAmount = 50;
     public array $statuses;
     public array $filter = [];
 
@@ -108,7 +109,7 @@ class Orders extends Component
 
         $query->orderBy('updated_at', 'desc');
 
-        $this->orders = $query->get();
+        $this->orders = $query->paginate($this->paginationAmount);
     }
 
     public function updatedFilter($value)
@@ -135,6 +136,8 @@ class Orders extends Component
 
     public function render()
     {
-        return view('livewire.admin.orders');
+        return view('livewire.admin.orders', [
+            'orders' => $this->orders,
+        ]);
     }
 }
