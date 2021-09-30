@@ -52,7 +52,17 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getCreatedAtHumanAttribute(){
+    public function getReadAttribute() {
+        $commentable = $this->commentable;
+
+        if (!isset($commentable->read_until_comment_id)) {
+            return false;
+        }
+
+        return $commentable->read_until_comment_id >= $this->id;
+    }
+
+    public function getCreatedAtHumanAttribute() {
         $diffInDays = $this->created_at->diffInDays(Carbon::now());
 
         if ($diffInDays > 3) {

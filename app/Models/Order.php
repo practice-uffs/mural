@@ -40,6 +40,7 @@ class Order extends Model
         'google_drive_out_folder_link',
         'google_drive_folder_link',
         'requested_due_date',
+        'read_until_comment_id',
         'user_id',
         'location_id',
         'service_id',
@@ -53,6 +54,7 @@ class Order extends Model
      */
     protected $casts = [
         'data' => AsArrayObject::class,
+        'read_until_comment_id' => 'integer',
         'created_at' => 'datetime:d/m/Y',
         'updated_at' => 'datetime:h-i d/m/Y',
     ];

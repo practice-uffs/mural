@@ -12,12 +12,26 @@
         </h3>
         @forelse ($items as $comment)
             <div class="space-y-4">
-                <div class="flex pb-4">
+                <div class="flex pb-4 comment-view" data-comment-id="{{ $comment['id'] }}">
                     <div class="mr-3">
                         <img class="rounded-full object-cover w-12 h-12 m-1" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $comment['user']['uid'] }}" alt="" />
                     </div>
-                    <div class="flex-1 border rounded-lg px-4 py-3 sm:px-6 sm:py-4 leading-relaxed">
-                        <strong>{{ Str::title($comment['user']['name']) }}</strong> <span class="text-xs text-gray-400 ml-3 mr-2"><i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}</span>
+                    <div class="flex-1 relative border rounded-lg px-4 py-2 pb-3 sm:px-6 sm:py-4 leading-relaxed">
+                        @admin
+                            <span class="absolute right-2 top-0 text-gray-400 ml-3 text-xl">
+                                @if ($comment['read'])
+                                    <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
+                                @else
+                                    <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
+                                @endif
+                            </span>
+                        @endadmin
+                        <div>
+                            <strong>{{ Str::title($comment['user']['name']) }}</strong> 
+                            <span class="text-xs text-gray-400 ml-3 mr-2">
+                                <i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}
+                            </span>
+                        </div>
                         <div class="text-md pt-2">{!! Str::markdown($comment['content']) !!}</div>
                         <div class="mt-4 flex items-center hidden">
                             <div class="flex -space-x-2 mr-2">
@@ -82,4 +96,46 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var wire = null;
+
+        var readUntilCommentId = @json($commentable->read_until_comment_id);
+        var commentableUserId = @json($commentable->user->id);
+        var userId = @json(auth()->id());
+
+        var options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0
+        }
+          
+        var observer = new IntersectionObserver(function(entries) { 
+            entries.forEach(function(entry) {
+                var commentId = entry.target.getAttribute('data-comment-id');
+                var alreadyChecked = entry.target.classList.contains('comment-read');
+
+                if (readUntilCommentId >= commentId || alreadyChecked) {
+                    return;
+                }
+
+                entry.target.classList.add('comment-read');
+                wire.markAsRead(commentId);
+            });
+            
+        }, options);
+
+        var comments = document.querySelectorAll(".comment-view");
+
+        if (comments.length > 0 && commentableUserId == userId) {
+            comments.forEach(function(comment) {
+                observer.observe(comment);
+            });
+        }
+        
+        document.addEventListener('livewire:load', function () {
+            wire = @this;
+        });
+
+    </script>
 </div>

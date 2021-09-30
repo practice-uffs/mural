@@ -48,4 +48,16 @@ class Comments extends Component
         
         $this->resetInput();
     }
+
+    public function markAsRead($id) {
+        $id = (int) $id;
+
+        if ($id <= 0 || $this->commentable->read_until_comment_id > $id) {
+            return;
+        }
+
+        $this->commentable->update([
+            'read_until_comment_id' => (int) $id
+        ]);
+    }
 }
