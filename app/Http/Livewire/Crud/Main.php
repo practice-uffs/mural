@@ -36,6 +36,8 @@ class Main extends Component
     public array $include_create = []; // Fields to include in create operations    
     public array $include_update = []; // Fields to include in update operations
 
+    protected $validationAttributes = [];
+
     /**
      * 
      */
@@ -270,6 +272,18 @@ class Main extends Component
         return $fields;
     }
 
+    protected function fillValidationAttributesArrays()
+    {
+        if (count($this->fields()) == 0) {
+            return [];
+        }
+
+        foreach($this->fields() as $expectedKey => $info) {
+            $key = $this->makeFieldKey($expectedKey);
+            $this->validationAttributes[$key] = $info['label'] ?? '';
+        }
+    }
+
     protected function getDataForInsertOrUpdate() {
         $values = collect($this->data)->map(function($item) {
             if(is_a($item, UploadedFile::class)) {
@@ -303,7 +317,9 @@ class Main extends Component
 
     public function store()
     {
+        $this->fillValidationAttributesArrays();
         $this->validate();
+
         $values = $this->getDataForInsertOrUpdate();
         
         // Remove any defined 'id' to ensure an insert is
@@ -349,6 +365,7 @@ class Main extends Component
 
     public function update($id = '')
     {
+        $this->fillValidationAttributesArrays();
         $this->validate();
 
         $id = empty($id) ? @$this->data['id'] : $id;

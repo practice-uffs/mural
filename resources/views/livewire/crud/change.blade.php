@@ -8,10 +8,22 @@
                     @continue
                 @endif
 
+                <!--
+                {!! $required = '*'; !!} 
+
+                @if (isset($field['validation']) && Str::contains($field['validation'], 'required'))
+                    {!! $required = '*'; !!}
+                @endif
+                -->
+
                 @switch(@$field['type'])
                 @case('boolean')
                     <label class="cursor-pointer label flex">
-                        <span class="label-text">{{ $field['label'] }} <br /><span class="text-gray-400">{{ @$field['placeholder'] }}</span></span> 
+                        <span class="label-text">
+                            {{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span><br />
+                            <span class="text-gray-400">{{ @$field['placeholder'] }}</span>
+                            @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
+                        </span> 
                         <div>
                             <input wire:model="{{ $key }}" type="checkbox" class="toggle toggle-primary"> 
                             <span class="toggle-mark"></span>
@@ -20,7 +32,8 @@
                     @break
                 @case('select')
                     <label class="label">
-                        <span class="label-text">{{ $field['label'] }}</span> 
+                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         <a href="#" class="label-text-alt"></a>
                     </label> 
                     <select wire:model="{{ $key }}" class="select select-bordered w-full @error($key) select-error @enderror">
@@ -31,7 +44,10 @@
                     </select> 
                     @break
                 @case('radio')
-                    <span class="label-text">{{ $field['label'] }}</span> 
+                    <span class="label-text">
+                        {{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span>
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
+                    </span> 
                     <div class="flex flex-row mt-2 mb-2">
                         @foreach ($field['options'] as $info)
                             <label class="cursor-pointer mr-5">
@@ -46,13 +62,15 @@
                     @break
                 @case('date')
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }}</span>
+                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <input wire:model="{{ $key }}" type="date" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror max-w-md" {{ @$field['attr'] }} />
                     @break
                 @case('file')
                     <label class="label">
-                        <span class="label-text">{{ $field['label'] }}</span> 
+                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         <a href="#" class="label-text-alt"></a>
                     </label>
                     <div
@@ -81,7 +99,8 @@
                     <div class="flex w-full">
                         <div class="w-1/2">
                             <label for="{{ $key }}" class="label">
-                                <span class="label-text">{{ $field['label'] }}</span>
+                                <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                                @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                             </label>
                             <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-40 w-full @error($key) textarea-error @enderror"></textarea>
                         </div>
@@ -99,13 +118,15 @@
                     @break
                 @case('textarea')
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }}</span>
+                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-48 mb-2 @error($key) textarea-error @enderror"></textarea>
                     @break
                 @default
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }}</span>
+                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <input wire:model="{{ $key }}" type="text" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror" />
                     @break

@@ -24,8 +24,8 @@ class Service extends Model
         'img_url',
         'icon_svg_path',
         'color',
-        'work_days',
         'eval_days',
+        'work_days',
         'order',
         'is_available',
         'is_active',
@@ -38,8 +38,8 @@ class Service extends Model
      */
     protected $casts = [
         'poll' => AsArrayObject::class,        
-        'work_days' => 'int',
         'eval_days' => 'int',
+        'work_days' => 'int',
         'is_available' => 'boolean',
         'is_active' => 'boolean',
     ];
@@ -66,16 +66,18 @@ class Service extends Model
                 'placeholder' => 'Ex.: uma breve descrição desse serviço',
                 'show' => 'create,edit',
             ],
+            'eval_days' => [
+                'label' => 'Tempo de avaliação (dias úteis)',
+                'placeholder' => 'Ex.: 3',
+                'help' => 'Tempo mínimo que a equipe leva para analisar o pedido e decidir se ele é executável ou não.',                
+                'show' => 'create,edit',
+            ],                   
             'work_days' => [
-                'label' => 'Dias úteis',
+                'label' => 'Tempo de execução (dias úteis)',
                 'placeholder' => 'Ex.: 10',
+                'help' => 'Tempo médio esperado que a equipe leva para executar o pedido e entregar algo para revisão.',
                 'show' => 'create,edit',
             ],
-            'eval_days' => [
-                'label' => 'Dias úteis para avaliação',
-                'placeholder' => 'Ex.: 3',
-                'show' => 'create,edit',
-            ],            
             'notice' => [
                 'label' => 'Aviso',
                 'placeholder' => 'Ex.: estamos com muitas demandas desse serviço, pedidos podem demorar.',
@@ -89,6 +91,7 @@ class Service extends Model
             'color' => [
                 'label' => 'Cor',
                 'placeholder' => 'Ex.: yellow-500',
+                'help' => 'Utilizar cores no formato do Tailwind.',
                 'show' => 'create,edit',
             ],             
             'icon_svg_path' => [

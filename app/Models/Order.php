@@ -85,6 +85,7 @@ class Order extends Model
             'requested_due_date' => [
                 'type' => 'date',
                 'label' => 'Prazo de entrega sugerido',
+                'help' => 'Quando você gostaria de ter um primeiro material para revisão. Esse tempo deve considerar alguns dias para que nossa equipe possa fazer a análise do pedido. Além disso, essa data é sugestiva e não há garantias que ela será atendida.',
                 'attr' => 'min='.NOW_PLUS_FEW_DAYS.' '
             ],
         ]
