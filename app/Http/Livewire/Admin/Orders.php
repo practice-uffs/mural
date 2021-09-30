@@ -7,22 +7,23 @@ use App\Models\Location;
 use App\Models\Order;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class Orders extends Component
 {
-    public array $orders = [];
-    public array $categories;
-    public array $services;
-    public array $locations;
+    public Collection $orders;
+    public Collection $categories;
+    public Collection $services;
+    public Collection $locations;
     public array $statuses;
     public array $filter = [];
 
     public function mount()
     {
-        $this->categories = Category::all()->toArray();
-        $this->services = Service::with('category')->get()->toArray();
-        $this->locations = Location::all()->toArray();
+        $this->categories = Category::all();
+        $this->services = Service::with('category')->get();
+        $this->locations = Location::all();
         $this->statuses = [
             '*' => 'Qualquer',
             'pending' => 'Aguardando análise',
@@ -78,7 +79,7 @@ class Orders extends Component
             $query->where('status', 'todo');
             break;
         case 'doing': // 'Em andamento',
-            $query->whereNotNull('github_issue_link');
+            $query->where('status', 'doing');
             break;
         case 'closed': // 'Cancelado/fechado',
             $query->where('status', 'closed');
@@ -107,7 +108,7 @@ class Orders extends Component
 
         $query->orderBy('updated_at', 'desc');
 
-        $this->orders = $query->get()->toArray();
+        $this->orders = $query->get();
     }
 
     public function updatedFilter($value)
@@ -124,12 +125,11 @@ class Orders extends Component
         $this->filter['service_id'] = '';
 
         if (empty($value)) {
-            $this->services = Service::with('category')->get()->toArray();
+            $this->services = Service::with('category')->get();
         } else {
             $this->services = Service::with('category')
                                     ->where('category_id', $value)
-                                    ->get()
-                                    ->toArray();
+                                    ->get();
         }
     }    
 
