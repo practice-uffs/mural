@@ -82,10 +82,12 @@
                             <div class="flex-grow sm:text-left mt-6 sm:mt-0">
                                 <h2 class="text-gray-900 text-lg title-font font-semibold mb-2">Você não fez pedidos ainda</h2>
                                 <p class="leading-relaxed text-base">Temos uma equipe multidisciplinar muito disposta a ajudar! Dê uma olhada nos <a href="{{ route('services') }}">serviços disponíveis</a> e conheça mais como poder auxiliar.</p>
+                                <p class="mt-4"><a href="{{ route('services') }}" class="btn btn-primary">Ver serviços</a></p>
                             </div>
                         </div>
                     </div>
                 </section>
+                
             </div>
         </div>
     @endif
