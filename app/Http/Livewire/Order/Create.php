@@ -16,6 +16,20 @@ class Create extends \App\Http\Livewire\Crud\Main
     {
     }
 
+    protected function addEulaAgreementFieldInfo(array & $modelCrudInfo) 
+    {
+        $eulaUrl = config('app.eula_url');
+
+        $modelCrudInfo['fields']['eula'] = [
+            'type' => 'checkbox',
+            'label' => 'Aceite do Termo de Direitos Autorais',
+            'placeholder' => 'Declaro que li e aceito os <a href="'.$eulaUrl.'" class="underline">Termos de Direitos Autoriais</a> do programa em relação à produção do conteúdo da minha solicitação.',
+            'validation' => 'required'
+        ];
+
+        return $modelCrudInfo;
+    }
+
     /**
      * 
      * 
@@ -27,7 +41,11 @@ class Create extends \App\Http\Livewire\Crud\Main
     {
         if (empty($this->service->poll)) {
             // Não há campos extras para uma solicitação desse tipo de serviço,
-            // então não precisamos fazer nada de especial na criação do pedido.
+            // então não precisamos fazer nada de em relação a isso.
+        
+            // Vamos apenas colocar o campo obrigatório de aceitar os nossos termos de 
+            // direitos autorais
+            $this->addEulaAgreementFieldInfo($modelCrudInfo);
             return $modelCrudInfo;
         }
 
@@ -48,6 +66,7 @@ class Create extends \App\Http\Livewire\Crud\Main
             $modelCrudInfo['fields'][$key]['label'] = $field['text'] ?? '';
         }
 
+        $this->addEulaAgreementFieldInfo($modelCrudInfo);
         return $modelCrudInfo;
     }
 

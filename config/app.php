@@ -24,6 +24,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'id' => env('APP_ID', -1),
+    'eula_url' => env('APP_EULA_URL', 'https://practice.uffs.edu.br'),
 
     /*
     |--------------------------------------------------------------------------

@@ -17,6 +17,16 @@
                 -->
 
                 @switch(@$field['type'])
+                @case('checkbox')
+                    <label class="cursor-pointer label mt-4">
+                        <input wire:model="{{ $key }}" type="checkbox"> 
+                        <span class="label-text text-left w-full ml-2">
+                            {!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span><br />
+                            <span class="text-gray-400">{!! @$field['placeholder'] !!}</span>
+                            @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
+                        </span> 
+                    </label>
+                    @break
                 @case('boolean')
                     <label class="cursor-pointer label flex">
                         <span class="label-text">
