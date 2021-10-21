@@ -10,6 +10,16 @@ use Orion\Http\Requests\Request;
 class BaseApiController extends Controller
 {
     /**
+     * The attributes that are used for sorting.
+     *
+     * @return array
+     */
+    public function sortableBy() : array
+    {
+         return ['id', 'created_at'];
+    }
+    
+    /**
      * Authorize a given action for the current user.
      *
      * @param  mixed  $ability

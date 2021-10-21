@@ -20,6 +20,7 @@ class OrderController extends BaseApiController
         return [
             'service.category',
             'comments',
+            'comments.user',
             'location'
         ];
     }
@@ -31,6 +32,6 @@ class OrderController extends BaseApiController
 
     protected function buildIndexFetchQuery(Request $request, array $requestedRelations): Builder
     {
-        return parent::buildIndexFetchQuery($request, $requestedRelations);
+        return parent::buildIndexFetchQuery($request, $requestedRelations)->orderBy('id', 'desc');
     }    
 }
