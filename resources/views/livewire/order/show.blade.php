@@ -9,6 +9,33 @@
                 <p class="leading-relaxed mb-8">
                     {{ $order->description }}
                 </p>
+                @if ($order->data)
+                    <div class="overflow-x-auto text-sm w-full py-4">
+                        <p class="font-medium py-2">Informações adicionais</p>
+                        <table class="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Pergunta</th>
+                                    <th>Resposta</th> 
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                @foreach ($order->data['fields'] as $field)
+                                    <tr>
+                                        <td>{{ $field['text'] }}</td>
+                                        <td>
+                                            @if ($field['type'] == 'select')
+                                                {{ $field['options'][$field['answer']] }}
+                                            @else
+                                                {{ $field['answer'] }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
                 <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
                     <span class="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
