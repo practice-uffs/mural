@@ -74,21 +74,33 @@ class Service extends \App\Http\Livewire\Crud\Main
     {
         if ($field == 'data.poll') {
             // TODO: colocar um pouco de carinho aqui quando PollFromText::makeHtml() existir :D
-            $poll = PollFromText::make($value);
-            $this->poll_view = '';
+            try {
+                $poll = PollFromText::make($value);
+                $this->poll_view = '';
 
-            foreach($poll as $question) {
-                $type = $question['type'];
-                $this->poll_view .= $question['text'] . '<br />';
-                switch($question['type']) {
-                    case 'input': $this->poll_view .= '<input type="'.$type.'">'; break;
-                    case 'select':
-                        $this->poll_view .= '<select>';
-                        foreach($question['options'] as $value) { $this->poll_view .= "<option>$value</option>";}
-                        $this->poll_view .= '</select>';
-                        break;
+                foreach($poll as $question) {
+                    $type = $question['type'];
+                    $this->poll_view .= $question['text'] . '<br />';
+
+                    if (isset($question['data']['type'])) {
+                        $type = $question['data']['type'];
+                    }
+
+                    switch($type) {
+                        case 'input':
+                        case 'file':
+                            $this->poll_view .= '<input type="'.$type.'" class="py-1 mb-2">'; break;
+                        case 'select':
+                            $this->poll_view .= '<select class="py-1 mb-2">';
+                            foreach($question['options'] as $value) { $this->poll_view .= "<option>$value</option>";}
+                            $this->poll_view .= '</select>';
+                            break;
+                    }
+                    $this->poll_view .= '<br />';
                 }
-                $this->poll_view .= '<br />';
+            } catch (\Exception $e) {
+                // Tivemos algum problema no parse do texto. Vamos deixar ele como estava.
+                return;
             }
         }
     }

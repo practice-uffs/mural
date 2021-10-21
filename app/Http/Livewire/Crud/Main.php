@@ -20,7 +20,7 @@ class Main extends Component
 
     public static string $modelTypeString = 'model:';
     public static string $modelCrudPropertyName = 'crud';
-    public static string $fileUploadBucket = 'crud_uploads';
+    public static string $fileUploadBucket = 'public';
 
     public array $data = [];
     public array $fields = []; // see mount()

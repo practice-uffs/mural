@@ -90,7 +90,7 @@
                             pond = FilePond.create($refs.input);
                             pond.setOptions({
                                 allowMultiple: true,
-                                labelIdle:'{{ @$field['placeholder'] }}',
+                                labelIdle:'{{ ($field['placeholder'] ?? 'Clique para adicionar arquivos (ou arreste-os aqui)') }}',
                                 labelFileProcessingComplete: 'Upload finalizado',
                                 server: {
                                     process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {

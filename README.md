@@ -95,13 +95,19 @@ Rode os seeders (que crias as categorias/serviços padrão):
 php artisan db:seed
 ```
 
-Por fim gere os recursos JavaScript e CSS:
+Gere os recursos JavaScript e CSS:
 
 ```
 npm run dev
 ```
 
 >*DICA:* enquanto estiver desenvolvendo, rode `npm run watch` para manter os scripts javascript sendo gerados sob demanda quando alterados.
+
+Por fim, garanta que o storage do Laravel está disponível para acesso web:
+
+```
+php artisan storage:link
+```
 
 ### 3. Utilizacão
 

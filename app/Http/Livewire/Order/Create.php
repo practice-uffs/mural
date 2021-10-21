@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire\Order;
 
+use App\Jobs\ProcessGoogleDriveUploads;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Create extends \App\Http\Livewire\Crud\Main
 {
@@ -64,6 +67,12 @@ class Create extends \App\Http\Livewire\Crud\Main
             // criar essa pergunta.
             $modelCrudInfo['fields'][$key] = $poll['fields'][$index];
             $modelCrudInfo['fields'][$key]['label'] = $field['text'] ?? '';
+
+            // Se o campo customizado possuir alguma marcação de tipo, usamos ela
+            // como o tipo do campo do formulário a ser gerado.
+            if (isset($field['data']['type'])) {
+                $modelCrudInfo['fields'][$key]['type'] = $field['data']['type'];
+            }
         }
 
         $this->addEulaAgreementFieldInfo($modelCrudInfo);
