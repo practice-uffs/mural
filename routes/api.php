@@ -27,6 +27,10 @@ Route::group(['as' => 'api.', 'middleware' => 'jwt.practice'], function() {
     Orion::resource('services', 'API\ServiceController');
     Orion::resource('comments', 'API\CommentController');
 
+    Route::get('/me', function() { 
+        return response()->json(['user' => Auth::user()]);
+    });
+
     if (App::environment('local')) {
         Route::get('/ping', function() { 
             return response()->json(['pong' => Auth::user()]);
