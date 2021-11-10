@@ -24,7 +24,9 @@ class Comment extends Model
         'type',
         'data',
         'is_hidden',
-        'user_id'
+        'user_id',
+        'commentable_id',
+        'commentable_type'
     ];
 
     /**

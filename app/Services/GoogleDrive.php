@@ -70,7 +70,7 @@ class GoogleDrive
         return $folders;
     }
 
-    public function getIssueWorkingFolderByName($name)'Entrada'
+    public function getIssueWorkingFolderByName($name = 'Entrada')
     {
         $folder = $this->getFolderByName($name);
         return $folder;
@@ -136,7 +136,7 @@ class GoogleDrive
         $out_folder = $this->createFolder('Saída', $folder->getId(), true);
 
         if ($addFiles) {
-            $progressFile = file_get_contents(public_path('img/order/progress_folder.png'));
+            $progressFile = file_get_contents(public_path('img/order/inner_folder.png'));
             $inFile = file_get_contents(public_path('img/order/in_folder.png'));
             $outFile = file_get_contents(public_path('img/order/out_folder.png'));
 
