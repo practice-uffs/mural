@@ -33,15 +33,15 @@ class CredentialManager
         $sig = json_decode(JWT::urlsafeB64Decode($cryptob64));        
 
         if ($header === null) {
-            throw new \Exception('Invalid header encoding in JWT');
+            throw new \Exception('Invalid header encoding in JWT: ' . $headb64);
         }
 
         if ($payload === null) {
-            throw new \Exception('Invalid claims encoding in JWT');
+            throw new \Exception('Invalid claims encoding in JWT: ' . $bodyb64);
         }
 
         if ($sig === false) {
-            throw new \Exception('Invalid signature encoding in JWT');
+            throw new \Exception('Invalid signature encoding in JWT: ' . $cryptob64);
         }        
 
         return [
