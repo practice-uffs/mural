@@ -33,15 +33,15 @@ class CredentialManager
         $sig = json_decode(JWT::urlsafeB64Decode($cryptob64));        
 
         if ($header === null) {
-            throw new \Exception('Invalid header encoding in JWT');
+            throw new \Exception('Invalid header encoding in JWT: ' . $headb64);
         }
 
         if ($payload === null) {
-            throw new \Exception('Invalid claims encoding in JWT');
+            throw new \Exception('Invalid claims encoding in JWT: ' . $bodyb64);
         }
 
         if ($sig === false) {
-            throw new \Exception('Invalid signature encoding in JWT');
+            throw new \Exception('Invalid signature encoding in JWT: ' . $cryptob64);
         }        
 
         return [
@@ -108,7 +108,7 @@ class CredentialManager
         $localAppId = config('app.id');
 
         if ($app_id != $localAppId) {
-            throw new \Exception("Informed app_id=$app_id doest no match local app_id=$localAppId in practice passport");
+            throw new \Exception("Informed app_id=$app_id does not match local app_id=$localAppId in practice passport");
         }
 
         $key = config('app.key');

@@ -15,8 +15,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = auth()->user()->orders;
-        $orders->load('service.category');
+        $orders = auth()->user()->orders()
+                                ->with('service.category')
+                                ->orderBy('created_at', 'desc')
+                                ->get();
 
         return view('order.list', [
             'orders' => $orders
