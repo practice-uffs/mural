@@ -18,7 +18,7 @@
               <div class="box" data-aos-delay="400">
                 <img src="{{ asset('img/undraw.co/team_spirit.svg') }}" class="h-60 mx-auto mb-4" alt="">
                 <h3>Comunidade</h3>
-                <p>Não estamos sós, focamos na habilidade pedagógica e tecnológica, tanto de servidores quanto de estudantes.</p>
+                <p>Não estamos sós: focamos em desenvolver habilidades pedagógicas e tecnológicas, tanto de servidores quanto de estudantes.</p>
               </div>
             </div>
   
@@ -26,7 +26,7 @@
               <div class="box" data-aos-delay="600">
                 <img src="{{ asset('img/undraw.co/powerful.svg') }}" class="h-60 mx-auto mb-4" alt="">
                 <h3>Independência</h3>
-                <p>Nossa missão é empoderar tecnologicamente pessoas para que a tecnologia seja ajuda, não barreira.</p>
+                <p>Nossa missão é empoderar tecnologicamente as pessoas para que a tecnologia seja ajuda, não barreira.</p>
               </div>
             </div>
           </div>

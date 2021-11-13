@@ -45,7 +45,7 @@
             </div>
             <div class="col-7 d-flex flex-column justify-center">
                 <h1 data-aos="fade-up">Tem uma ideia?</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Ideias podem mudar a univerisade. Queremos ouvir as suas
+                <h2 data-aos="fade-up" data-aos-delay="400">Ideias podem mudar a Universidade. Queremos ouvir as suas
                     para podermos transformá-las em realidade.</h2>
                 <span data-aos="fade-up" data-aos-delay="500" class="text-md text-gray-500 mt-4"><strong>Dica:</strong>
                     clique na lâmpada ao lado para ver uma mudança 😁</span>
