@@ -217,12 +217,14 @@ class GithubWebhookController extends Controller
 
         if($folders != null) {
             $drive_link = isset($folders['folder']) ? $folders['folder']->getWebViewLink() : '';
+            $drive_progress_link = isset($folders['progress']) ? $folders['progress']->getWebViewLink() : '';
             $drive_in_link = isset($folders['in']) ? $folders['in']->getWebViewLink() : '';
             $drive_out_link = isset($folders['out']) ? $folders['out']->getWebViewLink() : '';
 
             $comment = 
                 'Criei as pastas dessa issue no Google Drive :' . "\n" .
                 '* <img width="16" height="16" src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" /> [Pasta da issue]('.$drive_link.') ' . "\n" .
+                '* [Em andamento]('.$drive_progress_link.')' . "\n" .
                 '* 🔽 [Entrada]('.$drive_in_link.')' . "\n" .
                 '* 🔼 [Saída]('.$drive_out_link.')';
         } else {

@@ -101,11 +101,13 @@ class OrderEventSubscriber
         }
 
         $drive_link = isset($folders['folder']) ? $folders['folder']->getWebViewLink() : '';
+        $drive_progress_link = isset($folders['progress']) ? $folders['progress']->getWebViewLink() : '';
         $drive_in_link = isset($folders['in']) ? $folders['in']->getWebViewLink() : '';
         $drive_out_link = isset($folders['out']) ? $folders['out']->getWebViewLink() : '';
 
         $order->update([
             'google_drive_folder_link' => $drive_link,
+            'google_drive_progress_folder_link' => $drive_progress_link,
             'google_drive_in_folder_link' => $drive_in_link,
             'google_drive_out_folder_link' => $drive_out_link,
         ]);

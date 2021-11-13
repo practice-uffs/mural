@@ -70,7 +70,7 @@ class GoogleDrive
         return $folders;
     }
 
-    public function getIssueWorkingFolderByName($name)
+    public function getIssueWorkingFolderByName($name = 'Entrada')
     {
         $folder = $this->getFolderByName($name);
         return $folder;
@@ -87,12 +87,14 @@ class GoogleDrive
         if($folder == null) {
             return null;
         }
-
+        
+        $inProgress = $this->findFoldersWhoseNameContains('Em andamento', $folder->getId());
         $ins = $this->findFoldersWhoseNameContains('Entrada', $folder->getId());
         $outs = $this->findFoldersWhoseNameContains('Saída', $folder->getId());
 
         $ret = [
             'folder' => $folder,
+            'progress'  => count($inProgress) > 0 ? $inProgress[0] : null,
             'in'     => count($ins) > 0 ? $ins[0] : null,
             'out'    => count($outs) > 0 ? $outs[0] : null,
         ];
@@ -129,13 +131,16 @@ class GoogleDrive
         $tasks_folder_id = $this->config('tasks_folder_id', '');
         
         $folder = $this->createFolder($name, $tasks_folder_id);
+        $progress_folder = $this->createFolder('Em andamento', $folder->getId(), true);
         $in_folder = $this->createFolder('Entrada', $folder->getId(), true);
         $out_folder = $this->createFolder('Saída', $folder->getId(), true);
 
         if ($addFiles) {
+            $progressFile = file_get_contents(public_path('img/order/inner_folder.png'));
             $inFile = file_get_contents(public_path('img/order/in_folder.png'));
             $outFile = file_get_contents(public_path('img/order/out_folder.png'));
 
+            $this->createFile('Clique aqui para saber mais (em andamento)', $progressFile, $progress_folder->getId());
             $this->createFile('Clique aqui para saber mais (entrada)', $inFile, $in_folder->getId());
             $this->createFile('Clique aqui para saber mais (saída)', $outFile, $out_folder->getId());
         }

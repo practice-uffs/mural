@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Áudio',
             'slug' => 'audio',
-            'description' => 'Faixas de áudio com objetivo de anunciar e/ou divulgar algo, fazer uma chamada ou áudios com a possibilidade de inserir trilha e efeitos sonoros mais elaborados, além da composição de diferentes áudios, como entrevistas e/ou leitura de livros.',            
+            'description' => 'Produção ou edição de faixas de áudio com objetivo de anunciar e/ou divulgar algo, fazer uma chamada ou inserir trilha e efeitos sonoros mais elaborados. Também é possível fazer a composição de áudios distintos, como entrevistas e/ou leitura de livros.',            
             'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />',
             'color' => 'red-500',
         ]);
@@ -55,7 +55,7 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Estúdio',
             'slug' => 'estudio',
-            'description' => 'Temos um estúdio equipado com uma infraestrutura para te ajudar na realização das suas produções audiovisuais.',            
+            'description' => 'Temos um estúdio equipado com infraestrutura para ajudar você na realização das suas produções audiovisuais.',            
             'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />',
             'color' => 'purple-600',
         ]);
