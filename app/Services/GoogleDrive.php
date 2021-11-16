@@ -10,11 +10,19 @@ class GoogleDrive
     protected Client $client;
     protected Drive $service;
 
+    protected function credentialsJsonFileExists() {
+        $credentialsJsonPath = config_path('google/credentials.json');
+        return file_exists($credentialsJsonPath);
+    }
+
     public function __construct(array $config = [])
     {
         $this->config = $config;
-        $this->client = $this->getGoogleClient();
-        $this->service = new Drive($this->client);
+        
+        if ($this->credentialsJsonFileExists()) {
+            $this->client = $this->getGoogleClient();
+            $this->service = new Drive($this->client);
+        }
     }
 
     public function getService(): Drive
