@@ -23,21 +23,22 @@ O mural possui um conjunto considerável de features:
 
 ### 1. Dependências
 
-Para executar o projeto, você precisa ter o seguinte instalado:
+Para executar o projeto, você precisa ter o seguinte instalado (desde sua versão `v2`, exige-se `php >= 8.0`).:
 
 - [Git](https://git-scm.com);
-- [PHP](https://www.php.net/downloads);
+- [PHP 8.x](https://www.php.net/downloads);
 - [Composer](https://getcomposer.org/download/);
 - [NodeJS](https://nodejs.org/en/);
 - [NPM](https://www.npmjs.com/package/npm);
 
+>*IMPORTANTE:* se sua distribuição  linux não tem PHP 8.x disponível, rode `sudo add-apt-repository ppa:ondrej/php` antes de começar.
+
 Você precisa de várias extensões PHP instaladas também:
 
 ```
-sudo apt install php-cli php-mbstring php-zip php-xml php-curl
+sudo apt-get update
+sudo apt install php8.0-cli php8.0-mbstring php8.0-zip php8.0-xml php8.0-curl php8.0-sqlite3 php8.0-curl
 ```
-
-O mural, desde sua versão `v2`, exige `php >= 8.0`.
 
 ### 2. Configuração
 
