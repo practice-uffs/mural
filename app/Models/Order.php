@@ -43,10 +43,10 @@ class Order extends Model
         'read_until_comment_id',
         'user_id',
         'location_id',
-        'service_id',
+        'service_id' 
     ];
 
-
+    
     /**
      * The attributes that should be cast.
      *

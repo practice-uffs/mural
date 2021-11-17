@@ -23,7 +23,7 @@
                     'show_list' => false,
                     'include_create' => [
                         'user_id' => auth()->id(),
-                        'service_id' => $service->id
+                        'service_id' => $service->id,
                     ]
                 ])
             </div>
