@@ -134,7 +134,7 @@ onde `XXX` é o valor da sua chave de acesso (passaporte Practice), por exemplo 
 Abaixo está um exemplo de requisição para o endpoint `user` utilizando a chave de acesso acima:
 
 ```bash
-curl -H 'Accept: application/json' -H "Authorization: Bearer c08cbbfd6eefc83ac6d23c4c791277e4" http://localhost:8080/api/user
+curl -H 'Accept: application/json' -H "Authorization: Bearer c08cbbfd6eefc83ac6d23c4c791277e4" http://localhost:8001/api/user
 ```
 
 ## 🤝 Contribua

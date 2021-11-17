@@ -12,8 +12,8 @@
                               </svg>
                               Nossa Newsletter
                           </h4>
-                          <p>Fique por dentro de todas as novidades do programa e dos projetos que estamos trabalhando.
-                            Inscreva-se para receber periodicamente a nossa newsletter em seu e-mail. </p>
+                          <p>Fique por dentro de todas as novidades do programa e dos projetos em que 
+                              estamos trabalhando. Inscreva-se para receber periodicamente a nossa newsletter em seu e-mail. </p>
                         </div>
                         <div>
                             <form action="{{ route('subscribers.store') }}" method="post">
@@ -129,7 +129,7 @@
             </p>
             <p class="text-sm text-gray-400 ml-6 mr-6">|</p>
             <p class="">
-                <a href="https://github.com/practice-uffs/mural" class="ml-2 text-gray-500 text-sm">Esse software é open-source e gratuíto <i class="bi bi-github" style="font-size: 1.1rem;"></i></a>
+                <a href="https://github.com/practice-uffs/mural" class="ml-2 text-gray-500 text-sm">Esse software é open-source e gratuito <i class="bi bi-github" style="font-size: 1.1rem;"></i></a>
             </p>
         </div>
     </div>
