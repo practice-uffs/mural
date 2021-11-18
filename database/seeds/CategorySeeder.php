@@ -21,9 +21,17 @@ class CategorySeeder extends Seeder
         ]);
         
         Category::create([
-            'name' => 'Vídeo',
-            'slug' => 'video',
-            'description' => 'Videoaula simples, com apenas o interlocutor em plano principal; Vídeo Tutorial explicativo, ensinando passo a passo da utilização de uma ferramenta e/ou software, entre outros',            
+            'name' => 'Criação de Vídeo',
+            'slug' => 'criaçaovideo',
+            'description' => 'Os vídeos serão criados pelo PRACTICE em um trabalho conjunto com o/a solicitante.',            
+            'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
+            'color' => 'yellow-500',
+        ]);
+
+        Category::create([
+            'name' => 'Edição de Vídeo',
+            'slug' => 'ediçaovideo',
+            'description' => 'Todo o material necessário deverá ser enviado pelo(a) solicitante. O PRACTICE fará apenas a edição.',            
             'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />',
             'color' => 'yellow-500',
         ]);
@@ -45,7 +53,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'name' => 'Evento',
+            'name' => 'Transmissões Ao Vivo (Lives)',
             'slug' => 'evento',
             'description' => 'Auxílio para a realização de eventos virtuais com live e interação do público? Fornecemos as ferramentas e suporte para que isso seja possível.',
             'icon_svg_path' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />',
