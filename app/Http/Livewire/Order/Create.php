@@ -23,7 +23,7 @@ class Create extends \App\Http\Livewire\Crud\Main
         $modelCrudInfo['fields']['eula'] = [
             'type' => 'checkbox',
             'label' => 'Aceite do Termo de Direitos Autorais',
-            'placeholder' => 'Declaro que li e aceito os <a href="'.$eulaUrl.'" class="underline">Termos de Direitos Autoriais</a> do programa em relação à produção do conteúdo da minha solicitação.',
+            'placeholder' => 'Declaro que li e aceito os <a href="'.$eulaUrl.'" class="underline" target="_blank">Termos de Direitos Autoriais</a> do programa em relação à produção do conteúdo da minha solicitação.',
             'validation' => 'required'
         ];
 
