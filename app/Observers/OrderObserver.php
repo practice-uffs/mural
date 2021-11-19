@@ -45,7 +45,7 @@ class OrderObserver
         $wasGithubLinkAdded = $order->getOriginal('github_issue_link') !== $order->github_issue_link;
 
         if ($wasGithubLinkAdded) {
-            $order->user->notify(new OrderStarted($this->order));
+            $order->user->notify(new OrderStarted($order));
             return;
         }        
 
