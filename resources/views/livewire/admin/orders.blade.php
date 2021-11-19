@@ -120,9 +120,9 @@
                                 </svg>
                                 {{ count($order['comments']) }}
                                 @if (count($order['comments']) > 0)
-                                    <div class="text-sm opacity-50 ml-1">Último:
+                                    <div class="text-sm opacity-50 ml-1">Último comentário
+                                        {{ $order['comments'][count($order['comments']) - 1]['created_at_human'] }} <br/> Por: 
                                         {!! Str::title($order['comments'][count($order['comments']) - 1]['user']['name']) !!} 
-                                        {{ $order['comments'][count($order['comments']) - 1]['created_at_human'] }}
                                     </div>
                                 @endif
                             </td>
