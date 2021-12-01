@@ -42,9 +42,10 @@ class Service extends \App\Http\Livewire\Crud\Main
      */
     protected function prepareValuesForCreate(array $values) {
         $result = parent::prepareValuesForCreate($values);
+        $poll = $values['poll']  ?? '';
         $result['poll'] = [
-            'user_description' => $values['poll'],
-            'fields' => PollFromText::make($values['poll'])
+            'user_description' => $poll,
+            'fields' => PollFromText::make($poll)
         ];
         return $result;
     }
@@ -57,9 +58,10 @@ class Service extends \App\Http\Livewire\Crud\Main
      */
     protected function prepareValuesForUpdate(array $values, Model $item) {
         $result = parent::prepareValuesForUpdate($values, $item);
+        $poll = $values['poll'] ?? '';
         $result['poll'] = [
-            'user_description' => $values['poll'],
-            'fields' => PollFromText::make($values['poll'])
+            'user_description' => $poll,
+            'fields' => PollFromText::make($poll)
         ];
         return $result;
     }
