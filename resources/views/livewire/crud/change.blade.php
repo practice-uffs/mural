@@ -9,7 +9,7 @@
                 @endif
 
                 <!--
-                {!! $required = '*'; !!} 
+                {!! $required = ''; !!} 
 
                 @if (isset($field['validation']) && Str::contains($field['validation'], 'required'))
                     {!! $required = '*'; !!}
