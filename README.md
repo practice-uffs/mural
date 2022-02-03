@@ -110,6 +110,14 @@ Por fim, garanta que o storage do Laravel está disponível para acesso web:
 php artisan storage:link
 ```
 
+#### 2.5 Credentials do Google
+
+Como citado anteriormente o Mural possui integração com o Google Drive, mas para que a integração funcione corretamente é necessário gerar e adicionar um arquivo de credenciais na pasta `config/google`. Para gerar este arquivo é necessário realizar autenticação com a conta cujo Drive será utilizado [neste link](https://console.developers.google.com/) e criar um novo projeto. Com o projeto criado basta acessar o Marketplace (presente no menu lateral) e buscar pela "Google Drive API", acessá-la e clicar no botão "ativar".
+ 
+Depois que a ativação é concluída basta acessar a página da API e clicar em "Credenciais" no menu lateral, em seguida em "Criar credenciais" e "ID do cliente OAuth". Nesse momento pode ser necessário configurar a tela de permissão OAuth, para isso basta seguir o passo a passo inserindo as configurações desejadas. Com a tela de permissão configurada basta criar o ID do cliente OAuth, como URL de redirecionamento é possível utilizar a url `https://developers.google.com/oauthplayground/`. Depois de gerar o ID do cliente OAuth é possível fazer o download do JSON com as credenciais por meio da página de credenciais.
+ 
+Com o JSON em mãos basta salvá-lo na pasta `config/google` com o nome `credentials.json`.  Depois desses passos ao executar o comando `php artisan serve` pela primeira vez será solicitado que faça login com a conta do Google utilizada.
+
 ### 3. Utilizacão
 
 #### 3.1 Rodando o projeto
