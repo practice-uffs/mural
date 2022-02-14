@@ -65,8 +65,10 @@ class Create extends \App\Http\Livewire\Crud\Main
             $modelCrudInfo['fields'][$key] = $poll['fields'][$index];
             $modelCrudInfo['fields'][$key]['label'] = $field['text'] ?? '';
             
-            // Qualquer campo adicional é obrigatório
-            $modelCrudInfo['fields'][$key]['validation'] = 'required';
+            // Transforma o campo adicional em required se ele for obrigatório
+            if ((isset($field['data']['required']) && $field['data']['required'] != 'false') || !isset($field['data']['required'])) {
+                $modelCrudInfo['fields'][$key]['validation'] = 'required';
+            }
 
             // Se o campo customizado possuir alguma marcação de tipo, usamos ela
             // como o tipo do campo do formulário a ser gerado.
@@ -127,11 +129,13 @@ class Create extends \App\Http\Livewire\Crud\Main
         // Se chegamos aqui, é porque temos campos extra para esse pedido.
         // Vamos pegar o valor de cada um deles e colocar dentro do proprio
         // questionario usado para renderizar os campos extra.
+        // Quando o campo for uma pergunta não obrigatória não preenchida
+        // É atribuído um valor padrão para a resposta.
         $poll = $this->service->poll;
 
         foreach($poll['fields'] as $index => $field) {
             $key = 'poll_' . $index;
-            $poll['fields'][$index]['answer'] = $ajustedValues[$key];
+            $poll['fields'][$index]['answer'] = $ajustedValues[$key] ?? 'Pergunta não respondida pelo solicitante';
         }
 
         $ajustedValues['data'] = $poll;
