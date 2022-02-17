@@ -36,7 +36,7 @@ class OrderCommented extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return [PushNotificationChannel::class, 'mail'];
+        return ['mail', PushNotificationChannel::class];
     }
 
     public function toPushNotification($notifiable)
