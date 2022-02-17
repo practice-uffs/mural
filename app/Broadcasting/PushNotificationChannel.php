@@ -33,9 +33,10 @@ class PushNotificationChannel
             'user' => $notifiable
         );
         $jwt = JWT::encode($payload, $key);
+        $apiUrl = env('API_URL').'v0/user/notify/push';
 
         $client = new Client();     
-        $client->get('http://127.0.0.1:8000/v0/user/notify/push', [
+        $client->get($apiUrl, [
             'headers' => [ 'Authorization' => 'Bearer ' . $jwt ],
             'json' => $data
         ]);
