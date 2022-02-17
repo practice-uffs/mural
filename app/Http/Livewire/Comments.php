@@ -47,8 +47,6 @@ class Comments extends Component
             'content' => $this->content
         ]);
 
-        OrderCommented::dispatch($this->commentable, $comment);
-        
         $this->resetInput();
     }
 
