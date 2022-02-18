@@ -14,14 +14,14 @@
             <img class="mb-5" src="{{ asset('img/logo-practice.png') }}" alt="Logo do Practice" width="272" >
         </a>
         <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
-        @if ($errors->any()) 
-            <div class="alert-error">
+        @if ($errors->any())
+            <div class="alert-error text-danger">
                 @foreach ($errors->all() as $error)
                     {{ $error }}
                 @endforeach
             </div>
         @endif
-        
+
         <!-- idUFFS -->
         <div class="input-group col-lg-6 mb-4">
             <div class="input-group-prepend">
@@ -32,7 +32,7 @@
             <input type="text" placeholder="idUFFS" required="" autofocus=""
                 name="username" value="{{ old('username') }}" placeholder="idUFFS"
                 class="form-control validate @error('username') is-invalid @enderror card__input" >
-            
+
         </div>
         <!-- Password -->
         <div class="input-group col-lg-6 mb-4">
@@ -45,6 +45,18 @@
                    class="form-control @error('password') is-invalid @enderror validate card__input"
                    autocomplete="current-password">
         </div>
+
+        @if (session()->get("_loginAttempts") == 0)
+            {{redirect()->route('home')}}
+            <p class="text-center text-muted">
+                <b>Login Bloqueado</b><br>
+                Tente novamente em {{session()->get("_timeoutLogin")}} segundos
+            </p>
+        @else
+            <p class="text-center text-muted">
+                Tentativas Restantes: {{session()->get("_loginAttempts")}}
+            </p>
+        @endif
 
         <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary col-12" onclick="el = document.getElementById('btn-submit'); el.innerHTML = '<i class=\'bi bi-arrow-repeat\'></i>'; el.disabled = true; el.innerHTML = '<div class=\'spinner-border\'></div> Aguarde'; document.forms.loginForm.submit();">ENTRAR</button>
 
