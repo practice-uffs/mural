@@ -90,14 +90,4 @@ class LoginController extends Controller
 
         return $user;
     }
-
-    public function startTimeoutLogin()
-    {
-        session(["_timeoutLogin" => env("TIMEOUT_LOGIN")]);
-        for ($count = session()->get("_timeoutLogin"); $count >= 0; $count--){
-            session(["_timeoutLogin" => $count]);
-            sleep(1);
-        }
-        // session(["_loginAttempts" => env("LOGIN_ATTEMPTS")]);
-    }
 }
