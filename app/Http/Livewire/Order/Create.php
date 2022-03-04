@@ -135,6 +135,14 @@ class Create extends \App\Http\Livewire\Crud\Main
 
         foreach($poll['fields'] as $index => $field) {
             $key = 'poll_' . $index;
+
+            // Caso o campo seja uma pergunta do tipo select não obrigatória
+            // Adicionamos uma opção extra padrão e adicionamos essa nova opção como a resposta
+            if (!isset($ajustedValues[$key]) && $poll['fields'][$index]['type'] == 'select') {
+                array_push($poll['fields'][$index]['options'], 'Pergunta não respondida pelo solicitante');
+                $ajustedValues[$key] = sizeof($poll['fields'][$index]['options']) - 1;
+            }
+       
             $poll['fields'][$index]['answer'] = $ajustedValues[$key] ?? 'Pergunta não respondida pelo solicitante';
         }
 
