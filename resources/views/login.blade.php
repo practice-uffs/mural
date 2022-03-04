@@ -23,40 +23,7 @@
                 </div>
             @endif
 
-            <!-- idUFFS -->
-            <div class="input-group col-lg-6 mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white px-4 border-md border-right-0">
-                        <i class="bi bi-person text-muted"></i>
-                    </span>
-                </div>
-                <input type="text" placeholder="idUFFS" required="" autofocus="" name="username"
-                    value="{{ old('username') }}" placeholder="idUFFS"
-                    class="form-control validate @error('username') is-invalid @enderror card__input">
-
-            </div>
-            <!-- Password -->
-            <div class="input-group col-lg-6 mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white px-4 border-md border-right-0">
-                        <i class="bi bi-lock-fill text-muted"></i>
-                    </span>
-                </div>
-                <input type="password" name="password" placeholder="Senha" required="" placeholder="Senha"
-                    class="form-control @error('password') is-invalid @enderror validate card__input"
-                    autocomplete="current-password">
-            </div>
-
-            @if (session()->get('_loginAttempts') == 0)
-                @livewire('countdown')
-            @else
-                <p class="text-center text-muted">
-                    Tentativas Restantes: {{ session()->get('_loginAttempts') }}
-                </p>
-            @endif
-
-            <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary col-12"
-                onclick="el = document.getElementById('btn-submit'); el.innerHTML = '<i class=\'bi bi-arrow-repeat\'></i>'; el.disabled = true; el.innerHTML = '<div class=\'spinner-border\'></div> Aguarde'; document.forms.loginForm.submit();">ENTRAR</button>
+            @livewire('login.main')
 
             <!-- Divider Text -->
             <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">

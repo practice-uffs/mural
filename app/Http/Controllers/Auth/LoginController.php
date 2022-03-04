@@ -20,11 +20,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $output->writeln("Look: ".session()->get("_loginAttempts"));
-
         if (session()->get("_loginAttempts") == null && session()->get("_loginAttempts") != 0){
-            $output->writeln("FOI NO NULLL PORA");
             session(["_loginAttempts" => env('LOGIN_ATTEMPTS')]);
         }
 
