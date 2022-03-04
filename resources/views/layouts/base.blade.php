@@ -26,7 +26,7 @@
  
           <!-- Template Main CSS File -->
           <link href="{{ asset('css/theme.css') }}" rel="stylesheet">          
-          <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+          <link href="{{ asset('css/app.css') }}?20220222" rel="stylesheet">
         
           <!-- Page styles -->
           @yield('styles')

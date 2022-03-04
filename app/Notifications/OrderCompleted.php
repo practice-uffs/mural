@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Broadcasting\PushNotificationChannel;
 
 class OrderCompleted extends Notification implements ShouldQueue
 {
@@ -35,7 +36,7 @@ class OrderCompleted extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', PushNotificationChannel::class];
     }
 
     /**
@@ -58,6 +59,14 @@ class OrderCompleted extends Notification implements ShouldQueue
                     ->line('Sua avaliação é muito importante! Ela ajuda a melhorar nossos serviços.')
                     ->line("Até mais,")
                     ->salutation("Equipe Practice ❤️");
+    }
+
+    public function toPushNotification($notifiable)
+    {
+        return [
+            'title' => "Solicitação concluída (Practice Mural #" . $this->order->id . ")",
+            'body' => "Sua solicitação '" . $this->order->title . "' foi concluída",
+        ];
     }
 
     /**
