@@ -20,6 +20,10 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
+        if (session()->get("_loginAttempts") == null && session()->get("_loginAttempts") != 0){
+            session(["_loginAttempts" => env('LOGIN_ATTEMPTS')]);
+        }
+
         return view('login');
     }
 
@@ -37,8 +41,10 @@ class LoginController extends Controller
 
         $auth = new \CCUFFS\Auth\AuthIdUFFS();
         $userData = $auth->login($credentials);
-        
+
         if (!$userData) {
+            session(["_loginAttempts" => session()->get("_loginAttempts")-1]);
+
             return redirect()->route('login')->withErrors([
                 'credential' => 'Login ou senha inválidos, por favor verifique os dados e tente novamente.'
             ]);
@@ -46,9 +52,10 @@ class LoginController extends Controller
 
         $userData->password = bcrypt($userData->pessoa_id);
         $user = $this->getOrCreateUser($userData);
-        
+
         Auth::login($user);
-        
+        session(["_loginAttempts" => env("LOGIN_ATTEMPTS")]);
+
         return redirect()->intended();
     }
 

@@ -57,6 +57,7 @@ Route::view('/newsletter/subscribed', 'newsletter.subscribed')->name('newsletter
 
 // Autenticação
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login/startTimeout', [LoginController::class, 'startTimeoutLogin']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
