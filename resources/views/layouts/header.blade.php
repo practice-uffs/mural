@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top">
     <div class="container-lg d-flex align-items-center justify-content-between">
         <a href="{{ route('index') }}" class="logo d-flex align-items-center">
-            <img src="{{ asset('img/logo-practice.png') }}" alt="">
+            <img src="{{ asset('img/mural-icon.png') }}" alt="">
             <span>Mural</span>
         </a>
 

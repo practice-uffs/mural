@@ -12,7 +12,7 @@
         <form id="loginForm" class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post">
             @csrf
             <a href="{{ route('index') }}">
-                <img class="mb-5" src="{{ asset('img/logo-practice.png') }}" alt="Logo do Practice" width="272">
+                <img class="mb-5" src="{{ asset('img/mural-icon.png') }}" alt="Logo do Mural" width="272">
             </a>
             <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
             @if ($errors->any())
