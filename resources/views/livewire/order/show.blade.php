@@ -22,8 +22,8 @@
                             <tbody>
                                 @foreach ($order->data['fields'] as $field)
                                     <tr>
-                                        <td>{{ $field['text'] }}</td>
-                                        <td>
+                                        <td class="text-wrap">{!! preg_replace('/\[(.+)\]\s*\((.+)\)/', '<a class="link-primary underline" href="$2">$1</a>', $field['text']) !!}</td>
+                                        <td class="text-wrap">
                                             @if ($field['type'] == 'select')
                                                 {{ $field['options'][$field['answer']] }}
                                             @elseif (@$field['data']['type'] == 'file')

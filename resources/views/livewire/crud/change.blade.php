@@ -30,7 +30,7 @@
                 @case('boolean')
                     <label class="cursor-pointer label flex">
                         <span class="label-text">
-                            {{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span><br />
+                            {!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span><br />
                             <span class="text-gray-400">{{ @$field['placeholder'] }}</span>
                             @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         </span> 
@@ -42,7 +42,7 @@
                     @break
                 @case('select')
                     <label class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         <a href="#" class="label-text-alt"></a>
                     </label> 
@@ -55,7 +55,7 @@
                     @break
                 @case('radio')
                     <span class="label-text">
-                        {{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span>
+                        {!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </span> 
                     <div class="flex flex-row mt-2 mb-2">
@@ -79,7 +79,7 @@
                     @break
                 @case('file')
                     <label class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span> 
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         <a href="#" class="label-text-alt"></a>
                     </label>
@@ -128,14 +128,14 @@
                     @break
                 @case('textarea')
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <textarea wire:model="{{ $key }}" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="textarea textarea-bordered h-48 mb-2 @error($key) textarea-error @enderror"></textarea>
                     @break
                 @default
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <input wire:model="{{ $key }}" type="text" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror" />

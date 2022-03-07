@@ -63,7 +63,7 @@ class Create extends \App\Http\Livewire\Crud\Main
             // Vamos colocar como label do campo o próprio texto usado para
             // criar essa pergunta.
             $modelCrudInfo['fields'][$key] = $poll['fields'][$index];
-            $modelCrudInfo['fields'][$key]['label'] = $field['text'] ?? '';
+            $modelCrudInfo['fields'][$key]['label'] = preg_replace('/\[(.+)\]\s*\((.+)\)/', '<a class="link-primary underline" href="$2">$1</a>', $field['text']) ?? '';
             
             // Transforma o campo adicional em required se ele for obrigatório
             if ((isset($field['data']['required']) && $field['data']['required'] != 'false') || !isset($field['data']['required'])) {
