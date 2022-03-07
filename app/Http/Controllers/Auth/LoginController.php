@@ -20,7 +20,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        if (session()->get("_loginAttempts") == null && session()->get("_loginAttempts") != 0){
+        if (empty(session()->get("_loginAttempts"))){
             session(["_loginAttempts" => env('LOGIN_ATTEMPTS')]);
         }
 
