@@ -20,9 +20,14 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        if (empty(session()->get("_loginAttempts"))){
+        $output = new \Symfony\Component\Console\Output\ConsoleOutput();
+
+        if (empty(session()->get("_loginAttempts")) && session()->get("_loginAttempts") !== 0){
             session(["_loginAttempts" => env('LOGIN_ATTEMPTS')]);
+            $output->writeln("Entrou no empty");
         }
+
+        $output->writeln(session()->get("_loginAttempts"));
 
         return view('login');
     }
