@@ -63,7 +63,7 @@ class Create extends \App\Http\Livewire\Crud\Main
             // Vamos colocar como label do campo o próprio texto usado para
             // criar essa pergunta.
             $modelCrudInfo['fields'][$key] = $poll['fields'][$index];
-            $modelCrudInfo['fields'][$key]['label'] = $field['text'] ?? '';
+            $modelCrudInfo['fields'][$key]['label'] = preg_replace('/\[(.+)\]\s*\((.+)\)/', '<a class="link-primary underline" href="$2">$1</a>', $field['text']) ?? '';
             
             // Transforma o campo adicional em required se ele for obrigatório
             if ((isset($field['data']['required']) && $field['data']['required'] != 'false') || !isset($field['data']['required'])) {
@@ -135,6 +135,14 @@ class Create extends \App\Http\Livewire\Crud\Main
 
         foreach($poll['fields'] as $index => $field) {
             $key = 'poll_' . $index;
+
+            // Caso o campo seja uma pergunta do tipo select não obrigatória
+            // Adicionamos uma opção extra padrão e adicionamos essa nova opção como a resposta
+            if (!isset($ajustedValues[$key]) && $poll['fields'][$index]['type'] == 'select') {
+                array_push($poll['fields'][$index]['options'], 'Pergunta não respondida pelo solicitante');
+                $ajustedValues[$key] = sizeof($poll['fields'][$index]['options']) - 1;
+            }
+       
             $poll['fields'][$index]['answer'] = $ajustedValues[$key] ?? 'Pergunta não respondida pelo solicitante';
         }
 
