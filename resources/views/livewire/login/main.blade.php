@@ -28,7 +28,7 @@
             <span>
                 <p class="user-select-none text-center text-muted">
                     <b>Login bloqueado</b><br>
-                    Tentativas novamente em {{ $countDown }} segundos
+                    Tente novamente em {{ $countDown }} segundos
                 </p>
             </span>
         </div>
