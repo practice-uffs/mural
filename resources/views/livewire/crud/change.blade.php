@@ -106,7 +106,7 @@
                     </div>
                     @break
                 @case('poll')
-                    <div class="flex w-full">
+                    <div class="flex w-full text-wrap">
                         <div class="w-1/2">
                             <label for="{{ $key }}" class="label">
                                 <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
