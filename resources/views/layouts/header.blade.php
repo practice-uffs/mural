@@ -1,11 +1,12 @@
 <header id="header" class="header fixed-top">
     <div class="container-lg d-flex align-items-center justify-content-between">
+
         <a href="{{ route('index') }}" class="logo d-flex align-items-center">
             <img src="{{ asset('img/mural-icon.png') }}" alt="">
             <span>Mural</span>
         </a>
 
-        <nav id="navbar" class="navbar">
+        <nav id="navbar" class="navbar oculto">
             <ul>
                 @auth
                     @admin
@@ -28,7 +29,7 @@
             </ul>
         </nav>
 
-        <nav class="md:invisible absolute left-2 w-full bg-white">
+        <nav style="left: 40%" class="md:invisible absolute left-2 w-full bg-white">
             @admin
                 <li class="dropdown ml-3">
                     <div tabindex="0" class="btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div>
