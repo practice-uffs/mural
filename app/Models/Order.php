@@ -84,7 +84,7 @@ class Order extends Model
                 'validation' => 'required',
                 'placeholder' => '',
                 'show' => 'create,edit'
-            ], 
+            ],
             'requested_due_date' => [
                 'type' => 'date',
                 'label' => 'Prazo de entrega sugerido',
@@ -152,25 +152,25 @@ class Order extends Model
 
         $parts = explode('/', $this->google_drive_out_folder_link);
         return $parts[count($parts) - 1];
-    }    
-    
+    }
+
     /**
      * Obtém informações sobre a situação do pedido para mostrar para o usuário,
-     * utilizando como base os campos de status, link para github, etc. 
+     * utilizando como base os campos de status, link para github, etc.
      * As informações retornadas estão em texto "amigável" que pode ser mostrado
      * para o usuário final.
-     * 
+     *
      * @return stdClass objeto com os campos `text`, `explanation`, `color`.
      */
     public function situation() {
-        if (!empty($this->github_issue_link) || $this->status == 'doing') {
+        if ($this->status == 'doing') {
             return (object) [
                 'text' => 'Em andamento',
                 'explanation' => 'O pedido está na fila de trabalho para ser realizado. Quando chegar sua vez, ele será conduzido.',
                 'color' => 'green-600',
             ];
-        }    
-        
+        }
+
         if ($this->status == 'review') {
             return (object) [
                 'text' => 'Em revisão',
@@ -185,7 +185,7 @@ class Order extends Model
                 'explanation' => 'O pedido foi realizado, finalizado e entregue.',
                 'color' => 'green-700',
             ];
-        }        
+        }
 
         if ($this->status == 'closed') {
             return (object) [
@@ -195,13 +195,13 @@ class Order extends Model
             ];
         }
 
-        if (empty($this->github_issue_link) && $this->status == 'todo') {
+        if ($this->status == 'todo') {
             return (object) [
                 'text' => 'Fila de trabalho',
                 'explanation' => 'A solicitação foi aceita, mas ainda não foi escalonada para execução.',
                 'color' => 'purple-600',
             ];
-        }        
+        }
 
         return (object) [
             'text' => 'Aguarda análise',
@@ -216,7 +216,7 @@ class Order extends Model
         if ($diffInDays > 3) {
            return $this->created_at->format('d/m/Y (h:i)');
         }
-        
+
         return $this->created_at->diffForHumans();
     }
 }
