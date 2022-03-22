@@ -1,25 +1,22 @@
-name: deploy
+name: deploy-mural-test
 on:
   push:
     branches:
-      - (old)master
+      - dev
 env:
-  PROD_HOST: mural.practice.uffs.cc
-  PROD_WEB_DIRECTORY: /home/ccuffspractice/mural.practice.uffs.cc
-  COMPOSER_BIN: php-7.3 ~/.php/composer/composer
-  PHP_BIN: php-7.3
+  PROD_HOST: mural.tests.practice.uffs.cc
+  PROD_WEB_DIRECTORY: /home/ccuffspracticetests/mural.tests.practice.uffs.cc
+  COMPOSER_BIN: php-8.0 ~/.php/composer/composer
+  PHP_BIN: php-8.0
 jobs:
   deploy:
-    name: Deploy to production
+    name: Deploy to mural.tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Prepare deploy server
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ env.PROD_HOST }}
-        username: ${{ secrets.PROD_USERNAME }}
-        password: ${{ secrets.PROD_PASSWORD }}
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
           git reset --hard
@@ -27,4 +24,4 @@ jobs:
           ${{ env.COMPOSER_BIN }} install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
           ${{ env.PHP_BIN }} artisan migrate
           npm install
-          npm run production
+          npm run dev
