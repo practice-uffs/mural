@@ -200,7 +200,7 @@ section {
   margin-top: 3px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .oculto {
     top: -100px;
   }
@@ -299,6 +299,10 @@ section {
   color: #4154f1;
 }
 
+.dropdown-item:hover {
+  background-color: transparent;
+}
+
 .navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
@@ -346,9 +350,6 @@ section {
 @media (max-width: 724px) {
   .mobile-nav-toggle {
     display: block;
-  }
-  .navbar ul {
-    
   }
 }
 

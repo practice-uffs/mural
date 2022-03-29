@@ -10,7 +10,7 @@
             <ul>
                 @auth
                     @admin
-                        <li class="dropdown ml-3 bg-white">
+                        <li class="dropdown ml-3">
                             <div tabindex="0" class="btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div>
                             <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
                                 <li><a href="{{ route('admin.orders') }}">Pedidos</a></li> 
@@ -29,25 +29,25 @@
             </ul>
         </nav>
 
-        <nav style="left: 40%" class="md:invisible absolute left-2 w-full bg-white">
+        <nav class="lg:invisible absolute left-1 w-full d-flex justify-content-end">
             @admin
                 <li class="dropdown ml-3">
-                    <div tabindex="0" class="btn btn-primary btn-outline">Admin <i class="bi bi-chevron-down"></i></div>
-                    <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                        <li><a href="{{ route('admin.orders') }}">Pedidos</a></li> 
-                        <li><hr /></li> 
-                        <li><a href="{{ route('admin.service') }}">Serviços</a></li> 
-                        <li><a href="{{ route('admin.category') }}">Categorias</a></li> 
-                        <li><a href="{{ route('admin.location') }}">Locais</a></li> 
-                        <li><hr /></li> 
-                        <li><a href="{{ route('admin.user') }}">Usuários</a></li> 
-                        <li><a href="{{ route('admin.subscriber') }}">Newsletter</a></li>
+                    <div tabindex="0" class="btn btn-primary btn-outline" data-bs-toggle="dropdown" aria-expanded="false">Admin <i class="bi bi-chevron-down"></i></div>
+                    <ul class="shadow dropdown-menu bg-base-100 rounded-box w-52">
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.orders') }}">Pedidos</a></li> 
+                        <li class="dropdown-item"><hr /></li> 
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.service') }}">Serviços</a></li> 
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.category') }}">Categorias</a></li> 
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.location') }}">Locais</a></li> 
+                        <li class="dropdown-item"><hr /></li> 
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.user') }}">Usuários</a></li> 
+                        <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.subscriber') }}">Newsletter</a></li>
                     </ul>
                 </li>
             @endadmin
-            <li class="dropdown ml-3">
-                <div tabindex="0" class="btn btn-primary">Menu <i class="bi bi-chevron-down"></i></div>
-                <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52 mr-24">
+            <li class="dropdown mx-2 pr-2">
+                <div tabindex="0" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Menu <i class="bi bi-chevron-down"></i></div>
+                <ul class="dropdown-menu rounded-box">
                     @include('header-menu')
                 </ul>
             </li>
