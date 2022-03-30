@@ -2,7 +2,7 @@ name: deploy-qa
 on:
   push:
     branches:
-      - dev
+      - (old)dev
 env:
   PROD_HOST: qa.mural.practice.uffs.cc
   PROD_WEB_DIRECTORY: /home/practiceqamural/qa.mural.practice.uffs.cc
