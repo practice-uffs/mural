@@ -1,21 +1,23 @@
 @extends("layouts.base-raw", ["view_name" => "Login"])
 
 @section('content')
-    <div class="login container row mx-auto my-5 pt-5">
+    <div class="login container row mx-auto my-5 pt-5 align-items-center">
         <div class="login-img col-md-5 pr-lg-5 mb-5 mb-md-0 mt-5">
-            <img src="assets/img/undow.co/login.svg" alt="" class="img-fluid">
+            <div class="d-flex justify-content-center">
+                <a href="{{ route('index') }}">
+                    <img class="img-fluid" src="{{ asset('img/mural-icon.png') }}" alt="Logo do Mural" width="272">
+                </a>
+            </div>
             <h1>Conecte-se ao PRACTICE <b>Mural</b></h1>
-            <p class="font-italic text-muted mb-0">Utilize seu idUFFS para conectar-se e aproveitar tudo que nossa plataforma
+            <p class="font-italic text-muted mb-0">Utilize seu idUFFS para conectar-se e aproveitar tudo que nossa
+                plataforma
                 oferece.</p>
         </div>
 
         <form id="loginForm" class="login-form col-md-6 mx-auto form-signin text-center " action="" method="post">
             @csrf
             <a href="{{ route('index') }}">
-                <img src="{{ asset('img/mural-icon.png') }}" alt="Logo do Mural" width="272">
-                <div class="text-center mural-icon mb-5">
-                    <h1><strong>Mural</strong></h1>
-                </div>
+                <img class="mb-5" src="{{ asset('img/logo-practice.png') }}" alt="Logo do Practice" width="272">
             </a>
             <h1 class="h4 mb-3 font-weight-normal">Entre com seu idUFFS</h1>
             @if ($errors->any())
