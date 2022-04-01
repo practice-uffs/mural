@@ -18,8 +18,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.PROD_HOST }}
-        username: ${{ secrets.MURAL_TEST_USERNAME }}
-        password: ${{ secrets.MURAL_TEST_PASSWORD }}
+        username: ${{ secrets.TEST_USERNAME }}
+        password: ${{ secrets.TEST_PASSWORD }}
         script: |
           cd ${{ env.PROD_WEB_DIRECTORY }}
           git reset --hard
