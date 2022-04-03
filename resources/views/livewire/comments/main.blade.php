@@ -32,7 +32,7 @@
                                 <i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}
                             </span>
                         </div>
-                        <div class="text-md pt-2">{!! Str::markdown($comment['content']) !!}</div>
+                        <div class="text-md pt-2">{!! nl2br(Str::markdown($comment['content'])) !!}</div>
                         <div class="mt-4 flex items-center hidden">
                             <div class="flex -space-x-2 mr-2">
                                 <img class="rounded-full w-6 h-6 border border-white"
