@@ -15,7 +15,7 @@
                             {!! $category->icon_svg_path !!}
                         </svg>
                     </div>
-                    <div class="mt-1 p-1 text-center h-56">
+                    <div class="mt-1 p-1 text-center" style="min-height: 14rem">
                         <h3 class="text-{{ $category->color }} text-center w-full font-semibold text-2xl mb-3">{!! $category->name !!}</h3>
                         <p class="text-md">{!! Str::markdown($category->description ? $category->description : '') !!}</p>
                     </div>

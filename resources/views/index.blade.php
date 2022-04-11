@@ -45,9 +45,8 @@
                 Essa é a plataforma oficial do programa, onde a comunidade acadêmica pode solicitar e acompanhar serviços. Além disso, você pode dar sugestões de melhorias e ideias, fazendo parte do crescimento do programa e inovação da <a href="https://www.uffs.edu.br/"><strong>UFFS</strong></a>.
               </p>
               <div class="text-center text-lg-start">
-                <a href="https://practice.uffs.cc" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                <a href="https://practice.uffs.cc" class="btn btn-primary d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Conheça o PRACTICE</span>
-                  <i class="bi bi-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -64,6 +63,6 @@
     @include('components.valores')
     @include('components.contador')
     @include('components.servicos')
-    @include('components.testemunho')   
+    @include('components.testemunho')
   </main><!-- End #main -->
 @endsection
