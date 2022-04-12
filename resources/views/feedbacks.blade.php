@@ -22,8 +22,8 @@
             <p>O que você tem a nos dizer?</p>
         </header>
 
-        <div class="row">
-            <div class="col-10 offset-1">
+        <div class="row d-flex justify-content-center">
+            <div class="feedback-form col-md-10">
                 @livewire('crud.main', [
                     'model' => 'App\Models\Feedback',
                     'show_list' => false,
