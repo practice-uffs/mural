@@ -1905,6 +1905,17 @@ section.hero-slim {
   justify-content: center;
 }
 
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-item > :first-child {
+  display: flex;
+  margin-right: 10px;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

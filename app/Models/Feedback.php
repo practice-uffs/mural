@@ -48,8 +48,8 @@ class Feedback extends Model
                 'options' => [
                     'critic' => 'Crítica',
                     'comment' => 'Comentário',
+                    'compliment' => 'Elogio',                    
                     'suggestion' => 'Sugestão',
-                    'compliment' => 'Elogio',
                 ],
                 'label' => 'Tipo',
                 'placeholder' => 'Ex.: meu título lindo',
