@@ -55,7 +55,7 @@
                                 </td>
                             @endforeach
                             <td class="text-right">
-                                <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button> 
+                                <button wire:click="edit({{$item->id}})" class="btn btn-sm btn-outline btn-primary py-0">Editar</button>
                             </td>
                         </tr>
                         @if ($editing == $item->id)
@@ -84,4 +84,4 @@
             </section>
         @endif
     @endif
-</div> 
+</div>
