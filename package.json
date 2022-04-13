@@ -31,7 +31,7 @@
         "filepond": "^4.28.2",
         "filepond-plugin-image-preview": "^4.6.7",
         "materialize-css": "^1.0.0",
-        "moment": "^2.29.1",
+        "moment": "^2.29.2",
         "sweetalert2": "^10.9.0"
     }
 }
