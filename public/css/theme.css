@@ -2072,3 +2072,16 @@ section.hero-slim {
   font-size: 13px;
   color: #012970;
 }
+
+.pagination {
+	justify-content: center !important
+}
+
+.page-item > button {
+    color: hsla(var(--p) / var(--tw-bg-opacity, 1));
+}
+
+.page-item.active .page-link {
+    background-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
+    border-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
+}

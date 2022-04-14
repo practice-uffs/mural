@@ -11,13 +11,14 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 /**
- * 
+ *
  */
 class Main extends Component
 {
     use WithFileUploads;
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
     public static string $modelTypeString = 'model:';
     public static string $modelCrudPropertyName = 'crud';
     public static string $fileUploadBucket = 'public';
@@ -35,13 +36,13 @@ class Main extends Component
 
     public string $model = ''; // E.g. '\App\Models\Order'
     public string $view_name = 'livewire.crud.main';
-    public array $include_create = []; // Fields to include in create operations    
+    public array $include_create = []; // Fields to include in create operations
     public array $include_update = []; // Fields to include in update operations
 
     protected $validationAttributes = [];
 
     /**
-     * 
+     *
      */
     private function applyModelCrudInfoOverride(array & $modelCrudInfo) {
         if (count($this->override) == 0) {
@@ -63,24 +64,24 @@ class Main extends Component
     }
 
     /**
-     * 
+     *
      */
     protected function modelCreated(Model $model) {
-        
+
     }
 
     /**
-     * 
+     *
      */
     protected function modelUpdated(Model $model) {
-        
-    }    
+
+    }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param array $data
-     * 
+     *
      * @return array
      */
     protected function prepareModelData(array $data) :array
@@ -89,10 +90,10 @@ class Main extends Component
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param array $modelCrudInfo
-     * 
+     *
      * @return array
      */
     protected function prepareModelCrudInfo(array $modelCrudInfo) :array
@@ -103,7 +104,7 @@ class Main extends Component
 
     /**
      * @param array $values
-     * 
+     *
      * @return [type]
      */
     protected function prepareValuesForCreate(array $values) {
@@ -113,7 +114,7 @@ class Main extends Component
     /**
      * @param array $values
      * @param Model $item
-     * 
+     *
      * @return [type]
      */
     protected function prepareValuesForUpdate(array $values, Model $item) {
@@ -193,7 +194,7 @@ class Main extends Component
         }
 
         return str_replace(self::$modelTypeString, '', $text);
-    }    
+    }
 
     protected function extracValueFieldFromModelType($text)
     {
@@ -204,14 +205,14 @@ class Main extends Component
         }
 
         return $pieces[1];
-    }    
+    }
 
     protected function fillOptionsForModelType($type)
     {
         $model = $this->extracModelFromModelType($type);
         $idField = 'id'; // TODO: make dynamic?
         $valueField = $this->extracValueFieldFromModelType($type);
-       
+
         $options = $model::all()->map(function($item) use ($idField, $valueField) {
             $key = $item[$idField];
             $value = $item[$valueField];
@@ -324,9 +325,9 @@ class Main extends Component
         $this->validate();
 
         $values = $this->getDataForInsertOrUpdate();
-        
+
         // Remove any defined 'id' to ensure an insert is
-        // performed instead of an update 
+        // performed instead of an update
         unset($values['id']);
 
         $values = $this->prepareValuesForCreate($values);
@@ -380,7 +381,7 @@ class Main extends Component
 
         $id = $this->data['id'];
         $item = $this->model::findOrFail($id);
-        
+
         $values = $this->getDataForInsertOrUpdate();
         $values = $this->prepareValuesForUpdate($values, $item);
         $item->update($values);
@@ -399,6 +400,6 @@ class Main extends Component
         }
 
         $item = $this->model::findOrFail($id);
-        $item->delete();        
+        $item->delete();
     }
 }
