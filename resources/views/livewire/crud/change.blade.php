@@ -58,9 +58,9 @@
                         {!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </span> 
-                    <div class="flex flex-row mt-2 mb-2">
+                    <div class="flex flex-row mt-2 mb-2 flex-wrap">
                         @foreach ($field['options'] as $info)
-                            <label class="cursor-pointer mr-5">
+                            <label class="cursor-pointer mr-5 checkbox-item">
                                 <div class="inline-block">
                                     <input wire:model="{{ $key }}" type="radio" checked="checked" class="radio radio-primary" value="{{ $info['id']}}"> 
                                     <span class="radio-mark mr-1"></span>

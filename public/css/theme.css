@@ -1895,6 +1895,28 @@ section.hero-slim {
 }
 
 /*--------------------------------------------------------------
+# Feedbacks
+--------------------------------------------------------------*/
+
+.feedback-form > :first-child > :first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-item > :first-child {
+  display: flex;
+  margin-right: 10px;
+}
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .footer {
