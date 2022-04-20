@@ -27,7 +27,7 @@
                             </span>
                         @endadmin
                         <div>
-                            <strong>{{ Str::title($comment['user']['name']) }}</strong> 
+                            <strong>{{ Str::title($comment['user']['name']) }}</strong>
                             <span class="text-xs text-gray-400 ml-3 mr-2">
                                 <i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}
                             </span>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="w-full pt-2 mb-1">
-        {{ $items->links() }}
+        {!! $items->links() !!}
     </div>
 
     <div class="w-full pt-4 mb-6">
@@ -80,7 +80,7 @@
                             <div class="form-control pb-3">
                                 <label class="label">
                                   <span class="label-text">Comentar</span>
-                                </label> 
+                                </label>
                                 <textarea wire:model="content" name="content" class="textarea h-32 textarea-bordered @error('content') textarea-error @enderror" placeholder="Escreva seu comentário"></textarea>
                             </div>
                         </div>
@@ -113,8 +113,8 @@
             rootMargin: '0px',
             threshold: 1.0
         }
-          
-        var observer = new IntersectionObserver(function(entries) { 
+
+        var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 var commentId = entry.target.getAttribute('data-comment-id');
                 var alreadyChecked = entry.target.classList.contains('comment-read');
@@ -126,7 +126,7 @@
                 entry.target.classList.add('comment-read');
                 wire.markAsRead(commentId);
             });
-            
+
         }, options);
 
         var comments = document.querySelectorAll(".comment-view");
@@ -136,7 +136,7 @@
                 observer.observe(comment);
             });
         }
-        
+
         document.addEventListener('livewire:load', function () {
             wire = @this;
         });

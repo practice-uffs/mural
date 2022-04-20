@@ -12,6 +12,7 @@ class Comments extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
     public string $content;
     public Model $commentable;
 
@@ -32,7 +33,7 @@ class Comments extends Component
         $this->commentable->load([
             'comments.user'
         ]);
-        
+
         $this->content = '';
     }
 

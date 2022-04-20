@@ -11,6 +11,7 @@ use App\Services\Github;
 use App\Services\GoogleDrive;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(CredentialManager::class, function($app) {
             return new CredentialManager();
-        });        
+        });
     }
 
     /**
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         Blade::directive('admin', function($expression = null) {
             return '<?php if (auth()->check() && auth()->user()->isAdmin()): ?>';
         });
