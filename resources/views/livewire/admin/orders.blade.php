@@ -109,7 +109,7 @@
                             <td class="text-wrap">
                                 <div class="flex items-center space-x-3">
                                     <div>
-                                        <div class="font-bold">{{ $order['title'] }}</div>
+                                        <div class="font-bold text-break">{{ $order['title'] }}</div>
                                         <div class="text-sm opacity-50">{{ @$order['service']['category']['name'] }}
                                             > {{ @$order['service']['name'] }}</div>
                                     </div>

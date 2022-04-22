@@ -32,7 +32,7 @@
                             <th class="order-4 order-md-4 col-6 col-lg-3 col-md-8">Data</th>
                             <th></th>
                         </tr>
-                    </thead>                
+                    </thead>
                     <tbody class="d-flex flex-column">
                         @foreach ($orders as $order)
                             <tr class="row py-3 border-bottom">
@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="order-3 order-lg-2 pb-3 col-12 col-lg-4 col-md-8 text-wrap d-md-flex align-items-md-end align-items-lg-center ">
+                                <td class="order-3 order-lg-2 pb-3 col-12 col-lg-4 col-md-8 text-wrap d-md-flex align-items-md-end align-items-lg-center text-break">
                                     {{ $order->title }}
                                 </td>
                                 <td class="order-1 order-lg-3 col-12 col-lg-2 d-flex justify-content-end justify-content-lg-start pb-1 pl-0 align-items-center">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </section>
-                
+
             </div>
         </div>
     @endif
