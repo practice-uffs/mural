@@ -73,4 +73,14 @@ class Comment extends Model
         
         return $this->created_at->diffForHumans();
     }
+
+    public function getUpdatedAtHumanAttribute() {
+        $diffInDays = $this->updated_at->diffInDays(Carbon::now());
+
+        if ($diffInDays > 3) {
+           return $this->updated_at->format('d/m/Y (h:i)');
+        }
+        
+        return $this->updated_at->diffForHumans();
+    }
 }

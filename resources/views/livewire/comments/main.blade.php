@@ -11,26 +11,42 @@
             Comentários
         </h3>
         @forelse ($items as $comment)
-            <div class="space-y-4">
+            <div class="space-y-4 {{ $editInputVisible == $comment['id'] ? 'd-none' : '' }}">
                 <div class="flex pb-4 comment-view" data-comment-id="{{ $comment['id'] }}">
                     <div class="mr-3">
                         <img class="rounded-full object-cover w-12 h-12 m-1" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $comment['user']['uid'] }}" alt="" />
                     </div>
                     <div class="flex-1 relative border rounded-lg px-4 py-2 pb-3 sm:px-6 sm:py-4 leading-relaxed">
+                        <div class="dropdown absolute right-2 top-0 text-gray-400 ml-3 text-sm">
+                            <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots text-gray-400"></i>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                <li><button onclick=startEditingComment({{ $comment['id'] }}) class="dropdown-item" type="button">Editar</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
+                            </ul>
+                        </div>
                         @admin
-                            <span class="absolute right-2 top-0 text-gray-400 ml-3 text-xl">
-                                @if ($comment['read'])
-                                    <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
-                                @else
-                                    <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
-                                @endif
-                            </span>
+                        <span class="absolute right-12 top-0 text-gray-400 ml-3 text-xl">
+                            @if ($comment['read'])
+                            <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
+                            @else
+                            <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
+                            @endif
+                        </span>
                         @endadmin
                         <div>
-                            <strong>{{ Str::title($comment['user']['name']) }}</strong>
+                            <strong>{{ Str::title($comment['user']['name']) }}</strong> 
                             <span class="text-xs text-gray-400 ml-3 mr-2">
                                 <i class="bi bi-clock"></i> {{ $comment['created_at_human'] }}
                             </span>
+                            @if($comment['created_at'] != $comment['updated_at'])
+                            <span class="text-xs text-gray-400 ml-3 mr-2">
+                                Editada {{ $comment['updated_at_human'] }}
+                            </span>
+                            @endif
                         </div>
                         <div class="text-md pt-2">{!! nl2br(Str::markdown($comment['content'])) !!}</div>
                         <div class="mt-4 flex items-center hidden">
@@ -49,6 +65,46 @@
                     </div>
                 </div>
             </div>
+            <!--
+                Comment form
+                Source: https://tailwindcomponents.com/component/comment-form
+            -->
+            <div class="antialiased w-full edit-comment-{{ $comment['id'] }} {{ $editInputVisible != $comment['id'] ? 'd-none' : '' }}">
+                <div class="space-y-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0 mr-1">
+                            <div class="mt-2">
+                                <img class="rounded-full object-cover w-14 h-14" src="https://cc.uffs.edu.br/avatar/iduffs/{{ auth()->user()->uid }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="flex-1 rounded-lg px-1 py-0 sm:px-6 sm:py-4 leading-relaxed">
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                                <div class="w-full md:w-full px-3 mb-2 mt-2">
+                                    <div class="form-control pb-3">
+                                        <label class="label">
+                                        <span class="label-text">Editar comentário</span>
+                                        </label> 
+                                        <textarea wire:model.lazy="editedContent" name="editedContent" class="tst textarea h-32 textarea-bordered @error('content') textarea-error @enderror"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-full flex items-start md:w-full px-3">
+                                    <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                                        <p class="text-xs md:text-sm pt-px text-gray-400">
+                                            <i class="bi bi-info-circle"></i>
+                                            Você pode usar <a href="https://docs.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank" class="underline">markdown</a> para formatação.
+                                        </p>
+                                    </div>
+                                    <div class="-mr-1">
+                                        <button onclick="confirm_update({{ $comment['id'] }})" class="btn btn-primary">Salvar</button>
+                                        <button onclick="stopEditingComment()" class="btn btn-primary">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         @empty
             <p>Nenhum comentário por enquanto</p>
         @endforelse
@@ -80,7 +136,7 @@
                             <div class="form-control pb-3">
                                 <label class="label">
                                   <span class="label-text">Comentar</span>
-                                </label>
+                                </label> 
                                 <textarea wire:model="content" name="content" class="textarea h-32 textarea-bordered @error('content') textarea-error @enderror" placeholder="Escreva seu comentário"></textarea>
                             </div>
                         </div>
@@ -114,7 +170,28 @@
             threshold: 1.0
         }
 
-        var observer = new IntersectionObserver(function(entries) {
+        function confirm_deletion(id) {
+            if (confirm('Tem certeza que deseja excluir esse comentário?')) {
+                wire.delete(id);
+            }
+        }
+
+        function confirm_update(id) {
+            wire.update(id);
+            wire.editInputVisible = 0;
+        }
+
+        function startEditingComment(id) {
+            wire.setEditedContent(id);
+            wire.editInputVisible = id;
+        }
+
+        function stopEditingComment() {
+            wire.editedContent =  "";
+            wire.editInputVisible = 0;
+        }
+          
+        var observer = new IntersectionObserver(function(entries) { 
             entries.forEach(function(entry) {
                 var commentId = entry.target.getAttribute('data-comment-id');
                 var alreadyChecked = entry.target.classList.contains('comment-read');

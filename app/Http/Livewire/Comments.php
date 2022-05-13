@@ -14,11 +14,20 @@ class Comments extends Component
 
     protected $paginationTheme = 'bootstrap';
     public string $content;
+    public string $editedContent;
+    public int $editInputVisible;
     public Model $commentable;
 
     public function mount()
     {
         $this->resetInput();
+        $this->editedContent = "";
+        $this->editInputVisible = 0;
+    }
+
+    public function setEditedContent($id) {
+        $comment = $this->commentable->comments()->find($id);
+        $this->editedContent = $comment['content'];
     }
 
     public function render()
@@ -49,6 +58,16 @@ class Comments extends Component
         ]);
 
         $this->resetInput();
+    }
+
+    public function delete($id)
+    {
+        $this->commentable->comments()->where('id', $id)->delete();
+    }
+
+    public function update($id)
+    {
+        $this->commentable->comments()->where('id', $id)->update(['content' => $this->editedContent]);
     }
 
     public function markAsRead($id) {
