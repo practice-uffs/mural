@@ -17,14 +17,25 @@
                         <img class="rounded-full object-cover w-12 h-12 m-1" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $comment['user']['uid'] }}" alt="" />
                     </div>
                     <div class="flex-1 relative border rounded-lg px-4 py-2 pb-3 sm:px-6 sm:py-4 leading-relaxed">
+                        <div class="dropdown absolute right-2 top-0 text-gray-400 ml-3 text-sm">
+                            <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots text-gray-400"></i>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                <li><button class="dropdown-item" type="button">Editar</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
+                            </ul>
+                        </div>
                         @admin
-                            <span class="absolute right-2 top-0 text-gray-400 ml-3 text-xl">
-                                @if ($comment['read'])
-                                    <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
-                                @else
-                                    <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
-                                @endif
-                            </span>
+                        <span class="absolute right-12 top-0 text-gray-400 ml-3 text-xl">
+                            @if ($comment['read'])
+                            <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
+                            @else
+                            <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
+                            @endif
+                        </span>
                         @endadmin
                         <div>
                             <strong>{{ Str::title($comment['user']['name']) }}</strong>
@@ -114,7 +125,13 @@
             threshold: 1.0
         }
 
-        var observer = new IntersectionObserver(function(entries) {
+        function confirm_deletion(id) {
+            if (confirm('Tem certeza que deseja excluir esse comentário?')) {
+                wire.delete(id);
+            }
+        }
+          
+        var observer = new IntersectionObserver(function(entries) { 
             entries.forEach(function(entry) {
                 var commentId = entry.target.getAttribute('data-comment-id');
                 var alreadyChecked = entry.target.classList.contains('comment-read');

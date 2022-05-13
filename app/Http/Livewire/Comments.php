@@ -51,6 +51,11 @@ class Comments extends Component
         $this->resetInput();
     }
 
+    public function delete($id)
+    {
+        $this->commentable->comments()->where('id', $id)->delete();
+    }
+
     public function markAsRead($id) {
         $id = (int) $id;
 
