@@ -96,62 +96,67 @@
                                             {!! $service->icon_svg_path !!}
                                         </svg>
                                     </div>
-                                    <div class="mt-12">
-                                        <p class="text-xl font-semibold my-2">{{ $service->name }}</p>
-                                        <div class="flex space-x-2 text-gray-400 text-xs my-2">
-                                            <!-- svg  -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                            <p>Avaliação: {{ $service->eval_days }} dias úteis</p>
-                                        </div>
-                                        <div class="flex space-x-2 text-gray-400 text-xs my-2">
-                                            <!-- svg  -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                            <p>Execução: {{ $service->work_days }} dias úteis (após aprovação).</p>
-                                        </div>
+                                    <div class="pt-12 h-100 d-flex flex-column justify-content-between">
+                                        <div>
 
-                                        <div class="border-t-2"></div>
+                                            <p class="text-xl font-semibold my-2">{{ $service->name }}</p>
+                                            <div class="flex space-x-2 text-gray-400 text-xs my-2">
+                                                <!-- svg  -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
+                                                <p>Avaliação: {{ $service->eval_days }} dias úteis</p>
+                                            </div>
+                                            <div class="flex space-x-2 text-gray-400 text-xs my-2">
+                                                <!-- svg  -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                                <p>Execução: {{ $service->work_days }} dias úteis (após aprovação).</p>
+                                            </div>
 
-                                        <div class="flex justify-between">
-                                            <div class="my-4 h-40 text-base">
-                                                <p>{!! Str::markdown($service->description ? $service->description : '') !!}</p>
+                                            <div class="border-t-2"></div>
+
+                                            <div class="flex justify-between description">
+                                                <div class="my-4 text-base">
+                                                    <p>{!! Str::markdown($service->description ? $service->description : '') !!}</p>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="flex justify-between">
-                                            @if ($service->is_available)
-                                                <a href="{{ route('order.create', [$service->id]) }}"
-                                                    class="btn btn-primary my-2">Solicitar</a>
-                                            @else
-                                                <div class="alert alert-notice">
+                                        <div>
+                                            <div class="flex justify-between">
+                                                @if ($service->is_available)
+                                                    <a href="{{ route('order.create', [$service->id]) }}"
+                                                        class="btn btn-primary my-2">Solicitar</a>
+                                                @else
+                                                    <div class="alert alert-notice">
+                                                        <div class="flex-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-3"
+                                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                            <label class="text-sm">Esse serviço está temporariamente
+                                                                indisponível. Nossas desculpas!</label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                            @if ($service->notice)
+                                                <div class="alert alert-info">
                                                     <div class="flex-1">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-3"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
-                                                        <label class="text-sm">Esse serviço está temporariamente
-                                                            indisponível. Nossas desculpas!</label>
+                                                        <label class="text-xs">{{ $service->notice }}</label>
                                                     </div>
                                                 </div>
                                             @endif
                                         </div>
-
-                                        @if ($service->notice)
-                                            <div class="alert alert-info">
-                                                <div class="flex-1">
-                                                    <label class="text-xs">{{ $service->notice }}</label>
-                                                </div>
-                                            </div>
-                                        @endif
                                     </div>
                                 </div>
                             @empty
@@ -174,6 +179,10 @@
             min-height: 50vh;
             padding: 0 0 0 0;
             margin-bottom: 50px
+        }
+
+        .description {
+            min-height: 40%;
         }
 
     </style>
