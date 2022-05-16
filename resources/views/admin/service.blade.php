@@ -3,13 +3,13 @@
     <section id="hero" class="hero hero-slim d-flex align-items-center h-auto">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <div class="col-lg-4 hero-img">
                     <img src="{{ asset('img/undraw.co/online_groceries.svg') }}" class="w-75 h-auto mx-auto img-fluid"
                         alt="">
                 </div>
                 <div class="col-lg-8 d-flex flex-column justify-content-center my-3">
-                    <h1 data-aos="fade-up">Serviços</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">Gerenciamento dos serviços disponíveis para solicitação dos
+                    <h1>Serviços</h1>
+                    <h2>Gerenciamento dos serviços disponíveis para solicitação dos
                         clientes.</h2>
                 </div>
             </div>

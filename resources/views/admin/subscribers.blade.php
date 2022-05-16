@@ -3,12 +3,12 @@
     <section id="hero" class="hero hero-slim d-flex align-items-center h-auto">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <div class="col-lg-4 hero-img">
                     <img src="{{ asset('img/undraw.co/experts.svg') }}" class="w-75 h-auto mx-auto img-fluid" alt="">
                 </div>
                 <div class="col-lg-8 d-flex flex-column justify-content-center my-3">
-                    <h1 data-aos="fade-up">Newsletter</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">Gerenciamento de inscrições em nossa newsletter.</h2>
+                    <h1>Newsletter</h1>
+                    <h2>Gerenciamento de inscrições em nossa newsletter.</h2>
                 </div>
             </div>
         </div>
