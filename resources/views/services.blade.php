@@ -17,38 +17,14 @@
     </section>
 
     <div class="container" x-data="{ active: 'all' }">
-        {{-- <div class="row text-center mb-8">
-            <div class="col-12">
-                <a href="javascript:void(0)" class="font-semibold m-2"
-                    :class="{ 'btn btn-primary btn-outline rounded-full': active === 'all' }"
-                    @click.prevent="active = 'all'">Todos</a>
-                <a href="javascript:void(0)" class="font-semibold m-2"
-                    :class="{ 'btn btn-primary btn-outline rounded-full': active === 'popular' }"
-                    @click.prevent="active = 'popular'">
-                    Populares
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-purple-700 animate-pulse inline-block"
-                        viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-                @foreach ($categories as $category)
-                    <a href="javascript:void(0)" class="font-semibold m-2"
-                        :class="{ 'btn btn-primary btn-outline rounded-full': active === '{{ $category['slug'] }}' }"
-                        @click.prevent="active = '{{ $category['slug'] }}'">{{ $category['name'] }}</a>
-                @endforeach
-            </div>
-        </div> --}}
-
         <ul class="nav justify-content-center">
             <li class="nav-item d-flex">
-                <a href="javascript:void(0)" class="font-semibold m-2 nav-link"
+                <a href="javascript:void(0)" class="font-semibold nav-link"
                     :class="{ 'btn btn-primary btn-outline rounded-full': active === 'all' }"
                     @click.prevent="active = 'all'">Todos</a>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="font-semibold m-2 nav-link"
+                <a href="javascript:void(0)" class="font-semibold nav-link"
                     :class="{ 'btn btn-primary btn-outline rounded-full': active === 'popular' }"
                     @click.prevent="active = 'popular'">
                     Populares
@@ -62,7 +38,7 @@
             </li>
             @foreach ($categories as $category)
                 <li class="nav-item d-flex">
-                    <a href="javascript:void(0)" class="font-semibold m-2 nav-link"
+                    <a href="javascript:void(0)" class="font-semibold nav-link"
                         :class="{ 'btn btn-primary btn-outline rounded-full': active === '{{ $category['slug'] }}' }"
                         @click.prevent="active = '{{ $category['slug'] }}'">{{ $category['name'] }}</a>
                 </li>
@@ -98,7 +74,7 @@
                     <div class="flex items-center justify-center">
                         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                             @forelse ($item['services'] as $service)
-                                <div class="relative bg-white py-6 px-6 rounded-3xl w-96 my-4 shadow-xl">
+                                <div class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl">
                                     @if (!empty($service->order) && $service->order <= 0)
                                         <span
                                             class="absolute -top-1 left-24 inline-flex items-center justify-center px-2 py-1 text-md font-bold leading-none text-purple-500 border-2 border-dotted transform rotate-3 border-purple-500 rounded hover:bg-purple-100"
