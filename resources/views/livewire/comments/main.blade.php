@@ -16,27 +16,29 @@
                     <div class="mr-3">
                         <img class="rounded-full object-cover w-12 h-12 m-1" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $comment['user']['uid'] }}" alt="" />
                     </div>
-                    <div class="flex-1 relative border rounded-lg px-4 py-2 pb-3 sm:px-6 sm:py-4 leading-relaxed">
-                        <div class="dropdown absolute right-2 top-0 text-gray-400 ml-3 text-sm">
-                            <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots text-gray-400"></i>
-                            </button>
-
-                            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                                <li><button onclick=startEditingComment({{ $comment['id'] }}) class="dropdown-item" type="button">Editar</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
-                            </ul>
+                    <div class="flex-1 relative border rounded-lg px-4 py-2 pb-3 sm:px-6 sm:py-4 leading-relaxed ">
+                        <div class="absolute right-2 top-2 d-flex justify-content-end">
+                            @admin
+                                <span class="text-gray-400 ml-3 text-xl">
+                                    @if ($comment['read'])
+                                    <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
+                                    @else
+                                    <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
+                                    @endif
+                                </span>
+                            @endadmin
+                            <div class="dropdown text-gray-400 ml-3 text-sm {{ $comment['user_id'] != auth()->id() ? 'd-none' : '' }}">
+                                <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots text-gray-400"></i>
+                                </button>
+    
+                                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                    <li><button onclick=startEditingComment({{ $comment['id'] }}) class="dropdown-item" type="button">Editar</button></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
+                                </ul>
+                            </div>
                         </div>
-                        @admin
-                        <span class="absolute right-12 top-0 text-gray-400 ml-3 text-xl">
-                            @if ($comment['read'])
-                            <i class="bi bi-check-all text-green-400" title="Solicitante leu o comentário."></i>
-                            @else
-                            <i class="bi bi-check" title="Solicitante não leu o comentário ainda."></i>
-                            @endif
-                        </span>
-                        @endadmin
                         <div>
                             <strong>{{ Str::title($comment['user']['name']) }}</strong> 
                             <span class="text-xs text-gray-400 ml-3 mr-2">
