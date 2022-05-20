@@ -27,17 +27,19 @@
                                     @endif
                                 </span>
                             @endadmin
-                            <div class="dropdown text-gray-400 ml-3 text-sm {{ $comment['user_id'] != auth()->id() ? 'd-none' : '' }}">
-                                <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots text-gray-400"></i>
-                                </button>
-    
-                                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                                    <li><button onclick=startEditingComment({{ $comment['id'] }}) class="dropdown-item" type="button">Editar</button></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
-                                </ul>
-                            </div>
+                            @if ($comment['user_id'] == auth()->id())
+                                <div class="dropdown text-gray-400 ml-3 text-sm">
+                                    <button type="button" class="btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots text-gray-400"></i>
+                                    </button>
+        
+                                    <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                        <li><button onclick=startEditingComment({{ $comment['id'] }}) class="dropdown-item" type="button">Editar</button></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><button onclick="confirm_deletion({{ $comment['id'] }})" class="dropdown-item" type="button">Excluir</button></li>
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                         <div>
                             <strong>{{ Str::title($comment['user']['name']) }}</strong> 
@@ -71,41 +73,43 @@
                 Comment form
                 Source: https://tailwindcomponents.com/component/comment-form
             -->
-            <div class="antialiased w-full edit-comment-{{ $comment['id'] }} {{ $editInputVisible != $comment['id'] ? 'd-none' : '' }}">
-                <div class="space-y-4">
-                    <div class="flex">
-                        <div class="flex-shrink-0 mr-1">
-                            <div class="mt-2">
-                                <img class="rounded-full object-cover w-14 h-14" src="https://cc.uffs.edu.br/avatar/iduffs/{{ auth()->user()->uid }}" alt="" />
-                            </div>
-                        </div>
-                        <div class="flex-1 rounded-lg px-1 py-0 sm:px-6 sm:py-4 leading-relaxed">
-                            <div class="flex flex-wrap -mx-3 mb-6">
-                                <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                    <div class="form-control pb-3">
-                                        <label class="label">
-                                        <span class="label-text">Editar comentário</span>
-                                        </label> 
-                                        <textarea wire:model.lazy="editedContent" name="editedContent" class="tst textarea h-32 textarea-bordered @error('content') textarea-error @enderror"></textarea>
-                                    </div>
+            @if ($comment['user_id'] == auth()->id())
+                <div class="antialiased w-full edit-comment-{{ $comment['id'] }} {{ $editInputVisible != $comment['id'] ? 'd-none' : '' }}">
+                    <div class="space-y-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0 mr-1">
+                                <div class="mt-2">
+                                    <img class="rounded-full object-cover w-14 h-14" src="https://cc.uffs.edu.br/avatar/iduffs/{{ auth()->user()->uid }}" alt="" />
                                 </div>
-                                <div class="w-full md:w-full flex items-start md:w-full px-3">
-                                    <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
-                                        <p class="text-xs md:text-sm pt-px text-gray-400">
-                                            <i class="bi bi-info-circle"></i>
-                                            Você pode usar <a href="https://docs.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank" class="underline">markdown</a> para formatação.
-                                        </p>
+                            </div>
+                            <div class="flex-1 rounded-lg px-1 py-0 sm:px-6 sm:py-4 leading-relaxed">
+                                <div class="flex flex-wrap -mx-3 mb-6">
+                                    <div class="w-full md:w-full px-3 mb-2 mt-2">
+                                        <div class="form-control pb-3">
+                                            <label class="label">
+                                            <span class="label-text">Editar comentário</span>
+                                            </label> 
+                                            <textarea wire:model.lazy="editedContent" name="editedContent" class="tst textarea h-32 textarea-bordered @error('content') textarea-error @enderror"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="-mr-1">
-                                        <button onclick="confirm_update({{ $comment['id'] }})" class="btn btn-primary">Salvar</button>
-                                        <button onclick="stopEditingComment()" class="btn btn-primary">Cancelar</button>
+                                    <div class="w-full md:w-full flex items-start md:w-full px-3">
+                                        <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                                            <p class="text-xs md:text-sm pt-px text-gray-400">
+                                                <i class="bi bi-info-circle"></i>
+                                                Você pode usar <a href="https://docs.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank" class="underline">markdown</a> para formatação.
+                                            </p>
+                                        </div>
+                                        <div class="-mr-1">
+                                            <button onclick="confirm_update({{ $comment['id'] }})" class="btn btn-primary">Salvar</button>
+                                            <button onclick="stopEditingComment()" class="btn btn-primary">Cancelar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
         @empty
             <p>Nenhum comentário por enquanto</p>
