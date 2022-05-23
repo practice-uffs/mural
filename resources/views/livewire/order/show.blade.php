@@ -10,20 +10,21 @@
                     {{ $order->description }}
                 </p>
                 @if ($order->data)
-                    <div class="overflow-x-auto text-sm w-full py-4">
+                    <div class="text-sm py-4">
                         <p class="font-medium py-2">Informações adicionais</p>
-                        <table class="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Pergunta</th>
-                                    <th>Resposta</th> 
+                        <table>
+                            <thead class="d-xl-block d-none">
+                                <tr class="row t-row mw-100">
+                                    <th class="col-xl-5">Pergunta</th>
+                                    <th class="col-xl-7">Resposta</th> 
                                 </tr>
                             </thead> 
                             <tbody>
                                 @foreach ($order->data['fields'] as $field)
-                                    <tr>
-                                        <td class="text-wrap">{!! preg_replace('/\[(.+)\]\s*\((.+)\)/', '<a class="link-primary underline" href="$2">$1</a>', $field['text']) !!}</td>
-                                        <td class="text-wrap">
+                                    <tr class="row mw-100 py-2 t-row" style="">
+                                        <td class="text-wrap py-1 bold col-12 col-xl-5">{!! preg_replace('/\[(.+)\]\s*\((.+)\)/', '<a class="link-primary underline" href="$2">$1</a>', $field['text']) !!}</td>
+                                        <td class="text-wrap col-12 col-xl-7">
+                                            <i class="bi bi-chevron-compact-right d-xl-none"></i>
                                             @if ($field['type'] == 'select')
                                                 {{ $field['options'][$field['answer']] }}
                                             @elseif (@$field['data']['type'] == 'file')
@@ -190,3 +191,14 @@
         </div>
     </div>
 </div>
+<style>
+    .t-row {
+        border-bottom: solid 1px #efefef
+    }
+    
+    @media (max-width: 1200px) {
+        .bold {
+            font-weight: bold;
+        }
+    }
+</style>
