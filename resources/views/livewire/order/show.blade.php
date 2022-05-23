@@ -10,9 +10,9 @@
                     {{ $order->description }}
                 </p>
                 @if ($order->data)
-                    <div class="text-sm py-4">
+                    <div class="text-sm py-4 w-100">
                         <p class="font-medium py-2">Informações adicionais</p>
-                        <table>
+                        <table class="w-100">
                             <thead class="d-xl-block d-none">
                                 <tr class="row t-row mw-100">
                                     <th class="col-xl-5">Pergunta</th>
