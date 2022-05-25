@@ -15,7 +15,7 @@ class GithubWebhookController extends Controller
 {
     protected Github $github;
     protected GoogleDrive $drive;
-    
+
     /**
      * Create a new controller instance.
      *
@@ -67,7 +67,7 @@ class GithubWebhookController extends Controller
         }
 
         return $json;
-    }    
+    }
 
     /**
      * Entry point to our webhook handler
@@ -108,11 +108,11 @@ class GithubWebhookController extends Controller
         if ($clientMention == null || !str_contains($body, $clientMention)) {
             return response('Nothing interesting in this comment', 200);
         }
-        
+
         $body = str_replace($clientMention, '', $body);
         $order = Order::where('github_issue_link', $payload['issue']['html_url'])->firstOrFail();
 
-        $githubUser = $payload['comment']['user']['login'];        
+        $githubUser = $payload['comment']['user']['login'];
         $systemUser = $this->getSystemUser();
 
         if ($action == 'created') {
@@ -125,13 +125,13 @@ class GithubWebhookController extends Controller
             ]);
 
             OrderCommented::dispatch($order, $comment);
-               
+
             return response('Comment created', 201);
-        }  
-            
+        }
+
         if ($action == 'edited' || $action == 'deleted') {
             $comment = Comment::where('type', 'github:' . $payload['comment']['id'])->firstOrFail();
-            
+
             if ($action == 'edited') {
                 $comment->content = $body;
                 $comment->data = $payload;
@@ -221,7 +221,7 @@ class GithubWebhookController extends Controller
             $drive_in_link = isset($folders['in']) ? $folders['in']->getWebViewLink() : '';
             $drive_out_link = isset($folders['out']) ? $folders['out']->getWebViewLink() : '';
 
-            $comment = 
+            $comment =
                 'Criei as pastas dessa issue no Google Drive :' . "\n" .
                 '* <img width="16" height="16" src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" /> [Pasta da issue]('.$drive_link.') ' . "\n" .
                 '* [Em andamento]('.$drive_progress_link.')' . "\n" .
@@ -235,6 +235,50 @@ class GithubWebhookController extends Controller
         return response('Issue opened and commented: ' . $comment, 200);
     }
 
+    protected function handleIssueLabeled(array $payload, $org, $repo, $issue)
+    {
+        $label = $payload['label'];
+        $url = "https://github.com/".substr($payload['issue']['url'], strrpos($payload['issue']['url'], "practice-uffs"));
+        $order = Order::where('github_issue_link', $url)->first();
+
+        if($order) {
+            $mural_labels = ['mural:fila', 'mural:andamento', 'mural:revisão', 'mural:completo', 'mural:cancelado'];
+            $active_labels = $this->github->getLabels($org, $repo, $issue);
+
+            foreach($active_labels as $active_label) {
+                if (in_array($active_label['name'], $mural_labels) and strcmp($active_label['name'], $label['name']) != 0) {
+                    $this->github->removeLabel($org, $repo, $issue, $active_label['name']);
+                }
+            }
+
+            switch($label['name']) {
+                case $mural_labels[0]:
+                    $order->status = "todo";
+                    $order->save();
+                    break;
+                case $mural_labels[1]:
+                    $order->status = "doing";
+                    $order->save();
+                    break;
+                case $mural_labels[2]:
+                    $order->status = "review";
+                    $order->save();
+                    break;
+                case $mural_labels[3]:
+                    $order->status = "completed";
+                    $order->save();
+                    break;
+                case $mural_labels[4]:
+                    $order->status = "closed";
+                    $order->save();
+                    break;
+            }
+        }
+
+
+        return response('Order status updated to: ' . $label['name'], 200);
+    }
+
     protected function handleIssuesEvent(array $payload)
     {
         $org = $payload['organization']['login'];
@@ -245,7 +289,7 @@ class GithubWebhookController extends Controller
             return $this->handleIssueOpened($payload, $org, $repo, $issue);
 
         } else if ($payload['action'] == 'labeled') {
-            // TODO: aprimorar o que fazer quando issue recebe label
+            return $this->handleIssueLabeled($payload, $org, $repo, $issue);
 
         } else if ($payload['action'] == 'milestoned') {
             // TODO: aprimorar oque fazer quando issue é colocad em milestone
