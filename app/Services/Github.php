@@ -18,9 +18,9 @@ class Github
 
     /**
      * Returns an instance of `Github\Client`.
-     * 
+     *
      * @param bool $authenticated if the instance should be authenticated or not.
-     * 
+     *
      * @return Client instance of github client ready for use.
      */
     public function getClient($authenticated = false): Client
@@ -28,7 +28,7 @@ class Github
         $guzz_client = new \GuzzleHttp\Client([
             \GuzzleHttp\RequestOptions::VERIFY => \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath()
         ]);
-        
+
         $gh = Client::createWithHttpClient($guzz_client);
 
         if($authenticated) {
@@ -37,18 +37,28 @@ class Github
 
             $gh->authenticate($token, null, Client::AUTH_ACCESS_TOKEN);
         }
-        
+
         return $gh;
     }
 
     /**
      * @param string $content
-     * 
+     *
      * @return [type]
      */
     public function commentIssue($org, $repo, $issueNumber, string $content)
     {
         $this->client->api('issue')->comments()->create($org, $repo, $issueNumber, array('body' => $content));
+    }
+
+    public function removeLabel($org, $repo, $issueNumber, string $labelName)
+    {
+        $this->client->api('issue')->labels()->remove($org, $repo, $issueNumber, $labelName);
+    }
+
+    public function getLabels($org, $repo, $issueNumber)
+    {
+        return $this->client->api('issue')->labels()->all($org, $repo, $issueNumber);
     }
 
     /**
@@ -89,7 +99,7 @@ class Github
         }
 
         return $json;
-    }    
+    }
 
     /**
      * Process a webhook request sent by Github servers.
@@ -101,10 +111,10 @@ class Github
     public function processWebhookRequest(Request $request): array
     {
         $secret = config('github.webhook_secret');
-        
+
         $this->assertValidGithubWebhook($secret, $request);
 
-        $event = $request->headers->get('X-GitHub-Event');        
+        $event = $request->headers->get('X-GitHub-Event');
         $payload = $this->readPayloadAsJson($request);
 
         return [
