@@ -191,14 +191,16 @@
         </div>
     </div>
 </div>
-<style>
-    .t-row {
-        border-bottom: solid 1px #efefef
-    }
-    
-    @media (max-width: 1200px) {
-        .bold {
-            font-weight: bold;
+@section('styles')
+    <style>
+        .t-row {
+            border-bottom: solid 1px #efefef
         }
-    }
-</style>
+        
+        @media (max-width: 1200px) {
+            .bold {
+                font-weight: bold;
+            }
+        }
+    </style>
+@endsection

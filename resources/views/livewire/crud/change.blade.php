@@ -31,7 +31,7 @@
                     <label class="cursor-pointer label flex">
                         <span class="label-text">
                             {!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span><br />
-                            <span class="text-gray-400">{{ @$field['placeholder'] }}</span>
+                            <span class="text-wrap text-gray-400">{{ @$field['placeholder'] }}</span>
                             @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                         </span> 
                         <div>

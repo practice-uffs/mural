@@ -68,7 +68,7 @@
                         </tr>
                         @if ($editing == $item->id)
                             <tr>
-                                <td colspan="{{ count($fields) + 2 }}">@include(
+                                <td class="mwpx" colspan="{{ count($fields) + 2 }}">@include(
                                     'livewire.crud.change'
                                 )</td>
                             </tr>
@@ -101,3 +101,11 @@
         @endif
     @endif
 </div>
+@section('styles')
+    <style>
+        .mwpx {
+            max-width: 300px;
+        }
+
+    </style>
+@endsection
