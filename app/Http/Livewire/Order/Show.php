@@ -6,6 +6,7 @@ use App\Jobs\ProcessGoogleDriveUploads;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Http\Controllers\API\GithubWebhookController;
 
 class Show extends Component
 {
@@ -41,7 +42,39 @@ class Show extends Component
             'status' => $this->status,
         ]);
 
+        $this->changeGithubLabel();
+
         $this->emit('order:statusChanged');
+    }
+
+    public function changeGithubLabel()
+    {
+        $tail = substr($this->github_issue_link, strpos($this->github_issue_link, 'github.com/'));
+        $array = preg_split("/[\/]/",$tail);
+        $org = $array[1];
+        $repo = $array[2];
+        $issue = $array[4];
+
+        switch($this->status)
+        {
+            case 'todo':
+                GithubWebhookController::class;
+                break;
+            case 'doing':
+
+                break;
+            case 'review':
+
+                break;
+            case 'completed':
+
+                break;
+            case 'closed':
+
+                break;
+            default:
+
+        }
     }
 
     public function saveFiles() {
