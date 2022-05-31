@@ -15,8 +15,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-10 offset-1">
+        <div class="row d-flex justify-content-center">
+            <div class="feedback-form col-md-10">
                 @livewire('order.create', [
                     'model' => 'App\Models\Order',
                     'service' => $service,
