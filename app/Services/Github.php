@@ -56,6 +56,11 @@ class Github
         $this->client->api('issue')->labels()->remove($org, $repo, $issueNumber, $labelName);
     }
 
+    public function addLabel($org, $repo, $issueNumber, string $labelName)
+    {
+        $this->client->api('issue')->labels()->add($org, $repo, $issueNumber, $labelName);
+    }
+
     public function getLabels($org, $repo, $issueNumber)
     {
         return $this->client->api('issue')->labels()->all($org, $repo, $issueNumber);
