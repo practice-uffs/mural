@@ -44,7 +44,9 @@ class Show extends Component
             'status' => $this->status,
         ]);
 
-        $this->changeGithubLabel();
+        if ($this->github_issue_link){
+            $this->changeGithubLabel();
+        }
 
         $this->emit('order:statusChanged');
     }
