@@ -103,6 +103,19 @@ class GithubWebhookController extends Controller
         $action = $payload['action'];
         $body = $payload['comment']['body'];
 
+        $regex = '/(mural\:)(\s)?((http|https)\:\/\/)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,5}(\/\S*)?/';
+
+        if (preg_match($regex, $body)) {
+            if($action == 'created') {
+                $org = $payload['organization']['login'];
+                $repo = $payload['repository']['name'];
+                $issue = $payload['issue']['number'];
+                $body = $payload['comment']['body'];
+
+                return $this->handleIssueOpened($body, $org, $repo, $issue);
+            }
+        }
+
         $clientMention = config('github.issue_client_mention');
 
         if ($clientMention == null || !str_contains($body, $clientMention)) {
@@ -181,9 +194,8 @@ class GithubWebhookController extends Controller
         $this->drive->rename($folderId, $name);
     }
 
-    protected function createIssueWorkingFolder(array $payload, $issue, $repo)
+    protected function createIssueWorkingFolder($body, $issue, $repo)
     {
-        $body = $payload['issue']['body'];
         $orderId = $this->findAppOrderLink($body);
 
         $order = $orderId != null ? Order::where('id', $orderId)->first() : null;
@@ -210,10 +222,10 @@ class GithubWebhookController extends Controller
         return $folders;
     }
 
-    protected function handleIssueOpened(array $payload, $org, $repo, $issue)
+    protected function handleIssueOpened($body, $org, $repo, $issue)
     {
         $comment = '';
-        $folders = $this->createIssueWorkingFolder($payload, $issue, $repo);
+        $folders = $this->createIssueWorkingFolder($body, $issue, $repo);
 
         if($folders != null) {
             $drive_link = isset($folders['folder']) ? $folders['folder']->getWebViewLink() : '';
@@ -299,9 +311,10 @@ class GithubWebhookController extends Controller
         $org = $payload['organization']['login'];
         $repo = $payload['repository']['name'];
         $issue = $payload['issue']['number'];
+        $body = $payload['issue']['body'];
 
         if ($payload['action'] == 'opened') {
-            return $this->handleIssueOpened($payload, $org, $repo, $issue);
+            return $this->handleIssueOpened($body, $org, $repo, $issue);
 
         } else if ($payload['action'] == 'labeled') {
             return $this->handleIssueLabeled($payload, $org, $repo, $issue);
