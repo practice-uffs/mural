@@ -59,7 +59,8 @@ class Show extends Component
         $repo = $array[2];
         $issue = $array[4];
 
-        $gwc = new GithubWebhookController(new Github(config('github')), new GoogleDrive(config('google.drive')));
+        $gwc = app()->make(Github::class);
+
         switch($this->status)
         {
             case NULL:
