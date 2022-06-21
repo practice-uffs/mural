@@ -110,9 +110,10 @@ class GithubWebhookController extends Controller
                 $org = $payload['organization']['login'];
                 $repo = $payload['repository']['name'];
                 $issue = $payload['issue']['number'];
+                $issue_link = $payload['issue']['html_url'];
                 $body = $payload['comment']['body'];
 
-                return $this->handleIssueOpened($body, $org, $repo, $issue);
+                return $this->handleIssueOpened($body, $org, $repo, $issue, $issue_link);
             }
         }
 
@@ -194,7 +195,7 @@ class GithubWebhookController extends Controller
         $this->drive->rename($folderId, $name);
     }
 
-    protected function createIssueWorkingFolder($body, $issue, $repo)
+    protected function createIssueWorkingFolder($body, $issue, $repo, $issue_link)
     {
         $orderId = $this->findAppOrderLink($body);
 
@@ -209,6 +210,8 @@ class GithubWebhookController extends Controller
         // A issue tem menção a um serviço do mural. Nesse caso, vamos encontrar as informações
         // de pasta no google drive desse serviço e utilizar elas.
         $folders = $this->drive->getIssueWorkingFolderStructureByName('mural#' . $orderId);
+        $order->github_issue_link = $issue_link;
+        $order->save();
 
         if ($folders == null) {
             // Não achamos a pasta no drive relacionada ao pedido. Vamos criar e deu.
@@ -222,10 +225,10 @@ class GithubWebhookController extends Controller
         return $folders;
     }
 
-    protected function handleIssueOpened($body, $org, $repo, $issue)
+    protected function handleIssueOpened($body, $org, $repo, $issue, $issue_link)
     {
         $comment = '';
-        $folders = $this->createIssueWorkingFolder($body, $issue, $repo);
+        $folders = $this->createIssueWorkingFolder($body, $issue, $repo,$issue_link);
 
         if($folders != null) {
             $drive_link = isset($folders['folder']) ? $folders['folder']->getWebViewLink() : '';
@@ -312,9 +315,10 @@ class GithubWebhookController extends Controller
         $repo = $payload['repository']['name'];
         $issue = $payload['issue']['number'];
         $body = $payload['issue']['body'];
+        $issue_link = $payload['issue']['html_url'];
 
         if ($payload['action'] == 'opened') {
-            return $this->handleIssueOpened($body, $org, $repo, $issue);
+            return $this->handleIssueOpened($body, $org, $repo, $issue, $issue_link);
 
         } else if ($payload['action'] == 'labeled') {
             return $this->handleIssueLabeled($payload, $org, $repo, $issue);
