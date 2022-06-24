@@ -127,4 +127,19 @@ class Github
             'payload' => $payload
         ];
     }
+
+    public function setMuralLabel($org, $repo, $issue, $label = NULL)
+    {
+        $mural_labels = ['mural:fila', 'mural:andamento', 'mural:revisão', 'mural:completo', 'mural:cancelado'];
+        $active_labels = $this->getLabels($org, $repo, $issue);
+
+        foreach ($active_labels as $active_label) {
+            if (in_array($active_label['name'], $mural_labels) and strcmp($active_label['name'], $label) != 0) {
+                $this->removeLabel($org, $repo, $issue, $active_label['name']);
+            }
+        }
+        if ($label) {
+            $this->addLabel($org, $repo, $issue, $label);
+        }
+    }
 }

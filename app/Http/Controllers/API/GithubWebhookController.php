@@ -250,21 +250,6 @@ class GithubWebhookController extends Controller
         return response('Issue opened and commented: ' . $comment, 200);
     }
 
-    public function setMuralLabel($org, $repo, $issue, $label = NULL)
-    {
-        $mural_labels = ['mural:fila', 'mural:andamento', 'mural:revisão', 'mural:completo', 'mural:cancelado'];
-        $active_labels = $this->github->getLabels($org, $repo, $issue);
-
-        foreach ($active_labels as $active_label) {
-            if (in_array($active_label['name'], $mural_labels) and strcmp($active_label['name'], $label) != 0) {
-                $this->github->removeLabel($org, $repo, $issue, $active_label['name']);
-            }
-        }
-        if($label) {
-            $this->github->addLabel($org, $repo, $issue, $label);
-        }
-    }
-
     protected function handleIssueLabeled(array $payload, $org, $repo, $issue)
     {
         $label = $payload['label'];

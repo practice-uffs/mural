@@ -6,9 +6,7 @@ use App\Jobs\ProcessGoogleDriveUploads;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Http\Controllers\API\GithubWebhookController;
 use App\Services\Github;
-use App\Services\GoogleDrive;
 
 class Show extends Component
 {
@@ -37,6 +35,7 @@ class Show extends Component
 
     public function save()
     {
+        $previousGithubIssueLink = substr($this->order->github_issue_link,0, strlen($this->github_issue_link));
         $this->validate();
 
         $this->order->update([
@@ -44,8 +43,12 @@ class Show extends Component
             'status' => $this->status,
         ]);
 
+
         if ($this->github_issue_link){
             $this->changeGithubLabel();
+            if(!$previousGithubIssueLink){
+                $this->createGDriveFolderComment();
+            }
         }
 
         $this->emit('order:statusChanged');
@@ -59,7 +62,8 @@ class Show extends Component
         $repo = $array[2];
         $issue = $array[4];
 
-        $gwc = new GithubWebhookController(new Github(config('github')), new GoogleDrive(config('google.drive')));
+        $gwc = app()->make(Github::class);
+
         switch($this->status)
         {
             case NULL:
@@ -82,6 +86,19 @@ class Show extends Component
                 break;
             default:
         }
+    }
+
+    public function createGDriveFolderComment()
+    {
+        $tail = substr($this->github_issue_link, strpos($this->github_issue_link, 'github.com/'));
+        $array = preg_split("/[\/]/", $tail);
+        $org = $array[1];
+        $repo = $array[2];
+        $issue = $array[4];
+        $content = "mural: ".env('APP_URL')."servico/".$this->order->id;
+
+        $gwc = app()->make(Github::class);
+        $gwc->commentIssue($org, $repo, $issue, $content);
     }
 
     public function saveFiles() {
