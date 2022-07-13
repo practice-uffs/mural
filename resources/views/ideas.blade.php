@@ -59,7 +59,7 @@
         @foreach ($group as $idea)
             <div class="idea-stream">        
                 <div class="x{{ rand(1, 9) }}">
-                    <div class="card w-96 transform {{ Arr::random(['', '-']) }}rotate-{{ Arr::random(['2', '3', '6']) }} shadow-lg compact side bg-base-100 p-2" style="top: {{ rand(10, 650) }}px; left: {{ rand(-600, 900) }}px">
+                    <div class="card w-96 transform {{ Arr::random(['', '-']) }}rotate-{{ Arr::random(['2', '3', '6']) }} shadow-lg compact side bg-base-100 p-2" style="top: {{ rand(170, 810) }}px; left: {{ rand(-600, 900) }}px">
                         <div class="flex-row items-center space-x-4 card-body">
                             <div>
                                 <img src="{{ asset('img/ideas/bulb.svg') }}" class="w-14 h-14">
@@ -86,7 +86,7 @@
         </header>
 
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-12">
                 @livewire('crud.main', [
                     'model' => 'App\Models\Idea',
                     'show_list' => false,
