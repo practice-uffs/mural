@@ -30,6 +30,7 @@ class Orders extends Component
             'pending' => 'Aguardando análise',
             'todo' => 'Na fila (aceitamos, mas não começamos)',
             'doing' => 'Em andamento',
+            'review' => 'Em revisão',
             'closed' => 'Cancelado (não entregamos algo)',
             'completed' => 'Finalizado (entregamos algo)',
         ];
@@ -57,7 +58,7 @@ class Orders extends Component
         if (empty($this->filter['service_id'])) {
             return;
         }
-        
+
         $query->where('service_id', $this->filter['service_id']);
     }
 
@@ -88,9 +89,12 @@ class Orders extends Component
         case 'completed': // 'Finalizado',
             $query->where('status', 'completed');
             break;
+        case 'review': // 'Em revisão',
+            $query->where('status', 'review');
+            break;
         default: // 'Qualquer',
         }
-    }    
+    }
 
     public function findOrders()
     {
@@ -132,7 +136,7 @@ class Orders extends Component
                                     ->where('category_id', $value)
                                     ->get();
         }
-    }    
+    }
 
     public function render()
     {
