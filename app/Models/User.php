@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Firebase\JWT\JWT;
+
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -149,4 +152,32 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->channels->fcm_token;
     }
+
+    public function getOrCreateJWTAttribute($teste)
+    {
+        $key = env('APP_KEY');
+        $user = $this;
+        $user = array(
+            "uid" => $user->uid,
+            "email" => $user->email,
+            "name"=> $user->name
+        );
+       
+        $app_id = (int) env('APP_ID');
+
+        $payload = array(
+            'iss' => env('APP_NAME'),
+            'aud' => 'practice.uffs.edu.br',
+            'iat' => Carbon::now()->timestamp,
+            'nbf' => Carbon::now()->timestamp - 1,
+            'app_id' => $app_id,
+            'user' => $user,
+        );
+        
+        $jwt = JWT::encode($payload, $key, 'HS256');
+        
+        return $jwt;
+    }
+
+
 }

@@ -8,6 +8,33 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+#aura_iframe{
+  height:50%;
+  width:30%;
+  position: fixed;
+  bottom:80px;
+  right:40px;
+  border-radius: 10px
+
+}
+
+#aura_span {
+  position: fixed;
+  bottom: 30px;
+  right: 70px;
+  background-color: #c0d7e1;
+  padding: 3px;
+  border-radius: 20px
+  cursor: pointer;
+}
+
+@media(max-width: 700px){
+  #aura_iframe{
+    height:60%;
+    width:80%;
+  }
+}
+
 :root {
   scroll-behavior: smooth;
 }
