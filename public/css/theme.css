@@ -25,6 +25,7 @@
   background-color: #c0d7e1;
   padding: 3px;
   border-radius: 20px
+  cursor: pointer;
 }
 
 @media(max-width: 700px){
