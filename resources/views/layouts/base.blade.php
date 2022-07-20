@@ -54,7 +54,7 @@
 
         <img id="aura_span" class="d-none" height="45px" width="45px" src="{{ asset('img/aura/aura_icon.png') }}" />
 
-        <iframe id="aura_iframe" class="d-none " src="{{ env('API_URL') }}widgets/aura?token={{ Auth::user()->orcreatejwt ?? '' }}" frameborder="0"></iframe>
+        <iframe id="aura_iframe" class="d-none " src="{{ env('API_URL') }}v0/widgets/aura?token={{ Auth::user()->orcreatejwt ?? '' }}" frameborder="0"></iframe>
         
         <script>
             var IsClicked = false
@@ -68,7 +68,7 @@
             }
             var xmlHttp = new XMLHttpRequest();
             try {
-                xmlHttp.open( "GET", "{{ env('API_URL') }}widgets/aura", false )
+                xmlHttp.open( "GET", "{{ env('API_URL') }}v0/widgets/aura", false )
                 xmlHttp.send( null );
                 document.getElementById("aura_span").classList.remove('d-none')  
             } catch(err) {
