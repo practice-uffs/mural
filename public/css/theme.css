@@ -14,8 +14,8 @@
   position: fixed;
   bottom:80px;
   right:40px;
-  border-radius: 10px
-
+  border-radius: 10px;
+  z-index: 10;
 }
 
 #aura_span {
