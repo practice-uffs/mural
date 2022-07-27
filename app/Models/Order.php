@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 define('NOW_PLUS_FEW_DAYS', now()->addDays(10)->format('Y-m-d'));
+define('NOW_PLUS_FEW_DAYS_VALIDATION', Carbon::createFromFormat('Y-m-d', NOW_PLUS_FEW_DAYS)->subDays(1)->format('Y-m-d'));
 
 class Order extends Model
 {
@@ -89,7 +90,8 @@ class Order extends Model
                 'type' => 'date',
                 'label' => 'Prazo de entrega sugerido',
                 'help' => 'Quando você gostaria de ter um primeiro material para revisão. Esse tempo deve considerar alguns dias para que nossa equipe possa fazer a análise do pedido. Além disso, essa data é sugestiva e não há garantias que ela será atendida.',
-                'attr' => 'min='.NOW_PLUS_FEW_DAYS.' '
+                'attr' => 'min=' . NOW_PLUS_FEW_DAYS . ' ',
+                'validation' => 'after:' . NOW_PLUS_FEW_DAYS_VALIDATION . ' '
             ],
         ]
     ];
@@ -162,7 +164,8 @@ class Order extends Model
      *
      * @return stdClass objeto com os campos `text`, `explanation`, `color`.
      */
-    public function situation() {
+    public function situation()
+    {
         if ($this->status == 'doing') {
             return (object) [
                 'text' => 'Em andamento',
@@ -210,11 +213,13 @@ class Order extends Model
         ];
     }
 
-    public function getCreatedAtHumanAttribute(){
+    public function getCreatedAtHumanAttribute()
+    {
+
         $diffInDays = $this->created_at->diffInDays(Carbon::now());
 
         if ($diffInDays > 3) {
-           return $this->created_at->format('d/m/Y (h:i)');
+            return $this->created_at->format('d/m/Y (h:i)');
         }
 
         return $this->created_at->diffForHumans();
