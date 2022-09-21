@@ -5,14 +5,14 @@
 @endsection
 
 @section('wideTopContent')
-<section class="hero d-flex align-items-center bulb-space">
+<section class="hero d-flex align-items-center bulb-space pb-0">
     <div class="container-lg idea-body">
-        <div class="row items-center justify-center">
-            <div class="col-5 d-flex justify-content-center" data-aos="zoom-out" data-aos-delay="200">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-center">
+            <div class="col-5 d-flex justify-content-center pt-5" data-aos="zoom-out" data-aos-delay="200">
                 <!-- Bulb and animation from: https://codepen.io/MuT/pen/LYYoJZb -->
                 <div class="fancy-bulb">
                     <div class="left-streaks streaks"></div>
-                    <svg id="bulb" class="w-48 h-auto transform rotate-12" version="1.1"
+                    <svg id="bulb" class="sm:w-48 h-auto transform rotate-12" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 275.3 413.3" enable-background="new 0 0 275.3 413.3" xml:space="preserve">
                         <g id="off">
@@ -48,7 +48,7 @@
                 <h2 data-aos="fade-up" data-aos-delay="400">Ideias podem mudar a Universidade. Queremos ouvir as suas
                     para podermos transformá-las em realidade.</h2>
                 <span data-aos="fade-up" data-aos-delay="500" class="text-md text-gray-500 mt-4"><strong>Dica:</strong>
-                    clique na lâmpada ao lado para ver uma mudança 😁</span>
+                    clique na lâmpada para ver uma mudança 😁</span>
             </div>
         </div>
     </div>
@@ -75,6 +75,7 @@
         @endforeach
     @endforeach
 </div>
+
 @endsection
 
 @section('content')
@@ -86,15 +87,13 @@
         </header>
 
         <div class="row">
-            <div class="col-8 offset-2">
-                @livewire('crud.main', [
-                    'model' => 'App\Models\Idea',
-                    'show_list' => false,
-                    'include_create' => [
-                        'user_id' => $user->id,
-                    ]
-                ])
-            </div>
+            @livewire('crud.main', [
+                'model' => 'App\Models\Idea',
+                'show_list' => false,
+                'include_create' => [
+                    'user_id' => $user->id,
+                ]
+            ])
         </div>
     </div>
     @endsection
