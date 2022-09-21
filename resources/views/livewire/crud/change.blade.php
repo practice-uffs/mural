@@ -156,7 +156,7 @@
                 <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
             @endif
         @else
-            <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn w-full lg:btn-wide btn-primary">Enviar</button>
+            <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn btn-wide btn-primary">Enviar</button>
         @endif
     @endif
 </div> 
