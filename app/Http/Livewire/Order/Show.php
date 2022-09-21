@@ -95,7 +95,7 @@ class Show extends Component
         $org = $array[1];
         $repo = $array[2];
         $issue = $array[4];
-        $content = "mural: ".env('APP_URL')."/servico/".$this->order->id;
+        $content = "mural: ".env('APP_URL')."servico/".$this->order->id;
 
         $gwc = app()->make(Github::class);
         $gwc->commentIssue($org, $repo, $issue, $content);
