@@ -55,15 +55,20 @@
         <img id="aura_span" class="d-none" height="45px" width="45px" src="{{ asset('img/aura/aura_icon.png') }}" />
 
         <iframe id="aura_iframe" class="d-none " src="{{ env('API_URL') }}v0/widgets/aura?token={{ Auth::user()->orcreatejwt ?? '' }}" frameborder="0"></iframe>
-
+           
         <script>
             var IsClicked = false
             document.getElementById('aura_span').onclick = function(e){
                 IsClicked = !IsClicked
                 if (IsClicked){
-                    document.getElementById("aura_iframe").classList.remove('d-none')
+                    document.getElementById("aura_iframe").classList.remove('d-none');
+                    document.getElementById("aura_span").classList.add("close-button");
+                    if (window.outerWidth < 450)
+                        document.querySelector(".back-to-top").classList.add('d-none');
                 } else {
                     document.getElementById("aura_iframe").classList.add('d-none')
+                    document.getElementById("aura_span").classList.remove("close-button");
+                    document.querySelector(".back-to-top").classList.remove('d-none');
                 }
             }
             var xmlHttp = new XMLHttpRequest();
