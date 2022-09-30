@@ -2,6 +2,7 @@
 
 @section('styles')
 <link href="{{ asset('css/ideas.css') }}" rel="stylesheet">
+<link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('wideTopContent')
@@ -75,6 +76,39 @@
         @endforeach
     @endforeach
 </div>
+<div class="ideas-mobile">
+    <header class="section-header" style="padding-bottom: 0; padding-top: 80px;">
+        <h2>Ajude-nos a melhorar</h2>
+        <p>Acompanhe ideias<br>já sugeridas!</p>
+    </header>
+    <div class="slide-container swiper">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+                @foreach ($groups as $group)
+                @foreach ($group as $idea)
+                    <div class="card swiper-slide" style="align-items: center; height: 250px; justify-content: center;">        
+                            <div class="card w-96 shadow-md compact side bg-base-100 p-2" style="transform: scale(.75);">
+                                <div class="flex-row items-center space-x-4 card-body">
+                                    <div>
+                                        <img src="{{ asset('img/ideas/bulb.svg') }}" class="w-14 h-14">
+                                    </div>
+                                    <div>
+                                        <h2 class="card-title">{{ $idea->title }}</h2>
+                                        <p class="text-base-content text-gray-500">{{ $idea->description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                @endforeach
+                @endforeach
+            </div>
+        </div>
+
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination" style="display:none;"></div>
+    </div>
+</div>
 @endsection
 
 @section('content')
@@ -107,5 +141,35 @@
                 container.classList.toggle('active');
             }
         }
+
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade: 'true',
+            grabCursor: 'true',
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+            },
+            navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            },
+
+            breakpoints:{
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 1,
+                },
+                750: {
+                    slidesPerView: 2,
+                },
+            },
+        });
     </script>
     @endsection
