@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
@@ -14,5 +17,11 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.user');
+    }
+
+    public function download(){
+
+        // return Excel::download($emails->toJson(), 'emails.xlsx');
+        return Excel::download(new UsersExport, 'emails.xlsx');
     }
 }
