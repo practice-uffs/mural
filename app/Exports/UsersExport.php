@@ -14,7 +14,7 @@ class UsersExport implements FromCollection
     {
         // ini_set('memory_limit', '4056M');
         if(auth::check()){
-            return User::get(['email']);
+            return User::where('type', 'normal')->get(['email']);
         }
     }
 }
