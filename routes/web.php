@@ -75,6 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
         Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
         Route::get('/gerenciar/usuarios', [UserController::class, 'index'])->name('admin.user');
+        Route::get('/gerenciar/usuarios/download', [UserController::class, 'download'])->name('admin.userDownload');
         Route::get('/gerenciar/newsletter', [SubscriberController::class, 'index'])->name('admin.subscriber');
     });
 });

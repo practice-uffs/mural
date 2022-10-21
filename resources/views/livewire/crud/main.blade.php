@@ -7,6 +7,7 @@
         @if (count($items) > 0)
             <header class="section-header mt-8">
                 <h2>Lista de registros existentes</h2>
+                <a href="{{route('admin.userDownload')}}" class="btn btn-sm btn-outline btn-primary py-0">Baixar</a>
             </header>
 
             <div>
@@ -22,6 +23,7 @@
                             @endif
                             <th>{{ $field['label'] }}</th>
                         @endforeach
+                            
                         <th></th>
                     </tr>
                 </thead>
