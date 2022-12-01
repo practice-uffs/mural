@@ -1,8 +1,8 @@
 @extends('layouts.base')
 @section('content')
 
-<section id="hero" class="hero hero-slim d-flex align-items-center mt-0 pt-5 mt-5 h-100 mb-10">
-    <div class="container">
+<section id="hero" class="hero hero-slim d-flex align-items-center mt-0 pt-15 mt-15 h-100 mb-10">
+    <div class="container mt-15">
         <div class="row">
             <div class="col-5 hero-img" data-aos="zoom-out" data-aos-delay="200">
                 <img src="{{ asset('img/undraw.co/feedback.svg') }}" class="w-96 h-auto mx-auto" alt="">

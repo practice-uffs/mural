@@ -8,7 +8,7 @@
 <section class="hero d-flex align-items-center bulb-space pb-0">
     <div class="container-lg idea-body">
         <div class="flex flex-col-reverse md:flex-row items-center justify-center">
-            <div class="col-5 d-flex justify-content-center pt-5" data-aos="zoom-out" data-aos-delay="200">
+            <div class="col-5 d-flex justify-content-center" data-aos="zoom-out" data-aos-delay="200">
                 <!-- Bulb and animation from: https://codepen.io/MuT/pen/LYYoJZb -->
                 <div class="fancy-bulb">
                     <div class="left-streaks streaks"></div>
