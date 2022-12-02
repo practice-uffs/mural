@@ -43,7 +43,7 @@
         @include('layouts.header')
         @yield('wideTopContent')
 
-        <div class="container-lg">
+        <div class="container-lg mt-10">
             @yield('content')
         </div>
 
