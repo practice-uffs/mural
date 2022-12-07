@@ -75,6 +75,11 @@
 
     <!-- list of elements -->
     <div class="row mt-4">
+        @php  
+            //bug fix: custom path to prevent redirection error
+            $orders->setPath('/mural/gerenciar/pedidos');
+        @endphp
+
         <div class="col-12">{!! $orders->links() !!}</div>
     </div>
 
