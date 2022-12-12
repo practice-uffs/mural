@@ -118,5 +118,81 @@
 
         <!-- Page scripts -->
         @yield('scripts')
+
+
+
+
+
+        <div id="popup-container" class="popup-container">
+            <!--Proporção-->
+            <div class="popup-align">
+                <!--Content-->
+                <div class="popup-content"> 
+                  
+                    <!--Titulo-->
+                    <h1 style="font-weight:100;font-size:2em;color:#E43; text-align:center ">Aviso importante!</h1>
+                    <br><br>
+                    <!--Texto-->
+                    <p style="font-size: 16px;">
+                        É de conhecimento geral que nos últimos dias houve um novo corte no recurso financeiro destinado às universidades, mas desta vez, um dos grupos que mais sofreram o impacto dessa ação infundada foram os bolsistas, que tiveram suas bolsas retidas sem aviso prévio, acarretando em diversos transtornos e dificuldades financeiras, principalmente para aqueles que dependem desse recurso para sobrevivência e permanência na universidade.
+                        <br><br>
+                        Sendo assim, nós, bolsistas do PRACTICE, comunicamos que estamos paralisando nossas atividades até que o pagamento das bolsas seja normalizado, e dessa forma, tenhamos condições favoráveis para continuar atuando novamente. Durante esse período, nenhuma nova solicitação será aceita, e nenhum outro serviço será realizado.
+                        <br><br>
+                        O PRACTICE é um programa de extrema relevância dentro e fora da comunidade acadêmica, pois desde 2020 trabalhamos arduamente para atender a todas as solicitações que chegam até nós, bem como entregar produtos e serviços de qualidade, e o reflexo disso são todas as lives, cartilhas, panfletos, identidades visuais,  e centenas de outros serviços já foram entregues durante todo esse tempo.
+                        <br><br>
+                        Vale ressaltar que o PRACTICE é um programa interdisciplinar e multicampi, então a medida que se faz necessário o envolvimento de bolsistas de diversos cursos e campi para atender as demandas, todos estes estão sendo prejudicados diante dessa situação inesperada, o que torna o problema ainda mais grave.
+                        <br><br>
+                        Esperamos que nos próximos dias todo esse cenário seja revertido, e que tanto nós, bolsistas, como todos aqueles que estão sendo prejudicados, possam se restabelecer e continuar trabalhando a serviço da comunidade.</p>
+                </div>
+            </div>       
+        </div>
+
+        <style>
+            .popup-container{
+                position: fixed; 
+                right: 0;
+                top: 0;
+                width:100%; 
+                height:100vh; 
+                background-color: rgba(0, 0, 0, 0.5) ; 
+                display:flex; 
+                justify-content: center; 
+                align-items: center;
+                font-family:Roboto;
+                color:#999; 
+                z-index: 1000
+            }
+
+            .popup-align{
+                height: auto;
+                max-width: 50vw;
+              
+         
+                background-color: #EEEEF4;
+                box-shadow: 1px 0px 5px black;
+                border-radius: 10px; 
+                padding: 50px;
+                padding-right: 0;
+            }
+
+            .popup-content{
+                width: auto;
+                height: 100%;                
+                max-height: 70vh;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                padding-right: 50px;
+                text-align:justify;
+            }
+
+            @media screen and (max-width: 900px) {
+                .popup-align{
+                   max-width: 90vw;
+                }
+            }
+            
+        </style>
+
+
     </body>
 </html>
