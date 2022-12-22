@@ -71,7 +71,24 @@
                 <a href="#" class="label-text-alt"></a>
             </label>
         </div>
+        
+        <!-- altera filtro de criação-->
+        <div class="col-6">
+            <label class="label">
+                <span class="label-text">Alterar ordem cronológica</span>
+                <a href="#" class="label-text-alt"></a>
+            </label>
+            <select wire:model="filter.sortDate" class="select select-bordered w-full">
+                @foreach ($sort_by_date as $option => $text)
+                    <option value="{{ $option }}">{{ $text }}</option>
+                @endforeach
+            </select>
+            <label class="label">
+                <a href="#" class="label-text-alt"></a>
+            </label>
+        </div>
     </div>
+   
 
     <!-- list of elements -->
     <div class="row mt-4">
