@@ -34,6 +34,11 @@ class Orders extends Component
             'closed' => 'Cancelado (não entregamos algo)',
             'completed' => 'Finalizado (entregamos algo)',
         ];
+        $this->sort_by_date = [
+                'Data de criação',
+                'Último comentário',
+                'Última atualização'
+        ];
         $this->findOrders();
     }
 
@@ -95,7 +100,25 @@ class Orders extends Component
         default: // 'Qualquer',
         }
     }
-
+    
+    protected function applyDateFilter(Builder &$query){
+            $selected = @$this->filter['sortDate'];
+        
+            $query->leftJoin('comments','comments.commentable_id','=','orders.id')
+                  ->select('comments.created_at as commentable_created',
+                            'comments.commentable_id',
+                            'orders.*'
+            );// left join com o id dos pedidos e comentarios(cada comentário vira um card de pedido)
+        
+            if ($selected=='1')
+                $query->orderBy('commentable_created','desc');
+            elseif ($selected=='2')
+                $query->orderBy('updated_at','desc');
+            else  
+                $query->orderBy('created_at','desc');
+                
+        }
+    
     public function findOrders()
     {
         $query = Order::with([
@@ -110,9 +133,8 @@ class Orders extends Component
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
         $this->applyStatusFilter($query);
-
-        $query->orderBy('updated_at', 'desc');
-
+        $this->applyDateFilter($query);
+        
         $this->orders = $query->paginate($this->paginationAmount);
     }
 
