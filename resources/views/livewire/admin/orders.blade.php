@@ -72,7 +72,7 @@
             </label>
         </div>
         
-        <!-- altera filtro de criação-->
+        <!-- altera filtro de ordem cronológica.-->
         <div class="col-6">
             <label class="label">
                 <span class="label-text">Alterar ordem cronológica</span>
