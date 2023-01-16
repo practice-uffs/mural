@@ -12,6 +12,10 @@ use Livewire\WithPagination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Redirector;
+
+
 
 /**
  *
@@ -49,6 +53,8 @@ class Main extends Component
     public $search;
     public $userType;
     public $testeRoute;
+    public bool $show_input = false;
+ 
     
     /**
      *
@@ -319,32 +325,42 @@ class Main extends Component
     
     public function userType($v){
         $this->userType = $v; 
+        $this->updatingSearch();
         return $this->userType;
+    
     }
 
-  
     
-    
+     /**
 
+     * Set the current page resolver callback.
+
+     *
+
+     * @param  \Closure  $resolver
+
+     * @return void
+
+     */
     public function render()
     {   
-       
+   
+        if(Route::currentRouteName() == 'admin.user'){
+            $this->show_input = true;
+        }
         if(!empty($this->userType)){
-        
+
             return view($this->view_name, [
-                //'items' => $this->model::paginate($this->paginateAmount)
                 'items' => $this->model::where('type','LIKE',"%{$this->userType}%")->paginate($this->paginateAmount)
-              
-             
+    
             ]);
 
         }else{
 
             return view($this->view_name, [
-                    //'items' => $this->model::paginate($this->paginateAmount)
-                   
+              
                  'items' => $this->model::where('name','LIKE',"%{$this->search}%")->orWhere('email','LIKE',"%{$this->search}%")->paginate($this->paginateAmount)
-                   
+   
                    
             ]);
            
@@ -357,10 +373,6 @@ class Main extends Component
         return $this->resetPage();
  
     }
-
-  
-
-     
 
     public function resetInput()
     {
