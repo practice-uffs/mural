@@ -92,13 +92,14 @@
                         class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
                     <span class="flex-grow flex flex-col pl-4">
                         <span class="title-font font-medium text-gray-900">{{ $order->user->name }}</span>
-                        <span
-                            class="text-gray-400 text-xs tracking-widest mt-0.5">{{ $order->user->username }}
-                            <a href="https://wa.me/55{{$order->wpp_number}}?text=Olá, aqui é da equipe do PRACTICE!"   
-                                class="whatsapp_button_contato d-flex align-items-center justify-content-center"
+
+                        <span><a href="https://wa.me/55{{$order->wpp_number}}?text=Olá, aqui é da equipe do PRACTICE!"
                                 target="_blank" rel="external">
                                 <i class="bi bi-whatsapp"></i>
-                            </a>
+                                  </a>{{$order->wpp_number}}
+                            </span>
+                        <span
+                            class="text-gray-400 text-xs tracking-widest mt-0.5">{{ $order->user->username }}
                         </span>         
                     </span>
                 </span> 
