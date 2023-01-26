@@ -1,3 +1,10 @@
+@php
+    //remove a formatação do número feito na máscara de telefone
+    //para poder funcionar no botão que leva ao whatsapp
+    $wpp_number_no_mask = $order->wpp_number;
+    $wpp_number_no_mask = Str::remove(['(',')',' ','-'], $wpp_number_no_mask);
+@endphp
+
 <div>
     <div class="text-gray-600 body-font overflow-hidden mb-12">
         <div class="flex flex-wrap">
@@ -92,8 +99,7 @@
                         class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
                     <span class="flex-grow flex flex-col pl-4">
                         <span class="title-font font-medium text-gray-900">{{ $order->user->name }}</span>
-
-                        <span><a href="https://wa.me/55{{$order->wpp_number}}?text=Olá, aqui é da equipe do PRACTICE!"
+                        <span><a href="https://wa.me/55{{$wpp_number_no_mask}}?text=Olá, aqui é da equipe do PRACTICE!"
                                 target="_blank" rel="external">
                                 <i class="bi bi-whatsapp"></i>
                                   </a>{{$order->wpp_number}}

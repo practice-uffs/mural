@@ -84,6 +84,7 @@ class Order extends Model
                 'label' => 'Número de telefone (Whatsapp)',
                 'placeholder' => 'Ex.: (00)90000-0000',
                 'validation' => 'required|min:11',
+                'type' => 'tel'
             ],
             'location_id' => [
                 'type' => 'model:App\Models\Location',
