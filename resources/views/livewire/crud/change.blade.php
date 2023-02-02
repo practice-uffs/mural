@@ -92,10 +92,13 @@
                     @break
                 @case('date')
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        <span class="label-text">{{ $field['label'] }}<span><a href="https://practice.uffs.edu.br/servico/prazos-de-solicitacao/"
+                        target="_blank" rel="external"> (Saiba mais)
+                        </a></span> <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <input wire:model="{{ $key }}" type="date" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror max-w-md" {{ @$field['attr'] }} />
+                    
                     @break
                 @case('file')
                     <label class="label">
