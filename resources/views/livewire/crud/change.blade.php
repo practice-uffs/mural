@@ -17,6 +17,26 @@
                 -->
 
                 @switch(@$field['type'])
+                @case('tel')
+                    <label for="{{ $key }}" class="label">
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                    </label>
+                    <div class="form-group mb-0"
+                            x-data="{ mask: '(00) 00000-0000' }"
+                            x-init="IMask($refs.phone, { mask })">
+                            <input x-ref="phone"
+                                class="input input-bordered @error($key) input-error @enderror"
+                                required
+                                autofocus 
+                                wire:model="{{ $key }}" 
+                                type="text" 
+                                name="{{$key}}" 
+                                id="{{$key}}"  
+                                onChange="ProgressBar.fieldChanged('{{$key}}', this.value, '{{ $field['type'] }}')" 
+                                placeholder="{{ @$field['placeholder'] }}"
+                                />
+                        </div>
+                    @break
                 @case('checkbox')
                     <label class="cursor-pointer label mt-4">
                         <input wire:model="{{ $key }}" type="checkbox"> 
