@@ -94,14 +94,6 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        @auth       
-            <a href="https://wa.me/554236350038?text=Gostaria%20de%20tirar%20algumas%20dúvidas!"   
-                class="whatsapp_button d-flex align-items-center justify-content-center"
-                target="_blank" rel="external">
-                <i class="bi bi-whatsapp"></i>
-            </a>
-        @endauth
-
         <!-- Vendor JS Files -->
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
