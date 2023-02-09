@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\FeedbacksController as AdminFeedbacksController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -71,6 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin
     Route::group(['middleware' => 'check.admin'], function () {
         Route::get('/gerenciar/pedidos', [AdminOrderController::class, 'index'])->name('admin.orders');
+        Route::get('/gerenciar/feedbacks', [AdminFeedbacksController::class, 'index'])->name('admin.feedbacks');    
+        Route::get('/gerenciar/feedbacks/{feedback}', [AdminFeedbacksController::class, 'show'])->name('feedback.show');
         Route::get('/gerenciar/servicos', [AdminServiceController::class, 'index'])->name('admin.service');
         Route::get('/gerenciar/lugares', [LocationController::class, 'index'])->name('admin.location');
         Route::get('/gerenciar/categorias', [CategoryController::class, 'index'])->name('admin.category');
