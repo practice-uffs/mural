@@ -29,6 +29,7 @@
                         <td class="text-wrap">
                             <div class="flex items-center space-x-3">
                                 <div>
+                                    <!--Defini um tamanho maximo de 50 chars-->
                                     <div class="font-bold">
                                         @if(strlen($feedback['comment'])>50) 
                                             {{substr($feedback['comment'],0,47).' ...'}}
