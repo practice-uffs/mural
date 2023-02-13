@@ -103,15 +103,20 @@
                             class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
                         <span class="flex-grow flex flex-col pl-4">
                             <span class="title-font font-medium text-gray-900">{{ $order->user->name }}</span>
-                          
-                            <a href="https://wa.me/55{{$wpp_number_no_mask}}?text=Olá, aqui é da equipe do PRACTICE! Gostaria de tirar algumas dúvidas sobre o serviço: {{$site_url}}"
-                                target="_blank" rel="external" style='text-decoration:none'>
-                                <span><i class="bi bi-whatsapp" style="float-left"></i> Chamar pelo WhatsApp</span>
-                            </a>
-                            <a onclick="navigator.clipboard.writeText({{$wpp_number_no_mask}}); alert('Telefone copiado!')"
-                                    target="_blank" rel="external" style='text-decoration:none; cursor:pointer'>
-                                <span><i class="bi bi-clipboard" style="float-left"></i> Copiar telefone</span>
-                            </a>
+
+                            @if($wpp_number_no_mask != '')
+
+                                <a href="https://wa.me/55{{$wpp_number_no_mask}}?text=Olá, aqui é da equipe do PRACTICE! Gostaria de tirar algumas dúvidas sobre o serviço: {{$site_url}}"
+                                    target="_blank" rel="external" style='text-decoration:none'>
+                                    <span><i class="bi bi-whatsapp" style="float-left"></i> Chamar pelo WhatsApp</span>
+                                </a>
+                                <a onclick="navigator.clipboard.writeText('{{$wpp_number_no_mask}}'); alert('Telefone copiado!')"
+                                        target="_blank" rel="external" style='text-decoration:none; cursor:pointer'>
+                                    <span><i class="bi bi-clipboard" style="float-left"></i> Copiar telefone</span>
+                                </a>
+
+                            @endif
+
                             <span
                                 class="text-gray-400 text-xs tracking-widest mt-0.5">{{ $order->user->username }}
                             </span>         
@@ -119,9 +124,8 @@
                     </span> 
                 @endadmin
 
-                @php
-                if(auth()->user()->type == 'normal'){
-                @endphp
+                @if(auth()->user()->type == 'normal')
+
                     <div class="inline-flex items-center">
                         <img alt="blog" src="../img/mural-icon.png"
                             class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
@@ -137,10 +141,9 @@
                             </a>
                                     
                         </div>
-                    </div> 
-                @php
-                }
-                @endphp
+                    </div>
+
+                @endif
             </div>
         </div>
     </div>
