@@ -6,6 +6,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <meta name="csrf-token" content="{{ csrf_token()}}">
           <script>window.Laravel = {csrfToken:'{{ csrf_token() }}'}</script>
+          <script src="https://unpkg.com/imask"></script>
           <title>Mural - PRACTICE</title>
 
           <meta content="" name="description">
