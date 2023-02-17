@@ -14,6 +14,7 @@ class Feedbacks extends Component
 
     public function mount()
     {
+        $this->excludeEmpty();
         $this->findFeedbacks();
     }
 
@@ -26,6 +27,11 @@ class Feedbacks extends Component
 
         $this->feedbacks = $query->paginate($this->paginationAmount);
     }
+
+    protected function excludeEmpty(){
+        Feedback::select('*')->where('comment','')->delete();
+    }
+    
 
 
     public function render()
