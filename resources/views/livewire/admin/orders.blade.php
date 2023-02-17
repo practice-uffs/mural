@@ -98,6 +98,9 @@
                         <th scope="col">
                             <div class="text-center">Situação</div>
                         </th>
+                        <th scope="col">
+                            <div class="text-center">Excluir</div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -167,8 +170,15 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <span
                                         class="badge badge-outline badge-info badge-md">{{ $order->situation()->text }}</span>
-                                </div>
+
                             </td>
+                                </div>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+
+                                    <span><a href="{{ route('order.destroy', [$order['id']]) }}" onclick="return confirm('Deseja excluir esse pedido?')"><i class="bi bi-trash"></i></a></span>
+                            </td>
+                                </div>
                         </tr>
                     @empty
                         <tr>
