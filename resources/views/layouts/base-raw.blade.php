@@ -32,6 +32,7 @@
         <div id="app">
             @yield('content')
         </div>
+      
         @livewireScripts
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

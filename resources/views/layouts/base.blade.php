@@ -7,7 +7,6 @@
           <meta name="csrf-token" content="{{ csrf_token()}}">
           <script>window.Laravel = {csrfToken:'{{ csrf_token() }}'}</script>
           <title>Mural - PRACTICE</title>
-
           <meta content="" name="description">
           <meta content="" name="keywords">
 
@@ -28,6 +27,7 @@
           <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
           <link href="{{ asset('css/app.css') }}?20220222" rel="stylesheet">
 
+
           <!-- Page styles -->
           @yield('styles')
 
@@ -46,11 +46,12 @@
         <div class="container-lg">
             @yield('content')
         </div>
-
+    
 
         @yield('wideBottomContent')
         @include('layouts.footer')
-
+        
+    
 
         <img id="aura_span" class="d-none" height="45px" width="45px" src="{{ asset('img/aura/aura_icon.png') }}" />
 
@@ -97,6 +98,8 @@
 
             gtag('config', 'G-SYT1Y1FGPE');
         </script>
+        
+       
 
 
         <!-- Vendor JS Files -->
@@ -104,6 +107,7 @@
         <script src="{{ asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/purecounter/purecounter.js') }}"></script>
+
 
         @livewireScripts
 

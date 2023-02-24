@@ -11,7 +11,7 @@
             <div class="mb-3">
                 {{ $items->links() }}
             </div>
-
+          
             @if($show_input)
               <div class=" p-3 d-flex justify-content-between ">
                         <div class="input-group">
@@ -47,7 +47,7 @@
             
                 
             @endif
-       
+           
             <!--<a href="{{route('admin.userDownload')}}" class="btn btn-sm btn-outline btn-primary py-0 float-right">Baixar E-mails</a> -->
 
             <table class="table  w-full flex flex-row flex-no-wrap overflow-hidden my-4">

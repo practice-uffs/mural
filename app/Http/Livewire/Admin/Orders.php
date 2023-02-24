@@ -110,10 +110,10 @@ class Orders extends Component
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
         $this->applyStatusFilter($query);
-
         $query->orderBy('updated_at', 'desc');
-
         $this->orders = $query->paginate($this->paginationAmount);
+      
+       
     }
 
     public function updatedFilter($value)
@@ -139,7 +139,8 @@ class Orders extends Component
     }
 
     public function render()
-    {
+    { 
+       
         return view('livewire.admin.orders', [
             'orders' => $this->orders,
         ]);

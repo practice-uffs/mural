@@ -1,5 +1,7 @@
 <!-- ======= Footer ======= -->
+
 <footer id="footer" class="footer mt-12">
+   
     <div class="footer-top bg-gray-200">
         <div class="container">
             <div class="row gy-4">
@@ -167,12 +169,104 @@
     </div>
 </footer><!-- End Footer -->
 
+<div id="popup-container" class="popup-container">
+                <!--Proporção-->
+                <div class="popup-align">
+                    <!--Content-->
+                    <div class="popup-content"> 
+
+                        <!--Titulo-->
+                        <h1 style="font-weight:100;font-size:2em;color:#E43; text-align:center ">Aviso !</h1>
+                        <br><br>
+                        <!--Texto-->
+                        <p style="font-size: 16px;">
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+
+                        <!--button -->  <br><br>
+                        <div id="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceitar</button>
+                        </div>
+                    
+                    </div>
+                </div>       
+</div>
+<!--javascript -->
+      
+<script>
+
+    const x = document.getElementById('modal-footer'); 
+    document.getElementById("popup-container").style.visibility = "hidden";
+    x.addEventListener("click", myFunction);
+       
+    const is_modal_show = sessionStorage.getItem('alreadyShow'); 
+    if(is_modal_show != 'alredy shown'){
+        document.getElementById("popup-container").style.visibility = "visible";
+        sessionStorage.setItem('alreadyShow','alredy shown');
+    }
+    function myFunction(){
+       document.getElementById("popup-container").style.visibility = "hidden";
+    }
+ 
+    
+    
+    
+
+           
+</script>
+<!-- finJavascript -->
 <style>
+   
+
+   .popup-container{
+                position:fixed; 
+                right:0;
+                top: 0;
+                width:100%; 
+                height:100vh; 
+                background-color: rgba(0, 0, 0, 0.5) ; 
+                display:flex; 
+                justify-content:end;
+                align-items: center;
+                font-family:Roboto;
+                color:#999; 
+                z-index: 1000;
+           
+                
+            }
+            .popup-align{
+                height: auto;
+                position:fixed; 
+                right:0;
+                bottom: 0;
+                max-width: 25vw;
+              
+                
+                background-color: #EEEEF4;
+                box-shadow: 1px 0px 5px black;
+                border-radius: 10px; 
+                padding: 50px;
+                padding-right: 0;
+            }
+            .popup-content{
+                width: auto;
+                height: 100%;                
+                max-height: 70vh;
+                padding-right: 50px;
+                text-align:justify;
+            }
+            @media screen and (max-width: 900px) {
+                .popup-align{
+                   max-width: 90vw;
+                }
+            }
+
     .footer {
         place-items: inherit;
         column-gap: 0px;
         row-gap: 0;
         grid-auto-flow: row;
+       
     }
 
 </style>

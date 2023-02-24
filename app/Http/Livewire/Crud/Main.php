@@ -39,6 +39,7 @@ class Main extends Component
 
     public bool $show_create_panel = true;
     public bool $show_list = true;
+    public bool $show_aviso = false;
     public bool $show_success = true;
     public int $paginateAmount = 7;
     public array $override = [];
@@ -330,6 +331,11 @@ class Main extends Component
     
     }
 
+    public function addNew()
+    {
+        $this->dispatchBrowserEvent('show-form');
+    }
+  
     
      /**
 
