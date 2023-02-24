@@ -8,30 +8,64 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-#aura_iframe{
-  height:50%;
-  width:30%;
+#aura_iframe{ 
   position: fixed;
-  bottom:80px;
-  right:40px;
-  border-radius: 10px;
+  bottom: 35px;
+  right: 15px;
+  width: 450px;
+  height: 450px;
+  border: 0;
+  border-radius: 35px;
   z-index: 10;
 }
 
 #aura_span {
   position: fixed;
-  bottom: 30px;
-  right: 70px;
-  background-color: #c0d7e1;
+  bottom: 15px;
+  right: 15px;
+  background-color: #ececec;
   padding: 3px;
-  border-radius: 20px;
+  border-radius: 90px;
   cursor: pointer;
+  z-index: 11;
+  width: 75px;
 }
 
-@media(max-width: 700px){
+.close-button {
+  z-index: 1;
+  width: 80px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: #ECECEC;
+  border-radius: 90px 90px 90px 90px ;
+  transition: all 0.3s;
+}
+
+@media(max-width: 450px){
+  .close-button {
+    width: 35px !important; 
+    bottom: 80px !important;
+    right: 20px !important;
+    border: 5px #ECECEC solid;
+    outline: #2F7B9A 3px solid;
+    transition: all 0.3s;
+    content: url(" https://cdn-icons-png.flaticon.com/512/2976/2976286.png");
+  }
   #aura_iframe{
-    height:60%;
-    width:80%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+  }
+  #aura_span {
+    width: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 90px 90px 90px 90px;
+    transition: all 0.3s;
   }
 }
 
@@ -159,7 +193,7 @@ section {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
+  left: 15px;
   bottom: 15px;
   z-index: 99999;
   background: #4154f1;
@@ -173,7 +207,7 @@ section {
   font-size: 24px;
   color: #fff;
   line-height: 0;
-}
+}     /* icon css */
 
 .back-to-top:hover {
   background: #6776f4;
@@ -184,6 +218,58 @@ section {
   visibility: visible;
   opacity: 1;
 }
+
+/*--------------------------------------------------------------
+# Whatsapp button
+--------------------------------------------------------------*/
+
+.whatsapp_button
+{
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #6afd01;
+  width: 50px;
+  height: 50px;
+  border-radius: 11px;
+}
+
+
+.whatsapp_button i {
+  font-size: 32px;
+  color: white;
+  line-height: 0;
+}
+
+/*--------------------------------------------------------------
+# Whatsapp button
+--------------------------------------------------------------*/
+
+.whatsapp_button_contato
+{
+  /* position: fixed;
+  right: 15px;
+  bottom: 15px; */
+  z-index: 99999;
+  background: #6afd01;
+  width: 30px;
+  height: 30px;
+  border-radius: 11px;
+}
+
+
+.whatsapp_button_contato i {
+  font-size: 20px;
+  color: white;
+  line-height: 0;
+}
+
+
+
+
+
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -199,7 +285,7 @@ section {
 --------------------------------------------------------------*/
 .header {
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 3;
   padding: 20px 0;
 }
 
