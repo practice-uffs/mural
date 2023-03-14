@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class LoginController extends Controller
 {
@@ -56,23 +57,11 @@ class LoginController extends Controller
         Auth::login($user);
         session(["_loginAttempts" => env("LOGIN_ATTEMPTS")]);
         
+
         //resolve o problema descrito da falta do "/mural" na url descrito na issue #535 https://github.com/practice-uffs/mural/issues/535
         $path = redirect()->intended()->getTargetUrl();
-
-        $size = strlen($path);
-
-        if($size>=29){
-
-            $url="https://practice.uffs.edu.br/mural/";
-        
-            $initial = substr($path,0,29);
-            $mid = substr($path,29,35);
-            $end = substr($path,29,$size);
-            
-            if($initial=="https://practice.uffs.edu.br/")
-                if($initial.$mid!=$url)
-                    $path = $url.$end;    
-        }
+        if(getenv('APP_ENV')!='local') //verifica se está rodando no servidor
+            $path = preg_replace("/(edu.br\/)/", "$1mural/", $path);//insere o /mural
         
         return redirect()->to($path);
     }
