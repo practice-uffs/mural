@@ -17,4 +17,12 @@ class OrderController extends Controller
     {
         return view('admin.orders');
     }
+
+    public function destroy($id)
+    {
+        $pedido = Order::findOrFail($id);
+        $pedido->delete();
+
+        return redirect()->route('admin.orders');
+    }
 }
