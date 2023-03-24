@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 class Feedback extends Model
 {
@@ -91,4 +93,18 @@ class Feedback extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+    public function getCreatedAtHumanAttribute()
+    {
+
+        $diffInDays = $this->created_at->diffInDays(Carbon::now());
+
+        if ($diffInDays > 3) {
+            return $this->created_at->format('d/m/Y (h:i)');
+        }
+
+        return $this->created_at->diffForHumans();
+    }
+
 }
