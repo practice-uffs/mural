@@ -16,13 +16,11 @@
                 <div class="input-group w-auto">
                     <div class="d-flex">
                         <div class="d-flex dropdown">
-                            <button type="button" class="col btn btn-primary dropdown-toggle me-3 rounded" data-bs-toggle="dropdown" >
-                                Usuário(a)
-                            </button>
+                            <button type="button" class="col btn btn-primary dropdown-toggle me-3 rounded" data-bs-toggle="dropdown" >Privilégio</button>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item btn btn-outline btn-primary py-0" wire:click="userType($v = null)">Todos</li>
-                                <li class="dropdown-item btn btn-outline btn-primary py-0" wire:click="userType('admin')">admin</li>
-                                <li class="dropdown-item btn btn-outline btn-primary py-0" wire:click="userType('normal')">normal</li>
+                                <li class="dropdown-item btn btn-outline btn-primary py-0" wire:click="userType('admin')">Administrador</li>
+                                <li class="dropdown-item btn btn-outline btn-primary py-0" wire:click="userType('normal')">Normal</li>
                             </ul>
                         </div>
                     
@@ -37,7 +35,7 @@
                     </div> 
                 </div>
                 <div>
-                    <a href="{{route('admin.userDownload')}}" class="btn btn-sm btn-outline btn-primary py-0 float-right">Baixar E-mails</a>
+                    <a href="{{route('admin.userDownload')}}" class="btn btn-sm btn-outline btn-primary py-0 float-right" style="text-decoration:none">Baixar E-mails</a>
                 </div>
             </div>   
        
