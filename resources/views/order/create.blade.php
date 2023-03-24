@@ -3,7 +3,7 @@
 
 <section>
     <div class="container">
-        <header class="section-header">
+        <header class="section-header mt-10">
             <h2>Solicitação de serviço</h2>
             <p>{{ $service->name }}</p>
         </header>

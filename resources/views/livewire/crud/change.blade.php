@@ -179,7 +179,9 @@
                 <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
             @endif
         @else
+        <div style="display:flex; align-items: center; justify-content: center;">
             <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn w-full lg:btn-wide btn-primary">Enviar</button>
+        </div>
         @endif
     @endif
 </div> 

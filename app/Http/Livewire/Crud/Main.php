@@ -9,6 +9,13 @@ use Illuminate\Support\Arr;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Redirector;
+
+
 
 /**
  *
@@ -17,6 +24,7 @@ class Main extends Component
 {
     use WithFileUploads;
     use WithPagination;
+  
 
     protected $paginationTheme = 'bootstrap';
     public static string $modelTypeString = 'model:';
@@ -27,11 +35,12 @@ class Main extends Component
     public array $fields = []; // see mount()
     public $editing = null;
     public $finished = false;
+   
 
     public bool $show_create_panel = true;
     public bool $show_list = true;
     public bool $show_success = true;
-    public int $paginateAmount = 20;
+    public int $paginateAmount = 7;
     public array $override = [];
 
     public string $model = ''; // E.g. '\App\Models\Order'
@@ -41,6 +50,10 @@ class Main extends Component
 
     protected $validationAttributes = [];
 
+    public $search;
+    public $userType;
+    public $testeRoute;
+    
     /**
      *
      */
@@ -307,11 +320,43 @@ class Main extends Component
         return $path;
     }
 
+    
+    public function userType($v){
+        $this->userType = $v; 
+        $this->updatingSearch();
+        return $this->userType;
+    
+    }
+
+    
+     /**
+
+     * Set the current page resolver callback.
+
+     *
+
+     * @param  \Closure  $resolver
+
+     * @return void
+
+     */
     public function render()
-    {
-        return view($this->view_name, [
-            'items' => $this->model::paginate($this->paginateAmount)
-        ]);
+    {   
+        if(!empty($this->userType)){
+            return view($this->view_name, [
+                'items' => $this->model::where('type','LIKE',"%{$this->userType}%")->paginate($this->paginateAmount)
+            ]);
+        }else{
+            return view($this->view_name, [
+                 'items' => $this->model::where('name','LIKE',"%{$this->search}%")->orWhere('email','LIKE',"%{$this->search}%")->paginate($this->paginateAmount)
+            ]);
+        }
+    }
+
+    public function updatingSearch(){
+        
+        return $this->resetPage();
+ 
     }
 
     public function resetInput()

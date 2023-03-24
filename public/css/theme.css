@@ -2220,3 +2220,7 @@ section.hero-slim {
     background-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
     border-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
 }
+
+.btn{
+  font-size: 12px !important;
+}
