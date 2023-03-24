@@ -57,12 +57,16 @@ class LoginController extends Controller
         Auth::login($user);
         session(["_loginAttempts" => env("LOGIN_ATTEMPTS")]);
         
-
+      
         //resolve o problema descrito da falta do "/mural" na url descrito na issue #535 https://github.com/practice-uffs/mural/issues/535
-        $path = redirect()->intended()->getTargetUrl();
-        if(getenv('APP_ENV')!='local') //verifica se está rodando no servidor
-            $path = preg_replace("/(edu.br\/)/", "$1mural/", $path);//insere o /mural
-        
+        if(getenv('APP_ENV') != 'local'){ //verifica se está rodando no servidor
+            $path = redirect()->intended()->getTargetUrl(); //pega a url que usuário estava tentando acessar antes do login
+            preg_match('/(practice.uffs.edu.br\/mural)/', $path, $matches, PREG_OFFSET_CAPTURE); //verifica se o link está correto
+            if(!$matches){
+                $path = preg_replace("/(edu.br\/)/", "$1mural/", $path); //insere o /mural caso necessário
+            }
+        }
+    
         return redirect()->to($path);
     }
 
