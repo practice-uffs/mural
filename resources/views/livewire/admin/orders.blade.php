@@ -75,6 +75,13 @@
 
     <!-- list of elements -->
     <div class="row mt-4">
+        @php  
+            //bug fix: custom path to prevent redirection error
+            if(getenv('APP_ENV') != 'local'){
+                $orders->setPath('/mural/gerenciar/pedidos');
+            }
+        @endphp
+
         <div class="col-12">{!! $orders->links() !!}</div>
     </div>
 
@@ -97,6 +104,9 @@
                         </th>
                         <th scope="col">
                             <div class="text-center">Situação</div>
+                        </th>
+                        <th scope="col">
+                            <div class="text-center">Ação</div>
                         </th>
                     </tr>
                 </thead>
@@ -168,6 +178,10 @@
                                     <span
                                         class="badge badge-outline badge-info badge-md">{{ $order->situation()->text }}</span>
                                 </div>
+                            </td>
+                        
+                            <td>
+                                <a data-toggle="tooltip" data-placement="left"  class="btn btn-primary" href="{{ route('order.destroy', [$order['id']]) }}" onclick="return confirm('Deseja excluir esse pedido?')"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @empty

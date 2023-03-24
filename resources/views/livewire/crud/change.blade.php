@@ -17,6 +17,13 @@
                 -->
 
                 @switch(@$field['type'])
+                @case('link_google')
+                    <label for="{{ $key }}" class="label" style="margin-top:30px">
+                        <span class="label-text">{!! $field['label'] !!}</span>
+                    </label>
+                    <iframe src="{{$field['urlGoogle']}}" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    
+                    @break
                 @case('tel')
                     <label for="{{ $key }}" class="label">
                         <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
@@ -179,7 +186,9 @@
                 <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
             @endif
         @else
+        <div style="display:flex; align-items: center; justify-content: center;">
             <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn w-full lg:btn-wide btn-primary">Enviar</button>
+        </div>
         @endif
     @endif
 </div> 
