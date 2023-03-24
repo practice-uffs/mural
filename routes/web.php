@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/gerenciar/usuarios', [UserController::class, 'index'])->name('admin.user');
         Route::get('/gerenciar/usuarios/download', [UserController::class, 'download'])->name('admin.userDownload');
         Route::get('/gerenciar/newsletter', [SubscriberController::class, 'index'])->name('admin.subscriber');
+        Route::get('/gerenciar/pedidos/excluir/{id}', [AdminOrderController::class, 'destroy'])->name('order.destroy');
     });
 });
 
