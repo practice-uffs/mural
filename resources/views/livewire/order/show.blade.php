@@ -1,3 +1,12 @@
+@php
+    //remove a formatação do número feito na máscara de telefone
+    //para poder funcionar no botão que leva ao whatsapp
+    $wpp_number_no_mask = $order->wpp_number;
+    $wpp_number_no_mask = Str::remove(['(',')',' ','-'], $wpp_number_no_mask);
+    $site_url = env('APP_URL')."/servico/".$order->id;
+    
+@endphp
+
 <div>
     <div class="text-gray-600 body-font overflow-hidden mb-12">
         <div class="flex flex-wrap">
@@ -87,15 +96,54 @@
                         {{ count($order->comments) }}
                     </span>
                 </div>
-                <span class="inline-flex items-center">
-                    <img alt="blog" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $order->user->username }}"
-                        class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
-                    <span class="flex-grow flex flex-col pl-4">
-                        <span class="title-font font-medium text-gray-900">{{ $order->user->name }}</span>
-                        <span
-                            class="text-gray-400 text-xs tracking-widest mt-0.5">{{ $order->user->username }}</span>
-                    </span>
-                </span>
+
+                @admin
+                    <span class="inline-flex items-center">
+                        <img alt="blog" src="https://cc.uffs.edu.br/avatar/iduffs/{{ $order->user->username }}"
+                            class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+                        <span class="flex-grow flex flex-col pl-4">
+                            <span class="title-font font-medium text-gray-900">{{ $order->user->name }}</span>
+
+                            @if($wpp_number_no_mask != '')
+
+                                <a href="https://wa.me/55{{$wpp_number_no_mask}}?text=Olá, aqui é da equipe do PRACTICE! Gostaria de tirar algumas dúvidas sobre o serviço: {{$site_url}}"
+                                    target="_blank" rel="external" style='text-decoration:none'>
+                                    <span><i class="bi bi-whatsapp" style="float-left"></i> Chamar pelo WhatsApp</span>
+                                </a>
+                                <a onclick="navigator.clipboard.writeText('{{$wpp_number_no_mask}}'); alert('Telefone copiado!')"
+                                        target="_blank" rel="external" style='text-decoration:none; cursor:pointer'>
+                                    <span><i class="bi bi-clipboard" style="float-left"></i> Copiar telefone</span>
+                                </a>
+
+                            @endif
+
+                            <span
+                                class="text-gray-400 text-xs tracking-widest mt-0.5">{{ $order->user->username }}
+                            </span>         
+                        </span>
+                    </span> 
+                @endadmin
+
+                @if(auth()->user()->type == 'normal')
+
+                    <div class="inline-flex items-center">
+                        <img alt="blog" src="../img/mural-icon.png"
+                            class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+                        <div class="flex-grow flex flex-col pl-4">
+                            <span class="title-font font-medium text-gray-900">Entrar em contato com a equipe do PRACTICE</span>
+                            <a href="https://wa.me/554236350038?text=Olá,%20gostaria%20de%20tirar%20algumas%20dúvidas%20sobre%20o%20serviço:%20{{$site_url}}"
+                                    target="_blank" rel="external" style='text-decoration:none'>
+                                <span><i class="bi bi-whatsapp" style="float-left"></i> Chamar pelo WhatsApp</span>
+                            </a>
+                            <a onclick="navigator.clipboard.writeText('554236350038'); alert('Telefone copiado!')"
+                                    target="_blank" rel="external" style='text-decoration:none; cursor:pointer'>
+                                <span><i class="bi bi-clipboard" style="float-left"></i> Copiar telefone</span>
+                            </a>
+                                    
+                        </div>
+                    </div>
+
+                @endif
             </div>
         </div>
     </div>
