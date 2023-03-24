@@ -18,6 +18,9 @@
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('admin.orders') }}">Pedidos</a></li>
                             <li class="dropdown-item">
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('admin.feedbacks') }}">Feedbacks</a></li>
+                            <li class="dropdown-item">
                                 <hr />
                             </li>
                             <li class="dropdown-item"><a class="nav-link"
