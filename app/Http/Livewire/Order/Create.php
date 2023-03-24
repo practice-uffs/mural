@@ -30,6 +30,33 @@ class Create extends \App\Http\Livewire\Crud\Main
         return $modelCrudInfo;
     }
 
+    protected function addUseTermAgreementFieldInfo(array & $modelCrudInfo) 
+    {
+        $termUrl = $this->service->category->terms;
+
+        $modelCrudInfo['fields']['terms'] = [
+            'type' => 'checkbox',
+            'label' => 'Aceite do Termo de Responsabilidade de Uso',
+            'placeholder' => 'Declaro que li e aceito os <a href="'.$termUrl.'" class="underline" target="_blank">Termos de Responsabilidade de Uso</a> em relação à produção do conteúdo da minha solicitação.',
+            'validation' => 'required|accepted',
+        ];
+
+        return $modelCrudInfo;
+    }
+
+    protected function addLinkGoogleFieldInfo(array & $modelCrudInfo) 
+    {
+
+        $urlGoogle = $this->service->category->link_google;
+
+        $modelCrudInfo['fields']['link_google'] = [
+            'type' => 'link_google',
+            'label' => 'Verifique na agenda a disponibilidade de horários. (Você agendará posteriormente um horário com a equipe do Practice)',
+            'urlGoogle' => $urlGoogle,
+        ];
+
+        return $modelCrudInfo;
+    }
     /**
      * 
      * 
@@ -78,6 +105,17 @@ class Create extends \App\Http\Livewire\Crud\Main
         }
 
         $this->addEulaAgreementFieldInfo($modelCrudInfo);
+
+        // Se houver link para os termos na categoria, será colocada a checkbox.
+        if ($this->service->category->terms)
+        {
+            $this->addUseTermAgreementFieldInfo($modelCrudInfo);
+        }
+        // Se houver link da agenda na categoria, será mostrada a agenda na solicitação do serviço
+        if ($this->service->category->link_google)
+        {
+            $this->addLinkGoogleFieldInfo($modelCrudInfo);
+        }
         return $modelCrudInfo;
     }
 

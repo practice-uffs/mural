@@ -22,6 +22,8 @@ class Category extends Model
         'img_url',
         'icon_svg_path',
         'color',
+        'terms',
+        'link_google',
         'is_active'
     ];
 
@@ -63,6 +65,16 @@ class Category extends Model
             'color' => [
                 'label' => 'Cor',
                 'placeholder' => 'Ex.: yellow-500',
+                'show' => 'create,edit'
+            ],
+            'terms' => [
+                'label' => 'Termo de responsabilidade',
+                'placeholder' => 'Ex.: insira aqui o link para o termo desejado',
+                'show' => 'create,edit'
+            ],
+            'link_google' => [
+                'label' => 'Link do Google Agenda',
+                'placeholder' => 'Ex.: insira aqui o link para a Agenda do Google',
                 'show' => 'create,edit'
             ],
             'is_active' => [
