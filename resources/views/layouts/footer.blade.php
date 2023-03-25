@@ -1,6 +1,6 @@
 <!-- ======= Footer ======= -->
-<footer id="footer" class="footer mt-12">
-    <div class="footer-top bg-gray-200">
+<footer id="footer" class="footer mt-12" style="row-gap: unset;">
+    <div class="footer-top bg-gray-200 w-100">
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-12 text-left">
@@ -146,7 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 w-100">
         <div class="container py-6 mx-auto flex items-center sm:flex-row flex-col">
             <p class="text-sm text-gray-400">
                 Feito com ❤️ pela
@@ -165,14 +165,42 @@
             </p>
         </div>
     </div>
+
+    <div id="popup-container" class="popup-container" style="visibility: hidden">
+        <!--Proporção-->
+        <div class="popup-align">
+            <!--Content-->
+            <div class="popup-content"> 
+                <div class="section-header" style="text-align: start; font-size: 24px"><p>Consentimento de dados!</p></div>
+                <p style="font-size: 16px;">
+                    Ao acessar nosso site, você concorda com nossa <a href="https://practice.uffs.edu.br/privacidade/app/" target="_blank" style="color: rgba(59, 130, 246, 0.5)">política de privacidade</a>. Utilizamos cookies para analisar o fluxo de navegações e a quantidade de acessos em nossa plataforma. Garantimos que seus dados estarão protegidos.
+                </p>
+                <div class="align-btn-close-consent">
+                    <button type="button" class="btn btn-primary mt-4" data-dismiss="modal" id="close-btn">Aceitar</button>
+                </div>
+           
+            </div>
+        </div>       
+    </div>
+    <!--javascript -->
+    
+    
 </footer><!-- End Footer -->
 
-<style>
-    .footer {
-        place-items: inherit;
-        column-gap: 0px;
-        row-gap: 0;
-        grid-auto-flow: row;
+<script>
+
+    const btn_accept = document.getElementById('close-btn'); 
+    btn_accept.addEventListener("click", myFunction);
+
+    const consent = sessionStorage.getItem('consent'); 
+
+    if(!consent){
+        document.getElementById("popup-container").style.visibility = "visible"; 
+    }
+    function myFunction(){
+        document.getElementById("popup-container").style.visibility = "hidden";
+        sessionStorage.setItem('consent','true');
     }
 
-</style>
+</script>
+
