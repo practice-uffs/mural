@@ -88,7 +88,7 @@
             </label>
         </div>
     </div>
-   
+
 
     <!-- list of elements -->
     <div class="row mt-4">
@@ -156,7 +156,7 @@
                                     </div>
                                     <div>
                                         <span class="text-sm opacity-50"> (atualizado
-                                            {{ $order['created_at_human'] }})</span>
+                                            {{ $order['updated_at'] }})</span>
                                     </div>
                                 </div>
                             </td>

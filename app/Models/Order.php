@@ -224,4 +224,19 @@ class Order extends Model
 
         return $this->created_at->diffForHumans();
     }
+
+    // a função abaixo serve para formatar a data e hora do campo updated_at, entretanto ela gera ambiguidade no horario
+    // nao dando pra entender. por exemplo, se é 1 da madrugada ou da tarde, entao nao está sendo usada no front
+
+    public function getUpdatedAtHumanAttribute()
+    {
+
+        $diffInDays = $this->updated_at->diffInDays(Carbon::now());
+
+        if ($diffInDays > 3) {
+            return $this->updated_at->format('d/m/Y (h:i)');
+        }
+
+        return $this->updated_at->diffForHumans();
+    }
 }

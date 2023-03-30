@@ -36,7 +36,6 @@ class Orders extends Component
         ];
         $this->sort_by_date = [
                 'Data de criação',
-                'Último comentário',
                 'Última atualização'
         ];
         $this->findOrders();
@@ -104,19 +103,38 @@ class Orders extends Component
     protected function applyDateFilter(Builder &$query){
             $selected = @$this->filter['sortDate'];
         
-            $query->leftJoin('comments','comments.commentable_id','=','orders.id')
-                  ->select('comments.created_at as commentable_created',
-                            'comments.commentable_id',
-                            'orders.*'
-            );// left join com o id dos pedidos e comentarios(cada comentário vira um card de pedido)
-        
+            
+            
+            // left join com o id dos pedidos e comentarios(cada comentário vira um card de pedido)
+            //dd($query->toSql());
+
+            // if ($selected=='1')
+            // {
+            //     $query->leftJoin('comments','comments.commentable_id','=','orders.id')
+            //       ->select('comments.created_at as commentable_created',
+            //                 'comments.commentable_id',
+            //                 'orders.*'
+            //         )
+            //         ->groupBy('orders.id')
+            //         ->havingRaw(max(commentable_created))
+            //         ->orderBy('commentable_created', 'desc');
+            //     dd($query->toSql());
+            // }
+
+            // else
             if ($selected=='1')
-                $query->orderBy('commentable_created','desc');
-            elseif ($selected=='2')
+            {
                 $query->orderBy('updated_at','desc');
-            else  
-                $query->orderBy('created_at','desc');
-                
+                //dd($query->toSql());
+            }
+
+            else
+            {  
+                 $query->orderBy('created_at', 'desc');
+                //dd($query->toSql());
+            }
+            
+            //dd($query->toSql());
         }
     
     public function findOrders()
@@ -134,8 +152,60 @@ class Orders extends Component
         $this->applyLocationFilter($query);
         $this->applyStatusFilter($query);
         $this->applyDateFilter($query);
-        
         $this->orders = $query->paginate($this->paginationAmount);
+
+
+        //aqui embaixo seguem algumas formas de acessar a collection que deixarei salvo aqui para tentar progresso com o filtro cronológico de ultimo comentário
+
+        //dd($this->orders);
+
+        // $itemsPaginated = $this->items()
+        //      ->paginate(15);
+
+
+        // foreach ($this->orders as $indices => $value){
+        //     foreach ($value['comments'] as $key => $comentario){
+        //         // dump($);
+        //     }
+        //     dump($value['comments']);
+        // }
+
+        // $itemsTransformed = $this->orders
+        //     ->getCollection()
+        //     ->map(function($item) {
+        //         //$key = count($item->comments);
+        //         return [
+        //             'id' => $item->comments,
+        //         ];
+        // });
+
+        // $items2 = $itemsTransformed
+        //             ->getCollection()
+        //             ->map(function($item) {
+        //                 //$key = count($item->comments);
+        //                 return [
+        //                     'id' => $item->commentable_id,
+        //                 ];
+        //         });
+
+
+
+        //dd($itemsTransformed);
+        // $itemsTransformedAndPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+        //     $itemsTransformed,
+        //     $itemsPaginated->total(),
+        //     $itemsPaginated->perPage(),
+        //     $itemsPaginated->currentPage(), [
+        //         'path' => \Request::url(),
+        //         'query' => [
+        //             'page' => $itemsPaginated->currentPage()
+        //         ]
+        //     ]
+        // );
+
+
+
+        //dd($this->orders);
     }
 
     public function updatedFilter($value)
