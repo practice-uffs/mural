@@ -71,6 +71,14 @@
                 <a href="#" class="label-text-alt"></a>
             </label>
         </div>
+
+        <div class="col-6">
+            <label class="label">
+                <span class="label-text">Pesquisar</span>
+                <a href="#" class="label-text-alt"></a>
+            </label>
+            <input class=" form-control input input-bordered w-full" type="text" wire:model.debounce.1000ms="filter.title">
+        </div>
     </div>
 
     <!-- list of elements -->
