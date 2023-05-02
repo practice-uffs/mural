@@ -106,6 +106,17 @@ class Orders extends Component
             'comments.user'
         ]);
 
+        if (!empty($this->filter['title'])) {
+            $query = Order::with([
+                'service',
+                'service.category',
+                'user',
+                'comments',
+                'comments.user'
+            ])->where('title','LIKE', "%{$this->filter['title']}%");
+        }
+
+
         $this->applyCategoryFilter($query);
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
@@ -113,7 +124,11 @@ class Orders extends Component
 
         $query->orderBy('updated_at', 'desc');
 
-        $this->orders = $query->paginate($this->paginationAmount);
+        if (!empty($this->filter['category_id']) || !empty($this->filter['service_id']) || !empty($this->filter['location_id']) || !empty($this->filter['status']) || !empty($this->filter['title'])) {
+            $this->orders = $query->paginate(1000);
+        }else{
+            $this->orders = $query->paginate($this->paginationAmount);
+        }
     }
 
     public function updatedFilter($value)
