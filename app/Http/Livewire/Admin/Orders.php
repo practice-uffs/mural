@@ -101,41 +101,13 @@ class Orders extends Component
     }
     
     protected function applyDateFilter(Builder &$query){
-            $selected = @$this->filter['sortDate'];
-        
-            
-            
-            // left join com o id dos pedidos e comentarios(cada comentário vira um card de pedido)
-            //dd($query->toSql());
-
-            // if ($selected=='1')
-            // {
-            //     $query->leftJoin('comments','comments.commentable_id','=','orders.id')
-            //       ->select('comments.created_at as commentable_created',
-            //                 'comments.commentable_id',
-            //                 'orders.*'
-            //         )
-            //         ->groupBy('orders.id')
-            //         ->havingRaw(max(commentable_created))
-            //         ->orderBy('commentable_created', 'desc');
-            //     dd($query->toSql());
-            // }
-
-            // else
-            if ($selected=='1')
-            {
-                $query->orderBy('updated_at','desc');
-                //dd($query->toSql());
-            }
-
-            else
-            {  
-                 $query->orderBy('created_at', 'desc');
-                //dd($query->toSql());
-            }
-            
-            //dd($query->toSql());
+        $selected = @$this->filter['sortDate'];
+        if ($selected=='1'){
+            $query->orderBy('updated_at','desc');
+        }else{  
+                $query->orderBy('created_at', 'desc');
         }
+    }
     
     public function findOrders()
     {
@@ -157,14 +129,11 @@ class Orders extends Component
             ])->where('title','LIKE', "%{$this->filter['title']}%");
         }
 
-
         $this->applyCategoryFilter($query);
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
         $this->applyStatusFilter($query);
         $this->applyDateFilter($query);
-        $this->orders = $query->paginate($this->paginationAmount);
-
 
         if (!empty($this->filter['category_id']) || !empty($this->filter['service_id']) || !empty($this->filter['location_id']) || !empty($this->filter['status']) || !empty($this->filter['title'])) {
             $this->orders = $query->paginate(1000);
