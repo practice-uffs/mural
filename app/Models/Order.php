@@ -34,6 +34,7 @@ class Order extends Model
         'id',
         'status',
         'title',
+        'wpp_number',
         'description',
         'data',
         'github_issue_link',
@@ -78,6 +79,12 @@ class Order extends Model
                 'validation' => 'required|min:10',
                 'type' => 'textarea',
                 'show' => 'create,edit'
+            ],
+            'wpp_number' => [
+                'label' => 'Número de telefone (Whatsapp)',
+                'placeholder' => 'Ex.: (00)90000-0000',
+                'validation' => 'required|min:11',
+                'type' => 'tel'
             ],
             'location_id' => [
                 'type' => 'model:App\Models\Location',

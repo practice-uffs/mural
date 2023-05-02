@@ -147,6 +147,17 @@ class Orders extends Component
             'comments.user'
         ]);
 
+        if (!empty($this->filter['title'])) {
+            $query = Order::with([
+                'service',
+                'service.category',
+                'user',
+                'comments',
+                'comments.user'
+            ])->where('title','LIKE', "%{$this->filter['title']}%");
+        }
+
+
         $this->applyCategoryFilter($query);
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
@@ -155,57 +166,11 @@ class Orders extends Component
         $this->orders = $query->paginate($this->paginationAmount);
 
 
-        //aqui embaixo seguem algumas formas de acessar a collection que deixarei salvo aqui para tentar progresso com o filtro cronológico de ultimo comentário
-
-        //dd($this->orders);
-
-        // $itemsPaginated = $this->items()
-        //      ->paginate(15);
-
-
-        // foreach ($this->orders as $indices => $value){
-        //     foreach ($value['comments'] as $key => $comentario){
-        //         // dump($);
-        //     }
-        //     dump($value['comments']);
-        // }
-
-        // $itemsTransformed = $this->orders
-        //     ->getCollection()
-        //     ->map(function($item) {
-        //         //$key = count($item->comments);
-        //         return [
-        //             'id' => $item->comments,
-        //         ];
-        // });
-
-        // $items2 = $itemsTransformed
-        //             ->getCollection()
-        //             ->map(function($item) {
-        //                 //$key = count($item->comments);
-        //                 return [
-        //                     'id' => $item->commentable_id,
-        //                 ];
-        //         });
-
-
-
-        //dd($itemsTransformed);
-        // $itemsTransformedAndPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
-        //     $itemsTransformed,
-        //     $itemsPaginated->total(),
-        //     $itemsPaginated->perPage(),
-        //     $itemsPaginated->currentPage(), [
-        //         'path' => \Request::url(),
-        //         'query' => [
-        //             'page' => $itemsPaginated->currentPage()
-        //         ]
-        //     ]
-        // );
-
-
-
-        //dd($this->orders);
+        if (!empty($this->filter['category_id']) || !empty($this->filter['service_id']) || !empty($this->filter['location_id']) || !empty($this->filter['status']) || !empty($this->filter['title'])) {
+            $this->orders = $query->paginate(1000);
+        }else{
+            $this->orders = $query->paginate($this->paginationAmount);
+        }
     }
 
     public function updatedFilter($value)

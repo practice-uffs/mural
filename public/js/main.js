@@ -61,7 +61,7 @@
   let selectHeader = select('#header')
   if (selectHeader) {
     onscroll(document, () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         selectHeader.classList.add('header-scrolled')
       } else {
         selectHeader.classList.remove('header-scrolled')

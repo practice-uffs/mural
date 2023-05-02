@@ -6,6 +6,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <meta name="csrf-token" content="{{ csrf_token()}}">
           <script>window.Laravel = {csrfToken:'{{ csrf_token() }}'}</script>
+          <script src="https://unpkg.com/imask"></script>
           <title>Mural - PRACTICE</title>
 
           <meta content="" name="description">
@@ -93,13 +94,16 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        @auth       
-            <a href="https://wa.me/554236350038?text=Gostaria%20de%20tirar%20algumas%20dúvidas!"   
-                class="whatsapp_button d-flex align-items-center justify-content-center"
-                target="_blank" rel="external">
-                <i class="bi bi-whatsapp"></i>
-            </a>
-        @endauth
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYT1Y1FGPE"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SYT1Y1FGPE');
+        </script>
+
 
         <!-- Vendor JS Files -->
         <script src="{{ asset('vendor/aos/aos.js') }}"></script>

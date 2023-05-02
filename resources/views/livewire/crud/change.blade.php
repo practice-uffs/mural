@@ -17,6 +17,33 @@
                 -->
 
                 @switch(@$field['type'])
+                @case('link_google')
+                    <label for="{{ $key }}" class="label" style="margin-top:30px">
+                        <span class="label-text">{!! $field['label'] !!}</span>
+                    </label>
+                    <iframe src="{{$field['urlGoogle']}}" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    
+                    @break
+                @case('tel')
+                    <label for="{{ $key }}" class="label">
+                        <span class="label-text">{!! $field['label'] !!} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                    </label>
+                    <div class="form-group mb-0"
+                            x-data="{ mask: '(00) 00000-0000' }"
+                            x-init="IMask($refs.phone, { mask })">
+                            <input x-ref="phone"
+                                class="input input-bordered @error($key) input-error @enderror"
+                                required
+                                autofocus 
+                                wire:model="{{ $key }}" 
+                                type="text" 
+                                name="{{$key}}" 
+                                id="{{$key}}"  
+                                onChange="ProgressBar.fieldChanged('{{$key}}', this.value, '{{ $field['type'] }}')" 
+                                placeholder="{{ @$field['placeholder'] }}"
+                                />
+                        </div>
+                    @break
                 @case('checkbox')
                     <label class="cursor-pointer label mt-4">
                         <input wire:model="{{ $key }}" type="checkbox"> 
@@ -72,7 +99,10 @@
                     @break
                 @case('date')
                     <label for="{{ $key }}" class="label">
-                        <span class="label-text">{{ $field['label'] }} <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span></span>
+                        <span class="label-text">{{ $field['label'] }}
+                            <a href="https://practice.uffs.edu.br/servico/prazos-de-solicitacao/" target="_blank" rel="external" class="text-red-400">(Ver tabela de prazos)</a>
+                            <span class="text-red-600 inline-block" title="Obrigatório">{{ $required }}</span>
+                        </span>
                         @if (isset($field['help'])) <i class="text-gray-400 bi bi-info-circle" title="{{ $field['help'] }}"></i> @endif
                     </label>
                     <input wire:model="{{ $key }}" type="date" name="{{ $key }}" placeholder="{{ @$field['placeholder'] }}" class="input input-bordered @error($key) input-error @enderror max-w-md" {{ @$field['attr'] }} />
@@ -156,7 +186,9 @@
                 <button wire:click="cancel()" class="btn float-right mr-6">Cancelar</button>
             @endif
         @else
+        <div style="display:flex; align-items: center; justify-content: center;">
             <button wire:click="store()" wire:loading.attr="disabled" wire:loading.class="loading" class="btn w-full lg:btn-wide btn-primary">Enviar</button>
+        </div>
         @endif
     @endif
 </div> 
