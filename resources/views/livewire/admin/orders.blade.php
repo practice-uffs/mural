@@ -173,8 +173,11 @@
                                         {{ $order['created_at_human'] }}
                                     </div>
                                     <div>
-                                        <span class="text-sm opacity-50"> (atualizado
-                                            {{ $order['updated_at'] }})</span>
+                                        <span class="text-sm opacity-50"> (atualizado em
+                                            <?php
+                                            $item_date = new DateTime($order['updated_at']);
+                                            ?>
+                                            {{ $item_date->format('d/m/Y H:i:s'); }}</span>
                                     </div>
                                 </div>
                             </td>
