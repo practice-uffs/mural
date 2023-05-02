@@ -71,6 +71,22 @@
                 <a href="#" class="label-text-alt"></a>
             </label>
         </div>
+        
+        <!-- altera filtro de ordem cronológica.-->
+        <div class="col-6">
+            <label class="label">
+                <span class="label-text">Alterar ordem cronológica</span>
+                <a href="#" class="label-text-alt"></a>
+            </label>
+            <select wire:model="filter.sortDate" class="select select-bordered w-full">
+                @foreach ($sort_by_date as $option => $text)
+                    <option value="{{ $option }}">{{ $text }}</option>
+                @endforeach
+            </select>
+            <label class="label">
+                <a href="#" class="label-text-alt"></a>
+            </label>
+        </div>
 
         <div class="col-6">
             <label class="label">
@@ -80,6 +96,7 @@
             <input class=" form-control input input-bordered w-full" type="text" wire:model.debounce.1000ms="filter.title">
         </div>
     </div>
+
 
     <!-- list of elements -->
     <div class="row mt-4">
@@ -156,8 +173,11 @@
                                         {{ $order['created_at_human'] }}
                                     </div>
                                     <div>
-                                        <span class="text-sm opacity-50"> (atualizado
-                                            {{ $order['created_at_human'] }})</span>
+                                        <span class="text-sm opacity-50"> (atualizado em
+                                            <?php
+                                            $item_date = new DateTime($order['updated_at']);
+                                            ?>
+                                            {{ $item_date->format('d/m/Y H:i:s'); }}</span>
                                     </div>
                                 </div>
                             </td>

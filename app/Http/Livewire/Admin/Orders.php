@@ -34,6 +34,10 @@ class Orders extends Component
             'closed' => 'Cancelado (não entregamos algo)',
             'completed' => 'Finalizado (entregamos algo)',
         ];
+        $this->sort_by_date = [
+                'Data de criação',
+                'Última atualização'
+        ];
         $this->findOrders();
     }
 
@@ -95,7 +99,16 @@ class Orders extends Component
         default: // 'Qualquer',
         }
     }
-
+    
+    protected function applyDateFilter(Builder &$query){
+        $selected = @$this->filter['sortDate'];
+        if ($selected=='1'){
+            $query->orderBy('updated_at','desc');
+        }else{  
+                $query->orderBy('created_at', 'desc');
+        }
+    }
+    
     public function findOrders()
     {
         $query = Order::with([
@@ -116,13 +129,11 @@ class Orders extends Component
             ])->where('title','LIKE', "%{$this->filter['title']}%");
         }
 
-
         $this->applyCategoryFilter($query);
         $this->applyServiceFilter($query);
         $this->applyLocationFilter($query);
         $this->applyStatusFilter($query);
-
-        $query->orderBy('updated_at', 'desc');
+        $this->applyDateFilter($query);
 
         if (!empty($this->filter['category_id']) || !empty($this->filter['service_id']) || !empty($this->filter['location_id']) || !empty($this->filter['status']) || !empty($this->filter['title'])) {
             $this->orders = $query->paginate(1000);
