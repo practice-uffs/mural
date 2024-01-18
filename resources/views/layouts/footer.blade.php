@@ -189,18 +189,18 @@
 
 <script>
 
-    const btn_accept = document.getElementById('close-btn'); 
-    btn_accept.addEventListener("click", myFunction);
+        const btn_accept = document.getElementById('close-btn'); 
+        btn_accept.addEventListener("click", myFunction);
 
-    const consent = sessionStorage.getItem('consent'); 
+        const consent = localStorage.getItem('consent'); 
 
-    if(!consent){
-        document.getElementById("popup-container").style.visibility = "visible"; 
-    }
-    function myFunction(){
-        document.getElementById("popup-container").style.visibility = "hidden";
-        sessionStorage.setItem('consent','true');
-    }
+        if(!consent){
+            document.getElementById("popup-container").style.visibility = "visible"; 
+        }
+        function myFunction(){
+            document.getElementById("popup-container").style.visibility = "hidden";
+            localStorage.setItem('consent','true');
+        }
 
 </script>
 
