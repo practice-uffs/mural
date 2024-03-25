@@ -34,6 +34,11 @@
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
 
+    <section class="mb-10">
+      <h3>Como solicitar transmissões ao vivo:</h3>
+      <img src="{{ asset('assets/img/fluxodelive.png') }}" alt="Como solicitar transmissões ao vivo" class="img-fluid">
+    </section>
+
       <div class="container">
         <div class="row gx-0">
 
