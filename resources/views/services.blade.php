@@ -1,5 +1,21 @@
 @extends('layouts.base')
 @section('content')
+    <section id="hero" class="hero hero-slim d-flex align-items-center h-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-flex flex-column justify-content-center">
+                    <h1 data-aos="fade-up">Serviço desativado</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="400">As solicitações de serviços estão atualmente desativados.</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+<!-- Comentário do conteúdo existente -->
+{{--
+    @extends('layouts.base')
+@section('content')
 
     <section id="hero" class="hero hero-slim d-flex align-items-center h-auto">
         <div class="container">
@@ -187,3 +203,4 @@
 
     </style>
 @endsection
+--}}
